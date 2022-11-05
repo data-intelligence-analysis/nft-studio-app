@@ -19,6 +19,7 @@
     "jsx": "preserve",
     "moduleResolution": "node",
     "incremental": true,
+    "noImplicitAny": false,
   },
   "include": [
     "next-env.d.ts",
@@ -27,5 +28,5 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
 }
