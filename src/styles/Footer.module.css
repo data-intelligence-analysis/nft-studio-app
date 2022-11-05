@@ -1,3 +1,11 @@
+.footer_links{
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-family: 'Ranchers', bold;
+}
 .footer_transparent{
     background-color: transparent;
 }
@@ -22,33 +30,26 @@
 .footer_links{
     padding-right: 1.5rem;
 }
-.footer_white_color{
-    color: #fff;
-}
-.footer_font_weight{
-    font-family: 'Ranchers', bold;
-}
+
 .copyright{
     font-size: 1rem;
-    
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin-right:auto;
     float:right;
-    padding: 0.5rem 1.5rem;
+    padding: 1rem 1rem 0;
+    font-family: 'Ranchers', bold;
 }
-@media (max-width:414px){
+@media (max-width:440px){
     .social_media_items{
         padding: 0.6rem 1rem;
     }
     .copyright{
-        font-size: 0.6rem;
-        line-height: 3rem;
-        padding: 0 1rem;
+        font-size: 0.70rem;
+        padding: 1.25rem 1rem;
     }
     .footer_links{
-        padding: 5px 5px;
-        line-height: 2.5rem;
+        padding: 8px 4px;
+        line-height: 1rem;
     }
 }
