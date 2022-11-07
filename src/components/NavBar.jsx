@@ -84,7 +84,7 @@ const NavBar = () => {
         <nav className = 
             {`${styles.nav_positioning} 
               ${styles.nav_font_weight} 
-              ${styles.nav_font_text}`} 
+              ${styles.nav_font_text} bg-transparent`} 
             >
             <button className={styles.navBar_btn} onClick={toggleNav}>
               {collapse ? 

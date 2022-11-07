@@ -65,8 +65,8 @@ const MintButton = styled.button`
 			transition: all 0.3s ease 0s;
 		};
 		@media (max-width: 428px){
-				padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+				padding-top: 0.375rem;
+        padding-bottom: 0.375rem;
         padding-right: 1rem;
         padding-left: 1rem;
         height: 100%;
@@ -94,8 +94,8 @@ const ExploreButton = styled.button`
 			transition: all 0.3s ease 0s;
 		}
 		@media (max-width: 428px){
-			padding-top: 0.5rem;
-			padding-bottom: 0.5rem;
+			padding-top: 0.375rem;
+			padding-bottom: 0.375rem;
 			padding-right: 1rem;
 			padding-left: 1rem;
 			height: 100%;
