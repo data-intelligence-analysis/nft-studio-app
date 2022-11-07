@@ -26,8 +26,6 @@
     "@solana/web3.js": "^1.66.2",
     "@toruslabs/solana-embed": "^0.3.0",
     "core-js": "^3.0.0",
-    "font-awesome": "^4.7.0",
-    "gatsby": "^4.22.0",
     "i": "^0.3.7",
     "install": "^0.13.0",
     "next": "12.2.5",

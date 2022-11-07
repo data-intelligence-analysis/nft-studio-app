@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+
 import {useState, React, forwardRef} from 'react'
 /*import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,7 +14,7 @@ import MetaTedLogo from '../assets/ted_1.png'
 import Link from 'next/link'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import styles from '../styles/NavBar.module.css';
+import styles from '../styles/navbar.module.css';
 
 
 const NavBarElements =[
