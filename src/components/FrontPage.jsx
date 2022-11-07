@@ -2,7 +2,7 @@ import React from 'react'
 import metatedsHeader from '../assets/metateds-header.png'
 import Link from 'next/link'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css';
+import styles from '../styles/home.module.css';
 import Head from 'next/head'
 import styled from 'styled-components'
 

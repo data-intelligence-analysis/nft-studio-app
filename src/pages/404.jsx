@@ -8,7 +8,7 @@ export default function NotFound404() {
       </Head>
 
       {/*Add your 404 page here*/}
-      <PageNotFound />
+      {/*<PageNotFound />*/}
     </>
   );
 }
