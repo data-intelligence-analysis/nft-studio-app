@@ -4,7 +4,7 @@ import discord from '../assets/discord.svg'
 import solsurfer from '../assets/solsurfer.png'
 import platformIcon from '../assets/ted@3.png'
 import Image from 'next/image'
-import styles from '../styles/Footer.module.css'
+//import styles from '../styles/Footer.module.css'
 import Link from 'next/link'
 const SocialMedia = [
     {
@@ -44,9 +44,9 @@ const Footer = () => {
       }
     return (
         <footer className='fixed pt-1 pb-1 z-30 text-center w-full bottom-0 bg-transparent'>
-            <div className={styles.social_media_items}>
+            <div className='social_media_items'>
                 {socialImg.map((social, index) => (
-                    <a className = {styles.footer_links} key={index} 
+                    <a className = 'footer_links' key={index} 
                         target="_blank" rel = "noreferrer" 
                         href={valURL(new URL(`${social.href}`)) ? social.href : ''}>
                         <Image
@@ -61,7 +61,7 @@ const Footer = () => {
                     
                 ))}
             </div>
-            <div className= {styles.copyright}>
+            <div className= 'copyright'>
                 <p>Copyright © 2022 MetaTed Labs</p>
             </div>
             

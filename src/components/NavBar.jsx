@@ -1,20 +1,10 @@
-/* eslint-disable react/display-name */
 
 import {useState, React, forwardRef} from 'react'
-/*import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';*/
 import Image from 'next/image'
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import MetaTedLogo from '../assets/ted_1.png'
 import Link from 'next/link'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import styles from '../styles/navbar.module.css';
 
 
 const NavBarElements =[
@@ -69,7 +59,7 @@ const NavBar = () => {
     }
     const Logo = forwardRef(({ href }, ref) => {
       return (
-        <a href={href} ref={ref} className={styles.nav_logo}>
+        <a href={href} ref={ref} className='nav_logo'>
           <Image
             height = {60}
             width = {60}
@@ -84,11 +74,9 @@ const NavBar = () => {
     return (
       <>
         <nav className = 
-            {`${styles.nav_positioning} 
-              ${styles.nav_font_weight} 
-              ${styles.nav_font_text} bg-transparent`} 
+            {'nav_positioning uppercase nav_font_text bg-transparent'} 
             >
-            <button className={styles.navBar_btn} onClick={toggleNav}>
+            <button className='navBar_btn' onClick={toggleNav}>
               {collapse ? 
                 (
 									<CloseIcon sx={{
@@ -106,27 +94,27 @@ const NavBar = () => {
 									/>
 								)}
             </button>
-            <ul className={`${collapse ? styles.navBarElements:""}`}></ul>
-            <div className = {`${styles.home_logo}`}>
+            <ul className={`${collapse ? 'navBarElements':''}`}></ul>
+            <div className = 'home_logo'>
                 <Link href = '/' passHref legacyBehavior>
                   <Logo />
                 </Link>
                 
             </div> 
             
-            <div className= {`${styles.nav_3d_btn_container}`} >
-                {<a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} className={`${styles.pointer} ${styles.w_btn}`}>
+            <div className= 'nav_3d_btn_container' >
+                {<a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} className='cursor-pointer w-full'>
                     <button 
-                        className= {`${styles.pointer} ${styles.w_btn} ${styles.app_btn}`}
+                        className= 'cursor-pointer w-full app_btn'
                         onClick={()=> alert ('3D experience optimized for Desktop')} >
                         3D Experience
                     </button>
                 </a>}
             </div>
-            <div className = {`${styles.navBarElements} ${styles.hidden}`} >
+            <div className = 'navBarElements'>
                 {navBarElements.map((element, index) => (
                     <Link href={element.href} key={index}>
-                        <a className ={styles.navBarItems} key={index} onClick={closeNav}>
+                        <a className ='navBarItems' key={index} onClick={closeNav}>
                             {element.name}
                         </a>
                     </Link>

@@ -7,6 +7,7 @@ export default function PageNotFound(){
     e.preventDefault();
     router.back();
   };
+  const HOME_URL = '/'
   return (
     <>
       <Head>
@@ -23,7 +24,7 @@ export default function PageNotFound(){
         </a>
         <a
           href="#"
-          onClick={handleGoBack}
+          onClick={routeBack}
           className="px-5 py-3 text-white dark:text-slate-100 rounded-lg bg-indigo-500 bg-opacity-0 hover:bg-opacity-40 dark:hover:bg-opacity-40 dark:hover:text-white cursor-pointer hover:underline"
         >
           Back

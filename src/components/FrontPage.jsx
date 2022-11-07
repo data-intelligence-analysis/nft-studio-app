@@ -2,7 +2,7 @@ import React from 'react'
 import metatedsHeader from '../assets/metateds-header.png'
 import Link from 'next/link'
 import Image from 'next/image'
-import styles from '../styles/home.module.css';
+//import styles from '../styles/home.module.css';
 import Head from 'next/head'
 import styled from 'styled-components'
 
@@ -13,11 +13,11 @@ const FrontPage = () => {
         return `https://example.com/${src}?w=${width}&q=${quality || 75}`
     }
     return (
-        <div className={styles.home_container}>
+        <div className='home_container'>
             <Head>
                 <title>Home | MetaTeds </title>
             </Head>
-            <div className = {styles.home_container_name}>
+            <div className = 'home_container_name'>
 							<Image 
 									src={metatedsHeader}
 									alt="MetaTeds Logo"
@@ -26,8 +26,7 @@ const FrontPage = () => {
 									width={1000}
 							/>
             </div>
-            <div className = {`${styles.home_content_subheader} ${styles.font_weight} 
-                                ${styles.font_text_size} ${styles.font_color}`}>
+            <div className = 'home_content_subheader pb-10 ml-a mr-a font_text_size text-[#EAA640]'>
                 <h1>Building a Web3 Ecosystem</h1>
             </div>
             <div className="mt-8 flex text-center">
