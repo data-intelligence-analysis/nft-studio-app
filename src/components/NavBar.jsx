@@ -1,4 +1,4 @@
-
+/* eslint-disable react/display-name */
 import {useState, React, forwardRef} from 'react'
 import Image from 'next/image'
 import MetaTedLogo from '../assets/ted_1.png'
