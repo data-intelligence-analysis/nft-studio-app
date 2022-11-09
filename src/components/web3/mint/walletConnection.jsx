@@ -61,16 +61,20 @@ const WalletConnection = () => {
       <>
         <div className="pt-44 md:pt-64 xl:pt-88 w-full">
           <div className="mx-auto items-center">
-            <div className="relative mx-47 sm:mx-40 px-20 sm:px-6 pb-10 sm:pb-5 z-10 text-align mx-auto">
-                <Image 
-                  alt="computer"
-                  priority="true"
-                  src={tedintosh}
-                  layout="intrinsic"
-                  width={500}
-                  height={600}
-                  style={{objectFit: 'contain', objectPosition: 'center'}}
-                />
+            <div className="relative mx-47 sm:mx-40 px-20 sm:px-6 pb-10 md:grid md:place-items-center sm:pb-5 z-10 text-align mx-auto">
+                <div>
+                  <Image 
+                    alt="computer"
+                    priority="true"
+                    src={tedintosh}
+                    layout="intrinsic"
+                    width={450}
+                    height={550}
+                    style={{objectFit: 'contain', objectPosition: 'center'}}
+                  />
+                  
+                </div>
+                
             </div>
           </div>
         </div> 
