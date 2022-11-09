@@ -2,6 +2,8 @@ import React, {Fragment, useCallback, useState, useEffect} from 'react'
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 import CandyMachine from './index';
+import Image from 'next/image'
+import tedintosh from '../../../assets/tedintosh.gif'
 /*import { clusterApiUrl, 
   Connection, 
   LAMPORTS_PER_SOL, 
@@ -9,23 +11,23 @@ import CandyMachine from './index';
   SystemProgram, 
   Transaction  
 } from '@solana/web3.js';*/
-//import purify from 'dompurify'
 import {
   useWallet,
 } from '@solana/wallet-adapter-react';
 import styled from 'styled-components'
-import { createTheme, ThemeProvider } from '@material-ui/core';
+import { createTheme, ThemeProvider } from "@material-ui/core";
+require('@solana/wallet-adapter-react-ui/styles.css');
 const Img = styled.img`
   height: 40%;
   width: 40%;
   z-index=1;
   pointer-events: none;
-  align-items: center;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
   position: relative;
 `
+
 const Div = styled.div`
   position: absolute;
   top:13%;
@@ -48,7 +50,83 @@ const Div = styled.div`
 }
 
 `
-
-export default function WalletConnection(){
+const WalletConnection = () => {
   
+  const wallet = useWallet();
+  //const {connected} = useWallet();
+  //let walletAddress = '';
+  
+  const WalletIsConnected = () => {
+    return (
+      <>
+        <div className="pt-44 md:pt-64 xl:pt-88 w-full">
+          <div className="mx-auto items-center">
+            <div className="relative mx-47 sm:mx-40 px-20 sm:px-6 pb-10 sm:pb-5 z-10 text-align mx-auto">
+                <Image 
+                  alt="computer"
+                  priority="true"
+                  src={tedintosh}
+                  layout="intrinsic"
+                  width={500}
+                  height={600}
+                  style={{objectFit: 'contain', objectPosition: 'center'}}
+                />
+            </div>
+          </div>
+        </div> 
+      </>
+    )
+  }
+      
+  return (
+      <>
+        <nav className="sticky top-[4.25rem] pointer-event-none z-nav w-full">
+          <div className="absolute w-full mt-4">
+            <div className="flex items-center float-left sm:float-right font-pixel flex-row px-4">
+              <div className= "items-center text-[0.625rem] font-pixel leading-5 sm:leading-6 sm:text-xs md:text-sm pointer-events-auto cursor-pointer bg-[#4e44ce] rounded-full hover:rounded-full hover:text-slate-200 hover:bg-gray-800 justify-center px-0.5">
+                <WalletMultiButton className="uppercase" />
+              </div>
+            </div>
+          </div>
+        </nav>
+        <main>
+          {<WalletIsConnected />}
+        </main>
+      </>
+  )
 }
+
+export default WalletConnection
+//Sanitize data before injecting native HTML codes into the react DOM:
+//<div dangerouslySetInnerHTML={{ __html:purify.sanitize(data) }} />
+
+/*const App = ({data}: Props) => {
+    <div dangerouslySetInnerHTML={data} />
+   }
+   <App data={__html:purify.sanitize(data)} />*/
+/*const walletIsConnected = async () => {
+      try{
+          //solana object is injected
+          const { solana } = window;
+
+          if (solana && solana.isPhantom) {
+              console.log('Phantom wallet found');
+              const response = await solana.connect({ onlyIfTrusted: true });
+              console.log(
+              'Connected with Public Key:',
+              response.publicKey.toString()
+              );
+          } else {
+              alert('Phantom wallet not found! Download from here: https://phantom.app/');
+          }
+      } catch (error) {
+        console.error(error);
+      }
+  }
+  useEffect(() => {
+      const onLoad = async () => {
+        await walletIsConnected();
+      };
+      window.addEventListener('load', onLoad);
+      return () => window.removeEventListener('load', onLoad);
+  }, []);*/

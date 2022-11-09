@@ -79,20 +79,20 @@ const NavBar = () => {
             <button className='navBar_btn' onClick={toggleNav}>
               {collapse ? 
                 (
-									<CloseIcon sx={{
-											width: 55,
-											height: 40,
-										}}
-									/>
+                    <CloseIcon sx={{
+                            width: 55,
+                            height: 40,
+                        }}
+                    />
                 ):
                 (
-                	<MenuIcon 
-										sx={{
-											width: 55,
-											height: 40,
-										}}
-									/>
-								)}
+                    <MenuIcon 
+                        sx={{
+                            width: 55,
+                            height: 40,
+                        }}
+                    />
+                )}
             </button>
             <ul className={`${collapse ? 'navBarElements':''}`}></ul>
             <div className = 'home_logo'>

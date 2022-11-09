@@ -13,6 +13,10 @@ import {
   SolletWalletAdapter,
   TorusWalletAdapter
 } from '@solana/wallet-adapter-wallets';
+import {
+  GlowWalletAdapter
+} from '@solana/wallet-adapter-glow';
+import { useConnection } from "@solana/wallet-adapter-react"
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 //ThreeJS  modules
@@ -20,11 +24,10 @@ import Footer from '../components/Footer'
 //import { Circles } from "react-loader-spinner";
 import * as THREE from 'three'
 import dynamic from 'next/dynamic'
-import {MTLLoader, OBJLoader} from 'three-obj-mtl-loader'
-import { render } from 'react-dom';
+//import {MTLLoader, OBJLoader} from 'three-obj-mtl-loader'
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 //import * as dat from 'dat.gui'
-
+require('@solana/wallet-adapter-react-ui/styles.css');
 const CanvasLoad = (props)  => {
   
 
@@ -313,12 +316,12 @@ const RenderWalletConnect = () => {
   return (
     <>
       {!connected ? (
-        <>
+        <div className="bg-zinc-900 h-screen overflow-y-hidden"> 
           <nav className="sticky top-[4.25rem] pointer-event-none z-nav w-full">
             <div className="absolute w-full mt-4">
               <div className="flex items-center float-left sm:float-right font-pixel flex-row px-4">
-                <div className= "flex-shrink-0 items-center pointer-events-auto cursor-pointer">
-                  {<WalletMultiButton className="text-[0.625rem] leading-6 sm:leading-6 sm:text-xs md:text-sm uppercase hover:text-slate-200 hover:bg-gray-800 cursor-pointer rounded-full bg-[#4e44ce] justify-center h-full px-4 py-2.5 w-full" />}
+                <div className= "items-center text-[0.625rem] font-pixel leading-5 sm:leading-6 sm:text-xs md:text-sm pointer-events-auto cursor-pointer bg-[#4e44ce] rounded-full hover:rounded-full hover:text-slate-200 hover:bg-gray-800 justify-center px-0.5">
+                  <WalletMultiButton className="uppercase" />
                 </div>
               </div>
             </div>
@@ -329,10 +332,13 @@ const RenderWalletConnect = () => {
               Devnet Mint Coming Soon
             </h1>
           </div>
-      </>
+        </div>
+      
       ):(
-          {/*<WalletConnection />*/}
-          )  
+        <div className="bg-zinc-900 h-screen overflow-y-auto">
+          <WalletConnection />
+        </div>
+        )  
       }
     </>
   )
@@ -366,6 +372,7 @@ const Mint = () =>{
         new SolflareWalletAdapter({ network }),
         new TorusWalletAdapter(),
         new LedgerWalletAdapter(),
+        new GlowWalletAdapter({network}),
     ],
     [network]
   );
@@ -380,9 +387,7 @@ const Mint = () =>{
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>   
-            <div className="bg-zinc-900 h-screen overflow-y-hidden"> 
               <RenderWalletConnect />
-            </div>
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
