@@ -37,11 +37,13 @@ module.exports = {
         'metateds-purple': '#4e44ce',
         'metateds-orange': '#EAA640'
       },*/
-      gridTemplateColumns: {
-        13: "repeat(13, minmax(0, 1fr))",
-        16: "repeat(16, minmax(0, 1fr))",
-      },
+      
       extend: {
+        gridTemplateColumns: {
+          13: "repeat(13, minmax(0, 1fr))",
+          16: "repeat(16, minmax(0, 1fr))",
+          2: "repeat(2, minmax(0, 1fr))"
+        },
       },
     },
     

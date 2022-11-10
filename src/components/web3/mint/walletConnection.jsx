@@ -4,6 +4,7 @@ import { WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 import CandyMachine from './index';
 import Image from 'next/image'
 import tedintosh from '../../../assets/tedintosh.gif'
+//import CandyMachine from './index'
 /*import { clusterApiUrl, 
   Connection, 
   LAMPORTS_PER_SOL, 
@@ -72,7 +73,7 @@ const WalletConnection = () => {
                     height={550}
                     style={{objectFit: 'contain', objectPosition: 'center'}}
                   />
-                  
+
                 </div>
                 
             </div>
@@ -108,29 +109,3 @@ export default WalletConnection
     <div dangerouslySetInnerHTML={data} />
    }
    <App data={__html:purify.sanitize(data)} />*/
-/*const walletIsConnected = async () => {
-      try{
-          //solana object is injected
-          const { solana } = window;
-
-          if (solana && solana.isPhantom) {
-              console.log('Phantom wallet found');
-              const response = await solana.connect({ onlyIfTrusted: true });
-              console.log(
-              'Connected with Public Key:',
-              response.publicKey.toString()
-              );
-          } else {
-              alert('Phantom wallet not found! Download from here: https://phantom.app/');
-          }
-      } catch (error) {
-        console.error(error);
-      }
-  }
-  useEffect(() => {
-      const onLoad = async () => {
-        await walletIsConnected();
-      };
-      window.addEventListener('load', onLoad);
-      return () => window.removeEventListener('load', onLoad);
-  }, []);*/

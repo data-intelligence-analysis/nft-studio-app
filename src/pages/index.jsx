@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | MetaTeds </title>
+        <title>🚀 Home | MetaTeds </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="MetaTeds Studio - Web3 Community Experience"/>
       </Head>

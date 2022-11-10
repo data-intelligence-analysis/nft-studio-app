@@ -18,7 +18,7 @@ const NavBarElements =[
         name: 'Legion',
         href: '/legion'
         
-    },
+    },*/
     {
         id: 3,
         name: 'Roadmap',
@@ -28,12 +28,12 @@ const NavBarElements =[
         id: 4,
         name: 'Utility',
         href: '/utility'
-    },*/
-    {
+    },
+    /*{
         id: 5,
         name: 'Gaming',
         href: '/gaming'
-    },
+    },*/
     {
         id: 6,
         name: 'Support',

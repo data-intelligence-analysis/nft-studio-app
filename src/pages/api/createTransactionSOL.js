@@ -8,15 +8,26 @@ import {
   LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
 import BigNumber from "bignumber.js";
+import products from "./products.json";
+import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } from "@solana/spl-token";
 
 // Make sure you replace this with your wallet address!
-const sellerAddress = 'EcMWFo7esQyPEYrRkhis4FVpG9auWLoCxhuwCuWfDUoa'
+//process.env.SELLER_ADDRESS = <WALLET_ADDRESS>
+const sellerAddress = () => {
+  if (process.env.SELLER_ADDRESS === undefined){
+    console.log
+    return (alert("Recipient address to receive funds has not been declared"))
+  }
+  return process.env.SELLER_ADDRESS
+}
 const sellerPublicKey = new PublicKey(sellerAddress);
 
+
+//Get paid in SOL tokens
 const createTransaction = async (req, res) => {
   try {
     // Extract the transaction data from the request body
-    const { buyer, orderID} = req.body;
+    const { buyer, orderID, itemID } = req.body;
 
     // If we don't have something we need, stop!
     if (!buyer) {
@@ -32,18 +43,18 @@ const createTransaction = async (req, res) => {
     }
 
     // Fetch item price from products.json using itemID
-    /*const itemPrice = products.find((item) => item.id === itemID).price;
-    
+    const itemPrice = products.find((item) => item.id === itemID).price;
+
     if (!itemPrice) {
       return res.status(404).json({
         message: "Item not found. please check item ID",
       });
-    }*/
+    }
     
-    const donationPrice = "1.0"
     // Convert our price to the correct format
-    const bigAmount = BigNumber(donationPrice);
+    const bigAmount = BigNumber(itemPrice);
     const buyerPublicKey = new PublicKey(buyer);
+    //const network = WalletAdapterNetwork.Mainnet;
     const network = WalletAdapterNetwork.Devnet;
     const endpoint = clusterApiUrl(network);
     const connection = new Connection(endpoint);
@@ -54,7 +65,7 @@ const createTransaction = async (req, res) => {
     // The first two things we need - a recent block ID 
     // and the public key of the fee payer 
     const tx = new Transaction({
-      blockhash: blockhash,
+      recentBlockhash: blockhash,
       feePayer: buyerPublicKey,
     });
 
@@ -101,3 +112,4 @@ export default function handler(req, res) {
     res.status(405).end();
   }
 }
+
