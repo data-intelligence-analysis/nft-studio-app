@@ -124,6 +124,4 @@ export default function Donate(){
         console.log("Payment has been sucessfully sent")
     }
   }, [status]);    
-    
-
 }
