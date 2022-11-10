@@ -19,6 +19,7 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.12",
+    "@solana/spl-token": "^0.3.6",
     "@solana/wallet-adapter-base": "^0.9.18",
     "@solana/wallet-adapter-glow": "^0.1.13",
     "@solana/wallet-adapter-react": "^0.15.24",

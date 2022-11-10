@@ -64,7 +64,7 @@ const WalletContainer =() =>{
         <div className="bg-[var(--tw-main-bg-color)] h-screen">
           <div className="h-full mx-6">
             <div className="m-auto py-20 h-full overflow-y-auto">
-              <nav className="top-1 sticky relative pointer-events-none z-index">
+              <nav className="top-1 sm:sticky relative pointer-events-none z-index">
                 <div className="absolute mt-1 w-full">
                   <div className="flex flex-row gap-4 uppercase rounded-full justify-between px-3 float-left align-middle justify-center pointer-events-auto cursor-pointer">
                     <WalletMultiButton />
@@ -72,8 +72,8 @@ const WalletContainer =() =>{
                 </div>
               </nav>
               <div className="mt-20 grid place-items-center sm:grid-cols-2 mx-auto items-center text-center">
-                <div className="mt-6 mx-6 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[490px] border-2 border-indigo-500/100 w-[90%] lg:max-w-md"></div>
-                <div className="mt-6 mx-6 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[490px] border-2 border-indigo-500/100 w-[90%] lg:max-w-md"></div>
+                <div className="mt-6 mx-6 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[470px] border-2 border-indigo-500/100 w-[85%] sm:w-[90%] lg:max-w-md"></div>
+                <div className="mt-6 mx-6 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[470px] border-2 border-indigo-500/100 w-[85%] sm:w-[90%] lg:max-w-md"></div>
               </div>
 
             </div>
