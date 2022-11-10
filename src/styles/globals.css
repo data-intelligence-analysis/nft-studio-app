@@ -5,6 +5,25 @@
 
 @layer components {
 
+  .solana-button-text{
+    background-color: transparent;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    outline: none;
+    border: none;
+    background-color: #414141;
+    color: var(--tw-white-color);
+    border-radius: 4px;  
+  }
+  .solana-button-text:hover{
+      background: -webkit-linear-gradient(left, #9945ff, #8752F3, #5497D5, #43B4CA, #28E0B9, #19FB9B );
+      font-weight: 700;
+      box-shadow: 0;
+      -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+      -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+      transition: all 0.3s ease 0s;
+  }
+
   /*NavBar*/
   .app_btn{
     font-size: 1rem;

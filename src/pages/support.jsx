@@ -21,6 +21,7 @@ import {
     useWallet,
     //useConnection
 } from '@solana/wallet-adapter-react';
+import Image from 'next/image'
 import { clusterApiUrl } from "@solana/web3.js";
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
@@ -44,8 +45,8 @@ const WalletContainer =() =>{
           return (
               <>
                 {<button type="submit" onClick = {() => alert("Connect your solana wallet. To intiate the transaction!")}
-                    className="solana-button-text">
-                    Donate with <img className = "solana-pay-img" alt= "Solana Pay" src={solanaPayImg} />
+                    className="solana-button-text text-lg sm:text-base font-bold px-2.5 py-1">
+                    Donate with <Image alt="solana-pay-icon" src={solanaPayImg} priority="true" style=""/> {/*<img className = "solana-pay-img" alt= "Solana Pay" src={solanaPayImg} />*/}
                 </button>  }
               </>
           )
@@ -62,7 +63,7 @@ const WalletContainer =() =>{
         </Head>
         <NavBar />
         <div className="bg-[var(--tw-main-bg-color)] h-screen">
-          <div className="h-full mx-6">
+          <div className="h-full mx-4">
             <div className="m-auto py-20 h-full overflow-y-auto">
               <nav className="top-1 sm:sticky relative pointer-events-none z-index">
                 <div className="absolute mt-1 w-full">
@@ -71,9 +72,28 @@ const WalletContainer =() =>{
                   </div>
                 </div>
               </nav>
-              <div className="mt-20 grid place-items-center sm:grid-cols-2 mx-auto items-center text-center">
-                <div className="mt-6 mx-6 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[470px] border-2 border-indigo-500/100 w-[85%] sm:w-[90%] lg:max-w-md"></div>
-                <div className="mt-6 mx-6 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[470px] border-2 border-indigo-500/100 w-[85%] sm:w-[90%] lg:max-w-md"></div>
+              <div className="mt-12 sm:mt-20 grid place-items-center sm:grid-cols-2 mx-auto items-center text-center">
+                <div className="mt-6 mx-5 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
+                  <div className="text-center justify-center w-full p-5 font-['Inter']">
+                    <h1 className="text-slate-900 font-bold text-xl sm:text-3xl">Contact Us</h1>
+                    <div className="text-center m-10 sm:m-20 cursor-pointer">
+                      <CheckWallet />
+                    </div>
+                  </div>
+                  
+                </div>
+                <div className="mt-6 mx-2 sm:mx-4 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
+                  <div className="text-center justify-center font-['Inter'] w-full p-5">
+                    <h1 className="text-slate-900 font-bold text-xl sm:text-3xl">Support Us</h1>
+                    <div className="text-center m-10 sm:m-20 cursor-pointer">
+                      <a className="solana-pay" href="https://forms.gle/2p813UayRdro1wxf8" target="_blank" rel="noreferrer">
+                          <button className="solana-button-text font-bold px-2.5 py-1 text-lg sm:text-base"> 
+                              Join Our Team <span className="join-team-icon-position"><GroupAddIcon /></span>
+                          </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>
