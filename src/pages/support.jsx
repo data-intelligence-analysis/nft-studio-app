@@ -23,7 +23,7 @@ import {
     useWallet,
     //useConnection
 } from '@solana/wallet-adapter-react';
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import { clusterApiUrl } from "@solana/web3.js";
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
