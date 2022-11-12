@@ -45,7 +45,7 @@ const WalletContainer =() =>{
         })
     }
   }, [publicKey])
-  useEffect(()=>{
+  /*useEffect(()=>{
     if (publicKey){
       fetch(`api/fetchPriceUSD`)
         .then(response => response.json())
@@ -54,7 +54,7 @@ const WalletContainer =() =>{
           console.log("USDC Payment Price Info", data)
         })
     }
-  })
+  })*/
   
   const CheckWalletSOL = () => {
     try{
