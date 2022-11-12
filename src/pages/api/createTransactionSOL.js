@@ -8,7 +8,8 @@ import {
   LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
 import BigNumber from "bignumber.js";
-import products from "./products.json";
+//import products from "./products.json";
+import fetchPrice from "./price.json"
 import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } from "@solana/spl-token";
 
 // Make sure you replace this with your wallet address!
@@ -16,18 +17,18 @@ import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } 
 const sellerAddress = () => {
   if (process.env.SELLER_ADDRESS === undefined){
     console.log
-    return (alert("Recipient address to receive funds has not been declared"))
+    alert("Recipient address to receive funds has not been declared")
   }
   return process.env.SELLER_ADDRESS
 }
-const sellerPublicKey = new PublicKey(sellerAddress);
+const sellerPublicKey = new PublicKey(process.env.SELLER_ADDRESS);
 
 
 //Get paid in SOL tokens
 const createTransaction = async (req, res) => {
   try {
     // Extract the transaction data from the request body
-    const { buyer, orderID, itemID } = req.body;
+    const { buyer, orderID, priceID} = req.body;
 
     // If we don't have something we need, stop!
     if (!buyer) {
@@ -42,18 +43,35 @@ const createTransaction = async (req, res) => {
       });
     }
 
-    // Fetch item price from products.json using itemID
-    const itemPrice = products.find((item) => item.id === itemID).price;
+    //Price of donation
 
-    if (!itemPrice) {
+    //2 SOL for donation
+    //const itemPrice = price;
+    //const itemPrice = price.find((item)).price
+    //const itemPrice = "2.00"
+    // Fetch item price from products.json using itemID
+    //const itemPrice = products.find((item) => item.id === itemID).price;
+    
+    // Fetch purchase price from price.json using priceID
+    const itemPrice = fetchPrice.find((price) => price.id === priceID).fee
+    
+    /*if (!itemPrice) {
       return res.status(404).json({
         message: "Item not found. please check item ID",
       });
+    }*/
+    if (!itemPrice) {
+      return res.status(404).json({
+        message: "Price not found",
+      });
     }
+
     
     // Convert our price to the correct format
     const bigAmount = BigNumber(itemPrice);
     const buyerPublicKey = new PublicKey(buyer);
+
+    //mainnnet network
     //const network = WalletAdapterNetwork.Mainnet;
     const network = WalletAdapterNetwork.Devnet;
     const endpoint = clusterApiUrl(network);

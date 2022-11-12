@@ -2,9 +2,15 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Keypair, Transaction } from "@solana/web3.js";
 import { findReference, FindReferenceError } from "@solana/pay";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { InfinitySpin } from "react-loader-spinner";
-import { addOrder, hasPurchased} from "../api";
-
+import { InfinitySpin, Circles } from "react-loader-spinner";
+import { addOrder, hasPurchased} from "../../api";
+import { Snackbar } from "@material-ui/core";
+import solanaPayImg from '../assets/solana_pay_white.png';
+import Image from 'next/image';
+import Alert from "@material-ui/lab/Alert";
+import CheckIcon from '@mui/icons-material/Check';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import Stack from '@mui/material/Stack';
 //confirming transactions are sent - turn transactions to payments
 const STATUS = {
   Initial: "Initial",
@@ -12,30 +18,35 @@ const STATUS = {
   Paid: "Paid"
 }
 
-export default function Donate(){
+const Buy = ({priceID, price}) => {
+
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
   const orderID = useMemo(() => Keypair.generate().publicKey, []);// Public key used to identify the order
-
-
-  const [item, setItem] = useState(null);
+  const [alertState, setAlertState] = useState({
+    open: false,
+    message: "",
+    severity: undefined,
+  });
+  //const [item, setItem] = useState(null);
   const [status, setStatus] = useState(STATUS.Initial);
 
   const [loading, setLoading] = useState(false); // Loading state of all above
-
+  
   // useMemo is a React hook that only computes the value if the dependencies change
   const order = useMemo(
     () => ({
       buyer: publicKey.toString(),
       orderID: orderID.toString(),
+      priceID: priceID
     }),
-    [publicKey, orderID]
+    [publicKey, orderID, priceID]
   );
-
+  
   // Fetch the transaction object from the server 
   const processTransaction = async () => {
     setLoading(true);
-    const txResponse = await fetch("../api/createTransactionSOL", {
+    const txResponse = await fetch("../api/createTransactionsol", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,6 +55,7 @@ export default function Donate(){
     });
 
     const txData = await txResponse.json();
+      
     // We create a transaction object
     const tx = Transaction.from(Buffer.from(txData.transaction, "base64"));
     console.log("Tx data is", tx);
@@ -70,6 +82,13 @@ export default function Donate(){
       const purchased = await hasPurchased(publicKey);
       if (purchased) {
         setStatus(STATUS.Paid);
+        let alreadyPurchased = "Address has already purchased this item!"
+        setAlertState({
+          open: true,
+          message: alreadyPurchased,
+          severity: "info",
+          hideDuration: null
+        })
         console.log("Address has already purchased this item!");
       }
     }
@@ -88,11 +107,17 @@ export default function Donate(){
                 const result = await findReference(connection, orderID);
                 console.log("Finding tx reference", result.confirmationStatus);
                 if (result.confirmationStatus === "confirmed" || result.confirmationStatus === "finalized") {
+                  let success = "Thank you for your purchase!"
                   clearInterval(interval);
                   setStatus(STATUS.Paid);
                   setLoading(false);
                   addOrder(order)
-                  alert("Thank you for your purchase!");
+                  setAlertState({
+                    open: true,
+                    message: success,
+                    severity: "success",
+                    hideDuration: null
+                  })
                 }
             }catch (e) {
                 /*looks for the oldest transaction signature reference our orderID. If we find one, we check that the transaction status
@@ -121,7 +146,91 @@ export default function Donate(){
         };
     }
     if (status === STATUS.Paid){
-        console.log("Payment has been sucessfully sent")
+        let success = "Transaction Successful"
+        setAlertState({
+          open: true,
+          message: success,
+          severity: "success",
+          hideDuration: null
+        })
+        console.log(success)
     }
-  }, [status]);    
+  }, [status]);
+  
+  if (!publicKey){
+    let error = "Connect wallet to make transaction "
+    setAlertState({
+      open: true,
+      message: error,
+      severity: "error",
+      hideDuration: null
+    })
+    return (
+      console.log("Unable to identify wallet public key")
+    )
+  }
+
+  if (loading) {
+    let waiting = "Waiting for transaction....."
+    console.log("Waiting for transaction.....")
+    return (
+        <Circles 
+          width='50' 
+          height='50' 
+          color="purple"
+          ariaLabel = "circles-loading"
+          wrapperClass="items-center justify-center"
+          wrapperStyle=""
+          visible={true} />
+    )
+  }
+  return(
+    <>
+      <div>
+        {status === STATUS.Paid ? (
+          <div className="bottom-0 text-center items-center">
+            <Alert
+              onClose={()=> {}}
+              severity="success"
+              iconMapping={{success: <CheckCircleOutlineIcon fontSize="inherit" />}}
+              >
+              Transaction successful
+            </Alert>
+          </div>
+          
+        ) : (
+          <button disabled={loading} onClick = {processTransaction} className="solana-button-text items-center text-lg sm:text-base font-bold px-2.5 py-1">
+              Donate {price} SOL
+          </button>
+        )}
+      </div>
+      <div className="bottom-0 text-center items-center">
+        <Snackbar
+          open={alertState.open}
+          autoHideDuration={
+            alertState.hideDuration === undefined ? 6000 : alertState.hideDuration
+          }
+          onClose={() => setAlertState({ ...alertState, open: false })}
+        >
+          <Alert
+            onClose={() => setAlertState({ ...alertState, open: false })}
+            severity={alertState.severity}
+          >
+            {alertState.message}
+          </Alert>
+
+        </Snackbar>
+      </div>
+    </>
+  )
+}
+export default function Donatesol({priceInfo}){
+  const {id, fee, description} = priceInfo
+  return (
+    <>
+      <Buy priceID = {id} price={fee} />
+    </>
+    
+  );
+
 }
