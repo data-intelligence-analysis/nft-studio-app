@@ -66,9 +66,8 @@ const WalletConnection = () => {
                 <div>
                   <Image 
                     alt="computer"
-                    placeholder="blur"
+                    priority="true"
                     src={tedintosh}
-                    layout="intrinsic"
                     width={450}
                     height={550}
                     style={{objectFit: 'contain', objectPosition: 'center'}}

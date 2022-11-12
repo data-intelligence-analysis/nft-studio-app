@@ -33,17 +33,28 @@ require('@solana/wallet-adapter-react-ui/styles.css');
 const WalletContainer =() =>{
   const wallet = useWallet();
   const { publicKey} = useWallet();
-  const [pricePay, setPrice] = useState([]);
+  const [priceSOL, setPrice] = useState([]);
+  const [priceUSD, setPriceUSD] = useState([])
   useEffect(()=>{
     if (publicKey){
       fetch(`/api/fetchPrice`)
         .then(response => response.json())
         .then( data => {
           setPrice(data);
-          console.log("Payment Price Info", data)
+          //console.log("SOL Payment Price Info", data)
         })
     }
   }, [publicKey])
+  useEffect(()=>{
+    if (publicKey){
+      fetch(`api/fetchPriceUSD`)
+        .then(response => response.json())
+        .then( data=>{
+          setPriceUSD(data);
+          console.log("USDC Payment Price Info", data)
+        })
+    }
+  })
   
   const CheckWalletSOL = () => {
     try{
@@ -51,7 +62,7 @@ const WalletContainer =() =>{
         return (
           <>
             {
-              pricePay.map((price) => (
+              priceSOL.map((price) => (
                 <Donatesol key= {price.id} priceInfo = {price} />
               ))
             } 
@@ -61,8 +72,9 @@ const WalletContainer =() =>{
         return (
           <>
             {<button type="submit" onClick = {() => alert("Connect your solana wallet. To make payment!")}
-                className="solana-button-text text-lg sm:text-base font-bold px-2.5 py-1">
-                Donate with <Image alt="solana-pay-icon" width= {"40"} height={"20"} src={solanaPayImg} layout="intrinsic" priority="true" style={{padding:'20px'}} />{/*<img className = "solana-pay-img" alt= "Solana Pay" src={solanaPayImg} />*/}
+                className="solana-button-text text-lg sm:text-base font-bold px-2.5 py-1 text-center leading-7">
+                Donate <Image alt="solana-pay-icon" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{overflow:'hidden', marginTop: '5px'}} />
+                {/*<img className = "solana-pay-img" alt= "Solana Pay" src={solanaPayImg} />*/}
             </button>  }
           </>
         )
@@ -78,7 +90,7 @@ const WalletContainer =() =>{
         return (
           <>
             {
-              pricePay.map((price) => (
+              priceUSD.map((price) => (
                 <Donateusd key= {price.id} priceInfo = {price} />
               ))
             } 
@@ -89,7 +101,7 @@ const WalletContainer =() =>{
           <>
             {<button type="submit" onClick = {() => alert("Connect your solana wallet. To make payment!")}
                 className="solana-button-text text-lg sm:text-base font-bold px-2.5 py-1">
-                Donate with <Image alt="usdc" src={usdcPayImg} width ={"20"} height={"20"} priority="true" style=""/>
+                Donate <Image alt="usdc" src={usdcPayImg} width ={"20"} height={"18"} priority="true" style={{paddingTop:"2px"}}/>
             </button>  }
           </>
         )
@@ -122,9 +134,9 @@ const WalletContainer =() =>{
                   <div className="text-center m-5 sm:m-10 cursor-pointer">
                     <CheckWalletSOL />
                   </div>
-                  <div className="text-center m-5 sm:m-10 cursor-pointer">
+                  {/*<div className="text-center m-5 sm:m-10 cursor-pointer">
                     <CheckWalletUSD />
-                  </div>
+                  </div>*/}
                 </div>
                 
               </div>

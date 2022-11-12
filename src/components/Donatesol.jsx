@@ -1,14 +1,11 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef} from "react";
 import { Keypair, Transaction } from "@solana/web3.js";
 import { findReference, FindReferenceError } from "@solana/pay";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { InfinitySpin, Circles } from "react-loader-spinner";
+import { Circles } from "react-loader-spinner";
 import { addOrder, hasPurchased} from "../../api";
 import { Snackbar } from "@material-ui/core";
-import solanaPayImg from '../assets/solana_pay_white.png';
-import Image from 'next/image';
 import Alert from "@material-ui/lab/Alert";
-import CheckIcon from '@mui/icons-material/Check';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Stack from '@mui/material/Stack';
 //confirming transactions are sent - turn transactions to payments
@@ -68,7 +65,21 @@ const Buy = ({priceID, price}) => {
       // Even though this could fail, we're just going to set it to true for now
       setStatus(STATUS.Submitted)
     } catch (error) {
-      console.error(error);
+      let message = error.msg || "Minting failed! Please try again!";
+      if (!error.msg){
+        if (!error.message){
+          message="Transaction timeout! Please try again."
+        } else if (error.message.indexOf("0x135")){
+          message = `Insufficient funds to mint. Please fund your wallet.`;
+
+        } 
+      }
+      //console.error(error);
+      setAlertState({
+        open: true,
+        message,
+        severity: "error",
+      });
     } finally {
       setLoading(false);
     }
@@ -82,14 +93,14 @@ const Buy = ({priceID, price}) => {
       const purchased = await hasPurchased(publicKey);
       if (purchased) {
         setStatus(STATUS.Paid);
-        let alreadyPurchased = "Address has already purchased this item!"
+        let alreadyPurchased = "Address has already made a donation!"
         setAlertState({
           open: true,
           message: alreadyPurchased,
           severity: "info",
           hideDuration: null
         })
-        console.log("Address has already purchased this item!");
+        console.log("Address has already made a donation!");
       }
     }
     checkPurchased();
@@ -145,7 +156,7 @@ const Buy = ({priceID, price}) => {
           clearInterval(interval)
         };
     }
-    if (status === STATUS.Paid){
+    /*if (status === STATUS.Paid){
         let success = "Transaction Successful"
         setAlertState({
           open: true,
@@ -154,7 +165,7 @@ const Buy = ({priceID, price}) => {
           hideDuration: null
         })
         console.log(success)
-    }
+    }*/
   }, [status]);
   
   if (!publicKey){
@@ -200,7 +211,7 @@ const Buy = ({priceID, price}) => {
           
         ) : (
           <button disabled={loading} onClick = {processTransaction} className="solana-button-text items-center text-lg sm:text-base font-bold px-2.5 py-1">
-              Donate {price} SOL
+              Donate {price.slice(0,1)} SOL
           </button>
         )}
       </div>
@@ -225,7 +236,7 @@ const Buy = ({priceID, price}) => {
   )
 }
 export default function Donatesol({priceInfo}){
-  const {id, fee, description} = priceInfo
+  const {id, name, fee, description} = priceInfo
   return (
     <>
       <Buy priceID = {id} price={fee} />

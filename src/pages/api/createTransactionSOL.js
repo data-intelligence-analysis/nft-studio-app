@@ -9,7 +9,7 @@ import {
 } from "@solana/web3.js";
 import BigNumber from "bignumber.js";
 //import products from "./products.json";
-import fetchPrice from "./price.json"
+import price from "./price.json"
 import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } from "@solana/spl-token";
 
 // Make sure you replace this with your wallet address!
@@ -43,23 +43,10 @@ const createTransaction = async (req, res) => {
       });
     }
 
-    //Price of donation
-
-    //2 SOL for donation
-    //const itemPrice = price;
-    //const itemPrice = price.find((item)).price
-    //const itemPrice = "2.00"
-    // Fetch item price from products.json using itemID
-    //const itemPrice = products.find((item) => item.id === itemID).price;
     
     // Fetch purchase price from price.json using priceID
-    const itemPrice = fetchPrice.find((price) => price.id === priceID).fee
+    const itemPrice = price.find((price) => price.id === priceID).fee
     
-    /*if (!itemPrice) {
-      return res.status(404).json({
-        message: "Item not found. please check item ID",
-      });
-    }*/
     if (!itemPrice) {
       return res.status(404).json({
         message: "Price not found",
@@ -71,9 +58,10 @@ const createTransaction = async (req, res) => {
     const bigAmount = BigNumber(itemPrice);
     const buyerPublicKey = new PublicKey(buyer);
 
+    //enumaation numbers - #Devnet #Mainnet #Testnet
     //mainnnet network
-    //const network = WalletAdapterNetwork.Mainnet;
-    const network = WalletAdapterNetwork.Devnet;
+    const network = WalletAdapterNetwork.Mainnet;
+    //const network = WalletAdapterNetwork.Devnet;
     const endpoint = clusterApiUrl(network);
     const connection = new Connection(endpoint);
 

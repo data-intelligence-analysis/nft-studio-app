@@ -52,10 +52,8 @@ const Footer = () => {
                         <Image
                             alt = {social.name} 
                             src ={social.icon} 
-                            width={20}
-                            height={20}
-                            layout="fixed"
-                            //viewBox="0 0 512 512" 
+                            width={"20"}
+                            height={"20"}
                         />                                       
                     </a>
                     

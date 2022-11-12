@@ -1,4 +1,16 @@
-
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import {
+  clusterApiUrl,
+  Connection,
+  PublicKey,
+  Transaction,
+  SystemProgram,
+  LAMPORTS_PER_SOL,
+} from "@solana/web3.js";
+import BigNumber from "bignumber.js";
+//import products from "./products.json";
+import price from "./priceusd.json"
+import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } from "@solana/spl-token";
 
 
 //usdc token address in devnnet
@@ -14,11 +26,11 @@ const sellerAddress = () => {
   }
   return process.env.SELLER_ADDRESS
 }
-const sellerPublicKey = new PublicKey(sellerAddress);
+const sellerPublicKey = new PublicKey(process.env.SELLER_ADDRESS);
 //Get paid in USDC
-/*const createTransaction = async (req, res) => {
+const createTransaction = async (req, res) => {
     try {
-      const { buyer, orderID, itemID } = req.body;
+      const { buyer, orderID, priceID } = req.body;
       if (!buyer) {
         res.status(400).json({
           message: "Missing buyer address",
@@ -31,11 +43,12 @@ const sellerPublicKey = new PublicKey(sellerAddress);
         });
       }
   
-      const itemPrice = products.find((item) => item.id === itemID).price;
-  
+      // Fetch purchase price from price.json using priceID
+      const itemPrice = price.find((price) => price.id === priceID).fee
+      
       if (!itemPrice) {
-        res.status(404).json({
-          message: "Item not found. please check item ID",
+        return res.status(404).json({
+          message: "Price not found",
         });
       }
   
@@ -92,4 +105,4 @@ const sellerPublicKey = new PublicKey(sellerAddress);
       res.status(500).json({ error: "error creating transaction" });
       return;
     }
-};*/
+};

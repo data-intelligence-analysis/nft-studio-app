@@ -30,7 +30,7 @@ const FrontPage = () => {
                 <h1>Building a Web3 Ecosystem</h1>
             </div>
             <div className="mt-8 flex text-center">
-							<Link href ="/mint">
+							<Link href ="/mint" legacyBehavior>
 									<MintButton>
 											Mint Teds
 									</MintButton>
@@ -41,7 +41,7 @@ const FrontPage = () => {
             </div>
 
         </div>
-    )
+    );
 };
 
 const MintButton = styled.button`
