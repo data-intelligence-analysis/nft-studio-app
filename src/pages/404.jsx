@@ -6,7 +6,7 @@ export default function NotFound404() {
   return (
     <>
       <Head>
-        <title>😔 Page Not Found 404 | MetaTeds</title>
+        <title>😔 404 - Page Not Found | MetaTeds</title>
       </Head>
       <div className="bg-[#343333] h-screen grid grid-cols-5 gap-10">
         <nav className="place-items-center col-start-1 col-span-1 top-0 pointer-event-none z-nav w-full">

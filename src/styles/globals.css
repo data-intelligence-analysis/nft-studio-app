@@ -248,7 +248,7 @@
       position: fixed;
       width: 100%;
       height: 100vh;
-      background-color: rgb(55, 53, 53);
+      background-color: rgba(52, 51, 51, 1);
       top:65px;
       left: -100%;
       flex-direction: column;
@@ -326,7 +326,7 @@
         position: fixed;
         width: 100%;
         height: 100vh;
-        background-color: rgb(55, 53, 53);
+        background-color: rgba(52, 51, 51, 1);
         top: 65px;
         left: -100%;
         flex-direction: column;

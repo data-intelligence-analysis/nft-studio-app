@@ -27,6 +27,7 @@ import Image from "next/legacy/image";
 import { clusterApiUrl } from "@solana/web3.js";
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import {server} from '../config'
 //required for Solana modal
 require('@solana/wallet-adapter-react-ui/styles.css');
 

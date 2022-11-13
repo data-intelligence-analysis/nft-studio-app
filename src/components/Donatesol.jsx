@@ -8,6 +8,7 @@ import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Stack from '@mui/material/Stack';
+import {server } from '../config'
 //confirming transactions are sent - turn transactions to payments
 const STATUS = {
   Initial: "Initial",
@@ -43,7 +44,7 @@ const Buy = ({priceID, price}) => {
   // Fetch the transaction object from the server 
   const processTransaction = async () => {
     setLoading(true);
-    const txResponse = await fetch("../api/createTransactionsol", {
+    const txResponse = await fetch(`${server}/api/createTransactionsol`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
