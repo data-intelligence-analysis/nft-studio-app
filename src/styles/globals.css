@@ -203,12 +203,7 @@
     color: var(--tw-metateds);
   }
   .footer_links{
-    display: block;
-    color: #fff;
-    text-align: center;
     padding: 10px 10px;
-    text-decoration: none;
-    font-family: 'Ranchers', bold;
   }
   .footer_container{
       position: fixed;

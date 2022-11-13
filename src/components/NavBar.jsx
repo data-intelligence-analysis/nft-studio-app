@@ -42,7 +42,7 @@ const NavBarElements =[
 
 ]
 
-const NavBar = () => {
+const NavBar = ({bgFormat}) => {
     const [navBarElements] = useState(NavBarElements);
     //React Hooks
     const [collapse, setCollapse] = useState(false)
@@ -72,7 +72,7 @@ const NavBar = () => {
     })
     return <>
       <nav className = 
-          {'nav_positioning uppercase nav_font_text bg-transparent'} 
+          {`nav_positioning uppercase nav_font_text ${bgFormat}`} 
           >
           <button className='navBar_btn' onClick={toggleNav}>
             {collapse ? 

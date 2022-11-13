@@ -27,8 +27,13 @@ const nextConfig = {
         source: "/home",
         destination: "/",
       },
-      // { source: '/categories', destination: '/c },
     ];
+  },
+  images:{
+    domains: ["arweave.net", "cdn.discordapp.com"]
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 

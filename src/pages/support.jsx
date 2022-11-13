@@ -41,7 +41,7 @@ const WalletContainer =() =>{
         .then(response => response.json())
         .then( data => {
           setPrice(data);
-          //console.log("SOL Payment Price Info", data)
+          console.log("SOL Payment Price Info", data)
         })
     }
   }, [publicKey])
@@ -116,7 +116,7 @@ const WalletContainer =() =>{
       <Head>
         <title> Support | MetaTeds</title>
       </Head>
-      <NavBar />
+      <NavBar bgFormat={"bg-[#343333]"} />
       <div className="bg-[var(--tw-main-bg-color)] h-screen">
         <div className="h-full mx-4">
           <div className="m-auto py-20 h-full overflow-y-auto">

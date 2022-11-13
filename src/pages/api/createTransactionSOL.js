@@ -118,4 +118,9 @@ export default function handler(req, res) {
     res.status(405).end();
   }
 }
+/*export const config = {
+  api: {
+    externalResolver: true,
+  }
+}*/
 

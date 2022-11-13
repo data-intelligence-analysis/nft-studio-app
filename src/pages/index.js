@@ -11,7 +11,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="MetaTeds Studio - Web3 Community Experience"/>
       </Head>
-      <NavBar />
+      <NavBar bgFormat={"bg-[#343333]"}/>
       <main className="main">
         
         {/* Main Pages Rendered */}

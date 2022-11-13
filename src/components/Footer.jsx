@@ -46,14 +46,15 @@ const Footer = () => {
         <footer className='fixed pt-1 pb-1 z-30 text-center w-full bottom-0 bg-transparent'>
             <div className='social_media_items'>
                 {socialImg.map((social, index) => (
-                    <a className = 'footer_links' key={index} 
+                    <a className = 'block text-center footer_links' key={index} 
                         target="_blank" rel = "noreferrer" 
                         href={valURL(new URL(`${social.href}`)) ? social.href : ''}>
                         <Image
                             alt = {social.name} 
                             src ={social.icon} 
-                            width={"20"}
+                            width="auto"
                             height={"20"}
+                            priority="true"
                         />                                       
                     </a>
                     

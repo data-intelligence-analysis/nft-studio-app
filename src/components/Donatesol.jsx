@@ -111,65 +111,59 @@ const Buy = ({priceID, price}) => {
   useEffect(() => {
     //Check if transaction was confirmed
     if (status === STATUS.Submitted){
-        setLoading(true);
-        const interval = setInterval(async () => {
-            try {
-                //search transactions by their reference to check if a payment has been made
-                const result = await findReference(connection, orderID);
-                console.log("Finding tx reference", result.confirmationStatus);
-                if (result.confirmationStatus === "confirmed" || result.confirmationStatus === "finalized") {
-                  let success = "Thank you for your purchase!"
-                  clearInterval(interval);
-                  setStatus(STATUS.Paid);
-                  setLoading(false);
-                  addOrder(order)
-                  setAlertState({
-                    open: true,
-                    message: success,
-                    severity: "success",
-                    hideDuration: null
-                  })
-                }
-            }catch (e) {
-                /*looks for the oldest transaction signature reference our orderID. If we find one, we check that the transaction status
-                * was either confirmed or finalized.
-                * So we check if the error was from the FindReferenceError class and ignore it.
-                *
-                * If all goes according to plan, our code will start looking for the transaction just as the user clicks "Approve". 
-                * The first search will probably fail because transactions take about 0.5s. 
-                * This is why we're using setInterval >:D. 
-                * The second time it checks, it'll find the transaction and will confirm it, 
-                * updating our app to indicate payment.
-                * THIS IS A BIG DEAL! The whole reason we use blockchains is so that we don't have to worry about invalid transactions. 
-                * When Solana Pay tells you a transaction was confirmed, 
-                * you know a transaction was confirmed and that the money is in your wallet. No chargebacks */
-                if (e instanceof FindReferenceError){
-                    return null;
-                }
-                // this function will error if the transaction isn't found and that can happen rigth after the transaction
-                 
-                console.error("Uknown error", e);
-            }finally {setLoading(false);}
-
-        }, 1000); //1 seconds
-        return () => {
-          clearInterval(interval)
-        };
+      setLoading(true);
+      const interval = setInterval(async () => {
+          try {
+              //search transactions by their reference to check if a payment has been made
+              const result = await findReference(connection, orderID);
+              console.log("Finding tx reference", result.confirmationStatus);
+              if (result.confirmationStatus === "confirmed" || result.confirmationStatus === "finalized") {
+                let success = "Thank you for your purchase!"
+                clearInterval(interval);
+                setStatus(STATUS.Paid);
+                setLoading(false);
+                addOrder(order)
+                setAlertState({
+                  open: true,
+                  message: success,
+                  severity: "success",
+                  hideDuration: null
+                })
+              }
+          }catch (e) {
+              /*looks for the oldest transaction signature reference our orderID. If we find one, we check that the transaction status
+              * was either confirmed or finalized.
+              * So we check if the error was from the FindReferenceError class and ignore it.
+              *
+              * If all goes according to plan, our code will start looking for the transaction just as the user clicks "Approve". 
+              * The first search will probably fail because transactions take about 0.5s. 
+              * This is why we're using setInterval >:D. 
+              * The second time it checks, it'll find the transaction and will confirm it, 
+              * updating our app to indicate payment.
+              * THIS IS A BIG DEAL! The whole reason we use blockchains is so that we don't have to worry about invalid transactions. 
+              * When Solana Pay tells you a transaction was confirmed, 
+              * you know a transaction was confirmed and that the money is in your wallet. No chargebacks */
+              if (e instanceof FindReferenceError){
+                  return null;
+              }
+              // this function will error if the transaction isn't found and that can happen rigth after the transaction
+                
+              console.error("Uknown error", e);
+          }finally {setLoading(false);}
+      }, 1000); //1 seconds
+      return () => {
+        clearInterval(interval);
+      };
     }
-    /*if (status === STATUS.Paid){
+    if (status === STATUS.Paid){
         let success = "Transaction Successful"
-        setAlertState({
-          open: true,
-          message: success,
-          severity: "success",
-          hideDuration: null
-        })
         console.log(success)
-    }*/
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
   
   if (!publicKey){
-    let error = "Connect wallet to make transaction "
+    let error = "Connect wallet to make transaction"
     setAlertState({
       open: true,
       message: error,

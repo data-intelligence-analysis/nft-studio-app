@@ -21,9 +21,8 @@ const FrontPage = () => {
 							<Image 
 									src={metatedsHeader}
 									alt="MetaTeds Logo"
-									layout='intrinsic'
 									height={250}
-									width={1000}
+									width='auto'
 							/>
             </div>
             <div className = 'home_content_subheader pb-10 ml-a mr-a font_text_size text-[#EAA640]'>
