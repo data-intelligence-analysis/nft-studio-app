@@ -101,7 +101,7 @@ const createTransaction = async (req, res) => {
     const base64 = serializedTransaction.toString("base64");
 
     res.status(200).json({
-      transaction: base64,
+      transaction: base64
     });
   } catch (error) {
     console.error(error);
@@ -110,11 +110,18 @@ const createTransaction = async (req, res) => {
     return;
   }
 }
-
+const corsHeaders ={
+  'Allow-Control-Allow-Headers': '*',
+  'Allow-Control-Allow-Methods': 'POST',
+  'Access-Control-Allow-Origin': '*'
+}
 export default function handler(req, res) {
   if (req.method === "POST") {
     createTransaction(req, res);
-  } else {
+  } else if (req.method === "OPTIONS") {
+    res.status(200).json({headers: corsHeaders})
+  }else {
+    res.status(405).send("Method Not Allowed")
     res.status(405).end();
   }
 }

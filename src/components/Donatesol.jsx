@@ -41,6 +41,12 @@ const Buy = ({priceID, price}) => {
     [publicKey, orderID, priceID]
   );
   
+  //to handle external APIs
+  const corsHeaders ={
+    'Allow-Control-Allow-Headers': '*',
+    'Allow-Control-Allow-Methods': 'POST',
+    'Access-Control-Allow-Origin': '*'
+  }
   // Fetch the transaction object from the server 
   const processTransaction = async () => {
     setLoading(true);
@@ -48,12 +54,14 @@ const Buy = ({priceID, price}) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        ...corsHeaders
       },
       body: JSON.stringify(order),
     });
 
     const txData = await txResponse.json();
-      
+
+    console.log(txData)
     // We create a transaction object
     const tx = Transaction.from(Buffer.from(txData.transaction, "base64"));
     console.log("Tx data is", tx);

@@ -13,12 +13,12 @@ const NavBarElements =[
         name: 'Home',
         href: '/'
     },
-    /*{
+    {
         id: 2,
         name: 'Legion',
         href: '/legion'
         
-    },*/
+    },
     {
         id: 3,
         name: 'Roadmap',

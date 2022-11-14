@@ -36,6 +36,7 @@
     "ipfs-core": "^0.17.0",
     "ipfs-http-client": "^59.0.0",
     "next": "13.0.3",
+    "next-auth": "^4.16.4",
     "npm": "^8.19.3",
     "postcss-cli": "^10.0.0",
     "react": "^18.2.0",

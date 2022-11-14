@@ -1,14 +1,14 @@
 import Head from "next/head";
 
-export default function Gaming() {
+export default function Legion() {
   return (
     <>
       <Head>
-        <title>👾 Gaming | MetaTeds</title>
+        <title>🦍 Legion | MetaTeds</title>
       </Head>
 
       <div className="md:col-span-9 lg:col-span-10 xl:col-span-10 text-center items-center">
-        <h1>Gaming, coming soon</h1>
+        <h1>Team information, coming soon</h1>
       </div>
     </>
   );

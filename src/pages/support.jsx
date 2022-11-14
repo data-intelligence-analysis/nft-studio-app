@@ -115,7 +115,7 @@ const WalletContainer =() =>{
   return (
     <>
       <Head>
-        <title> Support | MetaTeds</title>
+        <title>🎗 Support | MetaTeds</title>
       </Head>
       <NavBar bgFormat={"bg-[#343333]"} />
       <div className="bg-[var(--tw-main-bg-color)] h-screen">
