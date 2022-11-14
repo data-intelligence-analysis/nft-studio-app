@@ -18,7 +18,7 @@ export default function Home() {
         <FrontPage />
         
       </main>
-      <Footer />
+      <Footer bgFormat={"bg-transparent"}/>
       
     </>
   )

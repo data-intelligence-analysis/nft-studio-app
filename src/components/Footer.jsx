@@ -36,14 +36,14 @@ const SocialMedia = [
 ]
 
 //fixed pt-1 pb-1 z-30 text-center w-full bottom-0 bg-transparent
-const Footer = () => {
+const Footer = ({bgFormat}) => {
     const [socialImg] = useState(SocialMedia)
     function valURL(url) {
         const parsed = url
         return ['https:', 'http:'].includes(parsed.protocol)
       }
     return (
-        <footer className='fixed pt-1 pb-1 z-30 text-center w-full bottom-0 bg-transparent'>
+        <footer className={`fixed pt-1 pb-1 z-30 text-center w-full bottom-0 ${bgFormat}`}>
             <div className='social_media_items'>
                 {socialImg.map((social, index) => (
                     <a className = 'block text-center footer_links' key={index} 

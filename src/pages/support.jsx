@@ -157,7 +157,7 @@ const WalletContainer =() =>{
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer bgFormat={"bg-[#343333]"}/>
     </>
   )
 }
