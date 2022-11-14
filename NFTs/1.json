@@ -1,0 +1,27 @@
+{
+  "name": "MetaTeds Test #2",
+  "symbol": "METATEDS TEST",
+  "description": "A collection of 3 intergalactic PFP Teds being used for Devnet Test.",
+  "image": "1.png",
+  "external_url": "https://metateds.com",
+  "attributes": [
+    {"trait_type": "background","value": "Jedi Cross"},
+    {"trait_type": "skin","value": "Earth"},
+    {"trait_type": "head","value": "None"},
+    {"trait_type": "hand","value": "None"},
+    {"trait_type": "outfit","value": "None"},
+    {"trait_type": "eyes","value": "Standard"},
+    {"trait_type": "nose","value": "Yellow Diamond"},
+    {"trait_type": "tattoo","value": "None"},
+    {"trait_type": "mouth","value": "Smile"},
+    {"trait_type": "position","value": "Sit"}
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "1.png",
+        "type": "image/png"
+      }
+    ]
+  }
+}

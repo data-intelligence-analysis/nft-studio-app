@@ -1,7 +1,7 @@
 import React, {Fragment, useCallback, useState, useEffect} from 'react'
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { WalletMultiButton} from "@solana/wallet-adapter-react-ui";
-import CandyMachine from './index';
+import CandyMachine from './home';
 import Image from 'next/image'
 import tedintosh from '../../../assets/tedintosh.gif'
 //import CandyMachine from './index'
@@ -63,7 +63,6 @@ const WalletConnection = () => {
         <div className="pt-44 md:pt-64 xl:pt-88 w-full">
           <div className="mx-auto items-center">
             <div className="relative mx-47 sm:mx-40 px-20 sm:px-6 pb-10 md:grid md:place-items-center sm:pb-5 z-10 text-align mx-auto">
-                <div>
                   <Image 
                     alt="computer"
                     priority="true"
@@ -72,8 +71,10 @@ const WalletConnection = () => {
                     height={550}
                     style={{objectFit: 'contain', objectPosition: 'center'}}
                   />
+                  <Div>
 
-                </div>
+                  </Div>
+                
                 
             </div>
           </div>

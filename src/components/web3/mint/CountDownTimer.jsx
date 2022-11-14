@@ -39,7 +39,7 @@ const CountdownTimer = ({ dropDate }) => {
   }, [dropDate]);
   return (
     <div className="flex-row text-center">
-      <p className="text-white py-2.5">Mint Starting In:</p>
+      <p className="text-white py-2.5">Mint Starting In: </p>
       {timerString && <p className="font-pixel">{`${timerString}`}</p>}
     </div>
   );
