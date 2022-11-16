@@ -18,7 +18,7 @@ export default function Home() {
         <FrontPage />
         
       </main>
-      <Footer bgFormat={"bg-transparent"}/>
+      <Footer bgFormat={"bg-zinc-800"}/>
       
     </>
   )

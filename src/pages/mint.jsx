@@ -383,7 +383,7 @@ const Mint = () =>{
         <title> 🎉 Mint | MetaTeds </title>
       </Head>
       
-      <NavBar/>
+      <NavBar display={'hidden'} bgFormat={'bg-transparent'}/>
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>   

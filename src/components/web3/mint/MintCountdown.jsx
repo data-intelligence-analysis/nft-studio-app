@@ -1,7 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import '../../../styles/mintPage.css'
+import { Paper } from "@material-ui/core";
+import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
+import Countdown from "react-countdown";
 
-const CountdownTimer = ({ dropDate }) => {
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      display: "flex",
+      padding: theme.spacing(0),
+      "& > *": {
+        margin: theme.spacing(0.4),
+        width: theme.spacing(6),
+        height: theme.spacing(6),
+        display: "flex",
+        flexDirection: "column",
+        alignContent: "center",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#384457",
+        color: "white",
+        borderRadius: 5,
+        fontSize: 10,
+      },
+    },
+    done: {
+      display: "flex",
+      margin: 0,
+      marginBottom: theme.spacing(0.5),
+      height: theme.spacing(3.5),
+      padding: theme.spacing(1),
+      flexDirection: "column",
+      alignContent: "center",
+      alignItems: "center",
+      justifyContent: "center",
+      background: "#384457",
+      color: "white",
+      borderRadius: 5,
+      fontWeight: "bold",
+      fontSize: 18,
+    },
+    item: {
+      fontWeight: "bold",
+      fontSize: 18,
+    },
+  })
+);
+
+
+export const CountdownTimer = ({ dropDate }) => {
   // State
   const [timerString, setTimerString] = useState('');
   // Our useEffect will run on component load
@@ -45,4 +91,7 @@ const CountdownTimer = ({ dropDate }) => {
   );
 };
 
-export default CountdownTimer;
+export const MintCountdown = (date, status, style) => {
+  const classes = useStyles();
+
+}

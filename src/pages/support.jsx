@@ -123,8 +123,9 @@ const WalletContainer =() =>{
           <div className="m-auto py-20 h-full overflow-y-auto">
             <nav className="top-1 sm:sticky relative pointer-events-none z-index">
               <div className="absolute mt-1 w-full">
-                <div className="flex flex-row gap-4 uppercase rounded-full justify-between px-3 float-left align-middle justify-center pointer-events-auto cursor-pointer">
-                  <WalletMultiButton />
+                <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
+                  {/*<WalletMultiButton />*/}
+                  <p className="font-pixel text-xs sm:text-base">🎉 Connect Wallet Above -^</p>
                 </div>
               </div>
             </nav>
@@ -157,7 +158,7 @@ const WalletContainer =() =>{
           </div>
         </div>
       </div>
-      <Footer bgFormat={"bg-[#343333]"}/>
+      <Footer bgFormat={"bg-zinc-800"}/>
     </>
   )
 }

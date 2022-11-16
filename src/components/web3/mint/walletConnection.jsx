@@ -1,10 +1,9 @@
 import React, {Fragment, useCallback, useState, useEffect} from 'react'
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { WalletMultiButton} from "@solana/wallet-adapter-react-ui";
-import CandyMachine from './home';
 import Image from 'next/image'
 import tedintosh from '../../../assets/tedintosh.gif'
-//import CandyMachine from './index'
+import CandyMachine from './candyMachine'
 /*import { clusterApiUrl, 
   Connection, 
   LAMPORTS_PER_SOL, 
@@ -18,38 +17,39 @@ import {
 import styled from 'styled-components'
 import { createTheme, ThemeProvider } from "@material-ui/core";
 require('@solana/wallet-adapter-react-ui/styles.css');
-const Img = styled.img`
-  height: 40%;
-  width: 40%;
-  z-index=1;
-  pointer-events: none;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-  position: relative;
-`
 
 const Div = styled.div`
-  position: absolute;
-  top:13%;
-  width: 28.5%;
-  height: 42%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top:5%;
+  text-align: center;
+  width: 100%;
+  height: 55%;
   background-color: transparent;
   z-index: 0;
   transform: rotate(-.1deg);
-  left: 35.7%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  left: 0;
   font-size: 25px;
-  color: #000;
-  font-family: Dogica,Helvetica,Arial;
   padding: 0;
-  text-align: center;
   transition: .5s transform ease;
   border-radius: 10px;
-}
-
+  @media (min-width: 490px){
+    display: flex;
+    position: absolute;
+    width: 60%;
+    left: 19.5%;
+    padding-bottom: 2rem;
+  }
+  @media (min-width: 768px){
+    grid-column: 1/-1;
+    width: 85%;
+    left: 8%;
+    padding-bottom: 4rem;
+  }
+  @media (min-width: 1024px){
+    left: 7%
+  }
 `
 const WalletConnection = () => {
   
@@ -62,20 +62,19 @@ const WalletConnection = () => {
       <>
         <div className="pt-44 md:pt-64 xl:pt-88 w-full">
           <div className="mx-auto items-center">
-            <div className="relative mx-47 sm:mx-40 px-20 sm:px-6 pb-10 md:grid md:place-items-center sm:pb-5 z-10 text-align mx-auto">
-                  <Image 
-                    alt="computer"
-                    priority="true"
-                    src={tedintosh}
-                    width={450}
-                    height={550}
-                    style={{objectFit: 'contain', objectPosition: 'center'}}
-                  />
-                  <Div>
-
-                  </Div>
-                
-                
+            <div className="relative md:gap-2 justify-content mx-47 sm:mx-40 px-20 sm:px-6 pb-10 md:grid md:place-items-center md:grid-cols-8 sm:pb-5 z-10 text-align mx-auto">
+              <Image 
+                alt="computer"
+                priority="true"
+                src={tedintosh}
+                width={450}
+                height={550}
+                style={{objectFit: 'contain', gridColumn: '1 /-1', objectPosition: 'center' }}
+              />
+              <Div>
+                <CandyMachine walletAddress={wallet} />
+              </Div>
+              
             </div>
           </div>
         </div> 
