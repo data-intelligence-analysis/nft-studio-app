@@ -3,6 +3,7 @@ import React, {useMemo, useEffect, useState} from 'react'
 import solanaPayImg from '../assets/solana_pay_white.png';
 import usdcPayImg from '../assets/usdc_logo.png'
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import StraightIcon from '@mui/icons-material/Straight';
 import UserLogo from '../assets/user-logo.png';
 import Donatesol from '../components/Donatesol';
 import Donateusd from '../components/Donateusd'
@@ -73,9 +74,8 @@ const WalletContainer =() =>{
         return (
           <>
             {<button type="submit" onClick = {() => alert("Connect your solana wallet. To make payment!")}
-                className="solana-button-text text-lg sm:text-base font-bold px-2.5 py-1 text-center leading-7">
-                Donate <Image alt="solana-pay-icon" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{overflow:'hidden', marginTop: '5px'}} />
-                {/*<img className = "solana-pay-img" alt= "Solana Pay" src={solanaPayImg} />*/}
+                className="solana-button-text inline-block text-base sm:text-lg font-bold px-2.5 py-1 text-center">
+                Donate <div><Image alt="solana-pay-icon" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginTop:"10px"}} /></div>
             </button>  }
           </>
         )
@@ -121,11 +121,10 @@ const WalletContainer =() =>{
       <div className="bg-[var(--tw-main-bg-color)] h-screen">
         <div className="h-full mx-4">
           <div className="m-auto py-20 h-full overflow-y-auto">
-            <nav className="top-1 sm:sticky relative pointer-events-none z-index">
-              <div className="absolute mt-1 w-full">
+            <nav className="top-5 lg:sticky relative pointer-events-none z-index">
+              <div className="absolute mt-4 w-full">
                 <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
-                  {/*<WalletMultiButton />*/}
-                  <p className="font-pixel text-xs sm:text-base">🎉 Connect Wallet Above -^</p>
+                  <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">🎉 Connect to wallet above </h1><StraightIcon />
                 </div>
               </div>
             </nav>
@@ -147,7 +146,7 @@ const WalletContainer =() =>{
                   <h1 className="text-slate-900 font-bold text-xl sm:text-3xl">Contact Us</h1>
                   <div className="text-center m-10 sm:m-20 cursor-pointer">
                     <a className="solana-pay" href="https://forms.gle/2p813UayRdro1wxf8" target="_blank" rel="noreferrer">
-                        <button className="solana-button-text font-bold px-2.5 py-1 text-lg sm:text-base"> 
+                        <button className="solana-button-text inline-block font-bold px-2.5 py-1 text-base sm:text-lg"> 
                             Join Our Team <span className="join-team-icon-position"><GroupAddIcon /></span>
                         </button>
                     </a>
