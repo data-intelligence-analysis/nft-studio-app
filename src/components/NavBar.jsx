@@ -111,7 +111,7 @@ const NavBar = ({bgFormat,display}) => {
                   </button>
               </a>}
           </div>
-          <div className={`${display} w-[118px] sm:w-[130px] mx-1 mt-4 sm:mt-3 sm:mx-4 flex float-left justify-center text-center rounded-md gap-x-2 uppercaase items-center bg-indigo-700 pointer-cursor`}>
+          <div className={`${display} w-[118px] sm:w-[125px] mx-1 mt-4 sm:mt-3 sm:mx-4 flex float-left justify-center text-center rounded-md gap-x-2 uppercaase items-center bg-indigo-700 pointer-cursor`}>
             <WalletMultiButton className="h-auto max-w-xs font-bold hover:ring-4 text-[10px] text-xs hover:bg-indigo-600 hover:ring-indigo-500" style={{fontSize: '15px', height:"35px", paddingLeft: "10px", paddingRight:"10px", paddingTop:"5px", paddingBottom:"5px"}}/>
           </div>
           <div className = 'navBarElements'>
