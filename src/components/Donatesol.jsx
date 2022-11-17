@@ -186,8 +186,6 @@ const Buy = ({priceID, price}) => {
   if (loading) {
     let waiting = "Waiting for transaction....."
     console.log(waiting)
-    let success = "Transaction Successful"
-    console.log(success)
     return (
         <Circles 
           width='50' 
