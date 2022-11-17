@@ -76,7 +76,7 @@
       align-items: center;
       flex-direction: row;
       float:right;
-      cursor: pointer; 
+      cursor: pointer;
   }
   .nav_3d_btn_container{
       display: flex;
@@ -220,7 +220,7 @@
   
 
   /*Responsive Screens*/
-  @media (max-width:960px){
+  @media (max-width:976px){
     .navBarElements{
       position: fixed;
       width: 100%;
