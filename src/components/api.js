@@ -11,7 +11,7 @@ export const addOrder = async (order) => {
 }
 
 // Returns true if a given public key has purchased an item before
-export const hasPurchased = async (publicKey) => {
+export const hasPurchased = async (publicKey,priceID) => {
   // Send a GET request with the public key as a parameter
   const response = await fetch(`../api/orders?buyer=${publicKey.toString()}`);
   // If response code is 200
@@ -21,7 +21,7 @@ export const hasPurchased = async (publicKey) => {
     // If orders is not empty
     if (json.length > 0) {
       // Check if there are any records with this buyer and item ID
-      const order = json.find((order) => order.buyer === publicKey.toString());
+      const order = json.find((order) => order.buyer === publicKey.toString() && order.itemID === priceID);
       if (order) {
         return true;
       }

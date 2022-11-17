@@ -21,7 +21,7 @@ const sellerAddress = () => {
   }
   return process.env.SELLER_ADDRESS
 }
-const sellerPublicKey = new PublicKey(process.env.SELLER_ADDRESS);
+const sellerPublicKey = new PublicKey('3vLNLoffoFCWeeq3FzCinFhrf34FftWnFKtEFGCsSZ4e');
 
 
 //Get paid in SOL tokens

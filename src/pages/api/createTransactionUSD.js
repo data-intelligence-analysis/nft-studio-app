@@ -106,3 +106,11 @@ const createTransaction = async (req, res) => {
       return;
     }
 };
+
+export default function handler(req, res){
+  if (req.method === "POST") {
+    createTransaction(req, res);
+  }else {
+    res.status(405).end();
+  }
+}

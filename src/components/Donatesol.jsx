@@ -99,7 +99,7 @@ const Buy = ({priceID, price}) => {
     // If so, fetch the item and set paid to true
     // Async function to avoid blocking the UI
     async function checkPurchased() {
-      const purchased = await hasPurchased(publicKey);
+      const purchased = await hasPurchased(publicKey, priceID);
       if (purchased) {
         setStatus(STATUS.Paid);
         let alreadyPurchased = "Address has already made a donation!"
@@ -113,7 +113,7 @@ const Buy = ({priceID, price}) => {
       }
     }
     checkPurchased();
-  }, [publicKey]);
+  }, [publicKey, priceID]);
   /*The magic of solana pay - Solana Pay allows us to search for transactions by their reference. 
   *This means we can instantly check if a payment has been made without any deep digging.
   */
