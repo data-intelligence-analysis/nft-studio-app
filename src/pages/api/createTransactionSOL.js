@@ -118,16 +118,11 @@ const corsHeaders ={
 export default function handler(req, res) {
   if (req.method === "POST") {
     createTransaction(req, res);
-  } else if (req.method === "OPTIONS") {
+  }else if (req.method === "OPTIONS") {
     res.status(200).json({headers: corsHeaders})
   }else {
     res.status(405).send("Method Not Allowed")
-    res.status(405).end();
+    //res.status(405).end();
   }
 }
-/*export const config = {
-  api: {
-    externalResolver: true,
-  }
-}*/
 

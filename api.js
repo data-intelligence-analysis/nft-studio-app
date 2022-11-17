@@ -21,7 +21,7 @@ export const hasPurchased = async (publicKey,priceID) => {
     // If orders is not empty
     if (json.length > 0) {
       // Check if there are any records with this buyer and item ID
-      const order = json.find((order) => order.buyer === publicKey.toString() && order.itemID === priceID);
+      const order = json.find((order) => order.buyer === publicKey.toString() && order.priceID === priceID);
       if (order) {
         return true;
       }

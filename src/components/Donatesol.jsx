@@ -3,7 +3,7 @@ import { Keypair, Transaction } from "@solana/web3.js";
 import { findReference, FindReferenceError } from "@solana/pay";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Circles } from "react-loader-spinner";
-import { addOrder, hasPurchased} from "./api";
+import { addOrder, hasPurchased} from "../../api";
 import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -70,7 +70,7 @@ const Buy = ({priceID, price}) => {
     try {
       // Send the transaction to the network
       const txHash = await sendTransaction(tx, connection);
-      console.log(`Transaction sent: https://solscan.io/tx/${txHash}?cluster=devnet`);
+      console.log(`Transaction sent: https://solscan.io/tx/${txHash}?cluster=mainnet`);
       // Even though this could fail, we're just going to set it to true for now
       setStatus(STATUS.Submitted)
     } catch (error) {
@@ -78,17 +78,16 @@ const Buy = ({priceID, price}) => {
       if (!error.msg){
         if (!error.message){
           message="Transaction timeout! Please try again."
-        } else if (error.message.indexOf("0x135")){
+        } else if (error.message.indexOf("0x1")){
           message = `Insufficient funds to mint. Please fund your wallet.`;
-
         } 
       }
-      //console.error(error);
       setAlertState({
         open: true,
-        message,
+        error,
         severity: "error",
       });
+      console.error(error); 
     } finally {
       setLoading(false);
     }
@@ -186,7 +185,9 @@ const Buy = ({priceID, price}) => {
 
   if (loading) {
     let waiting = "Waiting for transaction....."
-    console.log("Waiting for transaction.....")
+    console.log(waiting)
+    let success = "Transaction Successful"
+    console.log(success)
     return (
         <Circles 
           width='50' 

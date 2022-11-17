@@ -23,6 +23,7 @@ const FrontPage = () => {
 									alt="MetaTeds Logo"
 									height={250}
 									width='auto'
+									priority="true"
 							/>
             </div>
             <div className = 'home_content_subheader pb-10 ml-a mr-a font_text_size text-[#EAA640]'>

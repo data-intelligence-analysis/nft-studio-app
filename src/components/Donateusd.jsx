@@ -3,7 +3,7 @@ import { Keypair, Transaction } from "@solana/web3.js";
 import { findReference, FindReferenceError } from "@solana/pay";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Circles } from "react-loader-spinner";
-import { addOrder, hasPurchased} from "./api";
+import { addOrder, hasPurchased} from "../../api";
 import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
