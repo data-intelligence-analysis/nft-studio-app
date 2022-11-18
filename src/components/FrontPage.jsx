@@ -35,7 +35,7 @@ const FrontPage = () => {
 											Mint Teds
 									</MintButton>
 							</Link>
-							<ExploreButton>
+							<ExploreButton onClick={()=> alert("Developement in progress. Loading...(50%)")}>
 									Explore
 							</ExploreButton>
             </div>
