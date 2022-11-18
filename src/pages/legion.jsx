@@ -2,7 +2,7 @@ import Head from "next/head";
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Link from 'next/link'
-
+import Image from 'next/image'
 export default function Legion() {
   return (
     <>
@@ -46,13 +46,22 @@ export default function Legion() {
                   </div>
                 </div>
               </div>
-              <div className="text-center mx-4 place-items-center sm:col-start-6 sm:col-span-5">
-                <div className="row-col-2 py-4 px-6 w-full">
-                  <div className="row-span-1 flex items-center justify-content flex-wrap">
-                    <h1>pfp 1</h1>
+              <div className="mt-5 items-center mx-4 place-items-center sm:col-start-6 sm:col-span-5">
+                <h1 className="ml-4 text-left text-xl sm:text-3xl tracking-wider font-bold">Creators</h1>
+                <div className="sm:text-center text-left grid-rows-2 py-4 px-6">
+                  <div className="row-span-1 w-full justify-between flex py-5 px-4 items-center mx-auto gap-x-4">
+                    <div className="border-2 border-indigo-500/100 rounded-md">
+                      <h1>Dennis</h1>
+                    </div>
+                    <div className="border-2 border-indigo-500/100 rounded-md">
+                      <h1>Conor</h1>
+                    </div>
+                    
                   </div>
-                  <div className="flex flex-wrap">
-                    <h1>pfp 2</h1>
+                  <div className="row-span-1 mt-6 flex items-center justify-center gap-x-4">
+                    <div className="border-2 border-indigo-500/100 rounded-md">
+                      <h1>Nico</h1>
+                    </div>
                   </div>
                 </div>
               </div>
