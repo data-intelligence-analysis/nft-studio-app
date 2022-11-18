@@ -15,7 +15,7 @@ export default function Legion() {
             <div className="grid sm:grid-cols-10 my-4 mx-auto max-w-screen-2xl">
               <div className="text-center sm:text-left sm:col-start-1 sm:col-span-5">
                 <div className="overflow-auto mt-5">
-                  <h1 className= "text-xl sm:text-3xl tracking-wider font-bold" >Ted Mission</h1>
+                  <h1 className= "text-2xl sm:text-3xl tracking-wider font-bold" >Ted Mission</h1>
                   <div className="font-sans">
                     <p className="pt-5 inline-block">We are creators, innovators, and community builders with the objective of developing a platform that intellectually empowers
                     communities to be involved and become citizens of the Web3 space.</p>
@@ -26,7 +26,7 @@ export default function Legion() {
                   
                 </div>
                 <div className="mt-10 overflow-auto">
-                  <h1 className="text-xl sm:text-3xl tracking-wider font-bold">Utility</h1>
+                  <h1 className="text-2xl sm:text-3xl tracking-wider font-bold">Utility</h1>
                   <div className="font-sans">
                     <p className="pt-3">If you are new to Solana space, please head over to this <a href ="https://youtu.be/mJiXmsiLS3w" target="_blank" rel="noreferrer" className="font-['Ranchers'] font-bold tracking-wide">link</a> to learn how to 
                     create and connect your Solana wallet, 

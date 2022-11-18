@@ -88,7 +88,7 @@ export default function Utility() {
                   </GridItemWrapper>
                   <GridItemWrapper key="DAO">
                       <a href="https://metateds.com/dao" target="_blank" rel="noreferrer">
-                          <GridItemContent>DAO [Toolbox]</GridItemContent>
+                          <GridItemContent>DAO</GridItemContent>
                       </a>
                   </GridItemWrapper>
                   <GridItemWrapper key="Gallery & Metaverse">
