@@ -11,7 +11,7 @@ export default function Legion() {
       <NavBar bgFormat={"bg-[#343333]"} />
         <div className="bg-[#343333] overflow-x-hidden w-screen h-screen text-center items-center">
           <div className="w-full py-20 px-5 flex items-center">
-            <div className="grid sm:grid-cols-10 my-4 mx-auto max-w-screen-lg">
+            <div className="grid sm:grid-cols-10 my-4 mx-auto max-w-screen-2xl">
               <div className="text-center sm:text-left sm:col-start-1 sm:col-span-5">
                 <div className="overflow-auto mt-5">
                   <h1 className= "text-xl sm:text-3xl tracking-wider font-bold" >Ted Mission</h1>
