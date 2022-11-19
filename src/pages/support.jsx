@@ -74,8 +74,8 @@ const WalletContainer =() =>{
         return (
           <>
             {<button type="submit" onClick = {() => alert("Connect your solana wallet. To make payment!")}
-                className="solana-button-text text-base sm:text-lg font-bold px-2.5 py-1 text-center">
-                <p className="">Donate</p> <div><Image alt="solana-pay-icon" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginTop:"10px"}} /></div>
+                className="solana-button-text flex items-center text-base sm:text-lg font-bold px-2.5 py-1 text-center">
+                <p className="inline-block">Donate</p><Image alt="solana-pay-icon" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginRight:"3"}} />
             </button>  }
           </>
         )
@@ -132,7 +132,7 @@ const WalletContainer =() =>{
               <div className="mt-6 mx-5 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
                 <div className="text-center justify-center w-full p-5 font-['Inter']">
                   <h1 className="text-slate-900 font-bold text-xl sm:text-3xl">Support Us</h1>
-                  <div className="text-center m-5 sm:m-10 cursor-pointer">
+                  <div className="flex items-center justify-center m-5 sm:m-10 cursor-pointer">
                     <CheckWalletSOL />
                   </div>
                   {/*<div className="text-center m-5 sm:m-10 cursor-pointer">
