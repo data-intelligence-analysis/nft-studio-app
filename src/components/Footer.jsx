@@ -3,6 +3,7 @@ import twitter from '../assets/twitter.svg'
 import discord from '../assets/discord.svg'
 import solsurfer from '../assets/solsurfer.png'
 import platformIcon from '../assets/ted@3.png'
+import ogIcon from '../assets/og_icon.png'
 import Image from 'next/image'
 import {
     WalletMultiButton
@@ -66,9 +67,12 @@ const Footer = ({bgFormat, display}) => {
                         
                     ))}
                 </div>
-                {/*<div className={`${display} flex uppercaase px-0.5 font-bold items-center mt-1 gap-x-4 bg-indigo-700 text-sm pointer-cursor`}>
-                    <WalletMultiButton className="h-auto px-2 py-2 hover:ring-4 hover:bg-indigo-600 hover:ring-indigo-500"/>
-                    </div>*/}
+                <div className={`${display} flex font-bold items-center mt-0.5 gap-x-2 `}>
+                    <button className="justify-center flex items-center overflow-hidden px-1 sm:px-3.5 py-2 rounded-md bg-zinc-700 hover:ring-4 pointer-cursor" onClick={()=> alert('Developemnt in progress. Loading... 80%')}>
+                        <Image src={ogIcon} alt="ted-og" width="21" height="25" style={{marginRight:'0.475rem'}}/> 
+                        <p className="font-bold font-['DM Sans'] tracking-wider text-xs sm:text-lg">Terms & Co.</p>
+                    </button>
+                </div>
                 <div className= 'flex items-center gap-x-4 text-sm sm:text-base'>
                     <p>Copyright © 2022</p>
                 </div>

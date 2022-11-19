@@ -15,7 +15,7 @@ export default function Legion() {
             <div className="grid sm:grid-cols-10 my-4 mx-auto max-w-screen-2xl">
               <div className="text-center sm:text-left sm:col-start-1 sm:col-span-5">
                 <div className="overflow-auto mt-5">
-                  <h1 className= "text-2xl sm:text-3xl tracking-wider font-bold" >Ted Mission</h1>
+                  <h1 className="text-2xl text-amber-500 sm:text-3xl tracking-wider font-bold">Ted Mission</h1>
                   <div className="font-sans">
                     <p className="pt-5 inline-block">We are creators, innovators, and community builders with the objective of developing a platform that intellectually empowers
                     communities to be involved and become citizens of the Web3 space.</p>
@@ -26,7 +26,7 @@ export default function Legion() {
                   
                 </div>
                 <div className="mt-10 overflow-auto">
-                  <h1 className="text-2xl sm:text-3xl tracking-wider font-bold">Utility</h1>
+                  <h1 className="text-2xl text-amber-500 sm:text-3xl tracking-wider font-bold">Utility</h1>
                   <div className="font-sans">
                     <p className="pt-3">If you are new to Solana space, please head over to this <a href ="https://youtu.be/mJiXmsiLS3w" target="_blank" rel="noreferrer" className="font-['Ranchers'] font-bold tracking-wide">link</a> to learn how to 
                     create and connect your Solana wallet, 
@@ -47,20 +47,27 @@ export default function Legion() {
                 </div>
               </div>
               <div className="mt-5 items-center mx-4 place-items-center sm:col-start-6 sm:col-span-5">
-                <h1 className="ml-4 text-left text-xl sm:text-3xl tracking-wider font-bold">Creators</h1>
-                <div className="sm:text-center text-left grid-rows-2 py-4 px-6">
-                  <div className="row-span-1 w-full justify-between flex py-5 px-4 items-center mx-auto gap-x-4">
-                    <div className="border-2 border-indigo-500/100 rounded-md">
-                      <h1>Dennis</h1>
+                <h1 className="sm:ml-4 sm:text-left text-amber-500 text-2xl sm:text-3xl tracking-wider font-bold">Builders</h1>
+                <div className="sm:text-center text-left items-center grid-rows-2 py-4 px-6">
+                  <div className="font-sans text-center row-span-1 w-full justify-between flex py-5 px-4 items-center mx-auto gap-x-4">
+                    <div className="border-2 border-indigo-500/100 rounded-md block text-center h-[50%]">
+                      <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Dennis</p>
+                      <span className="text-xs sm:text-sm lg:text-base font-bold">Software Engineer & Artist</span>
                     </div>
                     <div className="border-2 border-indigo-500/100 rounded-md">
-                      <h1>Conor</h1>
+                      <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Nicholas</p>
+                      <span className="text-xs sm:text-sm lg:text-base font-bold">Blockchain Developer</span>
+                    </div>
+                    <div className="sm:hidden border-2 border-indigo-500/100 rounded-md">
+                      <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>
+                      <span className="text-xs sm:text-sm lg:text-base font-bold">Tech Arch Analyst</span>
                     </div>
                     
                   </div>
-                  <div className="row-span-1 mt-6 flex items-center justify-center gap-x-4">
+                  <div className="hidden sm:font-sans sm:row-span-1 sm:mt-6 sm:flex sm:items-center sm:justify-center sm:gap-x-4">
                     <div className="border-2 border-indigo-500/100 rounded-md">
-                      <h1>Nico</h1>
+                      <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>
+                      <span className="text-xs sm:text-sm lg:text-base font-bold">Tech Arch Analyst</span>
                     </div>
                   </div>
                 </div>

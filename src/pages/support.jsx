@@ -74,8 +74,8 @@ const WalletContainer =() =>{
         return (
           <>
             {<button type="submit" onClick = {() => alert("Connect your solana wallet. To make payment!")}
-                className="solana-button-text inline-block text-base sm:text-lg font-bold px-2.5 py-1 text-center">
-                Donate <div><Image alt="solana-pay-icon" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginTop:"10px"}} /></div>
+                className="solana-button-text text-base sm:text-lg font-bold px-2.5 py-1 text-center">
+                <p className="">Donate</p> <div><Image alt="solana-pay-icon" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginTop:"10px"}} /></div>
             </button>  }
           </>
         )
