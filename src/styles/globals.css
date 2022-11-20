@@ -163,7 +163,16 @@
     outline: none;
     border: none
   }
-
+  .footer_footer{
+    position: fixed;
+    display: flex;
+    padding-top: 1rem;
+    z-index: 20;
+    left: 0;
+    align-items: center;
+    width: 100vw;
+    bottom: 0;
+  }
   /*Home*/
   .font-pixel {
     font-family: 'Press Start 2P';

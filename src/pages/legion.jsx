@@ -52,11 +52,11 @@ export default function Legion() {
                   <div className="font-sans text-center row-span-1 w-full justify-between flex py-5 px-4 items-center mx-auto gap-x-4">
                     <div className="border-2 border-indigo-500/100 rounded-md block text-center h-[50%]">
                       <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Dennis</p>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold">Software Engineer & Artist</span>
+                      <span className="text-xs sm:text-sm lg:text-base font-bold">Blockchain Developer & Artist</span>
                     </div>
                     <div className="border-2 border-indigo-500/100 rounded-md">
                       <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Nicholas</p>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold">Blockchain Developer</span>
+                      <span className="text-xs sm:text-sm lg:text-base font-bold">Software Engineer & Blockchain Developer</span>
                     </div>
                     <div className="sm:hidden border-2 border-indigo-500/100 rounded-md">
                       <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>

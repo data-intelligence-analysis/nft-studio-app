@@ -2,9 +2,14 @@ import React from 'react'
 import metatedsHeader from '../assets/metateds-header.png'
 import Link from 'next/link'
 import Image from 'next/image'
-//import styles from '../styles/home.module.css';
 import Head from 'next/head'
 import styled from 'styled-components'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 
 const FrontPage = () => {
