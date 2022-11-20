@@ -61,13 +61,15 @@ const Footer = ({bgFormat, display}) => {
         <>
           <div className="w-screen h-screen top-5 left-0 right-0 bottom-0 fixed">
             <div className="top-20 w-screen h-screen left-0 right-0 bottom-0 fixed overflow-y-auto bg-[#2e2e30e6]">
-              <button className="flex text-[30px] ml-auto mr-8 mt-3 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
-                {modal ? (
-                  <CloseIcon sx={{width: 50, height:38}}/>)
-                :(
-                  <Home />
-                )}
-              </button>
+              <div className="sticky w-full">
+                <button className="flex text-[30px] ml-auto mr-8 mt-3 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
+                  {modal ? (
+                    <CloseIcon sx={{width: 50, height:38}}/>)
+                  :(
+                    <Home />
+                  )}
+                </button>
+              </div>
               <div className="h-full mt-2 flex mb-2"></div>
             </div>
           </div>
