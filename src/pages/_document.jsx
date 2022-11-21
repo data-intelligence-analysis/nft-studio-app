@@ -6,7 +6,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta name="description" content="MetaTeds Studio"/>
-        <meta name="description" content="Building a Web 3 Community Platform"/>
+        <meta name="description" content="MetaTeds - A collection of 1,000 intergalactic Teds building a platform"/>
 
         {/*--Facebook*/}
         <meta property="og:type" content="website" />

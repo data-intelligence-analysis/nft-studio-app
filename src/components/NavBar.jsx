@@ -54,7 +54,7 @@ const NavBar = ({bgFormat,display}) => {
     const closeNav = () => {
         setCollapse(false)
     }
-    //Security measure to validate urls
+    //Security measure to validate external site urls
     function valURL(url) {
       const parsed = url
       return ['https:', 'http:'].includes(parsed.protocol)
