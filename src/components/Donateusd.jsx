@@ -210,7 +210,7 @@ const Buy = ({priceID, price}) => {
           
         ) : (
           <button disabled={loading} onClick = {processTransaction} className="solana-button-text items-center text-lg sm:text-base font-bold px-2.5 py-1">
-              Donate {price.slice(0,1)} SOL
+              Donate {price} USDC
           </button>
         )}
       </div>

@@ -45,18 +45,14 @@ const WalletContainer =() =>{
           setPrice(data);
           console.log("SOL Payment Price Info", data)
         })
+      fetch(`api/fetchPriceUSD`)
+      .then(response => response.json())
+      .then( data=>{
+        setPriceUSD(data);
+        console.log("USDC Payment Price Info", data)
+      })
     }
   }, [publicKey])
-  /*useEffect(()=>{
-    if (publicKey){
-      fetch(`api/fetchPriceUSD`)
-        .then(response => response.json())
-        .then( data=>{
-          setPriceUSD(data);
-          console.log("USDC Payment Price Info", data)
-        })
-    }
-  })*/
   
   const CheckWalletSOL = () => {
     try{
@@ -65,19 +61,27 @@ const WalletContainer =() =>{
           <>
             {
               priceSOL.map((price) => (
-                <Donatesol key= {price.id} priceInfo = {price} />
+                <Donatesol key={price.id} priceInfo = {price} />
               ))
             } 
           </>
         )
       }else{
         return (
-          <>
-            {<button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
+          <div>
+            <div className="flex items-center justify-center">
+              <button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
                 className="solana-button-text flex items-center text-base gap-x-1 sm:text-lg font-bold px-2.5 py-1 text-center">
                 <p className="inline-block">Donate</p><Image alt="solana" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginRight:"3"}} />
-            </button>  }
-          </>
+              </button>
+            </div>
+            <div className="mt-5 flex items-center justify-center sm:mt-10">
+              <button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
+                className="solana-button-text flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center">
+                <p className="inline-block">Donate</p><Image alt="usdc" width= {"30"} height={"18"} src={usdcPayImg} priority="true" style={{marginRight:"3"}} />
+              </button> 
+            </div> 
+          </div>
         )
       }
     }catch(err){
@@ -91,19 +95,18 @@ const WalletContainer =() =>{
         return (
           <>
             {
-              {/*priceUSD.map((price) => (
-                <Donateusd key= {price.id} priceInfo = {price} />
-              ))*/}
-            } 
+              priceUSD.map((price, id) => (
+                
+                <Donateusd key= {id} priceInfo = {price} />
+                
+              ))
+            }
           </>
         )
       }else{
         return (
           <>
-            {<button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
-                className="solana-button-text flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center">
-                <p className="inline-block">Donate</p><Image alt="usdc" width= {"20"} height={"20"} src={usdcPayImg} priority="true" style={{marginRight:"3"}} />
-            </button>  }
+            {}
           </>
         )
       }
@@ -134,9 +137,6 @@ const WalletContainer =() =>{
                   <h1 className="text-slate-900 font-bold text-xl sm:text-3xl">Support Us</h1>
                   <div className="flex items-center justify-center m-5 sm:m-10 cursor-pointer">
                     <CheckWalletSOL />
-                  </div>
-                  <div className="flex items-center justify-center m-5 sm:m-10 cursor-pointer">
-                    <CheckWalletUSD />
                   </div>
                 </div>
                 

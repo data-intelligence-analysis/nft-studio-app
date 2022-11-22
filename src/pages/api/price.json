@@ -3,6 +3,14 @@
     "id": 1,
     "name": "MetaTed Labs LLC Donation",
     "fee": "1.00",
-    "description": "SOL Donation"
+    "description": "SOL Donation",
+    "ticker": "SOL"
+  },
+  {
+    "id": 2,
+    "name": "MetaTed Labs LLC Donation",
+    "fee": "30.00",
+    "description": "USDC Donation",
+    "ticker": "USDC"
   }
 ]
