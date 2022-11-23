@@ -9,7 +9,7 @@ import {
 } from "@solana/web3.js";
 import BigNumber from "bignumber.js";
 //import products from "./products.json";
-import price from "./priceusd.json"
+import price from "./price.json"
 import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } from "@solana/spl-token";
 
 

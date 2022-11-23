@@ -35,7 +35,6 @@ const WalletContainer =() =>{
   const wallet = useWallet();
   const { publicKey} = useWallet();
   const [priceSOL, setPrice] = useState([]);
-  const [priceUSD, setPriceUSD] = useState([])
   useEffect(()=>{
     if (publicKey){
       fetch(`/api/fetchPrice`)
@@ -44,12 +43,6 @@ const WalletContainer =() =>{
           setPrice(data);
           console.log("SOL Payment Price Info", data)
         })
-      fetch(`api/fetchPriceUSD`)
-      .then(response => response.json())
-      .then( data=>{
-        setPriceUSD(data);
-        console.log("USDC Payment Price Info", data)
-      })
     }
   }, [publicKey])
   
