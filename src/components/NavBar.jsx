@@ -101,7 +101,7 @@ const NavBar = ({bgFormat, display}) => {
   return(
     
       <nav className={`fixed top-0 left-0 w-full z-20 ${bgFormat}`}>
-        <div className="max-w-7xl w-full mx-auto px-2 py-3 flex items-center justify-between">
+        <div className="max-w-7xl w-full mx-auto px-2 py-2 flex items-center justify-between">
           
           <div className = "hidden h-10 justify-center sm:flex items-center p-2">
             <Link href = '/' passHref legacyBehavior>
@@ -137,7 +137,7 @@ const NavBar = ({bgFormat, display}) => {
             }
           </div>
           <ul className={`${collapse ? 'navBarElements':''}`}></ul>
-          <div className={`${display}flex items-center gap-x-1 p-2`}>
+          <div className={`flex items-center gap-x-1 p-2`}>
             <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>
           </div>
           

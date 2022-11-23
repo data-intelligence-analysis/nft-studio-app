@@ -315,9 +315,9 @@ const RenderWalletConnect = () => {
     
   return (
     <>
-      {!connected ? (
+      {!connected && !wallet.publicKey? (
         <div className="bg-zinc-900 h-screen overflow-y-hidden"> 
-          <nav className="sticky top-[4.25rem] pointer-event-none z-nav w-full">
+          {/*<nav className="sticky top-[4.25rem] pointer-event-none z-nav w-full">
             <div className="absolute w-full mt-4">
               <div className="flex float-left sm:float-right font-pixel flex-row px-4">
                 <div className= "items-center text-[0.625rem] font-pixel leading-5 sm:leading-6 sm:text-xs md:text-sm pointer-events-auto cursor-pointer bg-[#4e44ce] rounded-full hover:rounded-full hover:text-slate-200 hover:bg-gray-800 justify-center px-0.5">
@@ -325,7 +325,7 @@ const RenderWalletConnect = () => {
                 </div>
               </div>
             </div>
-          </nav>
+          </nav>*/}
           {/*<CanvasLoad />*/}
           <div className="absolute place-items-center grid top-[22%] left-0 right-0 bottom-[22%] pointer-events-auto items-center text-center px-6">
             <h1 className="uppercase text-[#0880F0] text-sm sm:text-2xl md:text-3xl font-pixel">
@@ -376,21 +376,21 @@ const Mint = () =>{
     ],
     [network]
   );
-
   return (
     <>
       <Head>
         <title> 🎉 Mint | MetaTeds </title>
       </Head>
-      
-      <NavBar display={'hidden'} bgFormat={'bg-transparent'}/>
-      <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect>
-          <WalletModalProvider>   
+
+      <NavBar bgFormat={'bg-zinc-800'}/>
+        <RenderWalletConnect />
+        {/*<ConnectionProvider endpoint={endpoint}>
+          <WalletProvider wallets={wallets} autoConnect>
+            <WalletModalProvider>   
               <RenderWalletConnect />
-          </WalletModalProvider>
-        </WalletProvider>
-      </ConnectionProvider>
+            </WalletModalProvider>
+          </WalletProvider>
+        </ConnectionProvider>*/}
       <Footer/>
     </>
   )

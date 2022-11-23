@@ -84,7 +84,7 @@ const WalletConnection = () => {
       
   return (
       <>
-        <nav className="pt-1 relative sm:sticky top-[5rem] pointer-event-none z-nav w-full">
+        {/*<nav className="pt-1 relative sm:sticky top-[5rem] pointer-event-none z-nav w-full">
           <div className="absolute w-full mt-4">
             <div className="flex items-center float-left sm:float-right font-pixel flex-row px-4">
               <div className= "items-center text-[0.625rem] font-pixel leading-5 sm:leading-6 sm:text-xs md:text-sm pointer-events-auto cursor-pointer bg-[#4e44ce] rounded-full hover:rounded-full hover:text-slate-200 hover:bg-gray-800 justify-center px-0.5">
@@ -92,7 +92,7 @@ const WalletConnection = () => {
               </div>
             </div>
           </div>
-        </nav>
+        </nav>*/}
         <main>
           {<WalletIsConnected />}
         </main>
