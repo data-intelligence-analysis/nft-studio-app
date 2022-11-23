@@ -117,7 +117,7 @@ const NavBar = ({bgFormat, display}) => {
             </div>
           </a>
           <div className="flex items-center gap-x-1 pl-2" ref={ref}>
-            <button className = "sm:hidden h-10 justify-center p-2 h-10 rounded text-indigo-500 font-bold hover:ring-4 bg-zinc-700 flex items-center cursor-pointer" onClick={toggleDropdown}>
+            <button className = "sm:hidden h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-zinc-700 flex items-center cursor-pointer" onClick={toggleDropdown}>
               <Image src={ogIcon} alt="ted-og" width="21" height="25" style={{marginRight:'0.475rem'}}/> 
               <p className="font-bold font-display text-sm">Items</p>
             </button>
