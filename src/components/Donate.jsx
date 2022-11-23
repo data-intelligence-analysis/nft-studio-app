@@ -204,7 +204,7 @@ const BuyUSD = ({priceID, price, ticker}) => {
     <div className="relative">
       <div>
         {status === STATUS.Paid ? (
-          <div className="bottom-0 text-center items-center">
+          <div className="text-center items-center">
             <Alert
               onClose={()=> {}}
               severity="success"
@@ -215,11 +215,12 @@ const BuyUSD = ({priceID, price, ticker}) => {
           </div>
           
         ) : (
-          <div className="mt-5 h-full flex items-center justify-center sm:mt-10">
-            <button disabled={loading} onClick = {()=> alert("Still in development soon")} className="solana-button-text flex items-center text-base gap-x-1 sm:text-base font-bold px-2.5 py-1 text-center">
+          <div className="flex items-center justify-center mt-5 sm:mt-10">
+            <button disabled={loading} onClick = {()=> alert("Still in development soon")} className="solana-button-text text-sm sm:text-base font-bold px-2.5 py-1 text-center">
               <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
             </button>
           </div>
+          
         )}
       </div>
       <div className="fixed mx-auto top-0 left-0 bottom-0 text-center items-center">
@@ -430,7 +431,7 @@ const Buy = ({priceID, price, ticker}) => {
     <>
       <div>
         {status === STATUS.Paid ? (
-          <div className="bottom-0 text-center items-center">
+          <div className="text-center items-center">
             <Alert
               onClose={()=> {}}
               severity="success"
@@ -441,14 +442,16 @@ const Buy = ({priceID, price, ticker}) => {
           </div>
           
         ) : ( //solana-button-text flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center
-          <div className="flex items-center justify-center">
-            <button disabled={loading} onClick = {processTransaction} className="solana-button-text items-center text-lg sm:text-base font-bold px-2.5 py-1">
-              <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
-            </button>
-          </div>
+            
+            <div className="items-center justify-center flex">
+              <button disabled={loading} onClick = {processTransaction} className="solana-button-text text-sm sm:text-base font-bold px-2.5 py-1 text-center">
+                <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
+              </button>
+            </div>
+          
         )}
       </div>
-      <div className="bottom-0 text-center items-center">
+      <div className="fixed left-0 bottom-0 text-center items-center">
         <Snackbar
           open={alertState.open}
           autoHideDuration={
@@ -468,16 +471,16 @@ const Buy = ({priceID, price, ticker}) => {
     </>
   )
 }
-export default function Donatesol({priceInfo}){
+export default function Donate({priceInfo}){
   const {id, fee, ticker} = priceInfo
   return (
     <div>
-      {id===1 &&
+      {id === 1 &&
         <Buy priceID = {id} price={fee} ticker={ticker} />
       }
-      {/*id ===2 &&
+      {id === 2 &&
         <BuyUSD priceID = {id} price={fee} ticker={ticker} />
-    */}
+      }
     </div>
     
   );

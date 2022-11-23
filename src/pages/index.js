@@ -1,9 +1,11 @@
 import Head from 'next/head'
+import React, {useRef} from 'react'
 import FrontPage from '../components/FrontPage'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 
 export default function Home() {
+  const ref = useRef()
   return (
     <>
       <Head>
@@ -12,8 +14,8 @@ export default function Home() {
         <meta name="description" content="MetaTeds Studio - Web3 Community Experience"/>
       </Head>
       <NavBar bgFormat={"bg-[#343333]"}/>
-      <main className="main">
-        
+      <main className="main" ref={ref}>
+        {" "}
         {/* Main Pages Rendered */}
         <FrontPage />
         

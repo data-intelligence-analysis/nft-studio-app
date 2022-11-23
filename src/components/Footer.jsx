@@ -51,7 +51,7 @@ const Footer = ({bgFormat, display}) => {
     //react hooks
     const [socialImg] = useState(SocialMedia)
     const [modal, setModal] = useState(false);
-
+    
     const toggleModal = () => {
         setModal(prev => !prev);
     }
@@ -185,7 +185,7 @@ const Footer = ({bgFormat, display}) => {
                 <div className={`${display} flex font-bold items-center mt-0.5 gap-x-2 `}>
                     <button className="justify-center flex items-center overflow-hidden px-1 sm:px-3.5 py-2 rounded-md bg-zinc-700 hover:ring-4 hover:ring-indigo-600 pointer-cursor" onClick={toggleModal}>
                         <Image src={ogIcon} alt="ted-og" width="21" height="25" style={{marginRight:'0.475rem'}}/> 
-                        <p className="font-bold font-['DM Sans'] tracking-wider text-xs sm:text-lg">Terms of Use</p>
+                        <p className="font-bold font-display tracking-wider text-xs sm:text-lg">Terms of Use</p>
                     </button>
                 </div>
                 {modal && <TermsAndConditions /> }

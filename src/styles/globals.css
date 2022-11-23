@@ -15,6 +15,34 @@
     color: var(--tw-white-color);
     border-radius: 4px;  
   }
+  .responsive-dropdown-list{
+    position: absolute;
+    z-index: 99;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-row-gap: 1rem;
+    padding: 0.75rem;
+    top: 100%;
+    left: 0;
+    cursor: pointer;
+    margin: 0.25rem 0.75rem;
+    width: 10rem;
+    background: #2c2d30;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease,transform .2s ease,visibility .2s;
+  }
+  .responsive-dropdown-list-active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+    text-align: center;
+  }
+  .font-display{
+    font-family: 'DM Sans' !important
+  }
   .solana-button-text:hover{
       background: -webkit-linear-gradient(left, #9945ff, #8752F3, #5497D5, #43B4CA, #28E0B9, #19FB9B );
       font-weight: 700;
@@ -35,7 +63,6 @@
     background-repeat: no-repeat;
     margin-left: auto;
     margin-right: auto;
-    font-family: 'Ranchers',bold;
     border-radius: 4px;
     color: var(--tw-white-color)
   }
@@ -74,9 +101,8 @@
   .navBarElements{
       display: flex;
       align-items: center;
-      flex-direction: row;
-      float:right;
       cursor: pointer;
+      text-align: center
   }
   .nav_3d_btn_container{
       display: flex;
@@ -105,7 +131,7 @@
       position: relative;
       color: #fff;
       text-align: center;
-      padding: 18px 18px;
+      padding: 0.5rem 0.75rem;
       text-decoration: none;
       font-family: 'Ranchers', bold;
       
@@ -150,18 +176,14 @@
   }
   .navBar_btn{
     color: #fff;
-    float: right;
-    margin-right: 1rem;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
-    padding-right: 0.8rem;
+    margin-right: 0.5rem;
     background-color: transparent;
     cursor: pointer;
-    overflow: hidden;
     display: none;
+    overflow: hidden;
     background-repeat: no-repeat;
     outline: none;
-    border: none
+    border: none;
   }
   .footer_footer{
     position: fixed;
@@ -232,21 +254,21 @@
   @media (max-width:976px){
     .navBarElements{
       position: fixed;
+      display: flex;
       width: 100%;
       height: 100vh;
       background-color: rgba(52, 51, 51, 1);
       top:70px;
-      left: -100%;
+      left:-100%;
       flex-direction: column;
       text-align: center;
       transition: all .5s;
       overflow-y: scroll;
-      overflow: hidden
+      overflow: hidden;
+      
     }
     .navBarItems{
-        display:block;
-        margin: 16px 0;
-        line-height: 1rem;
+      display:block;
     }
     .navBarElements ~ .navBarElements{
       left: 0;
@@ -267,7 +289,7 @@
         font-size : 1.3rem;
     }
     .navBarItems {
-        padding: 18px 14px
+        padding: 20px 20px
     }
   }
   @media (max-width:812px){
@@ -308,20 +330,22 @@
         height: 50px;
     }
     .navBarElements{
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(52, 51, 51, 1);
-        top: 65px;
-        left: -100%;
-        flex-direction: column;
-        text-align: center;
-        transition: all .5s;
+      position: fixed;
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(52, 51, 51, 1);
+      top:70px;
+      left:-100%;
+      flex-direction: column;
+      text-align: center;
+      transition: all .5s;
+      overflow-y: scroll;
+      overflow: hidden;
+      padding: 1rem;
     }
     .navBarItems{
         display:block;
-        margin: 12px 0;
-        line-height: 1rem;
     }
     .nav_font_text{
         font-size : 18px;
@@ -334,9 +358,6 @@
     }
     .app_btn{
         font-size: 0.75rem;
-    }
-    .navBar_btn{
-        padding-top: 0.875rem;
     }
     
   }

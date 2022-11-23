@@ -5,8 +5,7 @@ import usdcPayImg from '../assets/usdc_logo.png'
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import StraightIcon from '@mui/icons-material/Straight';
 import UserLogo from '../assets/user-logo.png';
-import Donatesol from '../components/Donatesol';
-import Donateusd from '../components/Donateusd'
+import Donate from '../components/Donate';
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import {
@@ -28,7 +27,7 @@ import Image from "next/legacy/image";
 import { clusterApiUrl } from "@solana/web3.js";
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
-import {server} from '../config'
+//import {server} from '../config'
 //required for Solana modal
 require('@solana/wallet-adapter-react-ui/styles.css');
 
@@ -54,17 +53,17 @@ const WalletContainer =() =>{
     }
   }, [publicKey])
   
-  const CheckWalletSOL = () => {
+  const CheckWallet = () => {
     try{
       if (wallet.connected && wallet.publicKey) {
         return (
-          <>
+          <div>
             {
               priceSOL.map((price) => (
-                <Donatesol key={price.id} priceInfo = {price} />
+                <Donate key={price.id} priceInfo = {price} />
               ))
             } 
-          </>
+          </div>
         )
       }else{
         return (
@@ -89,32 +88,7 @@ const WalletContainer =() =>{
     }
 
   }
-  const CheckWalletUSD = () => {
-    try{
-      if (wallet.connected && wallet.publicKey) {
-        return (
-          <>
-            {
-              priceUSD.map((price, id) => (
-                
-                <Donateusd key= {id} priceInfo = {price} />
-                
-              ))
-            }
-          </>
-        )
-      }else{
-        return (
-          <>
-            {}
-          </>
-        )
-      }
-    }catch(err){
-        console.error(err)
-    }
-
-  }
+  
   return (
     <>
       <Head>
@@ -136,7 +110,7 @@ const WalletContainer =() =>{
                 <div className="text-center justify-center w-full p-5 font-['Inter']">
                   <h1 className="text-slate-900 font-bold text-xl sm:text-3xl">Support Us</h1>
                   <div className="flex items-center justify-center m-5 sm:m-10 cursor-pointer">
-                    <CheckWalletSOL />
+                    <CheckWallet />
                   </div>
                 </div>
                 

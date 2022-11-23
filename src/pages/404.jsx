@@ -2,7 +2,17 @@ import Head from "next/head";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PageNotFound from "../components/PageNotFound";
 import Link from 'next/link';
+import {useRouter} from 'next/router'
 export default function NotFound404() {
+  const router = useRouter();
+  const routeBack = (e) => {
+    e.preventDefault();
+    router.back();
+  };
+  const METATEDS_HOME = '/'
+  {/*<Link href="/" passHref legacyBehavior>
+    <ArrowBackIcon />
+  </Link>*/}
   return (
     <>
       <Head>
@@ -12,14 +22,13 @@ export default function NotFound404() {
         <nav className="place-items-center col-start-1 col-span-1 top-0 pointer-event-none z-nav w-full">
           <div className="mt-4 w-full">
             <div className="flex fixed items-center cursor-pointer pointer-events-auto justify-between flex-row px-4">
-              <div className="hover:bg-indigo-700">
-                <Link href="/" passHref legacyBehavior>
+              <div className="hover:bg-indigo-700 rounded-lg cursor-pointer">
+                <a href="#" onClick={routeBack} className="">
                   <ArrowBackIcon />
-                </Link>
+                </a>
               </div>
-              
               <div className="pl-4">
-                <p>Home</p>
+                <p>Back</p>
               </div>
             </div>
           </div>
