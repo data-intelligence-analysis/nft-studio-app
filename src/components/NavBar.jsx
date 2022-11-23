@@ -108,7 +108,7 @@ const NavBar = ({bgFormat, display}) => {
               <Logo />
             </Link>
           </div>
-          <a className="h-10 cursor-pointer justify-center hidden sm:flex items-center p-2 rounded" href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">
+          <a className="h-10 cursor-pointer justify-center hidden sm:flex items-center p-2 rounded" href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noreferrer">
             <div className="flex items-center p-2 h-10">
               <button className="rounded text-sm overflow-hidden bg-[#B27315] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display"
                 onClick={()=> alert ('3D experience optimized for Desktop')} >

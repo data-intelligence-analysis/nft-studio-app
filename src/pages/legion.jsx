@@ -28,20 +28,20 @@ export default function Legion() {
                 <div className="mt-10 overflow-auto">
                   <h1 className="text-2xl text-amber-500 sm:text-3xl tracking-wider font-bold">Utility</h1>
                   <div className="font-sans">
-                    <p className="pt-3">If you are new to Solana space, please head over to this <a href ="https://youtu.be/mJiXmsiLS3w" target="_blank" rel="noreferrer" className="font-['Ranchers'] font-bold tracking-wide">link</a> to learn how to 
+                    <p className="pt-3">If you are new to Solana space, please head over to this <a href ="https://youtu.be/mJiXmsiLS3w" target="_blank" rel="noreferrer noopener" className="font-['Ranchers'] font-bold tracking-wide">link</a> to learn how to 
                     create and connect your Solana wallet, 
-                    or head on over to our <a href ="http://discord.gg/N5wB8JTBBS" target="_blank" rel="noreferrer" className="font-['Ranchers'] font-bold tracking-wide">Discord</a> to request for assistance, 
+                    or head on over to our <a href ="http://discord.gg/N5wB8JTBBS" target="_blank" rel="noreferrer noopener" className="font-['Ranchers'] font-bold tracking-wide">Discord</a> to request for assistance, 
                     meet members of the community, 
                     and learn more about our platform. </p>
                     <p className="pt-3">Our utility is centered around our NFTs and tokens that offer holder (membership) benefits. 
-                    Currently, those benefits would be accessible through our <a href ="https://metateds.com" noreferrer className="font-['Ranchers'] font-bold tracking-wide" target="_blank" rel="noreferrer">blog platform</a>, which include but not limited to the ability for each holder to build a
+                    Currently, those benefits would be accessible through our <a href ="https://metateds.com" className="font-['Ranchers'] font-bold tracking-wide" target="_blank" rel="noreferrer noopener" >blog platform</a>, which include but not limited to the ability for each holder to build a
                     personalized page to feature their blogs, publish content and make posts, view other blogs, and follow and interact with other members.</p>
                     <p className="pt-3">
-                      You can access our blog through our ecosystem as well by connecting to our <Link href="/utility" noreferrer className="font-['Ranchers'] font-bold tracking-wide">Utility</Link> page. with your Solana wallet.
+                      You can access our blog through our ecosystem as well by connecting to our <Link href="/utility" className="font-['Ranchers'] font-bold tracking-wide">Utility</Link> page. with your Solana wallet.
                     </p>
                     <p className="pt-3">
                       Eventually, we would mutate those NFTS into gamefied utility tokens  
-                      utilized in our <a href="https://metateds.com/gaming" className="font-['Ranchers'] font-bold tracking-wide">Gaming</a>
+                      utilized in our <a href="https://metateds.com/gaming" target="_blank" rel="noreferrer noopener" className="font-['Ranchers'] font-bold tracking-wide">Gaming</a>
                     </p>
                   </div>
                 </div>

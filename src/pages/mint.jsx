@@ -23,6 +23,9 @@ import Footer from '../components/Footer'
 //import { Canvas, useFrame } from '@react-three/fiber'
 //import { Circles } from "react-loader-spinner";
 import * as THREE from 'three'
+import { useLoader } from "@react-three/fiber";
+import { TextureLoader } from "three";
+//import texturePack from '../assets/textures/earth_normal_map.png'
 import dynamic from 'next/dynamic'
 //import {MTLLoader, OBJLoader} from 'three-obj-mtl-loader'
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -33,38 +36,11 @@ const CanvasLoad = (props)  => {
 
   const canvasRef = useRef(null)
   // Scene
-  const scene = new THREE.Scene()
-  // Canvas
-  //const canvas = document.querySelector('canvas.webgl')
-  const canvas = canvasRef.current
-  // Loading - loading texture
-  const textureLoader = new THREE.TextureLoader() // calling textureLoader instance
-  const normalTexture = dynamic(() => 
-    textureLoader.load('/textures/earth_normal_map.png'),
-    {
-      ssr: false,
-    }
-  )
-  // Objects - physical shape of the scene (body of the 3D objects)
-  const sphere_geometry = new THREE.SphereGeometry(.5, 64, 64);
+  //const scene = new THREE.Scene()
   
-  // Debug - dat.gui allows to control the positioning of the object
-  //const gui = new dat.GUI()
-
-  //useRef
-  // Materials - skin of the objects
-  // Mesh material can be rendered through normal maps
-  // MeshStandardMaterialconvey realworld objects 
-  const material = new THREE.MeshStandardMaterial()
-  material.metalness = 0.7
-  material.roughness = 0.2
-
-  //Applying the texture to the material
-  material.normalMap = normalTexture
-  material.color = new THREE.Color(0x00ffffff)
   
-  // Mesh - add the object to the scene
-  const sphere = new THREE.Mesh(sphere_geometry, material)
+  
+  
 
   //Colors for 3D model
   //white
@@ -80,7 +56,8 @@ const CanvasLoad = (props)  => {
   //LightPoint Light Helper (pointLight_1, <ajudst scale of pointLight objects>)
   const pointLightHelper2 = new THREE.PointLightHelper(pointLight_3, 0.5)
   
-
+  // Debug - dat.gui allows to control the positioning of the object
+  //const gui = new dat.GUI()
   /*Color profile for GUI*/
   //Light 2 - Red Light
 
@@ -122,15 +99,69 @@ const CanvasLoad = (props)  => {
           pointLight_3.color.set(light3color.color)
   })*/
   
+  //TypeError: (intermediate value) is not a function
   
+
+  
+
+    
+  
+  
+   // Loading - loading texture
+   const TextureLoad = () => {
+    var texture = useLoader(TextureLoader,"/textures/earth_normal_map.png")
+    if (typeof document !== undefined){
+      return texture;
+    }
+    return;
+   }
+   
+   
+   /*const normalTexture = dynamic(() => 
+      textureLoader.load('/textures/earth_normal_map.png'),
+      {
+        ssr: false,
+      }
+    )*/
+  
+  useEffect(()=>{
+    // Canvas
+    //const canvas = document.querySelector('canvas.webgl')
+    const canvas = canvasRef.current
+    // Scene
+    const scene = new THREE.Scene()
+
+    
+    const textureLoader = new THREE.TextureLoader() // calling textureLoader instance
+    const normalTexture =  textureLoader.load('/textures/earth_normal_map.png')
+    
+
+    // Objects - physical shape of the scene (body of the 3D objects)
+    const sphere_geometry = new THREE.SphereGeometry(.5, 64, 64);
+
+    //useRef
+    // Materials - skin of the objects
+    // Mesh material can be rendered through normal maps
+    // MeshStandardMaterialconvey realworld objects 
+    const material = new THREE.MeshStandardMaterial()
+    material.metalness = 0.7
+    material.roughness = 0.2
+
+    //Applying the texture to the material
+    material.normalMap = normalTexture
+    material.color = new THREE.Color(0x00ffffff)
+    
+    // Mesh - add the object to the scene
+    const sphere = new THREE.Mesh(sphere_geometry)
+
     //Add the sphere to the scene
     scene.add(sphere)
     
-    /* Lights */
-    
+    // Lights 
+  
     scene.add(pointLightHelper)
     scene.add(pointLightHelper2)
-  
+
     //Light 1 - White Light
     pointLight_1.position.x = 2
     pointLight_1.position.y = 3
@@ -138,61 +169,27 @@ const CanvasLoad = (props)  => {
     //scene.add(pointLightHelper)
     scene.add(pointLight_1)
 
-
     //Light 2 
-    
+  
     //position the light by default
     pointLight_2.position.set(-7.49,0.67,2.43)
     pointLight_2.intensity = 10.16
     scene.add(pointLight_2)
-    
 
-    
-
-    /* Light 3  */
+    // Light 3  
     scene.add(pointLight_3)
     //position the light by default
     pointLight_3.position.set(3.54,0.89,1.1)
     pointLight_3.intensity = 10
 
     
-    /*let observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (!mutation.addedNodes.length) return
-    
-        for (let i = 0; i < mutation.addedNodes.length; i++) {
-          // do things to your newly added nodes here
-          let node = mutation.addedNodes[i]
-        }
-      })
-    })
-    observer.observe(document.body, {
-        childList: true
-      , subtree: true
-    })
-*/    
-  /**
+    /**
     * Renderer - set it and forget it
     */
-   
-   //TypeError: (intermediate value) is not a function
-   const CSR =() =>{
-    
-      if (typeof document !== "undefined"){
-        const renderer = new THREE.WebGLRenderer({
-          canvas: canvas,
-          antialias: true,
-        })
-        return renderer
-      }
-    
-    }
-   
-  
-  useEffect(()=>{
-    /*const renderer = new THREE.WebGLRenderer({
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
       antialias: true,
-     });*/
+     });
     
     /**
      * Window Sizes
@@ -212,6 +209,11 @@ const CanvasLoad = (props)  => {
     camera.position.y = 0
     camera.position.z = 2
     scene.add(camera)
+
+    
+    
+
+
     //Boilerplate stuff
     window.addEventListener('resize', () =>
     {
@@ -224,19 +226,13 @@ const CanvasLoad = (props)  => {
         camera.updateProjectionMatrix()
 
         // Update renderer
-        CSR().setSize(sizes.width, sizes.height)
-        CSR().setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        //document.body.appendChild(CSR().domElement)
+        renderer.setSize(sizes.width, sizes.height)
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        //document.body.appendChild(renderer.domElement)
     })
 
-    
-
-    // Controls
-    // const controls = new OrbitControls(camera, canvas)
-    // controls.enableDamping = true
-
-    CSR().setSize(sizes.width, sizes.height)
-    CSR().setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 
 
@@ -292,7 +288,7 @@ const CanvasLoad = (props)  => {
         // controls.update()
 
         // Render
-        CSR().render(scene, camera)
+        renderer.render(scene, camera)
 
         // Call tick again on the next frame
         window.requestAnimationFrame(tick)
@@ -326,7 +322,7 @@ const RenderWalletConnect = () => {
               </div>
             </div>
           </nav>*/}
-          {/*<CanvasLoad />*/}
+          <CanvasLoad />
           <div className="absolute place-items-center grid top-[22%] left-0 right-0 bottom-[22%] pointer-events-auto items-center text-center px-6">
             <h1 className="uppercase text-[#0880F0] text-sm sm:text-2xl md:text-3xl font-pixel">
               Devnet Mint Coming Soon

@@ -22,6 +22,7 @@
     "@mui/material": "^5.10.13",
     "@project-serum/anchor": "^0.17.0",
     "@project-serum/serum": "0.13.65",
+    "@react-three/fiber": "^8.9.1",
     "@solana/pay": "^0.2.4",
     "@solana/spl-token": "0.1.8",
     "@solana/wallet-adapter-base": "^0.9.18",
