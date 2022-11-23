@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) =>
 );
 
 
-export const CountdownTimer = ({ dropDate }) => {
+const CountdownTimer = ({ dropDate }) => {
   // State
   const [timerString, setTimerString] = useState('');
   // Our useEffect will run on component load
@@ -91,7 +91,8 @@ export const CountdownTimer = ({ dropDate }) => {
   );
 };
 
-export const MintCountdown = (date, status, style) => {
+export default CountdownTimer
+{/*export const MintCountdown = (date, status, style) => {
   const classes = useStyles();
 
-}
+}*/}
