@@ -108,14 +108,15 @@ const CanvasLoad = (props)  => {
   
   
    // Loading - loading texture
-   const TextureLoad = () => {
+   /*const TextureLoad = () => {
     var texture = useLoader(TextureLoader,"/textures/earth_normal_map.png")
     if (typeof document !== undefined){
       return texture;
     }
     return;
-   }
+   }*/
    
+   const texture = useLoader(TextureLoader,"/textures/earth_normal_map.png")
    
    /*const normalTexture = dynamic(() => 
       textureLoader.load('/textures/earth_normal_map.png'),
