@@ -12,8 +12,8 @@ export default function Legion() {
       <NavBar bgFormat={"bg-[#343333]"} />
         <div className="bg-[#343333] overflow-x-hidden w-screen h-screen text-center items-center">
           <div className="w-full py-20 px-5 flex items-center">
-            <div className="grid sm:grid-cols-10 my-4 mx-auto max-w-screen-2xl">
-              <div className="text-center sm:text-left sm:col-start-1 sm:col-span-5">
+            <div className="grid md:grid-cols-10 my-4 mx-auto max-w-screen-2xl">
+              <div className="text-center md:text-left sm:col-start-1 sm:col-span-5">
                 <div className="overflow-auto mt-5">
                   <h1 className="text-2xl text-amber-500 sm:text-3xl tracking-wider font-bold">Ted Mission</h1>
                   <div className="font-sans">
@@ -46,31 +46,51 @@ export default function Legion() {
                   </div>
                 </div>
               </div>
-              <div className="mt-5 items-center mx-4 place-items-center sm:col-start-6 sm:col-span-5">
-                <h1 className="sm:ml-4 sm:text-left text-amber-500 text-2xl sm:text-3xl tracking-wider font-bold">Builders</h1>
-                <div className="sm:text-center text-left items-center grid-rows-2 py-4 px-6">
+              <div className="mt-5 items-center sm:mx-2 lg:mx-4 place-items-center sm:col-span-6 md:col-start-6 md:col-span-5">
+                <h1 className="md:ml-4 text-center md:text-left text-amber-500 text-2xl sm:text-3xl tracking-wider font-bold">Builders</h1>
+                <div className="sm:text-center text-left items-center grid-rows-2 lg:py-4 lg:px-6">
                   <div className="font-sans text-center row-span-1 w-full justify-between flex py-5 px-4 items-center mx-auto gap-x-4">
-                    <div className="flex flex-col bg-indigo-400 border-2 border-indigo-700/100 rounded-md block text-center h-[50%] text-zinc-800">
+                    <div className="flex flex-col bg-indigo-600 border-2 border-indigo-400/100 rounded-md block text-center h-[50%] text-zinc-300">
                       <div className="flex flex-col">
-                        <span>
-
+                        <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
+                          <Image 
+                            src={require('../assets/dennis.png')}
+                            alt="mr-d"
+                            height="495"
+                            width= "500"
+                            priority="true"
+                          />
                         </span>
                         <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Dennis</p>
                         <p className="text-xs sm:text-sm lg:text-base font-bold">Co-Founder - Software / Blockchain Developer & Artist</p>
                       </div>
                     </div>
-                    <div className="bg-indigo-400 border-2 border-indigo-700/100 border-2 border-indigo-700/100 rounded-md text-zinc-800">
+                    <div className="bg-indigo-600 border-2 border-indigo-400/100 rounded-md text-zinc-300">
                       <div className="flex flex-col">
-                        <span>
-                          
+                      <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
+                          <Image 
+                            src={require('../assets/nico.png')}
+                            alt="mr-d"
+                            height="495"
+                            width= "500"
+                            priority="true"
+                          />
                         </span>
                         <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Nicholas</p>
                         <p className="text-xs sm:text-sm lg:text-base font-bold">Co-Founder - Software Engineer & Blockchain Developer</p>
                       </div>
                     </div>
-                    <div className="bg-indigo-400 border-2 border-indigo-700/100 text-zinc-800 sm:hidden border-2 border-indigo-700/100 rounded-md">
+                    <div className="bg-indigo-600 border-2 border-indigo-400/100 text-zinc-300 sm:hidden rounded-md">
                       <div className="flex flex-col">
-                        <span></span>
+                        <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
+                          <Image 
+                            src={require('../assets/conor.png')}
+                            alt="mr-d"
+                            height="400"
+                            width= "400"
+                            priority="true"
+                          />
+                        </span>
                         <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>
                         <p className="text-xs sm:text-sm lg:text-base font-bold">Co-Founder - Tech Arch & Business Analyst</p>
                       </div>
@@ -78,10 +98,16 @@ export default function Legion() {
                     
                   </div>
                   <div className="hidden sm:font-sans sm:row-span-1 sm:mt-6 sm:flex sm:items-center sm:justify-center sm:gap-x-4">
-                    <div className="bg-indigo-400 border-2 border-indigo-700/100 text-zinc-800 border-2 border-indigo-700/100 rounded-md">
+                    <div className="bg-indigo-600 border-2 border-indigo-400/100 text-zinc-300 rounded-md">
                       <div className="flex flex-col">
-                        <span>
-
+                        <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
+                          <Image 
+                            src={require('../assets/conor.png')}
+                            alt="mr-d"
+                            height="495"
+                            width= "500"
+                            priority="true"
+                          />
                         </span>
                         <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>
                         <p className="text-xs sm:text-sm lg:text-base font-bold">Co-Founder - Tech Arch & Business Analyst</p>
