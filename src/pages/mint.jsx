@@ -25,8 +25,10 @@ import Footer from '../components/Footer'
 import * as THREE from 'three'
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
+import {Suspense} from "react";
 //import texturePack from '../assets/textures/earth_normal_map.png'
 import dynamic from 'next/dynamic'
+import { Canvas } from "@react-three/fiber";
 //import {MTLLoader, OBJLoader} from 'three-obj-mtl-loader'
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 //import * as dat from 'dat.gui'
@@ -115,8 +117,9 @@ const CanvasLoad = (props)  => {
     }
     return;
    }*/
+   //const texture = useLoader(TextureLoader,"/textures/earth_normal_map.png")
    
-   const texture = useLoader(TextureLoader,"/textures/earth_normal_map.png")
+   
    
    /*const normalTexture = dynamic(() => 
       textureLoader.load('/textures/earth_normal_map.png'),
@@ -132,7 +135,6 @@ const CanvasLoad = (props)  => {
     // Scene
     const scene = new THREE.Scene()
 
-    
     const textureLoader = new THREE.TextureLoader() // calling textureLoader instance
     const normalTexture =  textureLoader.load('/textures/earth_normal_map.png')
     
@@ -150,10 +152,13 @@ const CanvasLoad = (props)  => {
 
     //Applying the texture to the material
     material.normalMap = normalTexture
+    //material.normalMap = texture
+    //material.map = texture
     material.color = new THREE.Color(0x00ffffff)
     
+    
     // Mesh - add the object to the scene
-    const sphere = new THREE.Mesh(sphere_geometry)
+    const sphere = new THREE.Mesh(sphere_geometry, material)
 
     //Add the sphere to the scene
     scene.add(sphere)
