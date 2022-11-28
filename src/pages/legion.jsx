@@ -50,24 +50,42 @@ export default function Legion() {
                 <h1 className="sm:ml-4 sm:text-left text-amber-500 text-2xl sm:text-3xl tracking-wider font-bold">Builders</h1>
                 <div className="sm:text-center text-left items-center grid-rows-2 py-4 px-6">
                   <div className="font-sans text-center row-span-1 w-full justify-between flex py-5 px-4 items-center mx-auto gap-x-4">
-                    <div className="border-2 border-indigo-500/100 rounded-md block text-center h-[50%]">
-                      <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Dennis</p>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold">Blockchain Developer & Artist</span>
+                    <div className="flex flex-col bg-indigo-400 border-2 border-indigo-700/100 rounded-md block text-center h-[50%] text-zinc-800">
+                      <div className="flex flex-col">
+                        <span>
+
+                        </span>
+                        <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Dennis</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold">Co-Founder - Software / Blockchain Developer & Artist</p>
+                      </div>
                     </div>
-                    <div className="border-2 border-indigo-500/100 rounded-md">
-                      <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Nicholas</p>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold">Software Engineer & Blockchain Developer</span>
+                    <div className="bg-indigo-400 border-2 border-indigo-700/100 border-2 border-indigo-700/100 rounded-md text-zinc-800">
+                      <div className="flex flex-col">
+                        <span>
+                          
+                        </span>
+                        <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Nicholas</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold">Co-Founder - Software Engineer & Blockchain Developer</p>
+                      </div>
                     </div>
-                    <div className="sm:hidden border-2 border-indigo-500/100 rounded-md">
-                      <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold">Tech Arch Analyst</span>
+                    <div className="bg-indigo-400 border-2 border-indigo-700/100 text-zinc-800 sm:hidden border-2 border-indigo-700/100 rounded-md">
+                      <div className="flex flex-col">
+                        <span></span>
+                        <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold">Co-Founder - Tech Arch & Business Analyst</p>
+                      </div>
                     </div>
                     
                   </div>
                   <div className="hidden sm:font-sans sm:row-span-1 sm:mt-6 sm:flex sm:items-center sm:justify-center sm:gap-x-4">
-                    <div className="border-2 border-indigo-500/100 rounded-md">
-                      <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>
-                      <span className="text-xs sm:text-sm lg:text-base font-bold">Tech Arch Analyst</span>
+                    <div className="bg-indigo-400 border-2 border-indigo-700/100 text-zinc-800 border-2 border-indigo-700/100 rounded-md">
+                      <div className="flex flex-col">
+                        <span>
+
+                        </span>
+                        <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block">Conor</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold">Co-Founder - Tech Arch & Business Analyst</p>
+                      </div>
                     </div>
                   </div>
                 </div>

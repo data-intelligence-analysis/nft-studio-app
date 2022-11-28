@@ -216,10 +216,6 @@ const CanvasLoad = (props)  => {
     camera.position.z = 2
     scene.add(camera)
 
-    
-    
-
-
     //Boilerplate stuff
     window.addEventListener('resize', () =>
     {
