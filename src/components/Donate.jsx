@@ -216,7 +216,7 @@ const BuyUSD = ({priceID, price, ticker}) => {
           
         ) : (
           <div className="flex items-center justify-center mt-5 sm:mt-10">
-            <button disabled={loading} onClick = {()=> alert("Still in development soon")} className="solana-button-text text-sm sm:text-base font-bold px-2.5 py-1 text-center">
+            <button disabled={loading} onClick = {()=> alert("Still in development")} className="solana-button-text text-sm sm:text-base font-bold px-2.5 py-1 text-center">
               <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
             </button>
           </div>
@@ -444,7 +444,7 @@ const Buy = ({priceID, price, ticker}) => {
         ) : ( //solana-button-text flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center
             
             <div className="items-center justify-center flex">
-              <button disabled={loading} onClick = {processTransaction} className="solana-button-text text-sm sm:text-base font-bold px-2.5 py-1 text-center">
+              <button disabled={loading} onClick = {()=> alert("Still in development")} className="solana-button-text text-sm sm:text-base font-bold px-2.5 py-1 text-center">
                 <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
               </button>
             </div>

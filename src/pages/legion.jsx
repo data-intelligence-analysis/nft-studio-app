@@ -86,8 +86,8 @@ export default function Legion() {
                           <Image 
                             src={require('../assets/conor.png')}
                             alt="mr-d"
-                            height="400"
-                            width= "400"
+                            height="495"
+                            width= "500"
                             priority="true"
                           />
                         </span>
@@ -104,8 +104,8 @@ export default function Legion() {
                           <Image 
                             src={require('../assets/conor.png')}
                             alt="mr-d"
-                            height="495"
-                            width= "500"
+                            height="400"
+                            width= "400"
                             priority="true"
                           />
                         </span>
