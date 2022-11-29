@@ -37,12 +37,12 @@ export default function Home () {
       <section classNamae="min-h-full min-h-screen w-full relative" style={artShowApp}>
         <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto">
           <nav className="fixed top-0 left-0 w-full z-20 bg-indigo-700">
-            <div className="mx-auto px-2 py-2 flex items-center justify-between pointer-events-auto flex-row">
+            <div className="mx-auto px-2 py-2 flex text-center items-center gap-x-1 sm:gap-x-2 justify-between pointer-events-auto flex-row">
               <a href="#" onClick={Back} className="rounded-lg hover:bg-slate-900 rounded-lg cursor-pointer px-2 py-2">
                 <span><ArrowBackIcon /></span>
                 <span className="ml-2 inline-block text-base leading-7">Back</span>
               </a>
-              <p className="inline-box font-sans text-xs sm:text-sm md:text-lg">MetaPix for gamers and community members!</p>
+              <p className="inline-box font-sans text-center text-xs sm:text-sm md:text-lg">MetaPix for gamers and community members!</p>
               <a href={HomeURL} className="rounded-lg hover:bg-slate-900 rounded-lg cursor-pointer px-1 py-1 sm:px-2 sm:py-2">
                 <span className="mr-2 inline-block text-base leading-6">Home</span>
                 <ArrowForwardIcon />
