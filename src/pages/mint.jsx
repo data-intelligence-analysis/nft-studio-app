@@ -380,7 +380,7 @@ const Mint = () =>{
         <title> 🎉 Mint | MetaTeds </title>
       </Head>
 
-      <NavBar bgFormat={'bg-zinc-900'}/>
+      <NavBar bgFormat={'bg-[#0000]'}/>
         <RenderWalletConnect />
         {/*<ConnectionProvider endpoint={endpoint}>
           <WalletProvider wallets={wallets} autoConnect>

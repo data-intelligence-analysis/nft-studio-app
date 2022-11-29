@@ -60,7 +60,7 @@ const WalletConnection = () => {
   const WalletIsConnected = () => {
     return (
       <>
-        <div className="pt-44 md:pt-64 xl:pt-88 w-full">
+        <div className="py-20 md:py-40 xl:py-50 w-full">
           <div className="mx-auto items-center">
             <div className="relative md:gap-2 justify-content mx-47 sm:mx-40 px-20 sm:px-6 pb-10 md:grid md:place-items-center md:grid-cols-8 sm:pb-5 z-10 text-align mx-auto">
               <Image 
