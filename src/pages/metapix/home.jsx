@@ -8,7 +8,7 @@ import head_pixel from '../../assets/metapix_head_pixel.png'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 const artShowApp = {
-  backgroundImage: 'url(/img/artShowApp.png)',
+  backgroundImage: 'url(/img/workstation.png)',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   height: '100vh',
@@ -36,7 +36,7 @@ export default function Home () {
       <div>
       <section classNamae="min-h-full min-h-screen w-full relative" style={artShowApp}>
         <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto">
-          <nav className="fixed top-0 left-0 w-full z-20 bg-indigo-700">
+          <nav className="fixed top-0 left-0 w-full z-20 bg-[#320D06]">
             <div className="mx-auto px-2 py-2 flex text-center items-center gap-x-1 sm:gap-x-2 justify-between pointer-events-auto flex-row">
               <a href="#" onClick={Back} className="rounded-lg hover:bg-slate-900 rounded-lg cursor-pointer px-2 py-2">
                 <span><ArrowBackIcon /></span>
