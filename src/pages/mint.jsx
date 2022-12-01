@@ -33,17 +33,13 @@ import { Canvas } from "@react-three/fiber";
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 //import * as dat from 'dat.gui'
 require('@solana/wallet-adapter-react-ui/styles.css');
-const CanvasLoad = (props)  => {
-  
 
+
+
+const CanvasLoad = (props)  => {
   const canvasRef = useRef(null)
   // Scene
   //const scene = new THREE.Scene()
-  
-  
-  
-  
-
   //Colors for 3D model
   //white
   const pointLight_1 = new THREE.PointLight(0xffffff, 0.1)
@@ -102,13 +98,6 @@ const CanvasLoad = (props)  => {
   })*/
   
   //TypeError: (intermediate value) is not a function
-  
-
-  
-
-    
-  
-  
    // Loading - loading texture
    /*const TextureLoad = () => {
     var texture = useLoader(TextureLoader,"/textures/earth_normal_map.png")

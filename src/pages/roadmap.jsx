@@ -4,6 +4,13 @@ import Footer from '../components/Footer'
 import rm from '../assets/Roadmap.png'
 import Image from 'next/image'
 import ted_wd from '../assets/ted-warrior-tools.png'
+
+const customLoader = ({src, width, quality}) => {
+  return process.env.NODE_ENV === "production" ?
+  `${process.env.BASE_URL}/${src}?${width}&q=${quality || 75}`:
+`http://localhost:3000/${src}?${width}&q=${quality || 75}`;
+}
+
 export default function Gaming() {
   return (
     <>
@@ -17,23 +24,23 @@ export default function Gaming() {
             <div className="h-full pt-4 grid sm:grid-cols-2 place-items-center">
               <div className= "grid place-items-center object-contain object-center py-4 px-2 bg-transparent">
                 <Image 
+                  loader={customLoader}
                   alt = 'Roadmap'
                   src = {rm}
                   height={'620'}
                   width='auto'
                   placeholder='blur'
-                  priority='true'
                   style = {{objectFit: 'contain', objectPosition: 'center'}}
                 />
               </div>
               <div className= "hidden sm:grid place-items-center object-contain object-center py-4 px-2 bg-transparent">
                 <Image 
+                    loader={customLoader}
                     alt = 'ted_warrior'
                     src = {ted_wd}
                     height={'600'}
                     width='auto'
                     placeholder='blur'
-                    priority='true'
                     style = {{objectFit: 'contain', objectPosition: 'center'}}
                   />
               </div>

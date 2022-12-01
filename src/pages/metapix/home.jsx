@@ -20,7 +20,14 @@ const HomeURL =
     ? process.env.BASE_URL
     : "http://localhost:3000";
 
-    
+
+const customLoader = ({src, width, quality}) => {
+  return process.env.NODE_ENV === "production" ?
+  `${process.env.BASE_URL}/${src}?${width}&q=${quality || 75}`:
+`http://localhost:3000/${src}?${width}&q=${quality || 75}`;
+}
+
+
 export default function Home () {
   const router = useRouter();
 
@@ -53,12 +60,13 @@ export default function Home () {
             <div className="mt-20 mb-5 sm:mb-10 col-span-5 col-start-1 mx-auto">
               <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
                 <Image
+                  loader={customLoader}
+                  quality='90'
                   src={metapix_logo}
                   alt="metapix"
                   height="250"
                   width= "500"
                   placeholder='blur'
-                  priority="true"
                   style = {{objectFit: 'contain', objectPosition: 'center', borderRadius: '15px'}}
                 />
               </span>
@@ -68,12 +76,13 @@ export default function Home () {
                 <div className="flex flex-col px-2 py-4 items-center justify-center cursor-pointer">
                 <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
                   <Image
+                    loader={customLoader}
+                    quality='78'
                     src={head_pixel}
-                    alt="logo_banner"
+                    alt="head_banner"
                     height="150"
                     width= "160"
                     placeholder='blur'
-                    priority="true"
                     style = {{objectFit: 'contain', objectPosition: 'center', borderRadius: '18px'}}
                   />
                 </span>
