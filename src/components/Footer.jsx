@@ -65,7 +65,7 @@ const Footer = ({bgFormat, display}) => {
         <>
           <div className="inset-0 z-10 fixed bg-[#2e2e30e6]">
             <div className="relative justify-center mx-auto min-h-full overflow-y-auto p-2 items-center lg:max-w-screen-2xl">
-              <div className="mt-10 sticky relative w-full h-[45px] items-center">
+              <div className="mt-10 sticky w-full h-[45px] items-center">
                 <button className="text-[30px] pt-0.5 ml-auto flex justify-center items-center h-full mr-6 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
                   {modal ? (
                     <CloseIcon sx={{width: 50, height:38}}/>)

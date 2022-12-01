@@ -48,11 +48,7 @@ export default function Gaming() {
           </div>
         </div>
       </div>
-      
       <Footer bgFormat={"bg-zinc-800"}/>
-      {/*div className="md:col-span-9 lg:col-span-10 xl:col-span-10 text-center items-center">
-        <h1>Roadmap, coming soon</h1>
-      </div>*/}
     </>
   );
 }
