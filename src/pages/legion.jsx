@@ -54,7 +54,7 @@ export default function Legion() {
                       <div className="flex flex-col">
                         <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
                           <Image 
-                            src={require('../assets/dennis.png')}
+                            src={require('../assets/pfp/dennis.png')}
                             alt="mr-d"
                             height="495"
                             width= "500"
@@ -69,7 +69,7 @@ export default function Legion() {
                       <div className="flex flex-col">
                       <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
                           <Image 
-                            src={require('../assets/nico.png')}
+                            src={require('../assets/pfp/nico.png')}
                             alt="mr-d"
                             height="495"
                             width= "500"
@@ -84,7 +84,7 @@ export default function Legion() {
                       <div className="flex flex-col">
                         <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
                           <Image 
-                            src={require('../assets/conor.png')}
+                            src={require('../assets/pfp/conor.png')}
                             alt="mr-d"
                             height="495"
                             width= "500"
@@ -102,7 +102,7 @@ export default function Legion() {
                       <div className="flex flex-col">
                         <span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
                           <Image 
-                            src={require('../assets/conor.png')}
+                            src={require('../assets/pfp/conor.png')}
                             alt="mr-d"
                             height="400"
                             width= "400"
