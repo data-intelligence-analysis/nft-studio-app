@@ -32,7 +32,5 @@
     "node_modules",
     ".vscode"
   ],
-  "rules":{
-    "@typescript-eslint/ban-ts-comment": "warn"
-  }
+  
 }
