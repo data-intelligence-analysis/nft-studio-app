@@ -108,9 +108,9 @@ const FrontPage = () => {
 		return (
 			<>
 				<div className="inset-0 z-10 fixed bg-[#2e2e30e6]">
-					<div className="relative justify-center mx-auto min-h-full overflow-y-auto p-2 items-center lg:max-w-screen-2xl">
-						<nav className='flex items-center w-full h-[45px] top-20 sticky gap-x-2'>
-							<button className="text-[30px] pt-0.5 ml-auto flex justify-center items-center h-full mr-6 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
+					<div className="min-h-full overflow-y-auto overflow-x-hidden p-2 items-center mx-auto w-screen lg:max-w-screen-2xl">
+						<nav className='flex items-center w-full h-[45px] mt-20 sticky gap-x-2'>
+							<button className="text-[30px] ml-auto flex justify-center items-center h-full pr-0.5 mr-2 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
 								{modal ? (
 									<CloseIcon sx={{width: 50, height:38}}/>)
 								:(
@@ -118,6 +118,38 @@ const FrontPage = () => {
 								)}
 							</button>
 						</nav>
+						<div className="mx-auto px-4 pt-4 my-2 pb-4 overflow-hidden sm:my-6 sm:p-4 opacity-100">
+							<div className="mt-2 sm:mt-4 sm:grid flex sm:grid-cols-8 md:grid-cols-13 sm:place-items-center">
+								<div className="flex justify-center w-full sm:col-start-1 sm:col-span-2 md:col-start-1 md:col-span-4">
+									<div className="m-2 p-4 sm:m-4 sm:p-6 flex items-center sm:gap-x-4 gap-x-1 sm:flex-col flex-row">
+										{modalNavbar.map((elem, i) =>(
+											<button className="cursor-pointer text-center text-base sm:text-xl md:text-2xl m-4 sm:m-8 hover:bg-slate-900 rounded-lg bg-indigo-700 px-2 py-2 sm:px-4" key={i} onClick={(event) => activeModal(event, i)}>
+												{elem.name}
+											</button>
+										))}
+									</div>
+								</div>
+								<div className="items-center sm:col-start-3 sm:col-span-5 md:col-start-4 md:col-span-8">
+									{landing ? (
+										<div className="items-center mx-auto h-full w-100">
+											
+										</div>
+									):(modalNavbar.map((elem, index) =>(
+											<div className="" key={index}>
+												{activeSidebar===index &&
+													<RenderModal 
+														id={index}
+														title={elem.title}
+														content={elem.content}
+														img={elem.img}
+													/>
+												}
+											</div>
+										)))}
+								</div>
+
+							</div>
+						</div>
 					</div>
 				</div>
 			</>
@@ -139,7 +171,7 @@ const FrontPage = () => {
 						/>
 					</div>
 					<div className = 'home_content_subheader pb-10 ml-a mr-a font_text_size text-[#EAA640]'>
-							<h1>Building a Web3 Ecosystem</h1>
+							<h1>Building a Web3 Platform</h1>
 					</div>
 					<div className="mt-8 flex text-center">
 						<Link href ="/mint" legacyBehavior>
