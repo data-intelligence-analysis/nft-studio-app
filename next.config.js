@@ -17,10 +17,13 @@ const nextConfig = {
     ];
   },
   images:{
-    domains: ["arweave.net", "cdn.discordapp.com"]
+    domains: ["cdn.discordapp.com"]
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
   // Fixes npm packages that depend on `fs` module
   webpack: (config, { isServer }) => {
