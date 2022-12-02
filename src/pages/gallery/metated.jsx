@@ -1,6 +1,5 @@
 import Head from "next/head";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import PageNotFound from "../../components/PageNotFound";
 import Link from 'next/link';
 
 export default function Metated() {
