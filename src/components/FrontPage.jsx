@@ -3,8 +3,7 @@ import metatedsHeader from '../assets/metateds-header.png'
 import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head';
-
-
+// @ts-ignore
 import styled from 'styled-components';
 import Home from '../pages/index';
 import CloseIcon from '@mui/icons-material/Close';
