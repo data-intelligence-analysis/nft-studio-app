@@ -2,8 +2,8 @@ import React, {useState, useReact} from 'react'
 import metatedsHeader from '../assets/metateds-header.png'
 import Link from 'next/link'
 import Image from 'next/image'
-import Head from 'next/head'
-import styled from 'styled-components'
+import Head from 'next/head';
+import styled from 'styled-components';
 import Home from '../pages/index';
 import CloseIcon from '@mui/icons-material/Close';
 //import {Linking} from 'react-native';

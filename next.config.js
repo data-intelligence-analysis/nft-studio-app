@@ -5,9 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   // swcMinify: true,
   swcMinify: false, // Required to fix: https://nextjs.org/docs/messages/failed-loading-swc
-  compiler: {
+  /*compiler: {
     styledComponents: true,
-  },
+  },*/
   async rewrites() {
     return [
       {
