@@ -64,7 +64,7 @@
     "@babel/plugin-proposal-decorators": "^7.18.10",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
-    "@types/styled-components": "5.1.6",
+    "@types/styled-components": "^5.1.26",
     "@types/three": "^0.144.0",
     "autoprefixer": "^10.4.13",
     "babel-eslint": "^10.1.0",
