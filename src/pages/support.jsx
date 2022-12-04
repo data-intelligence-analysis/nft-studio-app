@@ -53,13 +53,13 @@ const WalletContainer =() =>{
   }, [publicKey])
   const CheckWallet = () => {
     try{
-      if (wallet.connected && loading) {
+      if (wallet.connected && wallet.publicKey && loading) {
         
         return (
           <Circles 
             width='50' 
             height='50' 
-            color="green"
+            color="purple"
             ariaLabel = "circles-loading"
             wrapperClass="items-center justify-center"
             wrapperStyle=""
