@@ -41,7 +41,7 @@ export default function Home () {
         <title>✨ Metapix | MetaTeds</title>
       </Head>
       <div>
-      <section classNamae="min-h-full min-h-screen w-full relative" style={artShowApp}>
+      <section className="min-h-full min-h-screen w-full relative" style={artShowApp}>
         <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto">
           <nav className="fixed top-0 left-0 w-full z-20 bg-[#320D06]">
             <div className="mx-auto px-2 py-2 flex text-center items-center gap-x-1 sm:gap-x-2 justify-between pointer-events-auto flex-row">
