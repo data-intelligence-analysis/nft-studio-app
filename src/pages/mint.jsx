@@ -32,7 +32,7 @@ import { Canvas } from "@react-three/fiber";
 //import {MTLLoader, OBJLoader} from 'three-obj-mtl-loader'
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 //import * as dat from 'dat.gui'
-require('@solana/wallet-adapter-react-ui/styles.css');
+//require('@solana/wallet-adapter-react-ui/styles.css');
 
 
 
