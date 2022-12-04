@@ -11,7 +11,7 @@ const artShowApp = {
   backgroundImage: 'url(/img/workstation.png)',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
-  height: '100vh',
+  height: '100%',
   backgroundPosition: 'center center',
   backgroundAttachment: 'fixed'
 }

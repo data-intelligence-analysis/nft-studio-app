@@ -25,17 +25,22 @@ import {
 } from '@solana/wallet-adapter-react';
 import Image from "next/legacy/image";
 import { clusterApiUrl } from "@solana/web3.js";
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import { Circles } from "react-loader-spinner";
 //import {server} from '../config'
 //required for Solana modal
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 const WalletContainer =() =>{
+  //react hooks
+
+  const [loading, setLoading] =useState(false)
   const wallet = useWallet();
   const { publicKey} = useWallet();
   const [priceSOL, setPrice] = useState([]);
   useEffect(()=>{
+    setLoading(true)
     if (publicKey){
       fetch(`/api/fetchPrice`)
         .then(response => response.json())
@@ -43,12 +48,26 @@ const WalletContainer =() =>{
           setPrice(data);
           console.log("SOL Payment Price Info", data)
         })
+        .then(setLoading(false))
     }
   }, [publicKey])
-  
   const CheckWallet = () => {
     try{
-      if (wallet.connected && wallet.publicKey) {
+      if (wallet.connected && loading) {
+        
+        return (
+          <Circles 
+            width='50' 
+            height='50' 
+            color="green"
+            ariaLabel = "circles-loading"
+            wrapperClass="items-center justify-center"
+            wrapperStyle=""
+            visible={true} />
+        )
+        
+        
+      }else if (wallet.connected && wallet.publicKey){
         return (
           <div>
             {
@@ -58,7 +77,9 @@ const WalletContainer =() =>{
             } 
           </div>
         )
-      }else{
+      }
+      
+      else{
         return (
           <div>
             <div className="flex items-center justify-center">
@@ -129,52 +150,9 @@ const WalletContainer =() =>{
   )
 }
 export default function Support() {
-
-  //{!wallet.connected ? <RenderNotConnectedWallet /> : <RenderConnectedWallet />}
-    //const connection = useConnection();
-    /*if (!connection || !wallet) {
-        return <RenderNotConnectedWallet />;
-    }*/
-    
-
-    //const [walletConnect, setWalletConnect] = useState(false);
-
-    // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-    const network = WalletAdapterNetwork.Devnet;
-
-    // You can also provide a custom RPC endpoint.
-    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
-    // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
-    // Only the wallets you configure here will be compiled into your application, and only the dependencies
-    // of wallets that your users connect to will be loaded.
-    const wallets = useMemo(
-        () => [
-            new PhantomWalletAdapter(),
-            new SlopeWalletAdapter(),
-            new GlowWalletAdapter(),
-            new SolflareWalletAdapter({ network }),
-            new TorusWalletAdapter(),
-            
-        ],
-        [network]
-    );
-    /*const wallet = useWallet();
-    let walletAddress = '';
-    try{
-        if (wallet.connected && wallet.publicKey) {
-            walletAddress = wallet.publicKey.toString()
-            console.log(walletAddress)
-        }
-    }catch(e){console.log(e)}*/
-    
-    return (
-      <ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets} autoConnect>
-            <WalletModalProvider>
-              {<WalletContainer />}
-            </WalletModalProvider>
-          </WalletProvider>
-      </ConnectionProvider>
+  return (
+    <>
+      <WalletContainer />
+    </>
   );
 }

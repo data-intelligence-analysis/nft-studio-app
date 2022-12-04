@@ -33,7 +33,6 @@
     "@solana/web3.js": "^1.62.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "add": "^2.0.6",
-    "bn.js": "^5.2.1",
     "core-js": "^3.0.0",
     "crypto-js": "^4.1.1",
     "i": "^0.3.7",

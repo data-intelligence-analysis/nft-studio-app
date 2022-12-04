@@ -20,7 +20,15 @@ function MyApp({ Component, pageProps }) {
 
   // You can also provide a custom RPC endpoint
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
+  
+  /*const wallet = useWallet();
+  let walletAddress = '';
+  try{
+      if (wallet.connected && wallet.publicKey) {
+          walletAddress = wallet.publicKey.toString()
+          console.log(walletAddress)
+      }
+  }catch(e){console.log(e)}*/
   // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
   // Only the wallets you configure here will be compiled into your application, and only the dependencies
   // of wallets that your users connect to will be loaded
