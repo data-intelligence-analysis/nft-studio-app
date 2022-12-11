@@ -176,7 +176,7 @@ const Footer = ({bgFormat, display}) => {
                                 src ={social.icon} 
                                 width="auto"
                                 height={"20"}
-                                priority="true"
+                                styles={{objectFit:"contain", objectPosition:'center'}}
                             />                                       
                         </a>
                         
@@ -184,7 +184,7 @@ const Footer = ({bgFormat, display}) => {
                 </div>
                 <div className={`${display} flex font-bold items-center mt-0.5 gap-x-2 `}>
                     <button className="justify-center flex items-center overflow-hidden px-1 sm:px-3.5 py-2 rounded-md bg-zinc-700 hover:ring-4 hover:ring-indigo-600 pointer-cursor" onClick={toggleModal}>
-                        <Image src={ogIcon} alt="ted-og" width="21" height="25" style={{marginRight:'0.475rem'}}/> 
+                        <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
                         <p className="font-bold font-display tracking-wider text-xs sm:text-lg">Terms of Use</p>
                     </button>
                 </div>

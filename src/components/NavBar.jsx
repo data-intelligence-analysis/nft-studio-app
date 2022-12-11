@@ -70,7 +70,7 @@ const NavBar = ({bgFormat, display}) => {
     return (
       <a href={href} ref={ref} className='h-10 rounded-md flex items-center p-1'>
         <Image
-          height = {45}
+          height = 'auto'
           width = {50}
           alt = "MetaTeds Logo"
           src = {MetaTedLogo}
@@ -102,7 +102,6 @@ const NavBar = ({bgFormat, display}) => {
     
       <nav className={`fixed top-0 left-0 w-full z-20 ${bgFormat}`}>
         <div className="max-w-screen-2xl w-full mx-auto px-2 py-2 flex items-center justify-between">
-          
           <div className = "hidden h-10 justify-center sm:flex items-center p-2">
             <Link href = '/' passHref legacyBehavior>
               <Logo />
@@ -118,7 +117,7 @@ const NavBar = ({bgFormat, display}) => {
           </a>
           <div className="flex items-center gap-x-1 pl-2" ref={ref}>
             <button className = "sm:hidden h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-zinc-700 flex items-center cursor-pointer" onClick={toggleDropdown}>
-              <Image src={ogIcon} alt="ted-og" width="21" height="25" style={{marginRight:'0.475rem'}}/> 
+              <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
               <p className="font-bold font-display text-sm">Items</p>
             </button>
             {isOpen && 

@@ -27,7 +27,8 @@ export default function Document() {
         <link rel="icon" href="/ted.ico" />
         {/*Logos - Device Type*/}
         <link rel="apple-touch-icon" href="/ted192.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet" />
+        {/*<link rel="preload prefetch" href="/img/metateds-header.png" as="font" />*/}
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet"  />
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 
       </Head>

@@ -1,5 +1,5 @@
 import React, {useState, useReact} from 'react'
-import metatedsHeader from '../assets/metateds-header.png'
+import metatedsHeader from '../../public/img/metateds-header.png'
 import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head';
@@ -33,7 +33,7 @@ const FrontPage = () => {
         id: 2,
         name: "Pixelate",
         href: 'pixelate',
-        content: "MetaPix provides a creation studio offers users the opportunity to pixelate 2D art and merge metateds NFTs with secondary attributes, coming soon, that can be used for a wide variety of purposes such as pfps for the metateds platform, NFTs, avatars, game characters, and more, to meet your standards.",
+        content: "MetaPix provides a creation studio that offers users the opportunity to pixelate 2D art and merge metateds NFTs with secondary attributes, coming soon, that can be used for a wide variety of purposes such as pfps for the metateds platform, NFTs, avatars, game characters, and more, to meet your standards.",
         title: "Pixelate Images with MetaPix",
         img: require('../assets/metapix_banner.png'),
 
@@ -94,7 +94,7 @@ const FrontPage = () => {
 					<div key={props.id} className="items-center w-full h-full">
 						<div className= "m-1 mb-8 sm:m-5 sm:mb-4 flex items-center">
 							<div className="w-3/12 min-w-fit mx-auto h-full justify-center flex items-center cursor-pointer py-1 px-1 max-w-xs rounded-lg border-2 border-slate-100" >
-								<Image src={ogIcon} alt="ted-og" width="25" height="30" style={{marginRight:'0.75rem'}}/>
+								<Image src={ogIcon} alt="ted-og" width="25" height="auto" placeholder="shimmer" style={{marginRight:'0.75rem'}}/>
 								<div className="block text-left mr-3 sm:mr-6">
 									<p className="text-xs uppercase font-normal">Powered by</p>
 									<p className="text-xs uppercase">MetaTed Labs - Metapix</p>
@@ -123,7 +123,7 @@ const FrontPage = () => {
                   alt="metapix"
                   height="220"
                   width= "auto"
-                  placeholder='blur'
+                  placeholder='shimmer'
                   style = {{objectFit: 'contain', objectPosition: 'center', borderRadius: '15px'}}
                 />
               </span>
@@ -193,11 +193,11 @@ const FrontPage = () => {
 										<div className="items-center mx-auto relative sm:flex">
 											<Image
 												src={require('../assets/landingIMG.png')}
-												placeholder='blur'
+												alt="space-ted"
+												placeholder='shimmer'
 												width='500'
 												height='auto'
-												loader =""
-
+												loader={customLoader}
 											/>
 										</div>
 									):(modalNavbar.map((elem, index) =>(
@@ -233,7 +233,7 @@ const FrontPage = () => {
 								alt="MetaTeds Logo"
 								height={250}
 								width='auto'
-								priority="true"
+								priority='true'
 						/>
 					</div>
 					<div className = 'home_content_subheader pb-10 ml-a mr-a font_text_size text-[#EAA640]'>
