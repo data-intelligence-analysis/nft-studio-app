@@ -55,10 +55,14 @@ export default function Home () {
         severity:"info",
         hideDuration: 6000
       })
-      //const aws = '../api/connectAWS.js'
+      
       var state = await aws()
-      /*var state = await fetch(aws(),{
-        method:"GET"
+      /*var state = fetch('../api/connectAWS',{
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/zip",
+          ...corsHeaders
+        }
       })*/
       setMessage({
         open:true,

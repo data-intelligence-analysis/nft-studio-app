@@ -14,10 +14,10 @@ const nextConfig = {
         source: "/home",
         destination: "/",
       },
-      { //proxy any requests on http://localhost:3000/api/* to http://localhost:5000/api/*
+      /*{ //proxy any requests on http://localhost:3000/api/* to http://localhost:5000/api/*
         source: '/api/:slug*',
         destination: 'http://localhost:5000/api/:slug*'
-      },
+      },*/
     ];
   },
   images:{

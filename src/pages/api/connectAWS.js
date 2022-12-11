@@ -146,3 +146,10 @@ export default async function aws(){
     handleErrors(err)
   }
 }
+{/*export default function handler(req,res){
+  if (req.method=="GET"){
+    aws()
+  }else{
+    res.status(405).send('Method Not Allowed')
+  }
+}*/}

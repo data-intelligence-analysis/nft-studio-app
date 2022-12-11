@@ -54,14 +54,10 @@
     "react-is": "^18.2.0",
     "react-loader-spinner": "^5.3.4",
     "react-unity-webgl": "^9.2.1",
-    "s3-zip": "^3.2.1",
     "three": "^0.146.0",
-    "three-obj-mtl-loader": "^1.0.3",
     "ts-node": "^10.9.1",
     "web-vitals": "^1.0.1",
-    "xml-stream": "^0.4.5",
-    "yarn": "^1.22.19",
-    "zlib-sync": "^0.1.7"
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.18.10",
