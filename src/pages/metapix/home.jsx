@@ -99,7 +99,7 @@ export default function Home () {
               wrapperClass="items-center justify-center"
               />:
         <button className="flex text-base sm:text-lgpt-4 bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg" onClick={downloadFile}> {/*()=>alert('Python script - pixelate avatars, nfts and much more (Coming Soon...)')*/}
-            <FileDownloadIcon/>{" "}<p className="inline-block pl-1">Download </p>
+            <FileDownloadIcon/>{" "}<p className="inline-block pl-1">Download [MacOs X]</p>
         </button>}
       </>
       
