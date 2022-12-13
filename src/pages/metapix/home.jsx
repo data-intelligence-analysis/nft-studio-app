@@ -94,7 +94,7 @@ export default function Home () {
         {loading ? <Circles 
               width='30' 
               height='30' 
-              color="purple"
+              color="green"
               ariaLabel = "circles-loading"
               wrapperClass="items-center justify-center"
               />:
