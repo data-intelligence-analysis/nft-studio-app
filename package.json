@@ -32,7 +32,6 @@
     "@solana/wallet-adapter-react-ui": "^0.9.22",
     "@solana/wallet-adapter-wallets": "^0.19.5",
     "@solana/web3.js": "^1.62.1",
-    "@tailwindcss/line-clamp": "^0.4.2",
     "add": "^2.0.6",
     "aws-sdk": "^2.1267.0",
     "axios": "^1.2.0",
@@ -61,8 +60,6 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.18.10",
-    "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/typography": "^0.5.8",
     "@types/jest": "^29.2.3",
     "@types/node": "^18.11.10",
     "@types/react": "^18.0.18",
