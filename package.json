@@ -69,7 +69,6 @@
     "@types/three": "^0.144.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
-    "autoprefixer": "^10.4.13",
     "babel-eslint": "^10.1.0",
     "babel-preset-gatsby": "^2.22.0",
     "eslint": "^8.27.0",
