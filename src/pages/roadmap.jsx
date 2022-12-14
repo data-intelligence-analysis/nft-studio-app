@@ -27,7 +27,7 @@ export default function Gaming() {
                   loader={customLoader}
                   alt = 'Roadmap'
                   src = {rm}
-                  height={'620'}
+                  height='620'
                   width='auto'
                   placeholder='blur'
                   style = {{objectFit: 'contain', objectPosition: 'center'}}
@@ -38,7 +38,7 @@ export default function Gaming() {
                     loader={customLoader}
                     alt = 'ted_warrior'
                     src = {ted_wd}
-                    height={'600'}
+                    height='auto'
                     width='auto'
                     placeholder='blur'
                     style = {{objectFit: 'contain', objectPosition: 'center'}}
