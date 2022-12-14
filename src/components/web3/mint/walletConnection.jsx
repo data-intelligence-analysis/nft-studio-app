@@ -16,7 +16,7 @@ import {
 } from '@solana/wallet-adapter-react';
 import styled from 'styled-components'
 import { createTheme, ThemeProvider } from "@material-ui/core";
-require('@solana/wallet-adapter-react-ui/styles.css');
+//require('@solana/wallet-adapter-react-ui/styles.css');
 
 const Div = styled.div`
   position: relative;
