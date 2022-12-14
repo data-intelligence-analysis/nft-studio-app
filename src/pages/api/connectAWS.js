@@ -1,9 +1,9 @@
 import S3 from "aws-sdk/clients/s3";
 import axios from 'axios';
-//mport {StatusCodes} from 'http-status-codes';
 import fileDownload from 'js-file-download';
-const path = require("path")
-const fs = require("fs")
+//mport {StatusCodes} from 'http-status-codes';
+//const path = require("path")
+//const fs = require("fs")
 const s3 = new S3({
   region: "us-east-2", //Ohio
   accessKeyId: process.env.NEXT_PUBLIC_ACCESS_KEY,
