@@ -14,7 +14,9 @@ const NavBarElements =[
     {
         id: 0,
         name: <Image src={Linktree} alt='linktree' width="auto"/>,
-        href: 'https://linktr.ee/metateds'
+        href: 'https://linktr.ee/metateds',
+        target: '_blank',
+        rel : "noreferrer noopener"
     },
     {
         id: 1,
@@ -99,80 +101,83 @@ const NavBar = ({bgFormat, display}) => {
 
   },[]);
   return(
-    
-      <nav className={`fixed top-0 left-0 w-full z-20 ${bgFormat}`}>
-        <div className="max-w-screen-2xl w-full mx-auto px-2 py-2 flex items-center justify-between">
-          <div className = "hidden h-10 justify-center sm:flex items-center p-2">
-            <Link href = '/' passHref legacyBehavior>
-              <Logo />
-            </Link>
-          </div>
-          <a className="h-10 cursor-pointer justify-center hidden sm:flex items-center p-2 rounded" href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noreferrer">
-            <div className="flex items-center p-2 h-10">
-              <button className="rounded text-sm overflow-hidden bg-[#B27315] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display"
-                onClick={()=> alert ('3D experience optimized for Desktop')} >
-                3D Experience
-              </button>
-            </div>
-          </a>
-          <div className="flex items-center gap-x-1 pl-2" ref={ref}>
-            <button className = "sm:hidden h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-zinc-700 flex items-center cursor-pointer" onClick={toggleDropdown}>
-              <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
-              <p className="font-bold font-display text-sm">Items</p>
-            </button>
-            {isOpen && 
-              <ul className={"sm:hidden responsive-dropdown-list responsive-dropdown-list-active text-center items-center place-items-center"} aria-label="dropdown-list" role="menu" tabIndex="0" id="Dropdown">
-                <li className="h-10 justify-center flex items-center p-2 pointer-cursor">
-                  <Link href = '/' passHref legacyBehavior>
-                    <Logo />
-                  </Link>
-                </li>
-                <a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">
-                  <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#B27315] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display pointer-cursor" onClick={()=> alert ('3D experience optimized for Desktop')}>
-                    3D Experience
-                  </li>
-                </a>
-              </ul>
-            }
-          </div>
-          <ul className={`${collapse ? 'navBarElements':''}`}></ul>
-          <div className={`flex items-center gap-x-1 p-2`}>
-            <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>
-          </div>
-          
-          <div className="navBarElements text-base sm:text-2xl uppercase">
-            {navBarElements.map((element, index) => (
-              (<Link
-                  href={element.href}
-                  key={index}
-                  legacyBehavior
-                >
-                <a className="navBarItems text-xl sm:text-2xl uppercase"onClick={closeNav}>{element.name}</a>
-              </Link>)
-            ))} 
-          </div>
-          
-          <button className='navBar_btn' onClick={toggleNav}>
-            {collapse ? 
-              (
-                <CloseIcon sx={{
-                        width: 55,
-                        height: 40,
-                    }}
-                />
-              ):
-              (
-                <MenuIcon 
-                    sx={{
-                        width: 55,
-                        height: 40,
-                    }}
-                />
-              )}
-          </button>
-          
+    <nav className={`fixed top-0 left-0 w-full z-20 ${bgFormat}`}>
+      <div className="max-w-screen-2xl w-full mx-auto px-2 py-2 flex items-center justify-between">
+        <div className = "hidden h-10 justify-center sm:flex items-center p-2">
+          <Link href='/' passHref legacyBehavior>
+            <Logo />
+          </Link>
         </div>
-      </nav>
+        <a className="h-10 cursor-pointer justify-center hidden sm:flex items-center p-2 rounded font-sans" href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noreferrer">
+          <div className="flex items-center p-2 h-10">
+            <button className="rounded text-sm overflow-hidden bg-[#B27315] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display"
+              onClick={()=> alert ('3D experience optimized for Desktop')} >
+              3D Experience
+            </button>
+          </div>
+        </a>
+        <div className="flex items-center gap-x-1 pl-2 font-sans" ref={ref}>
+          <button className = "sm:hidden h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-zinc-700 flex items-center cursor-pointer" onClick={toggleDropdown}>
+            <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
+            <p className="font-bold font-display text-sm">Items</p>
+          </button>
+          {isOpen && 
+            <ul className={"sm:hidden responsive-dropdown-list responsive-dropdown-list-active text-center items-center place-items-center w-[50%]"} aria-label="dropdown-list" role="menu" tabIndex="0" id="Dropdown">
+              <li className="h-10 justify-center flex items-center p-2 pointer-cursor">
+                <Link href = '/' passHref legacyBehavior>
+                  <Logo />
+                </Link>
+              </li>
+              <a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">
+                <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#B27315] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display pointer-cursor" onClick={()=> alert ('3D experience optimized for Desktop')}>
+                  3D Experience
+                </li>
+              </a>
+              <li className="h-full justify-center flex items-center p-2 pointer-cursor font-sans">
+                <WalletMultiButton className=" font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", width:'100%', height: "2.5rem", fontSize:"0.8rem", lineHeight: "1.25rem"}}/>
+              </li>
+            </ul>
+          }
+        </div>
+        <ul className={`${collapse ? 'navBarElements':''}`}></ul>
+        <div className={`sm:flex items-center gap-x-1 p-2 font-sans hidden`}>
+          <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}>
+            Connect Wallet
+          </WalletMultiButton>
+        </div>
+        
+        <div className="navBarElements text-base sm:text-2xl uppercase">
+          {navBarElements.map((element, index) => (
+            (<Link
+                href={element.href}
+                key={index}
+                legacyBehavior
+              >
+              <a className="navBarItems text-xl sm:text-2xl uppercase"onClick={closeNav} target={element.target} rel={element.rel}>{element.name}</a>
+            </Link>)
+          ))} 
+        </div>
+        
+        <button className='navBar_btn' onClick={toggleNav}>
+          {collapse ? 
+            (
+              <CloseIcon sx={{
+                      width: 55,
+                      height: 40,
+                  }}
+              />
+            ):
+            (
+              <MenuIcon 
+                  sx={{
+                      width: 55,
+                      height: 40,
+                  }}
+              />
+            )}
+        </button>
+      </div>
+    </nav>
   )
 }
 export default NavBar;

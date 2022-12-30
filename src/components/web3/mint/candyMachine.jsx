@@ -530,8 +530,8 @@ const CandyMachine = (walletAddress) => {
   },[])
   return(
     
-    <Container sx={{marginTop: 5}}>
-      <Container maxWidth="xs" sx={{position: "relative"}}>
+    <Container sx={{marginTop: 5, width:"100%"}}>
+      <Container maxWidth="xs" minWidth="xs" sx={{position: "relative"}}>
         <Paper
           sx={{
             padding: 24,
@@ -575,7 +575,7 @@ const CandyMachine = (walletAddress) => {
                   {/*`${candyMachine.state.itemsAvailable}`*/}
                 </Typography>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <Typography variant="body2" color="textSecondary">
                   Minted
                 </Typography>

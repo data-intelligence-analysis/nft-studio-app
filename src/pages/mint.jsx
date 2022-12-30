@@ -302,7 +302,7 @@ const RenderWalletConnect = () => {
     
   return (
     <>
-      {!connected && !wallet.publicKey? (
+      {!connected && !wallet.publicKey ? (
         <div className="bg-zinc-900 h-screen overflow-y-hidden"> 
           {/*<nav className="sticky top-[4.25rem] pointer-event-none z-nav w-full">
             <div className="absolute w-full mt-4">
@@ -315,9 +315,11 @@ const RenderWalletConnect = () => {
           </nav>*/}
           <CanvasLoad />
           <div className="absolute place-items-center grid top-[22%] left-0 right-0 bottom-[22%] pointer-events-auto items-center text-center px-6">
-            <h1 className="uppercase text-[#0880F0] text-sm sm:text-2xl md:text-3xl font-pixel">
-              Mainnet Mint Coming Soon
+            <h1 className="uppercase text-[#0880F0] text-lg sm:text-2xl md:text-3xl font-pixel font-bold">
+              Mainnet Mint Coming Soon.
+              <p>Select Wallet to continue</p>
             </h1>
+            
           </div>
         </div>
       

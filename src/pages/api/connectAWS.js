@@ -97,16 +97,21 @@ export default async function aws(){
             fileDownload(resp.data, filePath)
             //resp.data.pipe(filePath)
             //console.log(resp.data)
-            console.log("Donwload Completed")
-            return true;
+            console.log("Download Completed")
+            return {
+              success: "Download Complete!"
+            }
           }
           else {
             throw new Error(`Error Occured ${resp.data}`)
           }
           
         }).catch(err=> {
-          //console.log(err)
+          console.log(err)
           handleErrors(err)
+          return {
+            error: err
+          }
         })
     }
     
@@ -138,9 +143,7 @@ export default async function aws(){
       `https://metatedstudio.com` : 'http://localhost:3030'
     }
     downloadHandler(fileParams.Key)
-    return {
-      success: "Download Complete!"
-    }
+    
     
   } catch(err){
     handleErrors(err)

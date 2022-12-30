@@ -77,18 +77,19 @@ const BuyUSD = ({priceID, price, ticker}) => {
       // Even though this could fail, we're just going to set it to true for now
       setStatus(STATUS.Submitted)
     } catch (error) {
-      let message = error.msg || "Minting failed! Please try again!";
+      let msg = error.msg || "Minting failed! Please try again!";
       if (!error.msg){
         if (!error.message){
-          message="Transaction timeout! Please try again."
+          msg= "Transaction timeout! Please try again."
         } else if (error.message.indexOf("0x1")){
-          message = `Insufficient funds to mint. Please fund your wallet.`;
+          msg = `Insufficient funds to mint. Please fund your wallet.`;
         } 
       }
       setAlertState({
         open: true,
-        error,
+        message: msg,
         severity: "error",
+        hideDuration: 8000
       });
       console.error(error); 
     } finally {
@@ -157,9 +158,15 @@ const BuyUSD = ({priceID, price, ticker}) => {
               if (e instanceof FindReferenceError){
                   return null;
               }
-              // this function will error if the transaction isn't found and that can happen rigth after the transaction
-                
-              console.error("Uknown error", e);
+              // this function will error if the transaction isn't found and that can happen right after the transaction
+              console.error("Uknown error: ", e);
+              setAlertState({
+                open: true,
+                message: "Transaction isn't found, check console!",
+                severity: "error",
+                hideDuration: 5000
+              })
+              
           }finally {setLoading(false);}
       }, 1000); //1 seconds
       return () => {
@@ -169,6 +176,12 @@ const BuyUSD = ({priceID, price, ticker}) => {
     if (status === STATUS.Paid){
         let success = "Transaction Successful"
         console.log(success)
+        setAlertState({
+          open: true,
+          message: success,
+          severity: "success",
+          hideDuration: 6000
+        })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
@@ -187,8 +200,8 @@ const BuyUSD = ({priceID, price, ticker}) => {
   }
 
   if (loading) {
-    let waiting = "Waiting for transaction....."
-    console.log(waiting)
+    //let waiting = "Waiting for transaction....."
+    //console.log(waiting)
     return (
         <Circles 
           width='50' 
@@ -204,19 +217,19 @@ const BuyUSD = ({priceID, price, ticker}) => {
     <div className="relative">
       <div>
         {status === STATUS.Paid ? (
-          <div className="text-center items-center">
+          <div className="text-center items-center text-sm sm:text-base">
             <Alert
               onClose={()=> {}}
               severity="success"
               iconMapping={{success: <CheckCircleOutlineIcon fontSize="inherit" />}}
               >
-              Transaction successful
+              Successful USDC Donation
             </Alert>
           </div>
           
         ) : (
           <div className="flex items-center justify-center mt-5 sm:mt-10">
-            <button disabled={loading} onClick = {()=> alert("Still in development")} className="solana-button-text text-sm sm:text-base font-bold px-2.5 py-1 text-center">
+            <button disabled={loading} onClick = {()=> alert("Still in development")} className="solana-button-text bg-[#4e44ce] text-sm sm:text-base font-bold px-2.5 py-1 text-center">
               <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
             </button>
           </div>
@@ -282,7 +295,7 @@ const Buy = ({priceID, price, ticker}) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        ...corsHeaders
+        ...corsHeaders //to avoid 500 errors
       },
       body: JSON.stringify(order),
     });
@@ -304,18 +317,19 @@ const Buy = ({priceID, price, ticker}) => {
       // Even though this could fail, we're just going to set it to true for now
       setStatus(STATUS.Submitted)
     } catch (error) {
-      let message = error.msg || "Minting failed! Please try again!";
+      let msg = error.msg || "Minting failed! Please try again!";
       if (!error.msg){
         if (!error.message){
-          message="Transaction timeout! Please try again."
+          msg = "Transaction timeout! Please try again."
         } else if (error.message.indexOf("0x1")){
-          message = `Insufficient funds to mint. Please fund your wallet.`;
+          msg = `Insufficient funds to mint. Please fund your wallet.`;
         } 
       }
       setAlertState({
         open: true,
-        error,
+        message: msg,
         severity: "error",
+        hideDuration: 8000
       });
       console.error(error); 
     } finally {
@@ -385,8 +399,14 @@ const Buy = ({priceID, price, ticker}) => {
                   return null;
               }
               // this function will error if the transaction isn't found and that can happen rigth after the transaction
-                
               console.error("Uknown error", e);
+              setAlertState({
+                open: true,
+                message: "Transaction isn't found!",
+                severity: "error",
+                hideDuration: 5000
+              })
+              
           }finally {setLoading(false);}
       }, 1000); //1 seconds
       return () => {
@@ -396,6 +416,13 @@ const Buy = ({priceID, price, ticker}) => {
     if (status === STATUS.Paid){
         let success = "Transaction Successful"
         console.log(success)
+        setAlertState({
+          open: true,
+          message: success,
+          severity: "success",
+          hideDuration: 6000
+        })
+        
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
@@ -414,8 +441,8 @@ const Buy = ({priceID, price, ticker}) => {
   }
 
   if (loading) {
-    let waiting = "Waiting for transaction....."
-    console.log(waiting)
+    //let waiting = "Waiting for transaction....."
+    //console.log(waiting)
     return (
         <Circles 
           width='50' 
@@ -431,20 +458,20 @@ const Buy = ({priceID, price, ticker}) => {
     <>
       <div>
         {status === STATUS.Paid ? (
-          <div className="text-center items-center">
+          <div className="text-center items-center text-sm sm:text-base">
             <Alert
               onClose={()=> {}}
               severity="success"
               iconMapping={{success: <CheckCircleOutlineIcon fontSize="inherit" />}}
               >
-              Transaction successful
+              Successful SOL Donaton
             </Alert>
           </div>
-          
         ) : ( //solana-button-text flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center
             
             <div className="items-center justify-center flex">
-              <button disabled={loading} onClick = {()=> alert("Still in development")} className="solana-button-text text-sm sm:text-base font-bold px-2.5 py-1 text-center">
+              {/*()=> alert("Still in development")*/}
+              <button disabled={loading} onClick = {()=> alert("Still in development")} className="solana-button-text bg-[#4e44ce] text-sm sm:text-base font-bold px-2.5 py-1 text-center">
                 <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
               </button>
             </div>

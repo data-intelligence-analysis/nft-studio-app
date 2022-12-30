@@ -5,10 +5,6 @@ import StraightIcon from '@mui/icons-material/Straight';
 import {
   useWallet,
 } from '@solana/wallet-adapter-react';
-import {
-  WalletModalProvider,
-  WalletMultiButton
-} from '@solana/wallet-adapter-react-ui';
 import {Responsive, WidthProvider} from "react-grid-layout";
 import styled from "styled-components";
 import { clusterApiUrl, 
@@ -62,16 +58,16 @@ export default function Utility() {
   const RenderConnectedWallet = () => {
     return (
       <>
-        <div className="bg-[#343333] h-screen overflow-auto">
-          <div className="flex relative text-center items-center h-full overflow-auto">
-            <div className="absolute items-center lg:mt-20 place-items-center justify-center top-20 mx-auto w-full">
+        <div className="bg-[#343333] h-screen">
+          <div className="flex relative text-center items-center h-full overflow-y-auto">
+            <div className="absolute mt-40 pt-40 pb-20 sm:my-10 sm:pt-40 md:pt-20 md:my-20 md:pb-5 lg:my-40 lg:pt-20 lg:pb-20 justify-center mx-auto w-full">
               <Root draggable={false}>
                 <ResponsiveGridLayout
                   layouts= {{lg:layout}}
                   breakpoints={{ lg: 1000, md: 850, sm: 650, xs: 450, xxs: 0}}
-                  cols={{ lg: 4, md: 3, sm: 2, xs: 1, xxs: 1}}
+                  cols={{ lg: 4, md: 3, sm: 2, xs: 2, xxs: 1}}
                   rowHeight={250}
-                  width={900}
+                  width={700}
                   compactType={'horizontal'}
                   isDraggable={false}
                 >
