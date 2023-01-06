@@ -316,7 +316,7 @@ const RenderWalletConnect = () => {
           <CanvasLoad />
           <div className="absolute place-items-center grid top-[22%] left-0 right-0 bottom-[22%] pointer-events-auto items-center text-center px-6">
             <h1 className="uppercase text-[#0880F0] text-lg sm:text-2xl md:text-3xl font-pixel font-bold">
-              Mainnet Mint Coming Soon.
+              Mainnet Mint Coming Soon
               <p>Select Wallet to continue</p>
             </h1>
             

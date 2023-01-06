@@ -151,7 +151,7 @@ export default function Home () {
                   <span><ArrowBackIcon /></span>
                   <span className="ml-2 inline-block text-base leading-7">Back</span>
                 </a>
-                <p className="inline-box font-sans text-center text-xs sm:text-sm md:text-base">MetaPix offers a combination of pixelate program, downloaded for free down below, and other paid tools.</p>
+                <p className="inline-box font-sans text-center text-xs sm:text-sm md:text-base">MetaPix is a creation studio platform offering a plethora of free and paid tools</p>
                 <a href={HomeURL} className="rounded-lg hover:bg-slate-900 rounded-lg cursor-pointer px-1 py-1 sm:px-2 sm:py-2">
                   <span className="mr-2 inline-block text-base leading-6">Home</span>
                   <ArrowForwardIcon />

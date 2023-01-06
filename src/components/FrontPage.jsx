@@ -28,31 +28,31 @@ const FrontPage = () => {
 	//explore page array
 	const modalNavBarElements =[
     {
-        id: 1,
-        name: "Evolution",
-        href: "mutation",
-        content: "Enhance your MetaTeds NFT by merging it with our Elixir to unlock and mint a gamefied version NFT",
-        title: "Evolved MetaTeds",
-				img: left_nft,
-				img2: right_nft,
+			id: 1,
+			name: "Evolution",
+			href: "mutation",
+			content: "Enhance your MetaTeds NFT by merging it with our Elixir to unlock and mint a gamefied version NFT",
+			title: "Evolved MetaTeds",
+			img: left_nft,
+			img2: right_nft,
     },
     {
-        id: 2,
-        name:"MetaPix",
-        href: 'metapix',
-        content: "MetaPix provides a creation studio that offers users the opportunity to pixelate 2D art and merge metateds NFTs with secondary attributes that can be used for a wide variety of purposes such as pfps for the metateds platform, NFTs, avatars, game characters, and more, to meet your standards.",
-        title: "MetaPix creation studio",
-        img: require('../assets/metapix_banner.png'),
-
+			id: 2,
+			name:"MetaPix",
+			href: 'metapix',
+			content: "MetaPix provides a creation studio that offers users the opportunity to pixelate 2D art and merge metateds NFTs with secondary attributes that can be used for a wide variety of purposes such as pfps for the metateds platform, NFTs, avatars, game characters, and more, to meet your standards.",
+			title: "MetaPix creation studio",
+			img: require('../assets/metapix_banner.png'),
     },
     {
-        id: 3,
-        name: "Gallery",
-        href: "gallery",
-        content: "View our generative art and join the communities it represents.",
-        title: "Collections & Communities",
-				img: metaheadLogo, //require('../assets/ted_1.png'),
-				img2: metatedsLogo, //require('../assets/tednorm.png')
+			id: 3,
+			name: "Gallery",
+			href: "gallery",
+			content: "View our generative art and join the communities it represents.",
+			title: "Collections & Communities",
+			img: metaheadLogo, //require('../assets/ted_1.png'),
+			img2: metatedsLogo, //require('../assets/tednorm.png')
+			img3: ""
     },
 		{
 			id: 4,
@@ -61,7 +61,8 @@ const FrontPage = () => {
 			content: "Welcome, hope you stay awhile!",
 			title: "Building Excellence",
 			img: '',
-			img2: ''
+			img2: '',
+			img3:''
 		},
   
   ]
@@ -237,7 +238,7 @@ const FrontPage = () => {
 								Own and control the pixel quality of your images and produce outstanding pixelated images that meet your desires.
 							</p>
 							<p className="mt-2 mb-2 inline-block text-base sm:text-lg font-sans text-slate-300">
-								We will provide DAO members (NFT holders) their ability to mint their images from the MetaPix creation studio.
+								<a href="/metapix/dao" className="text-indigo-500 bold text-base lg:text-lg font-['Ranchers']" target="_blank" rel="noreferrer noopener">NFT holders</a> can mint their final pixelated images from the MetaPix creation studio.
 							</p>
 						</section>
 						<div className="mt-3 mb-6 text-align items-center">
@@ -349,6 +350,50 @@ const FrontPage = () => {
 									</Box>
 								</Card>
 							</div>
+							<div className="flex justify-center items-center text-center px-2 py-4 sm:px-4 lg:px-6 lg:py-6">
+								<Card sx={{ 
+									bgcolor: 'rgba(30,41,59,1)',
+									justifyContent: 'center',
+									alignItems: 'center',
+									marginRight: 'auto',
+									marginLeft: 'auto',
+									maxWidth: 300,
+									minWidth: 250,
+									width:'100%',
+									borderRadius: 4,
+								}}>
+									<CardMedia
+										component="img"
+										sx={{ width: '100%', objectFit: 'contain', objectPosition: 'center'}}
+										image = {props.img3}
+										alt="Weapons"
+									/>
+									<Box sx={{ display: 'flex', flexDirection: 'column', p:1, width: '80%' }}>
+										<CardContent sx={{ flex: '1 0 auto' }}>
+											<Typography component="div" variant="h5" align='left' sx={{pb: 1, color:'rgba(255,255,255, 0.9)'}}>
+												Weapons
+											</Typography>
+											<Typography variant="string" color="rgba(148,163,184,0.8)" component="div" align='left' sx={{fontFamily: 'Graphik'}}>
+                        MetaTed Weapons Collection
+                      </Typography>
+										</CardContent>
+										<CardActions>
+											<Button size="small" color="primary" onClick= {(event) => tweetNow(event,
+												`${server}/gallery/weapons`,
+												'Check out the Metated gallery and join the community - https://metateds.com/communities/metateds', 
+												'MetaTeds')}>
+												Tweet
+											</Button>
+											<Button size="small" href="/gallery/weapons" target='_blank' rel ="noopener noreferrer" color="primary">
+												Gallery
+											</Button>
+											<Button sx={{paddingLeft:'20px'}} size="small" color="primary" href={valURL(new URL("https://metateds.com/communities/metateds"))?'https://metateds.com/communities/metateds':''} target='_blank' rel ="noopener">
+												Community
+											</Button>
+										</CardActions>
+									</Box>
+								</Card>
+							</div>
 						</div>
 					</div>
 				}
@@ -417,6 +462,7 @@ const FrontPage = () => {
 														content={elem.content}
 														img={elem.img}
 														img2={elem.img2}
+														img3={elem.img3}
 													/>
 												}
 											</div>
@@ -444,9 +490,6 @@ const FrontPage = () => {
   },[]);
 	return (
 			<div className='home_container'>
-					<Head>
-							<title>Home | MetaTeds </title>
-					</Head>
 					<div className = 'home_container_name'>
 						<Image
 								loader={customLoader} 

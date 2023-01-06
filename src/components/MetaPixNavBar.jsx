@@ -13,29 +13,37 @@ import {
 import Linktree from '../assets/linktree-6.svg'
 const NavBarElements =[
     {
-        id: 0,
-        name: <Image src={Linktree} alt='linktree' width="auto"/>,
-        href: '/links',
-        target: '_blank',
-        rel : "noreferrer noopener"
+      id: 0,
+      name: <Image src={Linktree} alt='linktree' width="auto"/>,
+      href: '/links',
+      target: '_blank',
+      rel : "noreferrer noopener"
     },
     {
-        id: 1,
-        name: 'Home',
-        href: '/metapix/dao'
+      id: 1,
+      name: 'Home',
+      href: '/metapix/home'
         
     },
     {
-        id: 2,
-        name: 'Metapix-Home',
-        href: '/metapix/home',
+      id: 2,
+      name: 'MetaTed Studio',
+      href: '/',
+      target: '_blank',
+      rel : "noreferrer noopener"
+      
     },
     {
-        id: 3,
-        name: 'Metapix-Free',
-        href: '/metapix/service',
-        target: '_blank',
-        rel: "noreferrer noopener"
+      id: 3,
+      name: 'Metapix [DAO]',
+      href: '/metapix/dao',
+    },
+    {
+      id: 4,
+      name: 'Metapix [Free]',
+      href: '/metapix/service',
+      target: '_blank',
+      rel: "noreferrer noopener"
     },
 
 ]
@@ -112,7 +120,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
         <div className="flex items-center gap-x-1 pl-2 font-sans" ref={ref}>
           <button className = "h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-slate-900 flex items-center cursor-pointer" onClick={toggleDropdown}>
             <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
-            <p className="font-bold font-pixel text-xs">Items</p>
+            <p className="font-bold font-sans text-xs">Items</p>
           </button>
           {isOpen && 
             <ul className={"responsive-dropdown-metapix-list responsive-dropdown-list-active text-center items-center place-items-center bg-indigo-900"} aria-label="dropdown-list" role="menu" tabIndex="0" id="Dropdown">
@@ -123,7 +131,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
               </li>
               <a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">
                 <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#4e44ce] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display pointer-cursor" onClick={()=> alert ('3D experience optimized for Desktop')}>
-                  <p className="font-pixel text-xs">3D Experience</p>
+                  <p className="font-sans text-xs">3D Experience</p>
                 </li>
               </a>
               <li className="h-full justify-center flex items-center p-2 pointer-cursor font-sans">
@@ -132,7 +140,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
               <Link href='/' passHref legacyBehavior>
                 <a target="_blank" rel="noopener noreferrer">
                   <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#4e44ce] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display pointer-cursor">
-                    <p className="font-pixel text-xs">Metateds Studio</p>
+                    <p className="font-sans text-xs">Metateds Studio</p>
                   </li>
                 </a>
               </Link>
@@ -151,7 +159,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
                 key={index}
                 legacyBehavior
               >
-              <a className="navBarItems text-xs sm:text-lg uppercase font-pixel"onClick={closeNav} target={element.target} rel={element.rel}>{element.name}</a>
+              <a className="navBarItems text-xs sm:text-lg uppercase font-sans"onClick={closeNav} target={element.target} rel={element.rel}>{element.name}</a>
             </Link>)
           ))} 
         </div>

@@ -16,7 +16,7 @@ const NavBarElements =[
         name: <Image src={Linktree} alt='linktree' width="auto"/>,
         href: 'https://linktr.ee/metateds',
         target: '_blank',
-        rel : "noreferrer noopener"
+        rel: "noreferrer noopener"
     },
     {
         id: 1,
@@ -141,9 +141,7 @@ const NavBar = ({bgFormat, display}) => {
         </div>
         <ul className={`${collapse ? 'navBarElements':''}`}></ul>
         <div className={`sm:flex items-center gap-x-1 p-2 font-sans hidden`}>
-          <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}>
-            Connect Wallet
-          </WalletMultiButton>
+          <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>
         </div>
         
         <div className="navBarElements text-base sm:text-2xl uppercase">
