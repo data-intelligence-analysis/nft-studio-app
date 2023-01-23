@@ -1,12 +1,15 @@
 import React, {useRef} from 'react'
 import Head from "next/head";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Image from "next/image";
+import QuickSight from 'react-aws-icons/dist/aws/logo/QuickSight';
+import DynamoDB from 'react-aws-icons/dist/aws/logo/DynamoDB';
+import Glue from 'react-aws-icons/dist/aws/logo/Glue'
 import Link from 'next/link';
-import { CircularProgress } from "@material-ui/core";
 import { Circles } from "react-loader-spinner";
-import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';3
+import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
 import {useRouter} from 'next/router'
 import MetaPixNavBar from "../../components/MetaPixNavBar";
+import {buildUrl} from 'cloudinary-build-url';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import {
   WalletMultiButton
@@ -16,6 +19,8 @@ import { clusterApiUrl } from '@solana/web3.js';
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useConnection } from "@solana/wallet-adapter-react";
+
+
 
 export default function DAO () {
   const wallet = useWallet();
@@ -31,6 +36,26 @@ export default function DAO () {
     const parsed = url
     return ['https:', 'http:'].includes(parsed.protocol)
   }
+  const url = buildUrl('',{
+    cloud: {
+      cloudName: 'fay'
+    },
+    transformations:{
+      effect:{
+        name: 'pixelate',
+        value: 40
+      }
+    }
+  })
+  const metapixImg = {
+    background: 'url(/img/workstation.png)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    inset: '0px',
+    backgroundPosition: 'center center',
+    position: 'absolute',
+    width: '100%'
+  }
   const METATEDS_HOME = '/'
   {/*<Link href="/" passHref legacyBehavior>
     <ArrowBackIcon />
@@ -44,11 +69,12 @@ export default function DAO () {
       <div className="bg-slate-900 min-h-screen">
         <MetaPixNavBar bgFormat={"bg-[#320D12]"} opacity={"opacity-100"}/>
         <div className="min-h-full w-screen overflow-x-hidden overflow-y-auto items-center my-2 lg:my-4 max-w-screen-2xl border-shadow mx-auto">
-          <section className="w-full bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 pt-10 px-2 lg:px-4">
-            <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4">
-              <h1 className="text-2xl sm:text-3xl font-pixel uppercase">Empowering community focused & gaming experiences</h1>
+          <div className="mt-5 w-full bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 pt-10 px-2 lg:px-4 relative">
+            <div className="" style={metapixImg}></div>
+            <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-20">
+              <h1 className="text-base sm:text-2xl lg:text-3xl font-pixel uppercase">Empowering community focused & gaming experiences</h1>
             </div>
-            <div className="col-start-3 col-span-4 h-[80px] mx-auto lg:col-start-5 lg:col-span-5 font-sans text-center items-center mb-2">
+            <div className="col-start-3 col-span-4 h-[80px] mx-auto lg:col-start-5 lg:col-span-5 font-sans text-center items-center mb-2 z-20">
               <p>Click to view more</p>
               <div className="pt-4">
                 <button className="">
@@ -56,7 +82,7 @@ export default function DAO () {
                 </button>
               </div>
             </div>
-          </section>
+          </div>
           <div className="mt-4 mb-3 lg:mt-6 lg:mb-5 py-4 lg:py-6 px-4 lg:px-6 sm:grid sm:grid-cols-2 place-items-center text-center items-center w-full">
             <div className="text-center sm:px-4 py-4">
               <h1 className="font-pixel">About</h1>
@@ -72,7 +98,7 @@ export default function DAO () {
             <iframe className="p-2 w-full mx-auto px-6" 
                 width="420" 
                 height="400" 
-                src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                src="">
             </iframe>
           </section>
           <section className="my-4 lg:my-8 px-2 sm:px-4 lg:px-6 items-center block mx-auto w-full">
@@ -113,7 +139,7 @@ export default function DAO () {
                 <iframe className="w-full mx-auto mt-2" 
                         width="600" 
                         height="800" 
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                        src="">
                 </iframe>
                 <p className="text-left text-xs">
                   refreshed every 45 seconds - {""}
@@ -125,7 +151,7 @@ export default function DAO () {
                 <iframe className="mt-2 w-full mx-auto" 
                         width="600" 
                         height="800" 
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                        src="">
                 </iframe>
                 <p className="text-left text-xs">
                   refreshed every 45 seconds - {""}
@@ -134,10 +160,17 @@ export default function DAO () {
                 
               </div>
               <h1 className="text-center mt-3 font-pixel font-bold inline-block text-base lg:text-xl">Technology Stack</h1>
-              <div className="p-2 sm:p-4 sm:grid sm:grid-cols-3 items-center">
-                <p className="p-2">[Images of Web2 technology]</p>
-                <p className="p-2">[Images of Web3 technology]</p>
-                <p className="p-2">[Images of Web2 technology]</p>
+              <div className="p-2 sm:p-4 grid grid-cols-2 sm:grid-cols-4 place-items-center items-center">
+                <QuickSight size={150} />
+                <DynamoDB size={150} />
+                <Glue size ={100} />
+                <Image 
+                  src={require('../../assets/solana.svg')}
+                  height="auto"
+                  width="50"
+                  preload="true"
+                />
+                <a href="https://www.flaticon.com/free-icons/solana" title="solana icons"></a>
               </div>
             </div>
           </section>

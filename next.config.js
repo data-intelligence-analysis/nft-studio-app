@@ -21,7 +21,10 @@ const nextConfig = {
     ];
   },
   images:{
-    domains: ["cdn.discordapp.com"]
+    domains: [
+      'cdn.discordapp.com',
+      'res.cloudinary.com'
+    ]
   },
   eslint: {
     ignoreDuringBuilds: true,

@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
-import twitter from '../assets/twitter.svg'
+
 import discord from '../assets/discord.svg'
-import solsurfer from '../assets/solsurfer.png'
+import TwitterIcon from '@mui/icons-material/Twitter';
 import platformIcon from '../assets/ted@3.png'
 import ogIcon from '../assets/og_icon.png'
 import CloseIcon from '@mui/icons-material/Close';
@@ -18,29 +18,18 @@ const SocialMedia = [
     {
         name: 'Twitter',
         href: 'https://twitter.com/MetaTeds',
-        icon: twitter
+        icon: <TwitterIcon />,
     },
     {
         name: 'Discord',
         href: 'http://discord.gg/N5wB8JTBBS',
-        icon: discord
+        icon: <Image alt = 'Discord' src ={discord} width="auto" height={"20"} styles={{objectFit:"contain", objectPosition:'center'}}/> 
     },
-    /*{
-        name: 'SolSurfer Markeplace',
-        href: 'https://solsurfer.xyz/#/',
-        icon: solsurfer,
-    },*/
     {   
         name: 'Platform',
         href: 'https://metateds.com/',
-        icon: platformIcon,
+        icon: <Image alt = 'Discord' src ={platformIcon} width="auto" height={"20"} styles={{objectFit:"contain", objectPosition:'center'}}/> ,
     },
-    
-    /*{ 
-        name: 'YouTube',
-        href: 'https://www.youtube.com/channel/UCdAwJk3r-ZLVWekikurLDjw',
-        icon: require('../assets/YouTube-Original.png')
-    }*/
 ]
 
 //fixed pt-1 pb-1 z-30 text-center w-full bottom-0 bg-transparent
@@ -171,13 +160,7 @@ const Footer = ({bgFormat, display}) => {
                         <a className = 'sm:py-[10px] sm:px-[10px] py-[8px] px-[4px]' key={index} 
                             target="_blank" rel = "noreferrer" 
                             href={valURL(new URL(`${social.href}`)) ? social.href : ''}>
-                            <Image
-                                alt = {social.name} 
-                                src ={social.icon} 
-                                width="auto"
-                                height={"20"}
-                                styles={{objectFit:"contain", objectPosition:'center'}}
-                            />                                       
+                            {social.icon}                                     
                         </a>
                         
                     ))}
