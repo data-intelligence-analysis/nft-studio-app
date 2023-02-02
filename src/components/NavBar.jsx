@@ -9,6 +9,7 @@ import ogIcon from '../assets/og_icon.png'
 import {
     WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
+//import {SiLinktree} from "@react-icons/all-files/si/SiLinktree"
 import Linktree from '../assets/linktree-6.svg'
 const NavBarElements =[
     {
