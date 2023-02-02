@@ -1,10 +1,11 @@
 import Head from "next/head";
 import React, {useMemo, useEffect, useState} from 'react'
 import solanaPayImg from '../assets/solana_pay_white.png';
-import usdcPayImg from '../assets/usdc_logo.png'
+import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle"
+//import usdcPayImg from '../assets/usdc_logo.png'
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import StraightIcon from '@mui/icons-material/Straight';
-import UserLogo from '../assets/user-logo.png';
+//import UserLogo from '../assets/user-logo.png';
 import Donate from '../components/Donate';
 import CloseIcon from '@mui/icons-material/Close';
 import Home from '../pages/index'
@@ -182,7 +183,7 @@ const WalletContainer =() =>{
             <div className="mt-5 flex items-center justify-center sm:mt-10">
               <button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
                 className="solana-button-text bg-[#4e44ce] flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center">
-                <p className="inline-block">Donate</p><Image alt="usdc" width= {"30"} height={"18"} src={usdcPayImg} priority="true" style={{marginRight:"3"}} />
+                <p className="inline-block">Donate</p><AiFillDollarCircle alt="usdc" width= {"30"} height={"20"} style={{marginRight:"3px"}} />
               </button> 
             </div> 
           </div>
@@ -208,7 +209,7 @@ const WalletContainer =() =>{
                 {!wallet.connected && !wallet.publicKey ?
                   (
                     <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
-                      <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">Connect to wallet above </h1><StraightIcon /> 
+                      <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">Connect to wallet above </h1>
                     </div>
                   ):(
                     <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
