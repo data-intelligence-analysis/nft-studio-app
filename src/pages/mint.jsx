@@ -29,6 +29,7 @@ import {Suspense} from "react";
 //import texturePack from '../assets/textures/earth_normal_map.png'
 import dynamic from 'next/dynamic'
 import { Canvas } from "@react-three/fiber";
+import { buildUrl } from 'cloudinary-build-url';
 //import {MTLLoader, OBJLoader} from 'three-obj-mtl-loader'
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 //import * as dat from 'dat.gui'
@@ -116,7 +117,14 @@ const CanvasLoad = (props)  => {
         ssr: false,
       }
     )*/
-  
+  //https://res.cloudinary.com/dg7z2hep5/image/upload/v1675653613/metapix_media/earth_normal_map_v2vy3x.jpg
+  const url = buildUrl('metapix_media/earth_normal_map_v2vy3x', {
+    cloud:{
+      cloudName: 'dg7z2hep5',
+      resourceType: 'image',
+      storageType:'upload'
+    },
+  })
   useEffect(()=>{
     // Canvas
     //const canvas = document.querySelector('canvas.webgl')
@@ -125,8 +133,8 @@ const CanvasLoad = (props)  => {
     const scene = new THREE.Scene()
 
     const textureLoader = new THREE.TextureLoader() // calling textureLoader instance
-    const normalTexture =  textureLoader.load('/textures/earth_normal_map.png')
-    
+    //const normalTexture =  textureLoader.load('/textures/earth_normal_map.png')
+    const normalTexture =  textureLoader.load(`${url}`)
 
     // Objects - physical shape of the scene (body of the 3D objects)
     const sphere_geometry = new THREE.SphereGeometry(.5, 64, 64);

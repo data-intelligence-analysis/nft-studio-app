@@ -42,8 +42,9 @@ const NavBarElements =[
       id: 4,
       name: 'Metapix [Free]',
       href: '/metapix/service',
-      target: '_blank',
+      /*target: '_blank',
       rel: "noreferrer noopener"
+      */
     },
 
 ]
