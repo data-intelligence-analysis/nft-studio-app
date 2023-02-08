@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import rm from '../assets/Roadmap.png'
 import Image from 'next/image'
 import ted_wd from '../assets/ted-warrior-tools.png'
+import {buildUrl} from 'cloudinary-build-url';
 
 const customLoader = ({src, width, quality}) => {
   return process.env.NODE_ENV === "production" ?
@@ -11,7 +12,26 @@ const customLoader = ({src, width, quality}) => {
 `http://localhost:3000/${src}?${width}&q=${quality || 75}`;
 }
 
-export default function Gaming() {
+export default function Roadmap() {
+  const roadmapURL_abs_path = `https://res.cloudinary.com/dg7z2hep5/image/upload/v1674420960/metapix_media/Roadmap_jmquiz.png`
+  const tedURL_abs_path = `https://res.cloudinary.com/dg7z2hep5/image/upload/v1674420976/metapix_media/ted-warrior-tools_dzdgal.png`
+  const roadmap_img = `Roadmap_jmquiz`
+  const roadmap_ted = `ted-warrior-tools_dzdgal`
+  const roadmapURL = buildUrl(`metapix_media/${roadmap_img}`, {
+    cloud:{
+      cloudName: 'dg7z2hep5',
+      resourceType: 'image',
+      storageType:'upload'
+    },
+  })
+  
+  const tedURL = buildUrl(`metapix_media/${roadmap_ted}`, {
+    cloud:{
+      cloudName: 'dg7z2hep5',
+      resourceType: 'image',
+      storageType:'upload'
+    },
+  })
   return (
     <>
       <Head>
@@ -24,23 +44,19 @@ export default function Gaming() {
             <div className="h-full pt-4 grid sm:grid-cols-2 place-items-center">
               <div className= "grid place-items-center object-contain object-center py-4 px-2 bg-transparent">
                 <Image 
-                  loader={customLoader}
                   alt = 'Roadmap'
-                  src = {rm}
-                  height='620'
-                  width='auto'
-                  placeholder='blur'
+                  src = {roadmapURL}
+                  height='650'
+                  width='550'
                   style = {{objectFit: 'contain', objectPosition: 'center'}}
                 />
               </div>
               <div className= "hidden sm:grid place-items-center object-contain object-center py-4 px-2 bg-transparent">
                 <Image 
-                    loader={customLoader}
                     alt = 'ted_warrior'
-                    src = {ted_wd}
-                    height='auto'
-                    width='auto'
-                    placeholder='blur'
+                    src = {tedURL}
+                    height='650'
+                    width='550'
                     style = {{objectFit: 'contain', objectPosition: 'center'}}
                   />
               </div>

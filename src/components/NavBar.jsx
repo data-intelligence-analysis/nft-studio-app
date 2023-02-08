@@ -5,15 +5,17 @@ import MetaTedLogo from '../assets/ted_1.png'
 import Link from 'next/link'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import ogIcon from '../assets/og_icon.png'
+import ogIcon from '../assets/og_icon.png';
+import { SiLinktree } from 'react-icons/si';
 import {
     WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
-import Linktree from '../assets/linktree-6.svg'
+//import Linktree from '../assets/linktree-6.svg'
+{/*<Image src={Linktree} alt='linktree' width="auto"/>,*/}
 const NavBarElements =[
     {
         id: 0,
-        name: <Image src={Linktree} alt='linktree' width="auto"/>,
+        name: <SiLinktree />, 
         href: 'https://linktr.ee/metateds',
         target: '_blank',
         rel: "noreferrer noopener"

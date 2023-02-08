@@ -242,7 +242,7 @@ const FrontPage = () => {
 							</p>
 						</section>
 						<div className="mt-3 mb-6 text-align items-center">
-							<Link href='/metapix/home' legacyBehavior >
+							<Link href='/metapix' legacyBehavior >
 								<a target='_blank' rel ="noopener noreferrer">
 									<button type="button" className="cursor-pointer text-center text-lg sm:text-xl md:text-2xl m-4 sm:m-8 hover:bg-slate-900 rounded-lg bg-indigo-700 px-4 py-2 sm:px-6">
 										MetaPix

@@ -29,10 +29,10 @@ export default function Service () {
         <div className="min-h-full w-screen overflow-y-auto items-center m-3 lg:m-4 max-w-screen-2xl border-shadow mx-auto">
           <nav className="top-10 mt-10 lg:pt-3 left-0 w-full z-30">
             <div className="flex items-center justify-between px-2 py-2 sm:py-3 sm:px-6 pointer-events-auto w-full mx-auto">
-              <div className="flex flex-row justify-between items-center font-pixel h-[50px] rounded-full bg-indigo-700 w-[60%] cursor-pointer max-w-xl min-w-fit">
+              <div className="flex flex-row justify-between items-center font-sans h-[50px] rounded-full bg-indigo-700 w-[60%] cursor-pointer max-w-xl min-w-fit">
                 <p className="px-3 inline-block">📣</p>
                 <div className="mr-2 sm:mr-4 py-3 px-2 sm:px-5 text-left">
-                  <p className="text-xs">Tune into the latest pixelate announcement news live on here</p>
+                  <p className="text-xs sm:text-base font-bold">Tune into the latest pixelate announcement news live on here</p>
                 </div>
               </div>
             </div>

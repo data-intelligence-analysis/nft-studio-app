@@ -3,7 +3,8 @@ import { SiDiscord } from "@react-icons/all-files/si/SiDiscord";
 import {GiOffshorePlatform} from "@react-icons/all-files/gi/GiOffshorePlatform"
 import { SiTwitter } from "@react-icons/all-files/si/SiTwitter";
 import TwitterIcon from '@mui/icons-material/Twitter';
-import platformIcon from '../assets/ted@3.png'
+import {buildUrl} from 'cloudinary-build-url';
+//import platformIcon from '../assets/ted@3.png'
 import ogIcon from '../assets/og_icon.png'
 import CloseIcon from '@mui/icons-material/Close';
 import Image from 'next/image'
