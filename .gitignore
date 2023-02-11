@@ -13,9 +13,11 @@ nft.changes.steps*
 sugar.log*
 /NFTs
 /metadata
-cache.json*
-config.json*
+cache.json
+config.json
 
+#env
+.env.example
 
 # testing
 /coverage
