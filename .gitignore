@@ -45,3 +45,7 @@ next-env.d.ts
 #config files template
 config.json.example*
 config.json.example
+
+#dependencies lock files
+package-lock.json
+yarn-lock.json
