@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json*
+yarn-lock.json*
 
 # testing
 /coverage
@@ -44,8 +46,4 @@ next-env.d.ts
 
 #config files template
 config.json.example*
-config.json.example
 
-#dependencies lock files
-package-lock.json
-yarn-lock.json
