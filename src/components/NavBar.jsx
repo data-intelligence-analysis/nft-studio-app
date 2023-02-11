@@ -54,6 +54,8 @@ const NavBar = ({bgFormat, display}) => {
   //React Hooks
   const [collapse, setCollapse] = useState(false)
   const [isOpen, setIsOpen] = useState(false);
+  const [walletNavBtn, setWalletNavBtn] = useState(false)
+  const [modalWalletNavBtn, setModalWalletNavBtn] = useState(false)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
@@ -102,6 +104,26 @@ const NavBar = ({bgFormat, display}) => {
     }
 
   },[]);
+  
+  useEffect(() => setWalletNavBtn(
+      <WalletMultiButton 
+        className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" 
+        style={{background:"#4e44ce",
+                height: "1.9rem", 
+                fontSize:"0.875rem", 
+                lineHeight: "1.25rem"}}
+      />
+                  ), 
+        [])
+  useEffect(() => setModalWalletNavBtn(
+        <WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" 
+          style={{background:"#4e44ce", 
+                  width:'100%', 
+                  height: "2.5rem", 
+                  fontSize:"0.8rem", 
+                  lineHeight: "1.25rem"}}
+        />
+  ),[])
   return(
     <nav className={`fixed top-0 left-0 w-full z-20 ${bgFormat}`}>
       <div className="max-w-screen-2xl w-full mx-auto px-2 py-2 flex items-center justify-between">
@@ -136,14 +158,16 @@ const NavBar = ({bgFormat, display}) => {
                 </li>
               </a>
               <li className="h-full justify-center flex items-center p-2 pointer-cursor font-sans">
-                <WalletMultiButton className=" font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", width:'100%', height: "2.5rem", fontSize:"0.8rem", lineHeight: "1.25rem"}}/>
+                 {modalWalletNavBtn}
+                {/*<WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", width:'100%', height: "2.5rem", fontSize:"0.8rem", lineHeight: "1.25rem"}}/>*/}
               </li>
             </ul>
           }
         </div>
         <ul className={`${collapse ? 'navBarElements':''}`}></ul>
         <div className={`sm:flex items-center gap-x-1 p-2 font-sans hidden`}>
-          <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>
+          {walletNavBtn}
+          {/*<WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>*/}
         </div>
         
         <div className="navBarElements text-base sm:text-2xl uppercase">

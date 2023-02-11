@@ -11,6 +11,9 @@ import {useRouter} from 'next/router'
 import MetaPixNavBar from "../../components/MetaPixNavBar";
 import {buildUrl} from 'cloudinary-build-url';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import { MdLeaderboard } from 'react-icons/md'
+import { IconContext } from "react-icons";
+import { FcComboChart } from "react-icons/fc"
 import {
   WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
@@ -154,7 +157,15 @@ export default function DAO () {
                 </div>
               </div>
               <div className="my-4 lg:my-5">
-                <h1 className="mb-3 font-pixel font-bold inline-block text-sm sm:text-lg text-center">[Status] Leaderboard [AWS Dynamo DB, Arweave]</h1>
+                <div className="mb-3 flex items-center justify-center gap-x-2">
+                  <IconContext.Provider value={{ size: "3em", className: "global-class-name" }} >
+                    <div>
+                      <MdLeaderboard />
+                    </div>
+                  </IconContext.Provider>
+                  
+                  <h1 className="font-pixel font-bold inline-block text-sm sm:text-lg text-center">Leaderboard</h1>
+                </div>
                 <iframe className="w-full mx-auto mt-2" 
                         width="600" 
                         height="800" 
@@ -166,7 +177,15 @@ export default function DAO () {
                 </p>
               </div>
               <div className="my-4 pt-4 lg:pt-6 lg:my-5 ">
-                <h1 className="mb-2 font-pixel font-bold inline-block text-sm sm:text-lg text-center">[Status] Analytics Chart [AWS Quicksight]</h1>
+              <div className="mb-3 flex items-center justify-center gap-x-2">
+                  <IconContext.Provider value={{ size: "3em", className: "global-class-name" }} >
+                    <div>
+                      <FcComboChart />
+                    </div>
+                  </IconContext.Provider>
+                  
+                  <h1 className="font-pixel font-bold inline-block text-sm sm:text-lg text-center">Dashboard</h1>
+                </div>
                 <iframe className="mt-2 w-full mx-auto" 
                         width="600" 
                         height="800" 
@@ -207,7 +226,7 @@ export default function DAO () {
                       </div>
                       <div className="my-3 text-center items-center sm:row-start-2 sm:row-span-1 sm:col-start-1 sm:col-span-3 lg:col-start-2 lg:col-span-4">
                         <button className="px-4 sm:py-2 py-1 bg-indigo-600 hover:bg-slate-900 rounded-md hover:ring-indigo-700 hover:ring-4" onClick={()=>alert('functionality coming soon')}>
-                          <p className="font-sans font-bold font-pixel">Load MetaTed ⓵</p>
+                          <p className="font-sans font-bold">Load MetaTed ⓵</p>
                         </button>
                       </div>
                       <div className="w-full sm:col-start-4 sm:col-span-2 lg:col-start-6 lg:col-span-3 mx-2 my-4 items-center flex justify-center text-center">
@@ -218,14 +237,14 @@ export default function DAO () {
                       </div>
                       <div className="my-3 text-center items-center sm:row-start-2 sm:row-span-1 sm:col-start-6 sm:col-span-3 lg:col-start-10 lg:col-span-2">
                         <button className="px-4 sm:py-2 py-1 bg-indigo-600 hover:bg-slate-900 rounded-md hover:ring-indigo-700 hover:ring-4" onClick={()=>alert('functionality coming soon')}>
-                          <p className="font-sans font-bold font-pixel">Load Elixir ⓶</p>
+                          <p className="font-sans font-bold">Load Elixir ⓶</p>
                         </button>
                       </div>
                     </div>
                     <div className="mx-auto mt-6 pt-4 sm:pt-0 mb-4 sm:mt-0 sm:mb-0 text-center items-center sm:w-full sm:row-span-1 sm:row-start-4 lg:row-start-4">
                       <div className="mx-auto text-center items-center">
                         <button className="px-4 sm:py-2 py-1 bg-slate-600 hover:bg-slate-900 rounded-md hover:ring-indigo-700 hover:ring-4" onClick={()=>alert('functionality coming soon')}>
-                          <p className="font-sans font-bold font-pixel">Merge ⓷</p>
+                          <p className="font-sans font-bold">Merge ⓷</p>
                         </button>
                       </div>
                     </div>
@@ -234,7 +253,7 @@ export default function DAO () {
                       </div>
                       <div className="mt-3 pb-8 text-center items-center sm:row-span-1 sm:col-start-6 sm:col-span-3 lg:col-start-10 lg:col-span-2">
                         <button className="px-4 sm:py-2 py-1 bg-indigo-600 hover:bg-slate-900 rounded-md hover:ring-indigo-700 hover:ring-4" onClick={()=>alert('functionality coming soon')}>
-                          <p className="font-sans font-bold font-pixel">Mint ⓸</p>
+                          <p className="font-sans font-bold">Mint ⓸</p>
                         </button>
                       </div>
                     </div>
@@ -264,7 +283,7 @@ export default function DAO () {
                   </div>
                   <div className="my-3 text-center items-center sm:row-start-2 sm:row-span-1 sm:col-start-1 sm:col-span-3 lg:col-start-2 lg:col-span-4">
                     <button className="px-4 sm:py-2 py-1 bg-indigo-600 hover:bg-slate-900 rounded-md hover:ring-indigo-700 hover:ring-4" onClick={()=>alert('functionality coming soon')}>
-                      <p className="font-sans font-bold font-pixel">Load MetaTed ⓵</p>
+                      <p className="font-sans font-bold text-sm">Load MetaTed ⓵</p>
                     </button>
                   </div>
                   <div className="w-full sm:col-start-4 sm:col-span-2 lg:col-start-6 lg:col-span-3 mx-2 my-4 items-center flex justify-center text-center">
@@ -275,14 +294,14 @@ export default function DAO () {
                   </div>
                   <div className="my-3 text-center items-center sm:row-start-2 sm:row-span-1 sm:col-start-6 sm:col-span-3 lg:col-start-10 lg:col-span-2">
                     <button className="px-4 sm:py-2 py-1 bg-indigo-600 hover:bg-slate-900 rounded-md hover:ring-indigo-700 hover:ring-4" onClick={()=>alert('functionality coming soon')}>
-                      <p className="font-sans font-bold font-pixel">Load Attributes ⓶</p>
+                      <p className="font-sans font-bold text-sm">Load Attributes ⓶</p>
                     </button>
                   </div>
                 </div>
                 <div className="mx-auto mt-6 pt-4 sm:pt-0 mb-4 sm:mt-0 sm:mb-0 text-center items-center sm:w-full sm:row-span-1 sm:row-start-4 lg:row-start-4">
                   <div className="mx-auto text-center items-center">
                     <button className="px-4 sm:py-2 py-1 bg-slate-600 hover:bg-slate-900 rounded-md hover:ring-indigo-700 hover:ring-4" onClick={()=>alert('functionality coming soon')}>
-                      <p className="font-sans font-bold font-pixel">Merge ⓷</p>
+                      <p className="font-sans font-bold text-sm">Merge ⓷</p>
                     </button>
                   </div>
                 </div>
@@ -291,7 +310,7 @@ export default function DAO () {
                   </div>
                   <div className="mt-3 pb-8 text-center items-center sm:row-span-1 sm:col-start-6 sm:col-span-3 lg:col-start-10 lg:col-span-2">
                     <button className="px-4 sm:py-2 py-1 bg-indigo-600 hover:bg-slate-900 rounded-md hover:ring-indigo-700 hover:ring-4" onClick={()=>alert('functionality coming soon')}>
-                      <p className="font-sans font-bold font-pixel">Mint ⓸</p>
+                      <p className="font-sans font-bold text-sm">Mint ⓸</p>
                     </button>
                   </div>
                 </div>
@@ -315,7 +334,7 @@ export default function DAO () {
                 <div className="m-3">
                   <nav className="top-0 left-0 w-full z-30">
                     <div className="flex items-center justify-between px-2 py-2 sm:py-3 sm:px-6 pointer-events-auto w-full mx-auto">
-                      <div className="flex flex-row justify-between items-center font-pixel h-[50px] rounded-full bg-indigo-700 w-[60%] cursor-pointer max-w-xl">
+                      <div className="flex flex-row justify-between items-center font-sans h-[50px] rounded-full bg-indigo-700 w-[60%] cursor-pointer max-w-xl">
                         <p className="px-3">📣</p>
                         <div className="mr-2 sm:mr-4 py-3 px-2 sm:px-5 text-left">
                           <p className="text-xs sm:text-base lg:text-lg">Tune into the latest pixelate announcement news live on here</p>
@@ -324,7 +343,7 @@ export default function DAO () {
                     </div>
                   </nav>
                   <div className="my-6 sm:mt-8 h-full w-full">
-                    <div className="grid sm:flex sm:justify-between items-center font-pixel sm:gap-x-4 my-8 sm:mx-8 sm:mx-auto lg:justify-center">
+                    <div className="grid sm:flex sm:justify-between items-center sm:gap-x-4 my-8 sm:mx-8 sm:mx-auto lg:justify-center">
                       <div className="flex-col my-6 sm:my-0 lg:py-6 lg:px-8 text-center">
                         <h1 className="font-pixel text-lg lg:text-xl">Local Image Utility</ h1>
                         <div className="w-[300px] border h-[300px] my-2 mx-auto w-full border-slate-100 rounded-md">
@@ -339,23 +358,23 @@ export default function DAO () {
                             max="15"
                             defaultValue="0"
                             step="1"
-                            className="inline-block"
+                            className="inline-block font-sans"
                             id="pixelationRange"
                             ref={myRef}
                           />
                         </span>
-                        <div className="mt-3 px-1 lg:px-2 mb-3 py-1 lg:py-2 grid place-items-center text-center">
+                        <div className="mt-3 px-1 lg:px-2 mb-3 py-1 lg:py-2 grid place-items-center text-center font-sans">
                           <input className="block mx-auto pl-20 sm:pl-10" onChange="" ref={myRef} id="upload" type="file" accept="image/*" />
                         </div>
-                        <div className="mt-3 p-2 lg:p-4 flex items-center text-center justify-center lg:justify-between gap-x-2 w-full">
+                        <div className="mt-3 p-2 lg:p-4 flex font-sans font-bold items-center text-center justify-center lg:justify-between gap-x-2 w-full">
                           <button className="px-1 lg:px-2 py-1 lg:py-2 bg-indigo-700 rounded-md">
-                            <p className="text-base lg:text-lg font-pixel">Download</p>
+                            <p className="text-base lg:text-lg">Download</p>
                           </button>
                           <button className="px-2 lg:px-4 py-1 lg:py-2 bg-indigo-700 rounded-md">
-                            <p className="text-base lg:text-lg font-pixel">Post</p>
+                            <p className="text-base lg:text-lg">Post</p>
                           </button>
                           <button className="px-1 lg:px-2 py-1 lg:py-2 bg-indigo-700 rounded-md">
-                            <p className="text-base lg:text-lg font-pixel">Tweet</p>
+                            <p className="text-base lg:text-lg">Tweet</p>
                           </button>
                         </div>
                       </div>
@@ -382,17 +401,20 @@ export default function DAO () {
                             id="pixelationRange"
                         />
                         </span>
-                        <div className="mt-3 grid place-items-center mx-auto">
+                        {/*<div className="mt-3 font-sans grid place-items-center mx-auto">
                           <button className="px-1 lg:px-2 py-1 lg:py-2 bg-indigo-700 rounded-md">
                             <p className="text-base lg:text-lg">Load NFT</p>
                           </button>
-                        </div>
-                        <div className="mt-3 p-2 lg:p-4 flex items-center text-center justify-center lg:justify-between gap-x-2 w-full">
+                        </div>*/}
+                        <div className="font-sans font-bold mt-3 p-2 lg:p-4 flex items-center text-center justify-center lg:justify-between gap-x-2 w-full">
                           <button className="px-1 lg:px-2 py-1 lg:py-2 bg-indigo-700 rounded-md">
-                            <p className="text-base lg:text-lg font-pixel">Mint It!</p>
+                            <p className="text-base lg:text-lg">Load NFT</p>
                           </button>
                           <button className="px-1 lg:px-2 py-1 lg:py-2 bg-indigo-700 rounded-md">
-                            <p className="text-base lg:text-lg font-pixel">Build Community</p>
+                            <p className="text-base lg:text-lg">Mint</p>
+                          </button>
+                          <button className="px-1 lg:px-2 py-1 lg:py-2 bg-indigo-700 rounded-md">
+                            <p className="text-base lg:text-lg">Build Community</p>
                           </button>
                         </div>
                       </div>
