@@ -6,8 +6,16 @@
 .pnp.js
 package-lock.json*
 yarn-lock.json*
+
+#nft objects
 to-dos.txt*
 nft.changes.steps*
+sugar.log*
+/NFTs
+/metadata
+cache.json*
+config.json*
+
 
 # testing
 /coverage
