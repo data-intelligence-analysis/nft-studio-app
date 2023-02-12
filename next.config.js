@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
+const autoprefixer = require("autoprefixer");
+const tailwind = require("tailwindcss");
 
-
+const postcssPlugins = [tailwind(), autoprefixer()];
 const nextConfig = {
   reactStrictMode: true,
   // swcMinify: true,
@@ -31,6 +33,13 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: postcssPlugins
+      }
+    }
   },
   // Fixes npm packages that depend on `fs` module
   webpack: (config, { isServer }) => {
