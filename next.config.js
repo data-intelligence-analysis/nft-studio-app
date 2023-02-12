@@ -34,13 +34,13 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  css: {
+  /*css: {
     loaderOptions: {
       postcss: {
         plugins: postcssPlugins
       }
     }
-  },
+  },*/
   // Fixes npm packages that depend on `fs` module
   webpack: (config, { isServer }) => {
     if (!isServer) {
