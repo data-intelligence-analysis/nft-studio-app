@@ -33,14 +33,22 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   // Fixes npm packages that depend on `fs` module
-  /*webpack: (config, { isServer }) => {
+  webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
         fs: false
       }
     }
     return config
-  }*/
+  }
+  /*webpack: (config) => {
+		config.node = {
+			fs: 'empty',
+			modules: false
+		}
+
+		return config
+	}*/
 };
 
 module.exports = nextConfig;
