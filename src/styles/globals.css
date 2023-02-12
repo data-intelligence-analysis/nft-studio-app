@@ -4,7 +4,6 @@
 @tailwind utilities;
 
 @layer components {
-
   .solana-button-text{
     background-color: transparent;
     overflow: hidden;

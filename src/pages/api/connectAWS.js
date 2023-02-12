@@ -1,7 +1,6 @@
 import S3 from "aws-sdk/clients/s3";
 import axios from 'axios';
 import fileDownload from 'js-file-download';
-//mport {StatusCodes} from 'http-status-codes';
 //const path = require("path")
 //const fs = require("fs")
 const s3 = new S3({

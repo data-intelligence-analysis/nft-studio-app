@@ -16,9 +16,6 @@ sugar.log*
 cache.json
 config.json
 
-#env
-.env.example
-
 # testing
 /coverage
 
