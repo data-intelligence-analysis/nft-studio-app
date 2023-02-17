@@ -435,7 +435,8 @@ const FrontPage = () => {
 								<div className="overflow-x-auto mx-auto items-center w-full sm:col-start-1 sm:col-span-2 md:col-start-1 md:col-span-4">
 									<div className="m-2 p-4 sm:m-4 sm:p-6 sm:flex items-center text-center justify-center sm:gap-x-4 gap-x-1 sm:flex-col flex-row">
 										{modalNavbar.map((elem, i) =>(
-											<button className={`cursor-pointer text-center text-base sm:text-xl md:text-2xl m-4 sm:m-8 hover:bg-slate-900 rounded-lg bg-indigo-700 px-2 py-2 sm:px-4 ${activeSidebar===i?"ring-indigo-700 ring-4 bg-violet-900":""}`} key={i} onClick={(event) => activeModal(event, i)}>
+											<button className={`cursor-pointer text-center text-base sm:text-xl md:text-2xl m-4 sm:m-8 hover:bg-slate-900 rounded-lg bg-indigo-700 px-2 py-2 sm:px-4 ${activeSidebar===i?"ring-indigo-700 ring-4 bg-violet-900":""}`} 
+												key={i} onClick={(event) => activeModal(event, i)}>
 												{elem.name}
 											</button>
 										))}

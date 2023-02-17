@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 //const autoprefixer = require("autoprefixer");
-//const tailwind = require("tailwindcss");
+//const tailwind = require("tailwindcss")
 
 //const postcssPlugins = [tailwind(), autoprefixer()];
 const nextConfig = {

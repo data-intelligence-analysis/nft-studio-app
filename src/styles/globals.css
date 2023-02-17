@@ -1,9 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+
+
+/* autoprefixer grid: autoplace */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
+  .webkitutil-center{
+    -webkit-box-pack: center;
+  }
+  .webkit-box-pack{
+    -webkit-box-align: center
+  }
+  .tn-srt{
+    transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965) 0s;
+  }
+  .lb-grid{
+    max-width: calc(100% - 60px)
+  }
   .solana-button-text{
     background-color: transparent;
     overflow: hidden;
@@ -470,6 +484,9 @@
     box-shadow: 0px 10px 10px rgba(142, 142, 229, 0.372);
   }
 
+  .ranchers{
+    font-family: 'Ranchers', bold;
+  }
   /* ... */
 }
 html{
@@ -497,15 +514,6 @@ html{
   text-decoration: none;
   list-style: none;
   border: 0 solid rgba(52, 51, 51, 1);
- 
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: var(--tw-white-color);
-    font-family: 'Ranchers', bold;
-  }
-}
+

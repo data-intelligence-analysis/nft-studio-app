@@ -1,9 +1,14 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState, useReact, useEffect} from 'react'
 import Head from "next/head";
 import Image from "next/image";
-import QuickSight from 'react-aws-icons/dist/aws/logo/QuickSight';
+/*import QuickSight from 'react-aws-icons/dist/aws/logo/QuickSight';
 import DynamoDB from 'react-aws-icons/dist/aws/logo/DynamoDB';
-import Glue from 'react-aws-icons/dist/aws/logo/Glue'
+import Glue from 'react-aws-icons/dist/aws/logo/Glue';*/
+import { FaAws } from 'react-icons/fa'
+import { SiAmazondynamodb } from 'react-icons/si';
+import { FaUnity } from 'react-icons/fa'
+import { DiMongodb } from 'react-icons/di'
+import { SiFirebase } from 'react-icons/si';
 import Link from 'next/link';
 import { Circles } from "react-loader-spinner";
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
@@ -25,8 +30,40 @@ import { useConnection } from "@solana/wallet-adapter-react";
 
 //<svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" aria-hidden="true" class="w-6 h-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="color: rgb(87, 100, 241);"><title></title><path d="M20.222 0c1.406 0 2.54 1.137 2.607 2.475V24l-2.677-2.273-1.47-1.338-1.604-1.398.67 2.205H3.71c-1.402 0-2.54-1.065-2.54-2.476V2.48C1.17 1.142 2.31.003 3.715.003h16.5L20.222 0zm-6.118 5.683h-.03l-.202.2c2.073.6 3.076 1.537 3.076 1.537-1.336-.668-2.54-1.002-3.744-1.137-.87-.135-1.74-.064-2.475 0h-.2c-.47 0-1.47.2-2.81.735-.467.203-.735.336-.735.336s1.002-1.002 3.21-1.537l-.135-.135s-1.672-.064-3.477 1.27c0 0-1.805 3.144-1.805 7.02 0 0 1 1.74 3.743 1.806 0 0 .4-.533.805-1.002-1.54-.468-2.14-1.404-2.14-1.404s.134.066.335.2h.06c.03 0 .044.015.06.03v.006c.016.016.03.03.06.03.33.136.66.27.93.4.466.202 1.065.403 1.8.536.93.135 1.996.2 3.21 0 .6-.135 1.2-.267 1.8-.535.39-.2.87-.4 1.397-.737 0 0-.6.936-2.205 1.404.33.466.795 1 .795 1 2.744-.06 3.81-1.8 3.87-1.726 0-3.87-1.815-7.02-1.815-7.02-1.635-1.214-3.165-1.26-3.435-1.26l.056-.02zm.168 4.413c.703 0 1.27.6 1.27 1.335 0 .74-.57 1.34-1.27 1.34-.7 0-1.27-.6-1.27-1.334.002-.74.573-1.338 1.27-1.338zm-4.543 0c.7 0 1.266.6 1.266 1.335 0 .74-.57 1.34-1.27 1.34-.7 0-1.27-.6-1.27-1.334 0-.74.57-1.338 1.27-1.338z"></path></svg>
 
+//dict
+
 
 export default function DAO () {
+  const activeGame = [
+    {
+			id: 1,
+			name: "The Presumed Lone Survivor",
+      period: [
+        {time:"Today"},
+        {time:"Past Week"},
+        {time:"All Time"}
+      ],
+      
+    },
+    {
+			id: 2,
+			name:"MetaTeds: Journey In The Metaverse",
+      period: [
+        {time:"Today"},
+        {time:"Past Week"},
+        {time:"All Time"}
+      ],
+    },
+    {
+			id: 3,
+			name: "RPG",
+      period: [
+        {time:"Today"},
+        {time:"Pas Week"},
+        {time:"All Time"}
+      ],
+    },
+  ]
   const wallet = useWallet();
   const {connected} =useWallet();
   const router = useRouter();
@@ -35,6 +72,12 @@ export default function DAO () {
     router.back();
   };
   const {pathname} = useRouter();
+
+  //States
+  const [activeGameItems] = useState(activeGame)
+  const [activeStats, setActiveStats] = useState(null);
+  const [activePeriod, setActivePeriod] = useState(null);
+  
   //Security measure to validate external site urls
   function valURL(url) {
     const parsed = url
@@ -83,6 +126,104 @@ export default function DAO () {
     <ArrowBackIcon />
   </Link>*/}
   const myRef = useRef()
+
+  //onclick contexts
+
+  
+  //AWS Context
+  const AWSTpls = ({props}) => {
+    return(
+      <div key={props.id}>
+        <div className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
+          {props.period.map((elem) => (
+            <button
+              id="activeOnLoad"
+              onClick={""}
+              type="button"
+              key={props.id} 
+              className={`hover:transition transition-all bg-slate-800 px-4 lg:px-6 hover:bg-indigo-500 hover:outline hover:outline-1 hover:outline-offset-2 hover:outline-sky-900 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-14 min-w-[3rem] select-none`}>
+              <h3 className="font-sans text-sm sm:text-base">
+                {elem.time}
+              </h3>
+            </button>   
+          ))}
+        </div>
+      </div>
+      
+    )
+
+  }
+  const AWSMtb = ({props}) => {
+    return(
+      <div key={props.id}>
+        <div className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
+          {props.period.map((elem) => (
+            <button
+              onClick={""}
+              type="button"
+              key={props.id} 
+              className={`hover:transition transition-all bg-slate-800 px-4 lg:px-6 hover:bg-indigo-500 hover:outline hover:outline-1 hover:outline-offset-2 hover:outline-sky-900 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-14 min-w-[3rem] select-none`}>
+              <h3 className="font-sans text-sm sm:text-base">
+                {elem.time}
+              </h3>
+            </button>   
+          ))}
+        </div>
+      </div>
+    )
+
+  }
+  const AWSRpg = ({props}) => {
+    return(
+      <div key={props.id}>
+        <div className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
+          {props.period.map((elem) => (
+            <button
+              onClick={() => alert("coming soon")}
+              type="button"
+              key={props.id} 
+              className={`hover:transition transition-all bg-slate-800 px-4 lg:px-6 hover:bg-indigo-500 hover:outline hover:outline-1 hover:outline-offset-2 hover:outline-sky-900 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-14 min-w-[3rem] select-none`}>
+              <h3 className="font-sans text-sm sm:text-base">
+                {elem.time}
+              </h3>
+            </button>   
+          ))}
+        </div>
+      </div>
+    )
+
+  }
+
+  const RenderAWScontexts = ({...props}) => { 
+    return (
+      <div key={props.id}>
+        {props.id === 0 &&
+          <AWSTpls props={props}/>
+        }
+        {props.id === 1 &&
+          <AWSMtb props={props}/>
+        }
+        {props.id === 2 &&
+          <AWSRpg props={props}/>
+        }
+      </div>
+    )
+  }
+  //Active LeaderBoard
+
+  
+  const activeLeaderBoard = (event, index) => {
+    setActiveStats(index)
+
+  }
+  //Sign In Modal
+  const signIn = () => {
+
+  }
+
+  //useEffect
+
+  
   return (
     <>
       <Head>
@@ -90,7 +231,7 @@ export default function DAO () {
       </Head>
       <div className="bg-slate-900 min-h-screen">
         <MetaPixNavBar bgFormat={"bg-[#320D12]"} opacity={"opacity-100"}/>
-        <div className="min-h-full w-screen overflow-x-hidden overflow-y-auto items-center my-2 lg:my-4 max-w-screen-2xl border-shadow mx-auto">
+        <div className="min-h-full max-w-full overflow-x-hidden overflow-y-auto items-center py-2 lg:py-4 max-w-screen-2xl border-shadow mx-auto">
           <div className="mt-5 w-full bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 pt-10 px-2 lg:px-4 relative">
             <div className="" style={metapixImg}></div>
             <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-20">
@@ -129,14 +270,24 @@ export default function DAO () {
             </div>
             <div className="p-2 lg:px-8 text-center items-center mx-auto font-sans">
               <p className="block">Holders of the MetaTeds NFT would be given an opptunity to compete with other players in our web browser {""} 
-                <a className="text-indigo-500 bold font-pixel text-xs" href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} rel="noopener" target="_blank">
-									games  
-								</a>{" "} for seasonal rewards, which are granted to the top players. 
+                    <span className='inline-flex items-baseline'>
+                            <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
+                                href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} 
+                                rel="noopener" 
+                                target="_blank">
+									              <span className="font-sans font-bold text-base inline-flex items-baseline">game</span>
+								            </a>
+                          </span>{" "} for seasonal rewards, which are granted to the top players. 
                           The top 3 positions in our leaderboard for each season would be rewarded with either SOL, 
-                          or NFTs that provide exclsive access to features within our 
-                          <a className="text-indigo-500 bold font-pixel text-xs" href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} rel="noopener" target="_blank">
-									          platform
-								          </a>. 
+                          or NFTs that provide exclsive access to features within our {""}
+                          <span className='inline-flex items-baseline'>
+                            <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
+                                href={valURL(new URL("https://metateds.com/"))?'https://metateds.com/':''} 
+                                rel="noopener" 
+                                target="_blank">
+									              <span className="font-sans font-bold text-base inline-flex items-baseline">platform</span>
+								            </a>
+                          </span>. 
                 We combine both web2 and web3 frameworks  
                 to reward and provide value to our users coupled with an enriched experience
               </p>
@@ -156,21 +307,69 @@ export default function DAO () {
                   <p>Image</p>
                 </div>
               </div>
-              <div className="my-4 lg:my-5">
-                <div className="mb-3 flex items-center justify-center gap-x-2">
+              <div className="my-4 lg:my-5 p-2 sm:p-4 lg:p-6">
+                <div className="pb-6 lg:pb-8 flex items-center justify-center gap-x-2">
                   <IconContext.Provider value={{ size: "3em", className: "global-class-name" }} >
                     <div>
                       <MdLeaderboard />
                     </div>
                   </IconContext.Provider>
-                  
                   <h1 className="font-pixel font-bold inline-block text-sm sm:text-lg text-center">Leaderboard</h1>
                 </div>
-                <iframe className="w-full mx-auto mt-2" 
-                        width="600" 
-                        height="800" 
-                        src="">
-                </iframe>
+                <div className='py-2 lg:py-6 flex webkitutil-center text-center items-start justify-center min-h-screen relative'>
+                  <div className="webkitutil-center flex justify-center w-full px-1 flex-col max-w-2xl">
+                    <div className="w-full m-auto">
+                      <div className="flex mt-3 mb-2 w-full relative gap-x-4 lg:gap-x-5">
+                        {activeGameItems.map((elem, i) => (
+                          <button
+                            onClick={(event) => activeLeaderBoard(event, i)}
+                            type="button"
+                            key={i} 
+                            className={`sm:skew-x-[-45deg] hover:animate-pulse hover:transition transition-all ${activeStats===i ? "outline outline-2 outline-offset-2 outline-green-600 bg-indigo-500 hover:bg-indigo-800 transition duration-150 ease-out hover:ease-in":""}bg-blue-900 p-1 outline outline-1 outline-offset-2 outline-pink-600 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-11 w-[30%] min-w-[2.5rem] select-none`}>
+                            <h3 className="font-sans text-[0.6rem] sm:text-xs sm:skew-x-[45deg]">
+                              {elem.name}
+                            </h3>
+                          </button>)
+                        )}
+                        {/*<button 
+                          onClick={""}
+                          type="button" 
+                          className={`sm:skew-x-[-45deg] hover:animate-pulse hover:transition transition-all ${activeStats ? "bg-indigo-900 hover:bg-indigo-800 transition duration-150 ease-out hover:ease-in":""}bg-blue-900 p-1 outline outline-1 outline-offset-2 outline-pink-600 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-11 w-[30%] min-w-[2.5rem] select-none`}>
+                          <h3 className="font-sans text-[0.6rem] sm:text-xs sm:skew-x-[45deg]">
+                            MetaTeds: Journey In The Metaverse
+                          </h3>
+                        </button>
+                        <button
+                          onClick={""}
+                          type="button" 
+                          className={`sm:skew-x-[-45deg] hover:animate-pulse hover:transition transition-all ${activeStats ? "bg-indigo-900 hover:bg-indigo-800 transition duration-150 ease-out hover:ease-in":""}bg-blue-900 p-1 outline outline-1 outline-offset-2 outline-pink-600 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-11 w-[30%] min-w-[2.5rem] select-none`}>
+                          <h3 className="font-sans text-xs sm:skew-x-[45deg]">
+                            RPG
+                          </h3>
+                        </button>*/} 
+                      </div>
+                      <div className="flex mt-6 mb-2 w-full items-center webkitutil-center text-center justify-center">
+                        {activeGameItems.map((elem, i) => (
+                          <div key={i}>
+                            {activeStats===i &&
+                              <RenderAWScontexts
+                                id={i}
+                                name={elem.name}
+                                period={elem.period}
+                                today={elem.today}
+                                week={elem.week}
+                                all_time={elem.all_time}
+                              />
+                            }
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                
                 <p className="text-left text-xs">
                   refreshed daily - {""}
                   <span className="text-xs text-orange-500 font-bold font-sans">powered by metapix</span>
@@ -199,16 +398,31 @@ export default function DAO () {
               </div>
               <h1 className="text-center mt-3 font-pixel font-bold inline-block text-base lg:text-xl">Technology Stack</h1>
               <div className="p-2 sm:p-4 grid grid-cols-2 sm:grid-cols-4 place-items-center items-center">
-                <QuickSight size={150} />
-                <DynamoDB size={150} />
+                {/*<QuickSight fontSize={150} />
+                <DynamoDB fontSize={150} />
                 <Glue size ={100} />
-                <Image 
-                  src={require('../../assets/solana.svg')}
-                  height="auto"
-                  width="50"
-                  preload="true"
-                />
-                <a href="https://www.flaticon.com/free-icons/solana" title="solana icons"></a>
+                <SiAmazondynamodb />*/}
+                <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
+                  <div>
+                    <DiMongodb />
+                  </div>
+                </IconContext.Provider>
+                <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
+                  <div>
+                    <FaAws />
+                  </div>
+                </IconContext.Provider>
+                <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
+                  <div>
+                    <FaUnity />
+                  </div>
+                </IconContext.Provider>
+                <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
+                  <div>
+                    <SiFirebase />
+                  </div>
+                </IconContext.Provider>
+                
               </div>
             </div>
           </section>
@@ -218,7 +432,7 @@ export default function DAO () {
               <p className="text-center text-sm sm:text-base font-sans block">Mutate the first collection of the MetaTed species (SolTed) with an elixir to evolve and unlock new NFT.</p>
             </div>
             {connected && wallet.publicKey ?
-              (<div className="bg-orange-400 h-screen overflow-y-auto overflow-auto rounded-md">
+              (<div className="bg-orange-400 h-screen overflow-y-auto overflow-auto rounded-md px-4 lg:px-8">
                 <div className="p-4 sm:p-8 h-full sm:w-full">
                   <div className="sm:grid sm:place-items-center sm:grid-rows-8">
                     <div className="mx-auto my-4 sm:my-6 items-center sm:w-full sm:row-start-1 sm:row-span-3 sm:grid sm:grid-cols-8 lg:grid-cols-13">
@@ -260,13 +474,13 @@ export default function DAO () {
                   </div>
                 </div>
               </div>):(
-                <div className="bg-orange-400 h-screen grid overflow-y-auto overflow-auto rounded-md">
-                  <div className="bg-slate-700/80 h-screen grid grid-cols-2">
-                    <div className="my-auto px-4 col-start-1 col-span-2 w-full place-items-center items-center text-center mx-auto flex justify-center">
-                      <WalletMultiButton className="font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem", fontFamily: "Press Start 2P"}} />
-                    </div>
+                <div className="px-3 sm:px-6 lg:px-9 lg:py-4 md:grid-cols-8 lg:grid-cols-13 lg:gap-4 py-2 mx-auto">
+                  <div className="md:col-span-8 lg:col-span-10 xl:col-span-13 h-full">
+                    <section className="bg-transparent text-slate-200 rounded-md shadow-lg p-4 text-center">
+                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button onClick="" className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
+                    </section>
                   </div>
-                </div>
+                </div> 
               )}
           </section>
           <section id="weapon-merger" className="my-6 mx-auto p-2 lg:p-4 items-center h-full">
@@ -317,13 +531,13 @@ export default function DAO () {
               </div>
             </div>
           </div>):(
-                <div className="bg-orange-400 h-screen grid overflow-y-auto overflow-auto rounded-md">
-                  <div className="bg-slate-700/80 h-screen grid grid-cols-2">
-                    <div className="my-auto px-4 col-start-1 col-span-2 w-full place-items-center items-center text-center mx-auto flex justify-center">
-                      <WalletMultiButton className="font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem", fontFamily: "Press Start 2P"}} />
-                    </div>
+                <div className="px-3 sm:px-6 lg:px-9 lg:py-4 md:grid-cols-8 lg:grid-cols-13 lg:gap-4 py-2 mx-auto">
+                  <div className="md:col-span-8 lg:col-span-10 xl:col-span-13 h-full">
+                    <section className="bg-transparent text-slate-200 rounded-md shadow-lg p-4 text-center">
+                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button onClick="" className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
+                    </section>
                   </div>
-                </div>
+                </div> 
               )}
           </section>
           <section id="metapix-pixelate" className="my-6 mx-auto p-2 lg:p-4 items-center h-full">
@@ -424,13 +638,13 @@ export default function DAO () {
                   </div>
                 </div>
               </div>):(
-                <div className="bg-[#343333] h-screen grid w-full rounded-md">
-                  <div className="bg-indigo-700/20 h-screen grid grid-cols-2 rounded-md">
-                    <div className="my-auto px-4 col-start-1 col-span-2 w-full place-items-center items-center text-center mx-auto flex justify-center">
-                      <WalletMultiButton className="font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem", fontFamily: "Press Start 2P"}} />
-                    </div>
+                <div className="px-3 sm:px-6 lg:px-9 lg:py-4 md:grid-cols-8 lg:grid-cols-13 lg:gap-4 py-2 mx-auto">
+                  <div className="md:col-span-8 lg:col-span-10 xl:col-span-13 h-full">
+                    <section className="bg-transparent text-slate-200 rounded-md shadow-lg p-4 text-center">
+                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button onClick="" className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
+                    </section>
                   </div>
-                </div>
+                </div> 
               )}
           </section>
           <footer>
