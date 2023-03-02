@@ -23,7 +23,8 @@ const nextConfig = {
   images:{
     domains: [
       'cdn.discordapp.com',
-      'res.cloudinary.com'
+      'res.cloudinary.com',
+      "arweave.net"
     ]
   },
   eslint: {

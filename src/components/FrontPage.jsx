@@ -190,7 +190,7 @@ const FrontPage = () => {
 								contains a serum that empowers SolTed characters with super abilities 
 								capable of weilding weapons or establishing a fighting stance to become
 								in-game playable characters in our {" "}
-								<a className="text-indigo-500 bold font-['Ranchers']" href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} rel="noopener" target="_blank">
+								<a className="text-indigo-500 bold font-['Ranchers']" href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} rel="noopener noreferrer" target="_blank">
 									gaming project.
 								</a>{" "}
 							</p>
