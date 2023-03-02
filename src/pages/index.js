@@ -4,6 +4,7 @@ import FrontPage from '../components/FrontPage'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 
+
 export default function Home() {
   const ref = useRef()
   return (
@@ -25,3 +26,5 @@ export default function Home() {
     </>
   )
 }
+
+

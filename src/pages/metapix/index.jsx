@@ -176,7 +176,7 @@ export default function Home () {
     backgroundPosition: 'center center',
     backgroundImage: `url(${urlBlurred})`,
     backgroundSize: `cover`,
-    objectFit: 'cotain'
+    objectFit: 'contain'
   }
   const Back = (event) => {
     event.preventDefault();

@@ -4,8 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-package-lock.json*
-yarn-lock.json*
+
 
 #nft objects
 to-dos.txt*

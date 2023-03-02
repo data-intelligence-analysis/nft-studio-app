@@ -1,9 +1,6 @@
 import React, {useRef, useState, useReact, useEffect} from 'react'
 import Head from "next/head";
 import Image from "next/image";
-/*import QuickSight from 'react-aws-icons/dist/aws/logo/QuickSight';
-import DynamoDB from 'react-aws-icons/dist/aws/logo/DynamoDB';
-import Glue from 'react-aws-icons/dist/aws/logo/Glue';*/
 import { FaAws } from 'react-icons/fa'
 import { SiAmazondynamodb } from 'react-icons/si';
 import { FaUnity } from 'react-icons/fa'
@@ -28,12 +25,65 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useConnection } from "@solana/wallet-adapter-react";
 
+//AWS context
+import AWSTpls from "../../components/aws/AWSTpls";
+import AWSMtb from "../../components/aws/AWSMtb";
+import AWSRpg from "../../components/aws/AWSRpg";
+
 //<svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" aria-hidden="true" class="w-6 h-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="color: rgb(87, 100, 241);"><title></title><path d="M20.222 0c1.406 0 2.54 1.137 2.607 2.475V24l-2.677-2.273-1.47-1.338-1.604-1.398.67 2.205H3.71c-1.402 0-2.54-1.065-2.54-2.476V2.48C1.17 1.142 2.31.003 3.715.003h16.5L20.222 0zm-6.118 5.683h-.03l-.202.2c2.073.6 3.076 1.537 3.076 1.537-1.336-.668-2.54-1.002-3.744-1.137-.87-.135-1.74-.064-2.475 0h-.2c-.47 0-1.47.2-2.81.735-.467.203-.735.336-.735.336s1.002-1.002 3.21-1.537l-.135-.135s-1.672-.064-3.477 1.27c0 0-1.805 3.144-1.805 7.02 0 0 1 1.74 3.743 1.806 0 0 .4-.533.805-1.002-1.54-.468-2.14-1.404-2.14-1.404s.134.066.335.2h.06c.03 0 .044.015.06.03v.006c.016.016.03.03.06.03.33.136.66.27.93.4.466.202 1.065.403 1.8.536.93.135 1.996.2 3.21 0 .6-.135 1.2-.267 1.8-.535.39-.2.87-.4 1.397-.737 0 0-.6.936-2.205 1.404.33.466.795 1 .795 1 2.744-.06 3.81-1.8 3.87-1.726 0-3.87-1.815-7.02-1.815-7.02-1.635-1.214-3.165-1.26-3.435-1.26l.056-.02zm.168 4.413c.703 0 1.27.6 1.27 1.335 0 .74-.57 1.34-1.27 1.34-.7 0-1.27-.6-1.27-1.334.002-.74.573-1.338 1.27-1.338zm-4.543 0c.7 0 1.266.6 1.266 1.335 0 .74-.57 1.34-1.27 1.34-.7 0-1.27-.6-1.27-1.334 0-.74.57-1.338 1.27-1.338z"></path></svg>
 
-//dict
+
+export async function getServerSideProps() {
+  try {
+    const options = {
+      headers: {
+        'X-API-KEY': process.env.AWS_API_KEY,
+      }
+    }
+    const images = [];
+    //const imagesRes = await fetch('https://x6sxx9rnl7.execute-api.us-east-1.amazonaws.com/prod/images', options)
+    const imageRes = await fetch('https://x6sxx9rnl7.execute-api.us-east-1.amazonaws.com/prod/image', options)
+    //const { data: imagesData } = await imagesRes.json();
+    const imageData = await imageRes.json();
+    //console.log({data: imagesData});
+    console.log(imageData);
+    images.push(`https://x6sxx9rnl7.execute-api.us-east-1.amazonaws.com/prod/signed-url?key=${imageData.Key}`)
+    /*imagesData.forEach(({ Key }) =>
+      images.push(`https://x6sxx9rnl7.execute-api.us-east-1.amazonaws.com/prod/signed-url?key=${Key}`),
+    );*/
+    
+    console.log(images);
+    // map every url to the promise of the fetch
+    const requests = images.map(url => fetch(url, options));
+
+    const responses = await Promise.all(requests);
+    const data = [];
+    await Promise.all(
+      responses.map(async (resp) => {
+        const json = await resp.json();
+
+        data.push(json);
+      }),
+    );
+
+    if (!data) {
+      throw new Error('Data not found');
+    }
+    console.log(data)
+    return {
+      props: {
+        data
+      }, // will be passed to the page component as props
+    }
+  } catch (error) {
+      return {
+        notFound: true,
+      }
+  };
+}
 
 
-export default function DAO () {
+export default function DAO ({data}) {
   const activeGame = [
     {
 			id: 1,
@@ -59,7 +109,7 @@ export default function DAO () {
 			name: "RPG",
       period: [
         {time:"Today"},
-        {time:"Pas Week"},
+        {time:"Past Week"},
         {time:"All Time"}
       ],
     },
@@ -77,6 +127,21 @@ export default function DAO () {
   const [activeGameItems] = useState(activeGame)
   const [activeStats, setActiveStats] = useState(null);
   const [activePeriod, setActivePeriod] = useState(null);
+  //const [showFirst, setShowFirst] = useState(false)
+
+  //Active LeaderBoard
+
+  
+  const activeLeaderBoard = (event, index) => {
+    setActiveStats(index)
+  }
+  //useEffect
+  useEffect(() => {
+    window.onload = (event) => {
+      console.log('page is fully loaded')
+
+    } 
+  },[]);
   
   //Security measure to validate external site urls
   function valURL(url) {
@@ -106,7 +171,7 @@ export default function DAO () {
     }
   })
   const metapixImg = {
-    background: 'url(/img/workstation.png)',
+    //background: 'url(/img/spaceship-interior.png)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     inset: '0px',
@@ -125,105 +190,30 @@ export default function DAO () {
   {/*<Link href="/" passHref legacyBehavior>
     <ArrowBackIcon />
   </Link>*/}
+
   const myRef = useRef()
 
   //onclick contexts
 
-  
-  //AWS Context
-  const AWSTpls = ({props}) => {
-    return(
-      <div key={props.id}>
-        <div className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
-          {props.period.map((elem) => (
-            <button
-              id="activeOnLoad"
-              onClick={""}
-              type="button"
-              key={props.id} 
-              className={`hover:transition transition-all bg-slate-800 px-4 lg:px-6 hover:bg-indigo-500 hover:outline hover:outline-1 hover:outline-offset-2 hover:outline-sky-900 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-14 min-w-[3rem] select-none`}>
-              <h3 className="font-sans text-sm sm:text-base">
-                {elem.time}
-              </h3>
-            </button>   
-          ))}
-        </div>
-      </div>
-      
-    )
-
-  }
-  const AWSMtb = ({props}) => {
-    return(
-      <div key={props.id}>
-        <div className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
-          {props.period.map((elem) => (
-            <button
-              onClick={""}
-              type="button"
-              key={props.id} 
-              className={`hover:transition transition-all bg-slate-800 px-4 lg:px-6 hover:bg-indigo-500 hover:outline hover:outline-1 hover:outline-offset-2 hover:outline-sky-900 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-14 min-w-[3rem] select-none`}>
-              <h3 className="font-sans text-sm sm:text-base">
-                {elem.time}
-              </h3>
-            </button>   
-          ))}
-        </div>
-      </div>
-    )
-
-  }
-  const AWSRpg = ({props}) => {
-    return(
-      <div key={props.id}>
-        <div className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
-          {props.period.map((elem) => (
-            <button
-              onClick={() => alert("coming soon")}
-              type="button"
-              key={props.id} 
-              className={`hover:transition transition-all bg-slate-800 px-4 lg:px-6 hover:bg-indigo-500 hover:outline hover:outline-1 hover:outline-offset-2 hover:outline-sky-900 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-14 min-w-[3rem] select-none`}>
-              <h3 className="font-sans text-sm sm:text-base">
-                {elem.time}
-              </h3>
-            </button>   
-          ))}
-        </div>
-      </div>
-    )
-
-  }
-
   const RenderAWScontexts = ({...props}) => { 
     return (
-      <div key={props.id}>
-        {props.id === 0 &&
+      <div>
+        {props.id === 1 &&
           <AWSTpls props={props}/>
         }
-        {props.id === 1 &&
+        {props.id === 2 &&
           <AWSMtb props={props}/>
         }
-        {props.id === 2 &&
+        {props.id === 3 &&
           <AWSRpg props={props}/>
         }
       </div>
     )
   }
-  //Active LeaderBoard
-
-  
-  const activeLeaderBoard = (event, index) => {
-    setActiveStats(index)
-
-  }
   //Sign In Modal
   const signIn = () => {
 
   }
-
-  //useEffect
-
-  
   return (
     <>
       <Head>
@@ -232,8 +222,10 @@ export default function DAO () {
       <div className="bg-slate-900 min-h-screen">
         <MetaPixNavBar bgFormat={"bg-[#320D12]"} opacity={"opacity-100"}/>
         <div className="min-h-full max-w-full overflow-x-hidden overflow-y-auto items-center py-2 lg:py-4 max-w-screen-2xl border-shadow mx-auto">
-          <div className="mt-5 w-full bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 pt-10 px-2 lg:px-4 relative">
-            <div className="" style={metapixImg}></div>
+          <div className="w-full bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 mt-10 px-2 lg:px-4 relative">
+            <div className="z-10" style={metapixImg}>
+              {data.map((imgUrl, index) => <Image alt="spaceship-interior" key={imgUrl} src={imgUrl} width={1920} height={1080} />)}
+            </div>
             <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-20">
               <h1 className="text-base sm:text-2xl lg:text-3xl font-pixel uppercase">Empowering community focused & gaming experiences</h1>
             </div>
@@ -273,7 +265,7 @@ export default function DAO () {
                     <span className='inline-flex items-baseline'>
                             <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
                                 href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} 
-                                rel="noopener" 
+                                rel="noopener noreferrer" 
                                 target="_blank">
 									              <span className="font-sans font-bold text-base inline-flex items-baseline">game</span>
 								            </a>
@@ -283,7 +275,7 @@ export default function DAO () {
                           <span className='inline-flex items-baseline'>
                             <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
                                 href={valURL(new URL("https://metateds.com/"))?'https://metateds.com/':''} 
-                                rel="noopener" 
+                                rel="noopener noreferrer" 
                                 target="_blank">
 									              <span className="font-sans font-bold text-base inline-flex items-baseline">platform</span>
 								            </a>
@@ -331,34 +323,15 @@ export default function DAO () {
                             </h3>
                           </button>)
                         )}
-                        {/*<button 
-                          onClick={""}
-                          type="button" 
-                          className={`sm:skew-x-[-45deg] hover:animate-pulse hover:transition transition-all ${activeStats ? "bg-indigo-900 hover:bg-indigo-800 transition duration-150 ease-out hover:ease-in":""}bg-blue-900 p-1 outline outline-1 outline-offset-2 outline-pink-600 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-11 w-[30%] min-w-[2.5rem] select-none`}>
-                          <h3 className="font-sans text-[0.6rem] sm:text-xs sm:skew-x-[45deg]">
-                            MetaTeds: Journey In The Metaverse
-                          </h3>
-                        </button>
-                        <button
-                          onClick={""}
-                          type="button" 
-                          className={`sm:skew-x-[-45deg] hover:animate-pulse hover:transition transition-all ${activeStats ? "bg-indigo-900 hover:bg-indigo-800 transition duration-150 ease-out hover:ease-in":""}bg-blue-900 p-1 outline outline-1 outline-offset-2 outline-pink-600 inline-flex webkitutil-center webkit-box-pack items-center align-middle rounded-md font-semibold justify-center relative border-0 h-11 w-[30%] min-w-[2.5rem] select-none`}>
-                          <h3 className="font-sans text-xs sm:skew-x-[45deg]">
-                            RPG
-                          </h3>
-                        </button>*/} 
                       </div>
                       <div className="flex mt-6 mb-2 w-full items-center webkitutil-center text-center justify-center">
                         {activeGameItems.map((elem, i) => (
                           <div key={i}>
                             {activeStats===i &&
                               <RenderAWScontexts
-                                id={i}
+                                id={elem.id}
                                 name={elem.name}
                                 period={elem.period}
-                                today={elem.today}
-                                week={elem.week}
-                                all_time={elem.all_time}
                               />
                             }
                           </div>
@@ -656,3 +629,4 @@ export default function DAO () {
     </>
   );
 }
+

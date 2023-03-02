@@ -1,0 +1,64 @@
+service: final-hosted-img
+frameworkVersion: '3'
+
+package:
+  individually: true
+  
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: prod
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:ListBucket
+      Resource: "arn:aws:s3:::${self:custom.upload}-${opt:stage, self:provider.stage, 'prod'}"
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+      Resource: "arn:aws:s3:::${self:custom.upload}-${opt:stage, self:provider.stage, 'prod'}/*"
+
+functions:
+  signedUrl:
+    handler: handler.studio-signedUrl
+    environment:
+      BUCKET_NAME: ${self:custom.upload}-${opt:stage, self:provider.stage, 'prod'}
+    events:
+      - http:
+          path: signed-url
+          method: get
+          cors: true
+  image:
+    handler: handler.image
+    events:
+      - http:
+          path: image
+          method: get
+          cors: true
+  images:
+    handler: handler.images
+    environment:
+      BUCKET_NAME: ${self:custom.upload}-${opt:stage, self:provider.stage, 'prod'}
+    events:
+      - http:
+          path: images
+          method: get
+          cors: true
+
+resources:
+  Resources:
+    S3BucketOutputs:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: "${self:custom.upload}-${opt:stage, self:provider.stage, 'prod'}"
+
+custom:
+  upload: metapix-final-hosted-asset
+  dotenv:
+    path: ../.env 
+
+plugins:
+  - serverless-bundle
+  - serverless-dotenv-plugin
+  - serverless-add-api-key
