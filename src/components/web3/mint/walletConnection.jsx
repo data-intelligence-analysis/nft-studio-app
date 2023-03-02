@@ -1,5 +1,4 @@
 import React, {Fragment, useCallback, useState, useEffect} from 'react'
-import { Unity, useUnityContext } from "react-unity-webgl";
 import { WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 import Image from 'next/image'
 import tedintosh from '../../../assets/tedintosh.gif'
