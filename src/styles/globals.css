@@ -1,5 +1,3 @@
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -486,33 +484,23 @@
   .ranchers{
     font-family: 'Ranchers', bold;
   }
-  /* ... */
-}
-html{
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, 'Roboto', Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, 'Ranchers';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 0;
+  :root{
+    --tw-white-color: #fff;
+    --tw-grey-color: #343333;
+    --tw-black-color: #000;
+    --tw-metateds: #EAA640;
+    --tw-main-bg-color: rgba(52, 51, 51, 1);
+    --tw-backdrop-blur:blur(4px);
+    --tw-purple-ted: #4e44ce;
+  }
+  *,::after,::before{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    border: 0 solid rgba(52, 51, 51, 1);
+  }
 }
 
-:root{
-  --tw-white-color: #fff;
-  --tw-grey-color: #343333;
-  --tw-black-color: #000;
-  --tw-metateds: #EAA640;
-  --tw-main-bg-color: rgba(52, 51, 51, 1);
-  --tw-ring-color: rgba(59,130,246,.5);
-  --tw-backdrop-blur:blur(4px);
-  --tw-purple-ted: #4e44ce;
-}
-*,::after,::before{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  border: 0 solid rgba(52, 51, 51, 1);
-}
+
 
 

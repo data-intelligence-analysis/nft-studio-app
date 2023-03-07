@@ -1,6 +1,6 @@
-import {React, useState} from 'react'
+import React, {useState} from 'react'
 import { SiDiscord } from "@react-icons/all-files/si/SiDiscord";
-import {GiOffshorePlatform} from "@react-icons/all-files/gi/GiOffshorePlatform"
+import { GiOffshorePlatform } from "@react-icons/all-files/gi/GiOffshorePlatform"
 import { SiTwitter } from "@react-icons/all-files/si/SiTwitter";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import {buildUrl} from 'cloudinary-build-url';
