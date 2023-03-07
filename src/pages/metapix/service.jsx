@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, {Component, useRef} from 'react'
+import React, {useRef} from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from 'next/link';
 import {useRouter} from 'next/router'

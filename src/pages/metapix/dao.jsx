@@ -1,10 +1,10 @@
-import React, {useRef, useState, useReact, useEffect} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import Head from "next/head";
 import Image from "next/image";
 import { FaAws } from 'react-icons/fa'
 import { SiAmazondynamodb } from 'react-icons/si';
-import { FaUnity } from 'react-icons/fa'
-import { DiMongodb } from 'react-icons/di'
+import { FaUnity } from 'react-icons/fa';
+import { DiMongodb } from 'react-icons/di';
 import { SiFirebase } from 'react-icons/si';
 import Link from 'next/link';
 import { Circles } from "react-loader-spinner";
@@ -224,7 +224,7 @@ export default function DAO ({data}) {
         <div className="min-h-full max-w-full overflow-x-hidden overflow-y-auto items-center py-2 lg:py-4 max-w-screen-2xl border-shadow mx-auto">
           <div className="w-full bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 mt-10 px-2 lg:px-4 relative">
             <div className="z-10" style={metapixImg}>
-              {data.map((imgUrl, index) => <Image alt="spaceship-interior" key={imgUrl} src={imgUrl} width={1920} height={1080} />)}
+              {/*data.map((imgUrl, index) => <Image alt="spaceship-interior" key={imgUrl} src={imgUrl} width={1920} height={1080} />)*/}
             </div>
             <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-20">
               <h1 className="text-base sm:text-2xl lg:text-3xl font-pixel uppercase">Empowering community focused & gaming experiences</h1>
@@ -450,7 +450,7 @@ export default function DAO ({data}) {
                 <div className="px-3 sm:px-6 lg:px-9 lg:py-4 md:grid-cols-8 lg:grid-cols-13 lg:gap-4 py-2 mx-auto">
                   <div className="md:col-span-8 lg:col-span-10 xl:col-span-13 h-full">
                     <section className="bg-transparent text-slate-200 rounded-md shadow-lg p-4 text-center">
-                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button onClick="" className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
+                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
                     </section>
                   </div>
                 </div> 

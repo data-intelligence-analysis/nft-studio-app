@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }) {
   // of wallets that your users connect to will be loaded
   const wallets = useMemo(
     () => [
-      new PhantomWalletAdapter(),
+      //new PhantomWalletAdapter(),
       new GlowWalletAdapter(),
       new SlopeWalletAdapter(),
       new SolflareWalletAdapter({ network }),

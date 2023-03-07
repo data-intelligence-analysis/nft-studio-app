@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef} from "react";
+import React, {useState, useMemo, useEffect, useRef} from "react";
 import { Keypair, Transaction } from "@solana/web3.js";
 import { findReference, FindReferenceError } from "@solana/pay";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
@@ -8,7 +8,7 @@ import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Stack from '@mui/material/Stack';
-import {server } from '../config'
+import { server } from '../config'
 //confirming transactions are sent - turn transactions to payments
 const STATUS = {
   Initial: "Initial",
