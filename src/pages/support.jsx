@@ -28,7 +28,7 @@ const WalletContainer =() =>{
   const [priceSOL, setPrice] = useState([]);
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
-    setModal(prev => !prev);
+    setModal(!modal);
   }
   function valURL(url) {
     const parsed = url
@@ -37,15 +37,12 @@ const WalletContainer =() =>{
   const Faq = () => {
     return (
       <>
+        {modal ? (
         <div className="inset-0 z-10 fixed bg-[#2e2e30e6]">
           <div className="relative my-10 justify-center mx-auto min-h-full overflow-y-auto p-2 items-center lg:max-w-screen-2xl">
-            <div className="mt-5 sticky w-full h-[45px] items-center">
-              <button className="text-[30px] pt-0.5 ml-auto flex justify-center items-center h-full mr-2.5 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
-                {modal ? (
-                  <CloseIcon sx={{width: 50, height:38}}/>)
-                :(
-                  <Home />
-                )}
+            <div className="mt-8 sticky w-full items-center">
+              <button className="text-[30px] py-1 ml-auto flex justify-center items-center h-full text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
+                <CloseIcon sx={{width: 50, height:38}}/>
               </button>
             </div>
             <div className="absolute px-4 pt-4 pb-20 overflow-hidden text-left text-slate-50 transform transition-all sm:px-8 opacity-100 translate-y-0 sm:scale-100">
@@ -111,6 +108,7 @@ const WalletContainer =() =>{
             </div>
           </div>
         </div>
+        ): (null)}
       </>
     )
   }
