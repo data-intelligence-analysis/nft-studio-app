@@ -5,16 +5,16 @@ import Image from 'next/image'
 import styled from 'styled-components';
 import Home from '../pages/index';
 import CloseIcon from '@mui/icons-material/Close';
-import ogIcon from '../assets/og_icon.png'
-import left_nft from '../assets/merger/left-nft.png'
-import right_nft from '../assets/merger/right-nft.png'
-import elixir from '../assets/merger/elixir.png'
-import metaheadLogo from '../assets/ted_1.png'
-import metatedsLogo from '../assets/tednorm.png'
+import ogIcon from '../assets/og_icon.png';
+import left_nft from '../assets/merger/left-nft.png';
+import right_nft from '../assets/merger/right-nft.png';
+import elixir from '../assets/merger/elixir.png';
+import metaheadLogo from '../assets/ted_1.png';
+import metatedsLogo from '../assets/tednorm.png';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 //import {Linking} from 'react-native';
-import {server } from '../config'
+import {server} from '../config';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

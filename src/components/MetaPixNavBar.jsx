@@ -10,8 +10,7 @@ import { SiLinktree } from 'react-icons/si';
 import {
     WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
-//import Linktree from '../assets/linktree-6.svg'
-//<Image src={Linktree} alt='linktree' width="auto"/>
+
 const NavBarElements =[
     {
       id: 0,

@@ -1,27 +1,12 @@
 import Head from "next/head";
 import React, {useMemo, useEffect, useState} from 'react'
 import solanaPayImg from '../assets/solana_pay_white.png';
-import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle"
-//import usdcPayImg from '../assets/usdc_logo.png'
+import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import StraightIcon from '@mui/icons-material/Straight';
-//import UserLogo from '../assets/user-logo.png';
 import Donate from '../components/Donate';
 import CloseIcon from '@mui/icons-material/Close';
-import Home from '../pages/index'
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
-import {
-    PhantomWalletAdapter,
-    SlopeWalletAdapter,
-    SolflareWalletAdapter,
-    GlowWalletAdapter,
-    TorusWalletAdapter,
-} from '@solana/wallet-adapter-wallets';
-import {
-    WalletModalProvider,
-    WalletMultiButton
-} from '@solana/wallet-adapter-react-ui';
+import Home from './index'
 import {
     useWallet,
     //useConnection
@@ -33,8 +18,6 @@ import Footer from '../components/Footer';
 import { Circles } from "react-loader-spinner";
 import Link from 'next/link'
 //import {server} from '../config'
-//required for Solana modal
-require('@solana/wallet-adapter-react-ui/styles.css');
 
 const WalletContainer =() =>{
   //react hooks

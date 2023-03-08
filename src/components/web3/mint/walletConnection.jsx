@@ -1,5 +1,5 @@
-import React, {Fragment, useCallback, useState, useEffect} from 'react'
-import { WalletMultiButton} from "@solana/wallet-adapter-react-ui";
+import React from 'react'
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Image from 'next/image'
 import tedintosh from '../../../assets/tedintosh.gif'
 import CandyMachine from './candyMachine'

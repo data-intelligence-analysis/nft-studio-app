@@ -3,18 +3,10 @@ import { SiDiscord } from "@react-icons/all-files/si/SiDiscord";
 import { GiOffshorePlatform } from "@react-icons/all-files/gi/GiOffshorePlatform"
 import { SiTwitter } from "@react-icons/all-files/si/SiTwitter";
 import {buildUrl} from 'cloudinary-build-url';
-//import platformIcon from '../assets/ted@3.png'
 import ogIcon from '../assets/og_icon.png'
 import CloseIcon from '@mui/icons-material/Close';
 import Image from 'next/image'
 import Home from '../pages/index';
-import {
-    WalletMultiButton
-} from '@solana/wallet-adapter-react-ui';
-//import styles from '../styles/Footer.module.css'
-import Link from 'next/link'
-//required for Solana modal
-require('@solana/wallet-adapter-react-ui/styles.css');
 
 
 const SocialMedia = [
