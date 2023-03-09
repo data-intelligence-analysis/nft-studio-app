@@ -7,13 +7,6 @@ import {
 } from '@solana/wallet-adapter-react';
 import {Responsive, WidthProvider} from "react-grid-layout";
 import styled from "styled-components";
-import { clusterApiUrl, 
-      Connection, 
-      LAMPORTS_PER_SOL, 
-      PublicKey, 
-      SystemProgram, 
-      Transaction  
-} from '@solana/web3.js';
 /*Grid Layout Components*/
 const layout = [
   {i: "Web3 Blog", x:0, y:0, w:1, h:1},

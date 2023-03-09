@@ -6,7 +6,6 @@ import {buildUrl} from 'cloudinary-build-url';
 import ogIcon from '../assets/og_icon.png'
 import CloseIcon from '@mui/icons-material/Close';
 import Image from 'next/image'
-import Home from '../pages/index';
 
 
 const SocialMedia = [
@@ -19,16 +18,14 @@ const SocialMedia = [
         name: 'Discord',
         href: 'http://discord.gg/N5wB8JTBBS',
         icon: <SiDiscord aria-hidden="true"/>
-        /*icon: <Image alt = 'Discord' src ={discord} width="auto" height={"20"} styles={{objectFit:"contain", objectPosition:'center'}}/>*/
     },
     {   
         name: 'Platform',
         href: 'https://metateds.com/',
-        icon: <GiOffshorePlatform aria-hidden="true"/> /*<Image alt = 'Platform' src ={platformIcon} width="auto" height={"20"} styles={{objectFit:"contain", objectPosition:'center'}}/>*/
+        icon: <GiOffshorePlatform aria-hidden="true"/>
     },
 ]
 
-//fixed pt-1 pb-1 z-30 text-center w-full bottom-0 bg-transparent
 
 //footer tailwind css
 //fixed flex pt-1 pb-1 z-20 left-0 items-center w-screen bottom-0

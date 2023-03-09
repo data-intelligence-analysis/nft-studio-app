@@ -3,15 +3,13 @@ import React, {useMemo, useEffect, useState} from 'react'
 import solanaPayImg from '../assets/solana_pay_white.png';
 import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
-import StraightIcon from '@mui/icons-material/Straight';
 import Donate from '../components/Donate';
 import CloseIcon from '@mui/icons-material/Close';
-import Home from './index'
 import {
     useWallet,
     //useConnection
 } from '@solana/wallet-adapter-react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { clusterApiUrl } from "@solana/web3.js";
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';

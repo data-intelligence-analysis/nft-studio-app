@@ -1,9 +1,8 @@
-import React, {useState, useReact, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import metatedsHeader from '../assets/metateds-header.png'
 import Link from 'next/link'
 import Image from 'next/image'
 import styled from 'styled-components';
-import Home from '../pages/index';
 import CloseIcon from '@mui/icons-material/Close';
 import ogIcon from '../assets/og_icon.png';
 import left_nft from '../assets/merger/left-nft.png';
@@ -13,7 +12,6 @@ import metaheadLogo from '../assets/ted_1.png';
 import metatedsLogo from '../assets/tednorm.png';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-//import {Linking} from 'react-native';
 import {server} from '../config';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -418,15 +416,12 @@ const FrontPage = () => {
 	const Explore = () => {
 		return (
 			<>
+			{modal ? (
 				<div className="inset-0 z-10 fixed bg-[#2e2e30e6] overflow-y-auto">
 					<div className="min-h-screen p-2 items-center mx-auto w-screen max-w-full lg:max-w-screen-2xl">
 						<nav className='flex items-center w-full h-[45px] mt-20 sticky gap-x-2'>
 							<button className="text-[30px] ml-auto flex justify-center items-center h-full pr-0.5 mr-2 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
-								{modal ? (
-									<CloseIcon sx={{width: 50, height:38}}/>)
-								:(
-									<Home />
-								)}
+									<CloseIcon sx={{width: 50, height:38}}/>
 							</button>
 						</nav>
 						<div className="h-full overflow-hidden px-4 mt-1 mb-4 pb-5 sm:mt-2 sm:mb-4 sm:p-4 opacity-100">
@@ -472,6 +467,7 @@ const FrontPage = () => {
 						</div>
 					</div>
 				</div>
+				):(null)}
 			</>
 		)
 	}

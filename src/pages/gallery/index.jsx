@@ -7,6 +7,7 @@ import {buildUrl} from 'cloudinary-build-url';
 export default function Home() {
   return (
     <>
+      <div>Coming soon</div>
     </>
   )
 }

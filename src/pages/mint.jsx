@@ -1,22 +1,7 @@
 import React, {useRef, useEffect, useMemo} from 'react'
 import Head from "next/head";
 import WalletConnection from '../components/web3/mint/walletConnection'
-import { WalletMultiButton, WalletModalProvider  } from "@solana/wallet-adapter-react-ui";
-import { clusterApiUrl } from '@solana/web3.js';
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { ConnectionProvider, WalletProvider, useWallet } from "@solana/wallet-adapter-react";
-import {
-  LedgerWalletAdapter,
-  PhantomWalletAdapter,
-  SlopeWalletAdapter,
-  SolflareWalletAdapter,
-  SolletWalletAdapter,
-  TorusWalletAdapter
-} from '@solana/wallet-adapter-wallets';
-import {
-  GlowWalletAdapter
-} from '@solana/wallet-adapter-glow';
-import { useConnection } from "@solana/wallet-adapter-react"
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 //ThreeJS  modules
@@ -357,22 +342,6 @@ const Mint = () =>{
       window.removeEventListener('resize', handleResizing);
     };
   }, []);*/
-  // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-  const network = WalletAdapterNetwork.Mainnet;
-  // You can also provide a custom RPC endpoint.
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-  const wallets = useMemo(
-    () => [
-        new PhantomWalletAdapter(),
-        new SlopeWalletAdapter(),
-        new SolletWalletAdapter({ network }),
-        new SolflareWalletAdapter({ network }),
-        new TorusWalletAdapter(),
-        new LedgerWalletAdapter(),
-        new GlowWalletAdapter({network}),
-    ],
-    [network]
-  );
   return (
     <>
       <Head>
@@ -381,13 +350,6 @@ const Mint = () =>{
 
       <NavBar bgFormat={'bg-[#0000]'}/>
         <RenderWalletConnect />
-        {/*<ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets} autoConnect>
-            <WalletModalProvider>   
-              <RenderWalletConnect />
-            </WalletModalProvider>
-          </WalletProvider>
-        </ConnectionProvider>*/}
       <Footer/>
     </>
   )

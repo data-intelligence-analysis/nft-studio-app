@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, forwardRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Image from 'next/image'
 import MetaTedLogo from '../assets/ted_1.png'
 import Link from 'next/link'
