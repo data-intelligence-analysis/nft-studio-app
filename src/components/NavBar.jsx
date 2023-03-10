@@ -69,19 +69,18 @@ const NavBar = ({bgFormat, display}) => {
     const parsed = url
     return ['https:', 'http:'].includes(parsed.protocol)
   }
-  const Logo = () => {
-    return (
-      <a className='h-10 rounded-md flex items-center p-1'>
-        <Image
-          height = 'auto'
-          width = {50}
-          alt = "MetaTeds Logo"
-          src = {MetaTedLogo}
-          style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
-        />
-      </a>
-    )
-  }
+  const Logo = () => (
+    <a className='h-10 rounded-md flex items-center p-1'>
+      <Image
+        height = 'auto'
+        width = {50}
+        alt = "MetaTeds Logo"
+        src = {MetaTedLogo}
+        style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
+      />
+    </a>
+  )
+  
   useEffect(() => {
     const HandleClickOutside = (e) => {
       // check if element that was clicked is inside of ref'd component
@@ -126,7 +125,15 @@ const NavBar = ({bgFormat, display}) => {
       <div className="max-w-screen-2xl w-full mx-auto px-2 py-2 flex items-center justify-between">
         <div className = "hidden h-10 justify-center sm:flex items-center p-2">
           <Link href='/' passHref legacyBehavior>
-            <Logo />
+            <a className='h-10 rounded-md flex items-center p-1'>
+              <Image
+                height = 'auto'
+                width = {50}
+                alt = "MetaTeds Logo"
+                src = {MetaTedLogo}
+                style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
+              />
+            </a>
           </Link>
         </div>
         <a className="h-10 cursor-pointer justify-center hidden sm:flex items-center p-2 rounded font-sans" href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noreferrer">
@@ -146,7 +153,15 @@ const NavBar = ({bgFormat, display}) => {
             <ul className={"sm:hidden responsive-dropdown-list responsive-dropdown-list-active text-center items-center place-items-center w-[50%]"} aria-label="dropdown-list" role="menu" tabIndex="0" id="Dropdown">
               <li className="h-10 justify-center flex items-center p-2 pointer-cursor">
                 <Link href = '/' passHref legacyBehavior>
-                  <Logo />
+                  <a className='h-10 rounded-md flex items-center p-1'>
+                    <Image
+                      height = 'auto'
+                      width = {50}
+                      alt = "MetaTeds Logo"
+                      src = {MetaTedLogo}
+                      style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
+                    />
+                  </a>
                 </Link>
               </li>
               <a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">

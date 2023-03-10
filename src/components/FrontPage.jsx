@@ -94,7 +94,7 @@ const FrontPage = () => {
 	const customLoader = ({src, width, quality}) => {
 		return process.env.NODE_ENV === "production" ?
 		`${process.env.BASE_URL}/${src}?${width}&q=${quality || 75}`:
-		`${process.env.LOCAL_BASE_URL}/${src}?${width}&q=${quality || 75}`;
+		`http://localhost:3000/${src}?${width}&q=${quality || 75}`;
 	}
 
 	const toggleModal = () => {

@@ -46,7 +46,7 @@ export default function Roadmap() {
                 <Image 
                   alt = 'Roadmap'
                   src = {roadmapURL}
-                  height='650'
+                  height='620'
                   width='550'
                   style = {{objectFit: 'contain', objectPosition: 'center'}}
                 />
@@ -55,7 +55,7 @@ export default function Roadmap() {
                 <Image 
                     alt = 'ted_warrior'
                     src = {tedURL}
-                    height='650'
+                    height='600'
                     width='550'
                     style = {{objectFit: 'contain', objectPosition: 'center'}}
                   />

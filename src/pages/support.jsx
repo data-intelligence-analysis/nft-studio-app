@@ -22,7 +22,7 @@ const WalletContainer =() =>{
 
   const [loading, setLoading] =useState(false)
   const wallet = useWallet();
-  const { publicKey} = useWallet();
+  const {publicKey} = useWallet();
   const [priceSOL, setPrice] = useState([]);
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
