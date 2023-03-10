@@ -2,8 +2,8 @@ import React, {useRef, useEffect} from 'react'
 import Head from "next/head";
 import WalletConnection from '../components/web3/mint/walletConnection'
 import { useWallet } from "@solana/wallet-adapter-react";
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 //ThreeJS  modules
 //import { Canvas, useFrame } from '@react-three/fiber'
 //import { Circles } from "react-loader-spinner";
