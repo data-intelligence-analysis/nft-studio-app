@@ -50,11 +50,11 @@ const Div = styled.div`
   }
 `
 
-const customLoader = ({src, width, quality}) => {
+/*const customLoader = ({src, width, quality}) => {
   return process.env.NODE_ENV === "production" ?
   `${process.env.BASE_URL}/${src}?${width}&q=${quality || 75}`:
 `http://localhost:3000/${src}?${width}&q=${quality || 75}`;
-}
+}*/
 const WalletConnection = () => {
   
   const wallet = useWallet();
@@ -68,7 +68,6 @@ const WalletConnection = () => {
           <div className="mx-auto items-center">
             <div className="relative md:gap-2 justify-content mx-47 sm:mx-40 px-20 sm:px-6 pb-10 md:grid md:place-items-center md:grid-cols-8 sm:pb-5 z-10 text-align mx-auto">
               <Image
-                loader={customLoader}
                 alt="computer"
                 priority="true"
                 src={tedintosh}

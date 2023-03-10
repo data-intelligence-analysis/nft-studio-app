@@ -137,10 +137,10 @@ export default async function aws(){
           })*/
       }
     
-    const customLoader = () => {
+    /*const customLoader = () => {
       return process.env.NODE_ENV === "production" ?
       `https://metatedstudio.com` : 'http://localhost:3030'
-    }
+    }*/
     downloadHandler(fileParams.Key)
     
     

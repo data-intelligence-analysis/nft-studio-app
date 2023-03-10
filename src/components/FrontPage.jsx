@@ -91,11 +91,11 @@ const FrontPage = () => {
       })
   }
 	//custom loader
-	const customLoader = ({src, width, quality}) => {
+	/*const customLoader = ({src, width, quality}) => {
 		return process.env.NODE_ENV === "production" ?
 		`${process.env.BASE_URL}/${src}?${width}&q=${quality || 75}`:
 		`http://localhost:3000/${src}?${width}&q=${quality || 75}`;
-	}
+	}*/
 
 	const toggleModal = () => {
 		setModal(prev => !prev);
@@ -133,8 +133,6 @@ const FrontPage = () => {
 							<div className="m-1 sm:grid justify-content items-center sm:place-items-center sm:grid-cols-10 md:grid-cols-13">
 								<div className="flex justify-center sm:col-start-1 sm:col-span-2 md:col-span-3">
 									<Image
-										loader={customLoader}
-										quality='90'
 										src={props.img}
 										alt="left-nft"
 										height="300"
@@ -151,8 +149,6 @@ const FrontPage = () => {
 								</div>
 								<div className="flex justify-center sm:col-start-5 sm:col-span-2 md:col-start-6 md:col-span-3">
 									<Image
-										loader={customLoader}
-										quality='90'
 										src={elixir}
 										alt="elixir"
 										height="300"
@@ -169,8 +165,6 @@ const FrontPage = () => {
 								</div>
 								<div className="flex justify-center sm:col-start-9 sm:col-span-2 md:col-start-11 md:col-span-3">
 									<Image
-										loader={customLoader}
-										quality='90'
 										src={props.img2}
 										alt="right-nft"
 										height="300"
@@ -216,8 +210,6 @@ const FrontPage = () => {
 						<div className="my-4 w-full items-center">
 							<span className="box-border block overflow-hidden bg-none opacity-100 border-0 m-0 p-0 relative">
                 <Image
-                  loader={customLoader}
-                  quality='90'
                   src={props.img}
                   alt="metapix"
                   height="220"
@@ -445,7 +437,6 @@ const FrontPage = () => {
 												placeholder='shimmer'
 												width='500'
 												height='auto'
-												loader={customLoader}
 											/>
 										</div>
 									):(modalNavbar.map((elem, index) =>(
@@ -488,7 +479,6 @@ const FrontPage = () => {
 			<div className='home_container'>
 					<div className = 'home_container_name'>
 						<Image
-								loader={customLoader} 
 								src={metatedsHeader}
 								alt="MetaTeds Logo"
 								height={250}

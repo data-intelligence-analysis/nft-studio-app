@@ -6,11 +6,11 @@ import Image from 'next/image'
 import ted_wd from '../assets/ted-warrior-tools.png'
 import {buildUrl} from 'cloudinary-build-url';
 
-const customLoader = ({src, width, quality}) => {
+/*const customLoader = ({src, width, quality}) => {
   return process.env.NODE_ENV === "production" ?
   `${process.env.BASE_URL}/${src}?${width}&q=${quality || 75}`:
 `http://localhost:3000/${src}?${width}&q=${quality || 75}`;
-}
+}*/
 
 export default function Roadmap() {
   const roadmapURL_abs_path = `https://res.cloudinary.com/dg7z2hep5/image/upload/v1674420960/metapix_media/Roadmap_jmquiz.png`
