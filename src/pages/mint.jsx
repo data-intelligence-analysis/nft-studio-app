@@ -325,7 +325,7 @@ const RenderWalletConnect = () => {
     </>
   )
 }
-const Mint = () =>{
+export default function Mint(){
   /*const [size, setSize] = useState(windowDimensions)
   const {innerWidth, innerHeight} = window;
   function windowDimensions () {
@@ -423,4 +423,3 @@ const Mint = () =>{
   );
 } */
 
-export default Mint;
