@@ -237,17 +237,21 @@ export default function Home () {
                         />
                       </span>
                       <div className="mt-4 pointer-cursor">
-                        <Link href='/metapix/dao' rel ="noopener noreferrer">
-                          <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
-                              DAO
-                          </button>
+                        <Link href='/metapix/dao' passHref legacyBehavior>
+                          <a rel ="noopener noreferrer">
+                            <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
+                                DAO
+                            </button>
+                          </a>
                         </Link>
                       </div>
                       <div className="mt-4 pointer-cursor">
-                        <Link href='/metapix/service' rel ="noopener noreferrer">
-                          <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
-                              Community
-                          </button>
+                        <Link href='/metapix/service' passHref legacyBehavior>
+                          <a rel ="noopener noreferrer">
+                            <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
+                                Community
+                            </button>
+                          </a>
                         </Link>
                       </div>
                       <div className="mt-4 pointer-cursor flex items-center justify-center" ref={ref}>
