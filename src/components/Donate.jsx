@@ -291,7 +291,7 @@ const Buy = ({priceID, price, ticker}) => {
   const processTransaction = async () => {
     setLoading(true);
     
-    const txResponse = await fetch(`${server}/api/createTransactionSOL`, {
+    const txResponse = await fetch(`${server}/api/createTransactionsol`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
