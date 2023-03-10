@@ -239,14 +239,14 @@ export default function Home () {
                       <div className="mt-4 pointer-cursor">
                         <Link href='/metapix/dao' rel ="noopener noreferrer">
                           <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
-                              Metapix-DAO
+                              DAO
                           </button>
                         </Link>
                       </div>
                       <div className="mt-4 pointer-cursor">
                         <Link href='/metapix/service' rel ="noopener noreferrer">
                           <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
-                              Metapix-Free
+                              Community
                           </button>
                         </Link>
                       </div>

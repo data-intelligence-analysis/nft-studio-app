@@ -94,7 +94,7 @@ const FrontPage = () => {
 	const customLoader = ({src, width, quality}) => {
 		return process.env.NODE_ENV === "production" ?
 		`${process.env.BASE_URL}/${src}?${width}&q=${quality || 75}`:
-		`http://localhost:3000/${src}?${width}&q=${quality || 75}`;
+		`${process.env.LOCAL_BASE_URL}/${src}?${width}&q=${quality || 75}`;
 	}
 
 	const toggleModal = () => {
@@ -112,7 +112,7 @@ const FrontPage = () => {
 			<div key={props.id}>
 				{props.id==0 && 
 					<div key={props.id} className="items-center w-full h-full">
-						<div className= "m-1 mb-8 sm:m-5 sm:mb-4 flex items-center">
+						<div className= "m-1 mb-8 sm:m-5 flex items-center">
 							<div className="w-3/12 min-w-fit mx-auto h-full justify-center flex items-center cursor-pointer py-1 px-1 max-w-xs rounded-lg border-2 border-slate-100" >
 								<Image src={ogIcon} alt="ted-og" width="25" height="auto" placeholder="shimmer" style={{marginRight:'0.75rem'}}/>
 								<div className="block text-left mr-3 sm:mr-6">

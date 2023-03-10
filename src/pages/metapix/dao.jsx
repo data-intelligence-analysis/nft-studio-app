@@ -15,7 +15,7 @@ import {buildUrl} from 'cloudinary-build-url';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import { MdLeaderboard } from 'react-icons/md'
 import { IconContext } from "react-icons";
-import { FcComboChart } from "react-icons/fc"
+import { FcComboChart } from "react-icons/fc";
 import {
   WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';

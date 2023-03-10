@@ -35,12 +35,12 @@ const NavBarElements =[
     },
     {
       id: 3,
-      name: 'Metapix-DAO',
+      name: 'DAO',
       href: '/metapix/dao',
     },
     {
       id: 4,
-      name: 'Metapix-Free',
+      name: 'Community',
       href: '/metapix/service',
       /*target: '_blank',
       rel: "noreferrer noopener"
