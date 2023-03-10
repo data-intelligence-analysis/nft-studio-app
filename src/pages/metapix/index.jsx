@@ -15,9 +15,9 @@ import { buildUrl } from 'cloudinary-build-url';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 const HomeURL =
-  process.env.NODE_ENV === "production"
-    ? process.env.BASE_URL
-    : "http://localhost:3000";
+  process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+    ? process.env.NEXT_PUBLIC_VERCEL_URL
+    : process.env.BASE_URL;
 
 
 /*const customLoader = ({src, width, quality}) => {
