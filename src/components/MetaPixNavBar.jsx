@@ -104,7 +104,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
 
   },[]);
   useEffect(() => setModalWalletNavBtn(
-    <WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" 
+    <WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
       style={{background:"#4e44ce", 
               width:'100%', 
               height: "2.5rem", 
@@ -143,7 +143,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
           </button>
           {isOpen && 
             <ul className={"responsive-dropdown-metapix-list responsive-dropdown-list-active text-center items-center place-items-center bg-indigo-900"} aria-label="dropdown-list" role="menu" tabIndex="0" id="Dropdown">
-              <li className="h-10 justify-center flex items-center p-2 pointer-cursor">
+              <li className="h-10 justify-center flex items-center p-2 cursor-pointer">
                 <Link href = '/' passHref legacyBehavior>
                   <a className='h-10 rounded-md flex items-center p-1'>
                     <Image
@@ -157,16 +157,16 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
                 </Link>
               </li>
               <a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">
-                <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#4e44ce] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display pointer-cursor" onClick={()=> alert ('3D experience optimized for Desktop')}>
+                <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#4e44ce] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display cursor-pointer" onClick={()=> alert ('3D experience optimized for Desktop')}>
                   <p className="font-sans text-xs">3D Experience</p>
                 </li>
               </a>
-              <li className="h-full justify-center flex items-center p-2 pointer-cursor font-sans">
+              <li className="h-full justify-center flex items-center p-2 cursor-pointer font-sans">
                 {modalWalletNavBtn}
               </li>
               <Link href='/' passHref legacyBehavior>
                 <a target="_blank" rel="noopener noreferrer">
-                  <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#4e44ce] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display pointer-cursor">
+                  <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#4e44ce] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display cursor-pointer">
                     <p className="font-sans text-xs">Metateds Studio</p>
                   </li>
                 </a>
@@ -176,7 +176,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
         </div>
         <ul className={`${collapse ? 'navBarMetaPix':''}`}></ul>
         {/*<div className={`items-center gap-x-1 p-2 font-sans hidden`}>
-          <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>
+          <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>
         </div>*/}
         
         <div className={`navBarMetaPix ${bgFormat} text-base sm:text-2xl uppercase`}>

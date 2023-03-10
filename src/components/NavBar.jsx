@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, {useState, useEffect, useRef, forwardRef} from 'react'
 import Image from 'next/image'
 import MetaTedLogo from '../assets/ted_1.png'
@@ -69,17 +70,19 @@ const NavBar = ({bgFormat, display}) => {
     const parsed = url
     return ['https:', 'http:'].includes(parsed.protocol)
   }
-  const Logo = () => (
-    <a className='h-10 rounded-md flex items-center p-1'>
-      <Image
-        height = 'auto'
-        width = {50}
-        alt = "MetaTeds Logo"
-        src = {MetaTedLogo}
-        style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
-      />
-    </a>
-  )
+  const Logo = forwardRef(({ href }, ref) => {
+    return (
+      <a href={href} ref={ref} className='h-10 rounded-md flex items-center p-1 cursor-pointer'>
+        <Image
+          height = {45}
+          width = {50}
+          alt = "MetaTeds Logo"
+          src = {MetaTedLogo}
+          style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
+        />
+      </a>
+    )
+  })
   
   useEffect(() => {
     const HandleClickOutside = (e) => {
@@ -103,7 +106,7 @@ const NavBar = ({bgFormat, display}) => {
   
   useEffect(() => setWalletNavBtn(
       <WalletMultiButton 
-        className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" 
+        className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
         style={{background:"#4e44ce",
                 height: "1.9rem", 
                 fontSize:"0.875rem", 
@@ -112,7 +115,7 @@ const NavBar = ({bgFormat, display}) => {
                   ), 
         [])
   useEffect(() => setModalWalletNavBtn(
-        <WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" 
+        <WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
           style={{background:"#4e44ce", 
                   width:'100%', 
                   height: "2.5rem", 
@@ -151,9 +154,9 @@ const NavBar = ({bgFormat, display}) => {
           </button>
           {isOpen && 
             <ul className={"sm:hidden responsive-dropdown-list responsive-dropdown-list-active text-center items-center place-items-center w-[50%]"} aria-label="dropdown-list" role="menu" tabIndex="0" id="Dropdown">
-              <li className="h-10 justify-center flex items-center p-2 pointer-cursor">
+              <li className="h-10 justify-center flex items-center p-2">
                 <Link href = '/' passHref legacyBehavior>
-                  <a className='h-10 rounded-md flex items-center p-1'>
+                  <a className='h-10 rounded-md flex items-center p-1 cursor-pointer'>
                     <Image
                       height = 'auto'
                       width = {50}
@@ -165,13 +168,13 @@ const NavBar = ({bgFormat, display}) => {
                 </Link>
               </li>
               <a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">
-                <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#B27315] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display pointer-cursor" onClick={()=> alert ('3D experience optimized for Desktop')}>
+                <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#B27315] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display cursor-pointer" onClick={()=> alert ('3D experience optimized for Desktop')}>
                   3D Experience
                 </li>
               </a>
-              <li className="h-full justify-center flex items-center p-2 pointer-cursor font-sans">
+              <li className="h-full justify-center flex items-center p-2 cursor-pointer font-sans">
                  {modalWalletNavBtn}
-                {/*<WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", width:'100%', height: "2.5rem", fontSize:"0.8rem", lineHeight: "1.25rem"}}/>*/}
+                {/*<WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", width:'100%', height: "2.5rem", fontSize:"0.8rem", lineHeight: "1.25rem"}}/>*/}
               </li>
             </ul>
           }
@@ -179,7 +182,7 @@ const NavBar = ({bgFormat, display}) => {
         <ul className={`${collapse ? 'navBarElements':''}`}></ul>
         <div className={`sm:flex items-center gap-x-1 p-2 font-sans hidden`}>
           {walletNavBtn}
-          {/*<WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 pointer-cursor hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>*/}
+          {/*<WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>*/}
         </div>
         
         <div className="navBarElements text-base sm:text-2xl uppercase">
@@ -255,7 +258,7 @@ export default NavBar;
             </button>
         </a>}
       </div>
-      <div className={`${display} w-[118px] sm:w-[125px] mx-1 mt-4 sm:mt-3 sm:mx-4 flex float-left justify-center text-center rounded-md gap-x-2 items-center bg-indigo-700 pointer-cursor`}>
+      <div className={`${display} w-[118px] sm:w-[125px] mx-1 mt-4 sm:mt-3 sm:mx-4 flex float-left justify-center text-center rounded-md gap-x-2 items-center bg-indigo-700 cursor-pointer`}>
         <WalletMultiButton className="h-auto max-w-xs font-bold hover:ring-4 text-[10px] text-xs hover:bg-indigo-600 hover:ring-indigo-500" style={{fontSize: '14px', height:"35px", paddingLeft: "10px", paddingRight:"10px", paddingTop:"5px", paddingBottom:"5px"}}/>
       </div>
       <div className = 'navBarElements'>

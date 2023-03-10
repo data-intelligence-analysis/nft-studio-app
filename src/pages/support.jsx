@@ -39,7 +39,7 @@ const WalletContainer =() =>{
         <div className="inset-0 z-10 fixed bg-[#2e2e30e6]">
           <div className="relative my-10 justify-center mx-auto min-h-full overflow-y-auto p-2 items-center lg:max-w-screen-2xl">
             <div className="mt-8 sticky w-full items-center">
-              <button className="text-[30px] py-1 ml-auto flex justify-center items-center h-full text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
+              <button className="text-[30px] py-1 ml-auto flex justify-center items-center h-full text-white bg-transparent cursor-pointer outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
                 <CloseIcon sx={{width: 50, height:38}}/>
               </button>
             </div>

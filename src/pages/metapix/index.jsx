@@ -63,7 +63,7 @@ export default function Home () {
   const [file, setFile] =useState();
   const [loading, setLoading] = useState(false)
 
-  
+  const {pathname} = useRouter();
   const downloadFile = async() => {
     
     setLoading(true)
@@ -236,25 +236,27 @@ export default function Home () {
                           style = {{objectFit: 'contain', objectPosition: 'center', borderRadius: '18px'}}
                         />
                       </span>
-                      <div className="mt-4 pointer-cursor">
-                        <Link href='/metapix/dao' passHref legacyBehavior>
-                          <a rel ="noopener noreferrer">
-                            <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
-                                DAO
-                            </button>
-                          </a>
-                        </Link>
+                      <div className="mt-4">
+                        {pathname === "/metapix/dao" && (
+                          <Link href='/metapix/dao'>
+                            <a className="cursor-pointer">
+                              <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
+                                  DAO
+                              </button>
+                            </a>
+                          </Link>)}
                       </div>
-                      <div className="mt-4 pointer-cursor">
-                        <Link href='/metapix/service' passHref legacyBehavior>
-                          <a rel ="noopener noreferrer">
-                            <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
-                                Community
-                            </button>
-                          </a>
-                        </Link>
+                      <div className="mt-4">
+                        {pathname === "/metapix/service" && (
+                          <Link href='/metapix/service'>
+                            <a className="cursor-pointer">
+                              <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
+                                  Community
+                              </button>
+                            </a>
+                          </Link>)}
                       </div>
-                      <div className="mt-4 pointer-cursor flex items-center justify-center" ref={ref}>
+                      <div className="mt-4 cursor-pointer flex items-center justify-center" ref={ref}>
                         <FileDownload />
                         {/*<div className="none">
                           <iframe src={this.props.iframeSrc} />

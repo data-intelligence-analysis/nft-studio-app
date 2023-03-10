@@ -49,7 +49,7 @@ const Footer = ({bgFormat, display}) => {
           <div className="inset-0 z-10 fixed bg-[#2e2e30e6]">
             <div className="relative justify-center mx-auto min-h-full overflow-y-auto p-2 items-center lg:max-w-screen-2xl">
               <div className="mt-10 sticky w-full h-[45px] items-center">
-                <button className="text-[30px] pt-0.5 ml-auto flex justify-center items-center h-full mr-6 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
+                <button className="text-[30px] pt-0.5 ml-auto flex justify-center items-center h-full mr-6 text-white bg-transparent cursor-pointer outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
                     <CloseIcon sx={{width: 50, height:38}}/>
                 </button>
               </div>
@@ -156,7 +156,7 @@ const Footer = ({bgFormat, display}) => {
                     ))}
                 </div>
                 <div className={`${display} flex font-bold items-center mt-0.5 gap-x-2 `}>
-                    <button className="justify-center flex items-center overflow-hidden px-1 sm:px-3.5 py-2 rounded-md bg-zinc-700 hover:ring-4 hover:ring-indigo-600 pointer-cursor" onClick={toggleModal}>
+                    <button className="justify-center flex items-center overflow-hidden px-1 sm:px-3.5 py-2 rounded-md bg-zinc-700 hover:ring-4 hover:ring-indigo-600 cursor-pointer" onClick={toggleModal}>
                         <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
                         <p className="font-bold font-display tracking-wider text-xs sm:text-lg">Terms of Use</p>
                     </button>

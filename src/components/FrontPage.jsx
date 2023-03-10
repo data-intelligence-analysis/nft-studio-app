@@ -420,7 +420,7 @@ const FrontPage = () => {
 				<div className="inset-0 z-10 fixed bg-[#2e2e30e6] overflow-y-auto">
 					<div className="min-h-screen p-2 items-center mx-auto w-screen max-w-full lg:max-w-screen-2xl">
 						<nav className='flex items-center w-full h-[45px] mt-20 sticky gap-x-2'>
-							<button className="text-[30px] ml-auto flex justify-center items-center h-full pr-0.5 mr-2 text-white bg-transparent pointer-cursor outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
+							<button className="text-[30px] ml-auto flex justify-center items-center h-full pr-0.5 mr-2 text-white bg-transparent cursor-pointer outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
 									<CloseIcon sx={{width: 50, height:38}}/>
 							</button>
 						</nav>
