@@ -237,8 +237,8 @@ export default function Home () {
                         />
                       </span>
                       <div className="mt-4">
-                        {pathname === "/metapix/dao" && (
-                          <Link href='/metapix/dao'>
+                        {pathname === "/metapix" && (
+                          <Link href='/metapix/dao' legacyBehavior>
                             <a className="cursor-pointer">
                               <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
                                   DAO
@@ -247,8 +247,8 @@ export default function Home () {
                           </Link>)}
                       </div>
                       <div className="mt-4">
-                        {pathname === "/metapix/service" && (
-                          <Link href='/metapix/service'>
+                        {pathname === "/metapix" && (
+                          <Link href='/metapix/service' legacyBehavior>
                             <a className="cursor-pointer">
                               <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
                                   Community
