@@ -113,7 +113,7 @@ export default function Utility() {
         {!connected && !wallet.publicKey ?
           (<div className="bg-[#343333] h-screen grid grid-cols-8 gap-10">
             <div className="place-items-center my-auto col-start-2 col-span-6 text-center">
-              <h1 className="inline-block text-lg sm:text-xl lg:text-3xl">🎉 Connect to wallet above </h1><StraightIcon />
+              <h1 className="inline-block text-lg sm:text-xl lg:text-3xl">🎉 Connect to wallet above </h1>
             </div>
           </div>):
           (

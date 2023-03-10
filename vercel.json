@@ -1,4 +1,4 @@
 {
-  "installCommand":"npm install --omit=dev --legacy-peer-deps"
+  "installCommand":"yarn install"
   
 }

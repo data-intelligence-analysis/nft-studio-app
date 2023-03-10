@@ -1,7 +1,7 @@
-import React, {useRef, useEffect, useMemo} from 'react'
+import React, {useRef, useEffect} from 'react'
 import Head from "next/head";
 import WalletConnection from '../components/web3/mint/walletConnection'
-import { ConnectionProvider, WalletProvider, useWallet } from "@solana/wallet-adapter-react";
+import { useWallet } from "@solana/wallet-adapter-react";
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 //ThreeJS  modules

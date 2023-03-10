@@ -12,7 +12,7 @@ import {
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 
-import "@solana/wallet-adapter-react-ui/styles.css";
+require("@solana/wallet-adapter-react-ui/styles.css");
 
 function MyApp({ Component, pageProps }) {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'

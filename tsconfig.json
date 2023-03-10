@@ -5,9 +5,9 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext",
+      "esnext"
     ],
-    //"types": ["styled-components"],
+    "types": ["styled-components"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -28,8 +28,6 @@
     "**/*.tsx",
   ],
   "exclude": [
-    "node_modules",
-    ".vscode"
+    "node_modules"
   ],
-  
 }
