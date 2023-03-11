@@ -14,14 +14,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="MetaTeds Studio - Web3 Community Experience"/>
       </Head>
-      <NavBar bgFormat={"bg-[#343333]"}/>
-      <main className="main" ref={ref}>
+      <NavBar bgFormat={"bg-slate-900/80"}/>
+      <main className="h-screen m-auto items-center text-center w-full bg-slate-900" ref={ref}>
         {" "}
         {/* Main Pages Rendered */}
         <FrontPage />
         
       </main>
-      <Footer bgFormat={"bg-zinc-800"}/>
+      <Footer bgFormat={"bg-slate-900/75"}/>
       
     </>
   )

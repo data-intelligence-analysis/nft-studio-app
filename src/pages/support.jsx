@@ -179,8 +179,8 @@ const WalletContainer =() =>{
       <Head>
         <title>🎗 Support | MetaTeds</title>
       </Head>
-      <NavBar bgFormat={"bg-[#343333]"} />
-      <div className="bg-[var(--tw-main-bg-color)] h-screen">
+      <NavBar bgFormat={"bg-slate-900/80"} />
+      <div className="bg-slate-900 h-screen">
         <div className="h-full mx-4">
           <div className="m-auto py-20 h-full overflow-y-auto">
             <nav className="top-5 lg:sticky relative pointer-events-none z-index">
@@ -229,7 +229,7 @@ const WalletContainer =() =>{
           </div>
         </div>
       </div>
-      <Footer bgFormat={"bg-zinc-800"}/>
+      <Footer bgFormat={"bg-slate-900"}/>
     </>
   )
 }

@@ -10,10 +10,13 @@ import { SiLinktree } from 'react-icons/si';
 import {
     WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
+import { IconContext } from "react-icons";
+import { HomeIcon, UserIcon, MapIcon, CogIcon } from '@heroicons/react/24/solid'
 const NavBarElements =[
     {
         id: 0,
-        name: <SiLinktree />, 
+        name: 'Linktree',
+        icon: <IconContext.Provider value={{ color: "orange", size: "2em", className: "global-class-name" }} ><div><SiLinktree /></div></IconContext.Provider>,
         href: 'https://linktr.ee/metateds',
         target: '_blank',
         rel: "noreferrer noopener"
@@ -21,28 +24,33 @@ const NavBarElements =[
     {
         id: 1,
         name: 'Home',
-        href: '/'
+        href: '/',
+        icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
     },
     {
         id: 2,
         name: 'Legion',
-        href: '/legion'
+        href: '/legion',
+        icon: <UserIcon className= "text-[#EAA640] h-6 w-6"/>
         
     },
     {
         id: 3,
         name: 'Roadmap',
-        href: '/roadmap'
+        href: '/roadmap',
+        icon: < MapIcon className= "text-[#EAA640] h-6 w-6"/>,
     },
     {
         id: 4,
         name: 'Utility',
-        href: '/utility'
+        href: '/utility',
+        icon: <CogIcon className= "text-[#EAA640] h-6 w-6"/>
     },
     {
         id: 5,
         name: 'Support',
-        href: '/support'
+        href: '/support',
+        icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
     }
 
 ]
@@ -124,9 +132,9 @@ const NavBar = ({bgFormat, display}) => {
         />
   ),[])
   return(
-    <nav className={`fixed top-0 left-0 w-full z-20 ${bgFormat}`}>
-      <div className="max-w-screen-2xl w-full mx-auto px-2 py-2 flex items-center justify-between">
-        <div className = "hidden h-10 justify-center sm:flex items-center p-2">
+    <nav className={`fixed top-0 left-0 w-full z-20 ${bgFormat} meatapix-navbar-shadow`}>
+      <div className="max-w-screen-2xl w-full mx-auto px-2 flex items-center justify-between">
+        {/*<div className = "hidden h-10 justify-center sm:flex items-center p-2">
           <Link href='/' passHref legacyBehavior>
             <a className='h-10 rounded-md flex items-center p-1'>
               <Image
@@ -146,25 +154,17 @@ const NavBar = ({bgFormat, display}) => {
               3D Experience
             </button>
           </div>
-        </a>
-        <div className="flex items-center gap-x-1 pl-2 font-sans" ref={ref}>
-          <button className = "sm:hidden h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-zinc-700 flex items-center cursor-pointer" onClick={toggleDropdown}>
+        </a>*/}
+        <div className="flex items-center gap-x-1 pl-2 font-sans max-w-screen-2xl" ref={ref}>
+          <button className = "h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-indigo-800 flex items-center cursor-pointer" onClick={toggleDropdown}>
             <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
             <p className="font-bold font-display text-sm">Items</p>
           </button>
           {isOpen && 
-            <ul className={"sm:hidden responsive-dropdown-list responsive-dropdown-list-active text-center items-center place-items-center w-[50%]"} aria-label="dropdown-list" role="menu" tabIndex="0" id="Dropdown">
+            <ul className={"responsive-dropdown-list responsive-dropdown-list-active text-center items-center place-items-center w-[50%] max-w-md p-6"} aria-label="dropdown-list" role="menu" tabIndex="0" id="Dropdown">
               <li className="h-10 justify-center flex items-center p-2">
                 <Link href = '/' passHref legacyBehavior>
-                  <a className='h-10 rounded-md flex items-center p-1 cursor-pointer'>
-                    <Image
-                      height = 'auto'
-                      width = {50}
-                      alt = "MetaTeds Logo"
-                      src = {MetaTedLogo}
-                      style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
-                    />
-                  </a>
+                  <Logo />
                 </Link>
               </li>
               <a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">
@@ -179,13 +179,13 @@ const NavBar = ({bgFormat, display}) => {
             </ul>
           }
         </div>
-        <ul className={`${collapse ? 'navBarElements':''}`}></ul>
+        {/*<ul className={`${collapse ? 'navBarElements':''}`}></ul>*/}
         <div className={`sm:flex items-center gap-x-1 p-2 font-sans hidden`}>
           {walletNavBtn}
           {/*<WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>*/}
         </div>
         
-        <div className="navBarElements text-base sm:text-2xl uppercase">
+        {/*<div className="navBarElements text-base sm:text-2xl uppercase">
           {navBarElements.map((element, index) => (
             (<Link
                 href={element.href}
@@ -195,9 +195,9 @@ const NavBar = ({bgFormat, display}) => {
               <a className="navBarItems text-xl sm:text-2xl uppercase"onClick={closeNav} target={element.target} rel={element.rel}>{element.name}</a>
             </Link>)
           ))} 
-        </div>
+            </div>*/}
         
-        <button className='navBar_btn' onClick={toggleNav}>
+        {/*<button className='navBar_btn' onClick={toggleNav}>
           {collapse ? 
             (
               <CloseIcon sx={{
@@ -214,7 +214,54 @@ const NavBar = ({bgFormat, display}) => {
                   }}
               />
             )}
-        </button>
+                </button>*/}
+        <div className="flex items-center gap-x-1 m-1 pl-4 font-sans">
+          <button className = "p-2 items-center" 
+              onClick={toggleNav} > 
+            <MenuIcon 
+                  sx={{
+                      width: 55,
+                      height: 40,
+                  }}
+              />
+          </button>
+        </div> 
+        {collapse &&
+          <div className="absolute inset-0 h-screen w-full bg-slate-900/95 z-50">
+            <div className="p-6 lg:p-8 mx-auto max-w-screen-xl">
+              <div className="flex justify-between items-center">
+                <div className="items-center h-50 p-2">
+                  <Link href='/' passHref legacyBehavior>
+                    <Logo />
+                  </Link>
+                </div>
+                <button className="font-semibold hover:outline hover:outline-2 hover:outline-offset-1 hover:outline-indigo-600 cursor-pointer p-2 rounded-md " onClick={toggleNav}>
+                  <CloseIcon sx={{
+                          width: 55,
+                          height: 40,
+                      }}
+                  />
+                </button>
+              </div>
+              <div className="mt-2 flex flex-col gap-y-px">
+                {navBarElements.map((element, index) => (
+                    (<Link 
+                      href={element.href}
+                      key={index}
+                      legacyBehavior>
+                      <a class="text-sm flex items-center px-3 py-2 border border-[#EAA640] hover:bg-zinc-800 rounded-md text-black bg-indigo-800 mt-4" onClick={closeNav} target={element.target} rel={element.rel}>
+                        {element.icon}
+                        <div class="flex flex-col px-3">
+                          <p class="font-bold font-display text-[#EAA640]">{element.name}</p>
+                        </div>
+                        <p></p>
+                      </a>
+                    </Link>)
+                ))}
+              </div>
+            </div>
+          </div>
+        }
       </div>
     </nav>
   )

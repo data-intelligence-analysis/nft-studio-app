@@ -296,7 +296,7 @@ const RenderWalletConnect = () => {
   return (
     <>
       {!connected && !wallet.publicKey ? (
-        <div className="bg-zinc-900 h-screen overflow-y-hidden"> 
+        <div className="bg-zinc-400 h-screen overflow-hidden"> 
           {/*<nav className="sticky top-[4.25rem] pointer-event-none z-nav w-full">
             <div className="absolute w-full mt-4">
               <div className="flex float-left sm:float-right font-pixel flex-row px-4">
@@ -353,7 +353,6 @@ export default function Mint(){
       <Footer/>
     </>
   )
-
 }
 
 /*const [position, setPosition] = useState();

@@ -144,8 +144,8 @@ const Footer = ({bgFormat, display}) => {
         return ['https:', 'http:'].includes(parsed.protocol)
       }
     return (
-        <footer className={`fixed flex pt-1 pb-1 z-20 left-0 items-center w-screen bottom-0 ${bgFormat}`}>
-            <div className="mx-w-screen-xl mx-auto flex items-center justify-between gap-x-4 w-full py-1 px-4">
+        <footer className={`fixed flex pt-1 pb-1 z-20 left-0 items-center w-screen bottom-0 ${bgFormat} overflow-x-auto`}>
+            <div className="mx-w-screen-xl mx-auto flex items-center justify-between gap-x-4 py-1 w-full px-4">
                 <div className='flex items-center gap-x-2'>
                     {socialImg.map((social, index) => (
                         <a className = 'sm:py-[10px] sm:px-[10px] py-[8px] px-[4px]' key={index} 
@@ -156,7 +156,7 @@ const Footer = ({bgFormat, display}) => {
                     ))}
                 </div>
                 <div className={`${display} flex font-bold items-center mt-0.5 gap-x-2 `}>
-                    <button className="justify-center flex items-center overflow-hidden px-1 sm:px-3.5 py-2 rounded-md bg-zinc-700 hover:ring-4 hover:ring-indigo-600 cursor-pointer" onClick={toggleModal}>
+                    <button className="justify-center flex items-center overflow-hidden px-1 sm:px-3.5 py-2 rounded-md bg-indigo-800 hover:ring-4 hover:ring-indigo-600 cursor-pointer" onClick={toggleModal}>
                         <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
                         <p className="font-bold font-display tracking-wider text-xs sm:text-lg">Terms of Use</p>
                     </button>

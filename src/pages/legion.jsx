@@ -9,8 +9,8 @@ export default function Legion() {
       <Head>
         <title>🦍 Legion | MetaTeds</title>
       </Head>
-      <NavBar bgFormat={"bg-[#343333]"} />
-        <div className="bg-[#343333] overflow-x-hidden w-screen h-screen text-center items-center">
+      <NavBar bgFormat={"bg-slate-900/80"} />
+        <div className="bg-slate-900 overflow-x-hidden w-screen h-screen text-center items-center">
           <div className="w-full py-20 px-5 flex items-center">
             <div className="grid md:grid-cols-10 my-4 mx-auto max-w-screen-2xl">
               <div className="text-center md:text-left sm:col-start-1 sm:col-span-5">
@@ -134,7 +134,7 @@ export default function Legion() {
             </div>
           </div>
         </div>
-      <Footer bgFormat={"bg-zinc-800"}/>
+      <Footer bgFormat={"bg-slate-900/80"}/>
     </>
   );
 }

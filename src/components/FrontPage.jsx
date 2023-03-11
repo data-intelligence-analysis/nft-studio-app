@@ -409,12 +409,15 @@ const FrontPage = () => {
 		return (
 			<>
 			{modal ? (
-				<div className="inset-0 z-10 fixed bg-[#2e2e30e6] overflow-y-auto">
-					<div className="min-h-screen p-2 items-center mx-auto w-screen max-w-full lg:max-w-screen-2xl">
+				<div className="inset-0 z-40 fixed bg-[#2e2e30e6] overflow-auto">
+					<div className="min-h-screen p-4 items-center mx-auto w-screen max-w-full lg:max-w-screen-2xl">
 						<nav className='flex items-center w-full h-[45px] mt-20 sticky gap-x-2'>
-							<button className="text-[30px] ml-auto flex justify-center items-center h-full pr-0.5 mr-2 text-white bg-transparent cursor-pointer outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
-									<CloseIcon sx={{width: 50, height:38}}/>
-							</button>
+							<div className="ml-auto pr-8 items-center text-center">
+								<button className="text-[30px] ml-auto flex justify-center items-center h-full px-1 text-white bg-transparent cursor-pointer outline-none overflow-hidden hover:ring-4 hover:ring-indigo-600 rounded-md" onClick={toggleModal}>
+										<CloseIcon sx={{width: 50, height:38}}/>
+								</button>
+							</div>
+							
 						</nav>
 						<div className="h-full overflow-hidden px-4 mt-1 mb-4 pb-5 sm:mt-2 sm:mb-4 sm:p-4 opacity-100">
 							<div className="sm:mt-2 sm:grid sm:grid-cols-8 md:grid-cols-13 sm:place-items-center">
@@ -476,32 +479,36 @@ const FrontPage = () => {
 
   },[]);
 	return (
-			<div className='home_container'>
-					<div className = 'home_container_name'>
-						<Image
-								src={metatedsHeader}
-								alt="MetaTeds Logo"
-								height={250}
-								width='auto'
-								priority='true'
-						/>
-					</div>
-					<div className = 'home_content_subheader pb-10 ml-a mr-a font_text_size text-[#EAA640]'>
-							<h1>Building a Web3 Platform</h1>
-					</div>
-					<div className="mt-8 flex text-center">
-						<Link href ="/mint" legacyBehavior>
-								<MintButton>
-										Mint Teds
-								</MintButton>
-						</Link>
-						<ExploreButton onClick={toggleModal}>
-								Explore
-						</ExploreButton>
-					</div>
-					{modal && <Explore />}
-
-			</div>
+			<div className={`h-full z-20 w-full overflow-auto ${modal ? ('overflow-hidden'):''} `}>
+				<div className="pb-12 p-2 mx-auto max-w-screen-xl">
+					<div className ={`flex flex-col h-screen justify-center items-center`}>
+						<div className="w-full flex">
+							<Image
+									src={metatedsHeader}
+									alt="MetaTeds Logo"
+									height='100%'
+									width='auto'
+									loading="lazy"
+									placeholder='blur'	
+							/>
+						</div>
+						{/*<div className = 'home_content_subheader pb-10 ml-a mr-a font_text_size text-[#EAA640]'>
+								<h1>Building a Web3 Platform</h1>
+						</div>*/}
+						<div className="mt-8 flex text-center sm:text-base text-sm">
+							<Link href ="/mint" legacyBehavior>
+									<MintButton>
+											Mint Teds
+									</MintButton>
+							</Link>
+							<ExploreButton onClick={toggleModal}>
+									Explore
+							</ExploreButton>
+						</div>
+						{modal && <Explore />}
+				 </div>
+			 </div>
+		</div>
 	);
 };
 
@@ -514,7 +521,7 @@ const MintButton = styled.button`
 		width: 150px;
 		font-family: 'Ranchers',bold;
 		border-radius: 4px;
-		margin-right: 1.5rem;
+		margin-right: 1rem;
 		background-color: var(--tw-purple-ted);
 		&:hover {
 			background: #4e4197;
@@ -527,8 +534,8 @@ const MintButton = styled.button`
 		@media (max-width: 428px){
 				padding-top: 0.375rem;
         padding-bottom: 0.375rem;
-        padding-right: 1rem;
-        padding-left: 1rem;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
         height: 100%;
         width: 100px;
         font-size: 1rem;
@@ -543,7 +550,7 @@ const ExploreButton = styled.button`
 		width: 150px;
 		font-family: 'Ranchers',bold;
 		border-radius: 4px;
-		margin-left: 1.5rem;
+		margin-left: 1rem;
 		background-color: var(--tw-metateds);
 		&:hover{
 			background: #B27315;
@@ -556,8 +563,8 @@ const ExploreButton = styled.button`
 		@media (max-width: 428px){
 			padding-top: 0.375rem;
 			padding-bottom: 0.375rem;
-			padding-right: 1rem;
-			padding-left: 1rem;
+			padding-right: 0.5rem;
+			padding-left: 0.5rem;
 			height: 100%;
 			width: 100px;
 			font-size: 1rem;

@@ -37,8 +37,8 @@ export default function Roadmap() {
       <Head>
         <title>📜 Roadmap | MetaTeds</title>
       </Head>
-      <NavBar bgFormat={"bg-[#343333]"} />
-      <div className="bg-[var(--tw-main-bg-color)]">
+      <NavBar bgFormat={"bg-slate-900/80"} />
+      <div className="bg-slate-900">
         <div className="px-4 py-10 sm:py-10 grid lg:py-12 sm:px-6 sm:grid sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 min-h-screen max-w-full xl:max-w-screen-2xl sm:gap-2 lg:gap-4 mx-auto">
           <div className="h-full py-6 sm:col-span-8 md:col-span-10 lg:col-span-12 xl:col-span-12">
             <div className="h-full pt-4 grid sm:grid-cols-2 place-items-center">
@@ -64,7 +64,7 @@ export default function Roadmap() {
           </div>
         </div>
       </div>
-      <Footer bgFormat={"bg-zinc-800"}/>
+      <Footer bgFormat={"bg-slate-900/80"}/>
     </>
   );
 }
