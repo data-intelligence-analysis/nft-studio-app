@@ -11,6 +11,7 @@ import {
   TorusWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
+
 require("@solana/wallet-adapter-react-ui/styles.css");
 
 function MyApp({ Component, pageProps }) {
@@ -49,7 +50,6 @@ function MyApp({ Component, pageProps }) {
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
-    
   )
 }
 

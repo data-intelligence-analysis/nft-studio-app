@@ -7,6 +7,7 @@ import {
 } from '@solana/wallet-adapter-react';
 import {Responsive, WidthProvider} from "react-grid-layout";
 import styled from "styled-components";
+import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
 /*Grid Layout Components*/
 const layout = [
   {i: "Web3 Blog", x:0, y:0, w:1, h:1},
@@ -51,7 +52,7 @@ export default function Utility() {
   const RenderConnectedWallet = () => {
     return (
       <>
-        <div className="bg-[#343333] h-screen">
+        <div className="bg-slate-900 h-screen">
           <div className="flex relative text-center items-center h-full overflow-y-auto">
             <div className="absolute mt-40 pt-40 pb-20 sm:my-10 sm:pt-40 md:pt-20 md:my-20 md:pb-5 lg:my-40 lg:pt-20 lg:pb-20 justify-center mx-auto w-full">
               <Root draggable={false}>
@@ -111,11 +112,17 @@ export default function Utility() {
       </Head>
       <NavBar bgFormat={"bg-slate-900/80"} />
         {!connected && !wallet.publicKey ?
-          (<div className="bg-slate-900 h-screen grid grid-cols-8 gap-10">
-            <div className="place-items-center my-auto col-start-2 col-span-6 text-center">
-              <h1 className="inline-block text-lg sm:text-xl lg:text-3xl">🎉 Connect to wallet above </h1>
-            </div>
-          </div>):
+          (
+            <>
+              <DesktopWarnModal />
+              <div className="bg-slate-900 h-screen grid grid-cols-8 gap-10">
+                <div className="place-items-center my-auto col-start-2 col-span-6 text-center">
+                  <h1 className="hidden sm:block text-lg sm:text-xl lg:text-3xl">🎉 Select wallet above </h1>
+                  <h1 className="sm:hidden block text-lg sm:text-xl lg:text-3xl">🎉 Select wallet in Items Menu </h1>
+                </div>
+              </div>
+            </>
+          ):
           (
             RenderConnectedWallet()
           )

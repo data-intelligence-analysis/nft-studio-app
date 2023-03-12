@@ -14,7 +14,10 @@ import { clusterApiUrl } from "@solana/web3.js";
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Circles } from "react-loader-spinner";
-import Link from 'next/link'
+import Link from 'next/link';
+import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
+
+
 //import {server} from '../config'
 
 const WalletContainer =() =>{
@@ -179,17 +182,23 @@ const WalletContainer =() =>{
       <Head>
         <title>🎗 Support | MetaTeds</title>
       </Head>
+      
       <NavBar bgFormat={"bg-slate-900/80"} />
+      
       <div className="bg-slate-900 h-screen">
-        <div className="h-full mx-4">
+        <div className="h-full mx-4 max-w-screen-2xl">
           <div className="m-auto py-20 h-full overflow-y-auto">
             <nav className="top-5 lg:sticky relative pointer-events-none z-index">
               <div className="absolute mt-1 w-full">
                 {!wallet.connected && !wallet.publicKey ?
                   (
-                    <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
-                      <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">Connect to wallet above </h1>
-                    </div>
+                    <>
+                      <DesktopWarnModal/>
+                      <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
+                        <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">Connect to wallet above </h1>
+                      </div>
+                    </>
+                    
                   ):(
                     <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
                       <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">🎉 {""} Connected</h1>

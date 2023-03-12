@@ -250,10 +250,10 @@ const NavBar = ({bgFormat, display}) => {
                       href={element.href}
                       key={index}
                       legacyBehavior>
-                      <a class="text-sm flex items-center px-3 py-2 border border-[#EAA640] hover:bg-zinc-800 rounded-md text-black bg-indigo-800 mt-4" onClick={closeNav} target={element.target} rel={element.rel}>
+                      <a className="text-sm flex items-center px-3 py-2 border border-[#EAA640] hover:bg-zinc-800 rounded-md text-black bg-indigo-800 mt-4" onClick={closeNav} target={element.target} rel={element.rel}>
                         {element.icon}
-                        <div class="flex flex-col px-3">
-                          <p class="font-bold font-display text-[#EAA640]">{element.name}</p>
+                        <div className="flex flex-col px-3">
+                          <p className="font-bold font-display text-[#EAA640]">{element.name}</p>
                         </div>
                         <p></p>
                       </a>
