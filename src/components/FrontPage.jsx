@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import metatedsHeader from '../assets/metateds-header.png'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -68,7 +68,33 @@ const FrontPage = () => {
   const [modalNavbar] = useState(modalNavBarElements);
   const [activeSidebar, setActiveSideBar] = useState(null);
   const [landing, setLanding] = useState(null);
+	const [isOpen, setIsOpen] = useState(false);
 
+	const toggleDropdown = () => {
+    setIsOpen(!isOpen)
+  }
+
+	const ref = useRef();
+
+	useEffect(() => {
+    const HandleClickOutside = (e) => {
+      // check if element that was clicked is inside of ref'd component
+      // if so no action is required from this event listener so exit
+      if (ref.current && ref.current.contains(e.target)){
+        return;
+      }
+      // else close the dropdown
+      setIsOpen(false)
+      
+    }
+    document.body.addEventListener("click", HandleClickOutside)
+    // CLEANUP
+    // remove event listener
+    return () => {
+      document.body.removeEventListener("click", HandleClickOutside)
+    }
+
+  },[]);
 	//Security measure to validate external site urls
   function valURL(url) {
     const parsed = url
@@ -495,15 +521,50 @@ const FrontPage = () => {
 						{/*<div className = 'home_content_subheader pb-10 ml-a mr-a font_text_size text-[#EAA640]'>
 								<h1>Building a Web3 Platform</h1>
 						</div>*/}
-						<div className="mt-8 flex text-center sm:text-base text-sm">
-							<Link href ="/mint" legacyBehavior>
+						<div className="mt-8 flex-col relative text-center justify-center sm:text-base text-sm pointer-events-auto">
+							<div className="mb-1 h-full flex items-center text-center mx-auto" ref={ref}>
+								<button 
+								    id="ExploreMint" 
+										type="button" 
+										className="flex items-center text-center gap-x-2 px-3 py-2 rounded-full font-sans font-semibold bg-[var(--tw-purple-ted)] hover:bg-[var(--tw-metateds)]"
+										onClick={toggleDropdown}>
+									Learn More
+									<span className="flex h-3 w-3">
+										<span className="animate-ping relative w-full h-full rounded-full bg-slate-300 opacity-75"> 
+										</span>
+										<span className="absolute inline-flex rounded-full h-3 w-3 bg-slate-300"></span>
+									</span>
+								</button>
+							</div>
+							{isOpen &&
+							
+								<ul className="top-[100%] left-[-50%] right-[-50%] mx-auto border-shadow absolute z-99 grid-rows-1 gap-y-2 w-48 rounded-lg p-3 grid items-center my-3 mx-2 cursor-pointer opacity-100 bg-slate-800" aria-label="dropdown-list" role="menu" tabIndex="0" id="ExploreMintDropdown">
+									<div className="flex flex-col items-center my-3">
+										<li className="w-full mb-4 items-center">
+											<Link href ="/mint" legacyBehavior>
+												<MintButton>
+														Mint Teds
+												</MintButton>
+											</Link>	
+										</li>
+										<li className="w-full items-center">
+											<ExploreButton onClick={toggleModal}>
+													Explore
+											</ExploreButton>	
+										</li>
+									</div>
+								</ul>
+							
+							}
+          
+							{/*<Link href ="/mint" legacyBehavior>
 									<MintButton>
 											Mint Teds
 									</MintButton>
 							</Link>
 							<ExploreButton onClick={toggleModal}>
 									Explore
-							</ExploreButton>
+							</ExploreButton>*/}
 						</div>
 						{modal && <Explore />}
 				 </div>
@@ -521,7 +582,6 @@ const MintButton = styled.button`
 		width: 150px;
 		font-family: 'Ranchers',bold;
 		border-radius: 4px;
-		margin-right: 1rem;
 		background-color: var(--tw-purple-ted);
 		&:hover {
 			background: #4e4197;
@@ -538,8 +598,11 @@ const MintButton = styled.button`
         padding-left: 0.5rem;
         height: 100%;
         width: 100px;
-        font-size: 1rem;
-		}
+        font-size: 0.75rem;
+		};
+		@media (max-width: 640px){
+			font-size: 1rem;
+		};
 `
 const ExploreButton = styled.button`
 		font-size: 1.2rem;
@@ -550,7 +613,6 @@ const ExploreButton = styled.button`
 		width: 150px;
 		font-family: 'Ranchers',bold;
 		border-radius: 4px;
-		margin-left: 1rem;
 		background-color: var(--tw-metateds);
 		&:hover{
 			background: #B27315;
@@ -568,6 +630,9 @@ const ExploreButton = styled.button`
 			height: 100%;
 			width: 100px;
 			font-size: 1rem;
+	}
+	@media (max-width: 640px){
+		font-size: 1rem;
 	}
 `
 

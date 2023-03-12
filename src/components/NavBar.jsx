@@ -11,7 +11,7 @@ import {
     WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
 import { IconContext } from "react-icons";
-import { HomeIcon, UserIcon, MapIcon, CogIcon } from '@heroicons/react/24/solid'
+import { HomeIcon, UserIcon, MapIcon, CogIcon, InformationCircleIcon } from '@heroicons/react/24/solid'
 const NavBarElements =[
     {
         id: 0,
@@ -50,7 +50,7 @@ const NavBarElements =[
         id: 5,
         name: 'Support',
         href: '/support',
-        icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
+        icon: <InformationCircleIcon className= "text-[#EAA640] h-6 w-6"/>
     }
 
 ]
@@ -156,7 +156,8 @@ const NavBar = ({bgFormat, display}) => {
           </div>
         </a>*/}
         <div className="flex items-center gap-x-1 pl-2 font-sans max-w-screen-2xl" ref={ref}>
-          <button className = "h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-indigo-800 flex items-center cursor-pointer" onClick={toggleDropdown}>
+          <button className = "h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-[var(--tw-purple-ted)] flex items-center cursor-pointer" 
+          onClick={toggleDropdown}>
             <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
             <p className="font-bold font-display text-sm">Items</p>
           </button>
@@ -168,7 +169,7 @@ const NavBar = ({bgFormat, display}) => {
                 </Link>
               </li>
               <a href={valURL(new URL("https://metateds-studio-3d.netlify.app"))? 'https://metateds-studio-3d.netlify.app' : ''} target="_blank" rel="noopener noreferrer">
-                <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[#B27315] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display cursor-pointer" onClick={()=> alert ('3D experience optimized for Desktop')}>
+                <li className="flex mx-auto text-center items-center p-2 h-10 rounded text-sm overflow-hidden bg-[var(--tw-metateds)] w-full py-1 px-4 hover:ring-indigo-500 hover:ring-4 font-bold font-display cursor-pointer" onClick={()=> alert ('3D experience optimized for Desktop')}>
                   3D Experience
                 </li>
               </a>
