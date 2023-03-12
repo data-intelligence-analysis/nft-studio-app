@@ -32,6 +32,9 @@ module.exports = {
         '50%': { transform: 'scale(1.2,1.1)' },
         '75%': { transform: 'scale(1.3,1.15)' },
         '100%': { transform: 'scale(1.4,1.2)' }
+      },
+      ping: {
+        '75% 100%': { transform: 'scale(2)', opacity: '0' }
       }
     },
     animation: {
@@ -39,7 +42,8 @@ module.exports = {
       studio: 'studio 50s linear infinite reverse running',
       wiggle: 'wiggle 1s ease-in-out infinite',
       beat: 'beat 1s ease-in-out infinite',
-      zoomin: 'zoomin 15s ease-in-out infinite forwards'
+      zoomin: 'zoomin 15s ease-in-out infinite forwards',
+      ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
     },
     extend: {
       gridTemplateColumns: {

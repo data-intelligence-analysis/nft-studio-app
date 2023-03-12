@@ -530,7 +530,7 @@ const FrontPage = () => {
 										onClick={toggleDropdown}>
 									Learn More
 									<span className="flex h-3 w-3">
-										<span className="animate-ping relative w-full h-full rounded-full bg-slate-300 opacity-75"> 
+										<span className="animate-beat relative w-full h-full rounded-full bg-slate-300 opacity-75"> 
 										</span>
 										<span className="absolute inline-flex rounded-full h-3 w-3 bg-slate-300"></span>
 									</span>
