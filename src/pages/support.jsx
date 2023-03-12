@@ -1,7 +1,8 @@
 import Head from "next/head";
 import React, {useMemo, useEffect, useState} from 'react'
-import solanaPayImg from '../assets/solana_pay_white.png';
+//import solanaPayImg from '../assets/solana_pay_white.png';
 import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle";
+import {TbCurrencySolana} from "react-icons/tb";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import Donate from '../components/Donate';
 import CloseIcon from '@mui/icons-material/Close';
@@ -159,7 +160,7 @@ const WalletContainer =() =>{
             <div className="flex items-center justify-center">
               <button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
                 className="solana-button-text bg-[#4e44ce] flex items-center text-base gap-x-1 sm:text-lg font-bold px-2.5 py-1 text-center">
-                <p className="inline-block">Donate</p><Image alt="solana" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginRight:"3"}} />
+                <p className="inline-block">Donate</p> <TbCurrencySolana alt="solana" width= {"30"} height={"30"} style={{marginRight:"3px"}}/> {/*<Image alt="solana" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginRight:"3"}} />*/}
               </button>
             </div>
             <div className="mt-5 flex items-center justify-center sm:mt-10">
