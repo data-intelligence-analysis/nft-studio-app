@@ -171,13 +171,14 @@ export default function DAO ({data}) {
     }
   })
   const metapixImg = {
-    //background: 'url(/img/spaceship-interior.png)',
+    background: 'url(/img/spaceship-interior-1.png)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     inset: '0px',
     backgroundPosition: 'center center',
     position: 'absolute',
-    width: '100%'
+    width: '100%',
+    height: '550px',
   }
   const metapixImgBluured ={
     background: `url(${urlBlurred}`,
@@ -222,8 +223,8 @@ export default function DAO ({data}) {
       <div className="bg-slate-900 min-h-screen">
         <MetaPixNavBar bgFormat={"bg-[#320D12]"} opacity={"opacity-100"}/>
         <div className="min-h-full max-w-full overflow-x-hidden overflow-y-auto items-center py-2 lg:py-4 max-w-screen-2xl border-shadow mx-auto">
-          <div className="w-full bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 mt-10 px-2 lg:px-4 relative">
-            <div className="z-10" style={metapixImg}>
+          <div className="w-full z-20 bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 mt-10 px-2 lg:px-4 relative">
+            <div className="z-10 animate-zoomin sm:mt-2 lg:mt-4" style={metapixImg}>
               {/*data.map((imgUrl, index) => <Image alt="spaceship-interior" key={imgUrl} src={imgUrl} width={1920} height={1080} />)*/}
             </div>
             <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-20">
@@ -238,15 +239,15 @@ export default function DAO ({data}) {
               </div>
             </div>
           </div>
-          <div className="mt-4 mb-3 lg:mt-6 lg:mb-5 py-4 lg:py-6 px-4 lg:px-6 sm:grid sm:grid-cols-2 place-items-center text-center items-center w-full">
-            <div className="text-center sm:px-4 py-4">
+          <div className="z-30 mt-20 mb-3 lg:mt-40 lg:mb-5 py-4 lg:py-6 px-4 lg:px-6 sm:grid sm:grid-cols-2 place-items-center text-center items-center w-full">
+            {/*<div className="text-center sm:px-4 py-4">
               <h1 className="font-pixel">About</h1>
             </div>
             <div className="text-center sm:px-4 py-4">
               <p>Image</p>
-            </div>
+            </div>*/}
           </div>
-          <section className="my-6 w-full mx-auto p-4 lg:p-8 items-center">
+          <section className="z-30 my-6 w-full mx-auto p-4 lg:p-8 items-center">
             <h1 className="items-center text-center text-base lg:text-xl mx-auto mt-4 mb-8 font-pixel font-bold">
               MetaPix Blueprints
             </h1>
