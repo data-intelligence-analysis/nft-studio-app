@@ -313,7 +313,7 @@ const FrontPage = () => {
 											</Button>*/}
 											<TwitterShareButton
 												url={`${server}/gallery/metahead`}
-												title={"'Check out MetaHead gallery and join the community: "}
+												title={"Check out MetaHead gallery and join the community: "}
 												hashtag="#metateds"
 												className={`h-[20px] w-[30px] px-2 flex inline-flex items-center hover:animate-beat`}
 											>
