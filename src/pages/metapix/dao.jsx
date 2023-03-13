@@ -25,6 +25,7 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useConnection } from "@solana/wallet-adapter-react";
 import DesktopWarnModal from "../../components/layouts/DesktopWarnModal";
+import { SiBlueprint } from 'react-icons/si';
 
 //AWS context
 import AWSTpls from "../../components/aws/AWSTpls";
@@ -151,6 +152,7 @@ export default function DAO ({data}) {
   }
   //cloudinary build url
   const image = '<place_img_here>'
+  const image_2 = 'metapix_blueprints_k7z4yf.png'
   const url = buildUrl(`metapix_media/${image}`, {
     cloud:{
       cloudName: 'dg7z2hep5',
@@ -159,6 +161,26 @@ export default function DAO ({data}) {
     },
   })
   const urlBlurred = buildUrl(`metapix_media/${image}`, {
+    cloud:{
+      cloudName: 'dg7z2hep5',
+      resourceType: 'image',
+      storageType:'upload'
+    },
+    transformations:{
+      effect:{
+        name: 'blur:1000',
+        quality: 1
+      }
+    }
+  })
+  const blurredUrl = buildUrl(`metapix_media/${image_2}`, {
+    cloud:{
+      cloudName: 'dg7z2hep5',
+      resourceType: 'image',
+      storageType:'upload'
+    },
+  })
+  const blueprintsBlurred = buildUrl(`metapix_media/${image_2}`, {
     cloud:{
       cloudName: 'dg7z2hep5',
       resourceType: 'image',
@@ -258,11 +280,32 @@ export default function DAO ({data}) {
             <h1 className="items-center text-center text-base lg:text-xl mx-auto mt-4 mb-8 font-pixel font-bold">
               MetaPix Blueprints
             </h1>
-            <iframe className="p-2 w-full mx-auto px-6" 
+            <section className="mb-4 font-sans text-lg flex flex-col text-center justify-center mx-auto items-center">
+              <p className="mt-4">
+                We present to you our {""}
+                <span class="inline-flex items-baseline">
+                  <SiBlueprint />
+                  <span className="font-bold">Builders Guild</span>
+                </span>
+                {""} the kreme de la creme
+              </p>
+              <div className='mt-8 w-full flex justify-center mx-auto items-center'>
+                <Image 
+                  alt='blueprints'
+                  src={blurredUrl}
+                  loading='lazy'
+                  height='550'
+                  width='550'
+                  placeholder='blur'
+                  blurDataURL={blueprintsBlurred}
+                />
+              </div>
+            </section>
+            {/*<iframe className="p-2 w-full mx-auto px-6" 
                 width="420" 
                 height="400" 
                 src="">
-            </iframe>
+            </iframe>*/}
           </section>
           <section className="my-4 lg:my-8 px-2 sm:px-4 lg:px-6 items-center block mx-auto w-full">
             <div className="p-2 sm:p-4 text-center font-pixel font-bold">

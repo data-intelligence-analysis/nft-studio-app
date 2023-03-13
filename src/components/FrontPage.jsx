@@ -8,15 +8,15 @@ import ogIcon from '../assets/og_icon.png';
 import left_nft from '../assets/merger/left-nft.png';
 import right_nft from '../assets/merger/right-nft.png';
 import elixir from '../assets/merger/elixir.png';
-import metaheadLogo from '../assets/ted_1.png';
-import metatedsLogo from '../assets/tednorm.png';
+import {server} from '../config'
+//import MetaheadLogo from '../assets/ted512.png';
+//import MetatedLogo from '../assets/tednorm.png';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-import {server} from '../config';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import { CardMedia } from '@mui/material';
 import { Button, CardActions } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import {TwitterShareButton, TwitterIcon} from "react-share";
@@ -49,9 +49,6 @@ const FrontPage = () => {
 			href: "gallery",
 			content: "View our generative art and join the communities it represents.",
 			title: "Collections & Communities",
-			img: metaheadLogo, //require('../assets/ted_1.png'),
-			img2: metatedsLogo, //require('../assets/tednorm.png')
-			img3: ""
     },
 		{
 			id: 4,
@@ -104,7 +101,7 @@ const FrontPage = () => {
   }
 
 	//url to tweet metateds and metahead gallery
-	const tweetNow = (event, twitterShareUrl, tweetContent, twitterAccount) => {
+	{/*const tweetNow = (event, twitterShareUrl, tweetContent, twitterAccount) => {
     console.log("tweetNow has been selected")
     let twitterParam = []
     twitterParam.push('url=' + encodeURI(twitterShareUrl))
@@ -117,7 +114,7 @@ const FrontPage = () => {
       }).catch((error)=>{
         console.log(error)
       })
-  }
+  }*/}
 	//custom loader
 	/*const customLoader = ({src, width, quality}) => {
 		return process.env.NODE_ENV === "production" ?
@@ -293,9 +290,10 @@ const FrontPage = () => {
 								>
 									<CardMedia
 										component="img"
-										sx={{ width: '100%', objectFit: 'contain', objectPosition: 'center'}}
-										image = {props.img}
-										alt="Metahead"
+										height="50"
+										sx={{ objectFit: 'contain', objectPosition: 'center'}}
+										image = {`${server}/ted192.png`}
+										alt="MetaHeads"
 									/>
 									<Box sx={{ display: 'flex', flexDirection: 'column', p:1, width: '80%' }}>
 										<CardContent sx={{ flex: '1 0 auto' }}>
@@ -345,8 +343,9 @@ const FrontPage = () => {
 								}}>
 									<CardMedia
 										component="img"
+										height="50"
 										sx={{ width: '100%', objectFit: 'contain', objectPosition: 'center'}}
-										image = {props.img2}
+										image = {`${server}/tednorm.png`}
 										alt="Metateds"
 									/>
 									<Box sx={{ display: 'flex', flexDirection: 'column', p:1, width: '80%' }}>
@@ -397,8 +396,9 @@ const FrontPage = () => {
 								}}>
 									<CardMedia
 										component="img"
+										height="50"
 										sx={{ width: '100%', objectFit: 'contain', objectPosition: 'center'}}
-										image = {props.img3}
+										image = "https://picsum.photos/400/300"
 										alt="Weapons"
 									/>
 									<Box sx={{ display: 'flex', flexDirection: 'column', p:1, width: '80%' }}>

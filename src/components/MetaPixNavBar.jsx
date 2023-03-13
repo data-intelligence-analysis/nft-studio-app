@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import Image from 'next/image'
-import MetaTedLogo from '../assets/ted_1.png'
+import MetaTedLogo from '../assets/ted512.png'
 import Link from 'next/link'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
