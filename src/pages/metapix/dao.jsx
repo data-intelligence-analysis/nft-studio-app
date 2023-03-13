@@ -229,7 +229,7 @@ export default function DAO ({data}) {
             <div className="z-10 animate-zoomin sm:mt-2 lg:mt-4" style={metapixImg}>
               {/*data.map((imgUrl, index) => <Image alt="spaceship-interior" key={imgUrl} src={imgUrl} width={1920} height={1080} />)*/}
             </div>
-            <div className='sm:h-[568px] lg:h-[575px] h-[560px] w-full z-20 absolute mx-auto bg-zinc-800/30'>
+            <div className='sm:h-[567px] lg:h-[575px] xl:h-[578px] h-[560px] w-full z-20 absolute mx-auto bg-zinc-800/30'>
 
             </div>
             <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-30">
