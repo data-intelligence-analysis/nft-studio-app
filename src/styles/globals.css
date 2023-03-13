@@ -453,6 +453,7 @@
     /*--tw-black-color: #000;*/
     --tw-metateds: #EAA640;
     /*--tw-main-bg-color: rgba(52, 51, 51, 1);*/
+    --tw-main-bg-color-dark: rgb(15 23 42);
     --tw-purple-ted: #4e44ce;
   }
   *,::after,::before{
@@ -460,6 +461,9 @@
     padding:0;
     box-sizing: border-box;
     border: 0 solid rgba(52, 51, 51, 1);
+  }
+  body {
+    background: var(--tw-main-bg-color-dark);
   }
 }
 

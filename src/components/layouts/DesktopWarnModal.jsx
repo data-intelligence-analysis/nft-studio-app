@@ -61,7 +61,7 @@ export default function DesktopWarnModal() {
         <>
           {isShowing ? (
             
-              <div className="grid sm:hidden inset-0 z-30 fixed bg-slate-800 opacity-95">
+              <div className="grid sm:hidden inset-0 z-40 fixed bg-slate-800 opacity-95">
                 <div className="grid justify-items-center overflow-x-auto min-h-full p-4 items-center mx-auto">
                   <div className="flex items-center justify-content mx-auto text-white bg-indigo-800 dark:bg-slate-900 rounded-md min-w-fit w-[60vw] max-w-md">
                     <div className="p-5 flex items-center flex-col grow flex-wrap font-sans">
