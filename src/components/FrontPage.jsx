@@ -19,6 +19,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActions } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import {TwitterShareButton, TwitterIcon} from "react-share";
+//import {Linking} from 'react-native';
 
 
 const FrontPage = () => {
@@ -305,12 +307,20 @@ const FrontPage = () => {
                       </Typography>
 										</CardContent>
 										<CardActions>
-											<Button size="small" color="primary" onClick= {(event) => tweetNow(event,
+											{/*<Button size="small" color="primary" onClick= {(event) => tweetNow(event,
 												`${server}/gallery/metahead`,
 												'Check out MetaHead gallery and join the community - https://metateds.com/communities/metaheads', 
 												'MetaTeds')}>
 												Tweet
-											</Button>
+											</Button>*/}
+											<TwitterShareButton
+												url={`${server}/gallery/metahead`}
+												title={"'Check out MetaHead gallery and join the community: "}
+												hashtag="#metateds"
+												className={`h-[20px] w-[30px] px-2 flex inline-flex items-center hover:animate-beat`}
+											>
+												<TwitterIcon size= {22} />
+											</TwitterShareButton>
 											<Button size="small" href="/gallery/metahead" target='_blank' rel ="noopener noreferrer" color="primary">
 												Gallery
 											</Button>
@@ -349,12 +359,20 @@ const FrontPage = () => {
                       </Typography>
 										</CardContent>
 										<CardActions>
-											<Button size="small" color="primary" onClick= {(event) => tweetNow(event,
+											{/*<Button size="small" color="primary" onClick= {(event) => tweetNow(event,
 												`${server}/gallery/metated`,
 												'Check out the Metated gallery and join the community - https://metateds.com/communities/metateds', 
 												'MetaTeds')}>
 												Tweet
-											</Button>
+											</Button>*/}
+											<TwitterShareButton
+												url={`${server}/gallery/metated`}
+												title={"Check out the Metated gallery and join the community: "}
+												hashtag="#metateds"
+												className={`h-[20px] w-[30px] px-2 flex inline-flex items-center hover:animate-beat`}
+											>
+												<TwitterIcon size= {22} />
+											</TwitterShareButton>
 											<Button size="small" href="/gallery/metated" target='_blank' rel ="noopener noreferrer" color="primary">
 												Gallery
 											</Button>
@@ -393,12 +411,20 @@ const FrontPage = () => {
                       </Typography>
 										</CardContent>
 										<CardActions>
-											<Button size="small" color="primary" onClick= {(event) => tweetNow(event,
+											{/*<Button size="small" color="primary" onClick= {(event) => tweetNow(event,
 												`${server}/gallery/weapons`,
 												'Check out the Metated gallery and join the community - https://metateds.com/communities/metateds', 
 												'MetaTeds')}>
 												Tweet
-											</Button>
+											</Button>*/}
+											<TwitterShareButton
+												url={`${server}/gallery/weapons`}
+												title={"Check out the Metated gallery and join the community: "}
+												hashtag="#metateds"
+												className={`h-[20px] w-[30px] px-2 flex inline-flex items-center hover:animate-beat`}
+											>
+												<TwitterIcon size= {22} />
+											</TwitterShareButton>
 											<Button size="small" href="/gallery/weapons" target='_blank' rel ="noopener noreferrer" color="primary">
 												Gallery
 											</Button>
