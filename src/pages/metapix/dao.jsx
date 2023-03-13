@@ -355,7 +355,7 @@ export default function DAO ({data}) {
                 </p>
               </div>
               <div className="my-4 pt-4 lg:pt-6 lg:my-5 ">
-              <div className="mb-3 flex items-center justify-center gap-x-2">
+              <div className="mb-4 flex items-center justify-center gap-x-2 text-center">
                   <IconContext.Provider value={{ size: "3em", className: "global-class-name" }} >
                     <div>
                       <FcComboChart />
@@ -364,6 +364,7 @@ export default function DAO ({data}) {
                   
                   <h1 className="font-pixel font-bold inline-block text-sm sm:text-lg text-center">Dashboard</h1>
                 </div>
+                <p className="mt-6 text-center text-2xl font-bold font-sans">Coming Soon</p>
                 <iframe className="mt-2 w-full mx-auto" 
                         width="600" 
                         height="800" 
@@ -456,7 +457,7 @@ export default function DAO ({data}) {
                 <div className="px-3 sm:px-6 lg:px-9 lg:py-4 md:grid-cols-8 lg:grid-cols-13 lg:gap-4 py-2 mx-auto">
                   <div className="md:col-span-8 lg:col-span-10 xl:col-span-13 h-full">
                     <section className="bg-transparent text-slate-200 rounded-md shadow-lg p-4 text-center">
-                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
+                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button onClick={()=>alert('functionality coming soon')} className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
                     </section>
                   </div>
                 </div> 
@@ -513,7 +514,7 @@ export default function DAO ({data}) {
                 <div className="px-3 sm:px-6 lg:px-9 lg:py-4 md:grid-cols-8 lg:grid-cols-13 lg:gap-4 py-2 mx-auto">
                   <div className="md:col-span-8 lg:col-span-10 xl:col-span-13 h-full">
                     <section className="bg-transparent text-slate-200 rounded-md shadow-lg p-4 text-center">
-                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
+                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button onClick={()=>alert('functionality coming soon')}className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
                     </section>
                   </div>
                 </div> 
@@ -620,7 +621,7 @@ export default function DAO ({data}) {
                 <div className="px-3 sm:px-6 lg:px-9 lg:py-4 md:grid-cols-8 lg:grid-cols-13 lg:gap-4 py-2 mx-auto">
                   <div className="md:col-span-8 lg:col-span-10 xl:col-span-13 h-full">
                     <section className="bg-transparent text-slate-200 rounded-md shadow-lg p-4 text-center">
-                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button onClick="" className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
+                      <h3 className="font-sans text-slate-100 font-pixel text-base lg:text-lg mb-4"><button onClick={()=>alert('functionality coming soon')} className="text-indigo-600 visited:text-blue-600 cursor-pointer hover:underline hover:underline-offset-4">Sign in</button> to use this feature</h3>
                     </section>
                   </div>
                 </div> 
