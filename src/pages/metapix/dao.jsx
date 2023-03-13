@@ -173,12 +173,14 @@ export default function DAO ({data}) {
   const metapixImg = {
     background: 'url(/img/spaceship-interior-1.png)',
     backgroundRepeat: 'no-repeat',
+    backgroundColor: '#2c2d30',
     backgroundSize: 'cover',
     inset: '0px',
     backgroundPosition: 'center center',
     position: 'absolute',
     width: '100%',
-    height: '550px',
+    height: '560px',
+    zIndex: '1'
   }
   const metapixImgBlurred = {
     background: `url(${urlBlurred}`,
@@ -223,11 +225,14 @@ export default function DAO ({data}) {
       <div className="bg-slate-900 min-h-screen">
         <MetaPixNavBar bgFormat={"bg-[#320D12]"} opacity={"opacity-100"}/>
         <div className="min-h-full max-w-full overflow-x-hidden overflow-y-auto items-center py-2 lg:py-4 max-w-screen-2xl border-shadow mx-auto">
-          <div className="w-full z-20 bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 mt-10 px-2 lg:px-4 relative">
+          <div className="w-full bg-slate-900 h-[550px] box-shadow-box gap-2 grid grid-cols-8 lg:grid-cols-13 pb-2 mt-10 px-2 lg:px-4 relative">
             <div className="z-10 animate-zoomin sm:mt-2 lg:mt-4" style={metapixImg}>
               {/*data.map((imgUrl, index) => <Image alt="spaceship-interior" key={imgUrl} src={imgUrl} width={1920} height={1080} />)*/}
             </div>
-            <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-20">
+            <div className='sm:h-[568px] lg:h-[575px] h-[560px] w-full z-20 absolute mx-auto bg-zinc-800/30'>
+
+            </div>
+            <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-30">
               <h1 className="text-base sm:text-2xl lg:text-3xl font-pixel uppercase">Empowering community focused & gaming experiences</h1>
             </div>
             <div className="col-start-3 col-span-4 h-[80px] mx-auto lg:col-start-5 lg:col-span-5 font-sans text-center items-center mb-2 z-20">

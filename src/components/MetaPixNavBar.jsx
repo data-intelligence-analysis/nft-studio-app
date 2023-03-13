@@ -113,7 +113,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
     />
   ),[])
   return (
-    <nav className={`fixed top-0 left-0 w-full z-30 ${bgFormat} ${opacity} meatapix-navbar-shadow`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 ${bgFormat} ${opacity} meatapix-navbar-shadow`}>
       <div className="max-w-screen-2xl w-full mx-auto px-2 py-2 flex items-center justify-between">
         <div className = "hidden h-10 justify-center items-center p-2">
           <Link href='/' passHref legacyBehavior>

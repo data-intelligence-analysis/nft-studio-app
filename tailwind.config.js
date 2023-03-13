@@ -28,10 +28,10 @@ module.exports = {
       },
       zoomin: {
         '0%': { transform: 'scale(1,1)' },
-        '25%': { transform: 'scale(1.1,1.1.05)' },
-        '50%': { transform: 'scale(1.2,1.1)' },
-        '75%': { transform: 'scale(1.3,1.15)' },
-        '100%': { transform: 'scale(1.4,1.2)' }
+        '25%': { transform: 'scale(1.1,1)' },
+        '50%': { transform: 'scale(1.2,1)' },
+        '75%': { transform: 'scale(1.3,1)' },
+        '100%': { transform: 'scale(1.4,1)' }
       },
       ping: {
         '75% 100%': { transform: 'scale(2)', opacity: '0' }
