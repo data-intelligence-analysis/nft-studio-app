@@ -12,7 +12,8 @@ import {
     WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
 import { IconContext } from "react-icons";
-import { HomeIcon, UserIcon, MapIcon, CogIcon, InformationCircleIcon } from '@heroicons/react/24/solid'
+import { HomeIcon, UserIcon, MapIcon, CogIcon, InformationCircleIcon, 
+          BuildingLibraryIcon, CloudArrowDownIcon, WrenchIcon, PuzzlePieceIcon, GlobeAltIcon, RocketLaunchIcon } from '@heroicons/react/24/solid'
 const NavBarElements =[
     {
         id: 0,
@@ -52,7 +53,47 @@ const NavBarElements =[
         name: 'Support',
         href: '/support',
         icon: <InformationCircleIcon className= "text-[#EAA640] h-6 w-6"/>
-    }
+    },
+    {
+        id: 6,
+        name: 'Games',
+        icon: <PuzzlePieceIcon className= "text-[#EAA640] h-6 w-6"/>,
+        href: 'https://metateds.com/gaming',
+        target: '_blank',
+        rel: "noreferrer noopener",
+    },
+    {
+        id: 7,
+        name: 'Studio Mint',
+        icon: <RocketLaunchIcon className= "text-[#EAA640] h-6 w-6"/>,
+        href: 'https://metateds.com/studio',
+        target: '_blank',
+        rel: "noreferrer noopener",
+    },
+    {
+        id: 8,
+        name: 'MetaPix Studio',
+        href: '/metapix',
+        icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
+    },
+    {
+        id: 9,
+        name: 'Metapix DAO',
+        href: '/metapix/dao',
+        icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
+    },
+    {
+        id: 10,
+        name: 'Metapix Free Services',
+        href: '/metapix/service',
+        icon: <WrenchIcon className= "text-[#EAA640] h-6 w-6"/>
+    },
+    {
+        id: 11,
+        name: 'Minting Services',
+        href: '/mint',
+        icon: <GlobeAltIcon className= "text-[#EAA640] h-6 w-6"/>
+    },
 
 ]
 
