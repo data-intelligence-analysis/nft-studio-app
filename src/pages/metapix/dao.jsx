@@ -354,7 +354,7 @@ export default function DAO ({data}) {
                 <div className="text-center sm:px-4 py-4">
                   <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
                     <div>
-                      <DiMongodb />
+                      <MdToken />
                     </div>
                   </IconContext.Provider>
                 </div>
