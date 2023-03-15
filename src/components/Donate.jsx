@@ -3,7 +3,7 @@ import { Keypair, Transaction } from "@solana/web3.js";
 import { findReference, FindReferenceError } from "@solana/pay";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Circles } from "react-loader-spinner";
-import { addOrder, hasPurchased } from "../../api";
+import { addOrder, hasPurchased } from "../pages/api";
 import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -42,11 +42,11 @@ const BuyUSD = ({priceID, price, ticker}) => {
   );
   
   //to handle external APIs
-  const corsHeaders ={
+  /*const corsHeaders ={
     'Allow-Control-Allow-Headers': '*',
     'Allow-Control-Allow-Methods': 'POST',
     'Access-Control-Allow-Origin': '*'
-  }
+  }*/
   // Fetch the transaction object from the server 
   const processTransaction = async () => {
     setLoading(true);
@@ -55,7 +55,7 @@ const BuyUSD = ({priceID, price, ticker}) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        ...corsHeaders
+        //...corsHeaders
       },
       body: JSON.stringify(order),
     });
@@ -81,7 +81,7 @@ const BuyUSD = ({priceID, price, ticker}) => {
       if (!error.msg){
         if (!error.message){
           msg= "Transaction timeout! Please try again."
-        } else if (error.message.indexOf("0x1")){
+        } else if (error.message.indexOf("0x135")){
           msg = `Insufficient funds to mint. Please fund your wallet.`;
         } 
       }
@@ -229,7 +229,8 @@ const BuyUSD = ({priceID, price, ticker}) => {
           
         ) : (
           <div className="flex items-center justify-center mt-5 sm:mt-10">
-            <button disabled={loading} onClick = {()=> alert("Still in development")} className="solana-button-text bg-[#4e44ce] text-sm sm:text-base font-bold px-2.5 py-1 text-center">
+            {/*()=> alert("Still in development")*/}
+            <button disabled={loading} onClick = {processTransaction} className="solana-button-text bg-[#4e44ce] text-sm sm:text-base font-bold px-2.5 py-1 text-center">
               <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
             </button>
           </div>
@@ -260,7 +261,7 @@ const Buy = ({priceID, price, ticker}) => {
 
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
-  const orderID = useMemo(() => Keypair.generate().publicKey, []);// Public key used to identify the order
+  const orderID = useMemo(() => Keypair.generate().publicKey, []); // Public key used to identify the order
   const [alertState, setAlertState] = useState({
     open: false,
     message: "",
@@ -317,13 +318,20 @@ const Buy = ({priceID, price, ticker}) => {
       // Even though this could fail, we're just going to set it to true for now
       setStatus(STATUS.Submitted)
     } catch (error) {
-      let msg = error.msg || "Minting failed! Please try again!";
+      let msg = error.msg || "Transaction failed! Please try again!";
       if (!error.msg){
         if (!error.message){
-          msg = "Transaction timeout! Please try again."
-        } else if (error.message.indexOf("0x1")){
+          msg = `Transaction timeout! Please try again.`;
+        } else if (error.message.indexOf("0x135")){
           msg = `Insufficient funds to mint. Please fund your wallet.`;
-        } 
+        } else {
+          msg = `Transaction failed!`;
+        }
+      }else {
+        if (error.code === 4001){
+          console.log(error)
+          msg = `Request was rejected by the user`
+        }
       }
       setAlertState({
         open: true,
@@ -471,14 +479,14 @@ const Buy = ({priceID, price, ticker}) => {
             
             <div className="items-center justify-center flex">
               {/*()=> alert("Still in development")*/}
-              <button disabled={loading} onClick = {()=> alert("Still in development")} className="solana-button-text bg-[#4e44ce] text-sm sm:text-base font-bold px-2.5 py-1 text-center">
+              <button disabled={loading} onClick = {processTransaction} className="solana-button-text bg-[#4e44ce] text-sm sm:text-base font-bold px-2.5 py-1 text-center">
                 <p className="inline-block">Donate {price.split(".")[0]} {ticker}</p>
               </button>
             </div>
           
         )}
       </div>
-      <div className="fixed left-0 bottom-0 text-center items-center">
+      <div className="absolute flex mb-4 text-center items-center">
         <Snackbar
           open={alertState.open}
           autoHideDuration={
@@ -505,8 +513,8 @@ export default function Donate({priceInfo}){
       {id === 1 &&
         <Buy priceID = {id} price={fee} ticker={ticker} />
       }
-      {id === 2 &&
-        <BuyUSD priceID = {id} price={fee} ticker={ticker} />
+      {/*id === 2 &&
+        <BuyUSD priceID = {id} price={fee} ticker={ticker} />*/
       }
     </div>
     

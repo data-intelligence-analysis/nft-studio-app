@@ -2,10 +2,9 @@ import React, {useRef, useState, useEffect} from 'react'
 import Head from "next/head";
 import Image from "next/image";
 import { FaAws } from 'react-icons/fa'
-import { SiAmazondynamodb } from 'react-icons/si';
+import { SiAmazondynamodb, SiFirebase } from 'react-icons/si';
 import { FaUnity } from 'react-icons/fa';
 import { DiMongodb } from 'react-icons/di';
-import { SiFirebase } from 'react-icons/si';
 import Link from 'next/link';
 import { Circles } from "react-loader-spinner";
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
@@ -16,6 +15,8 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import { MdLeaderboard } from 'react-icons/md'
 import { IconContext } from "react-icons";
 import { FcComboChart } from "react-icons/fc";
+import { BsCashCoin } from "react-icons/bs";
+import { MdToken } from "react-icons/md";
 import {
   WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
@@ -312,7 +313,7 @@ export default function DAO ({data}) {
               <h1 className="text-base sm:text-xl lg:text-2xl">Rewarding Holders</h1>
             </div>
             <div className="p-2 lg:px-8 text-center items-center mx-auto font-sans">
-              <p className="block">Holders of the MetaTeds NFT would be given an opptunity to compete with other players in our web browser {""} 
+              <p className="block">Holders of the MetaTeds NFT would be given an opportunity to compete with other players in our web browser {""} 
                     <span className='inline-flex items-baseline'>
                             <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
                                 href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} 
@@ -337,17 +338,25 @@ export default function DAO ({data}) {
               <div className="mt-4 mb-3 lg:mt-6 lg:mb-5 py-4 lg:py-6 px-4 lg:px-6 sm:grid sm:grid-cols-2 place-items-center text-center items-center w-full">
                 <div className="text-center sm:px-4 py-4">
                   <h1 className="font-pixel">Season 1</h1>
-                  <p className="mt-2">Description</p>
+                  <p className="mt-2">TBA</p>
                 </div>
                 <div className="text-center sm:px-4 py-4">
-                  <p>Image</p>
+                  <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
+                    <div>
+                      <BsCashCoin />
+                    </div>
+                  </IconContext.Provider>
                 </div>
                 <div className="text-center sm:px-4 py-4">
                   <h1 className="font-pixel">Season 2</h1>
                   <p className="mt-2">TBA</p>
                 </div>
                 <div className="text-center sm:px-4 py-4">
-                  <p>Image</p>
+                  <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
+                    <div>
+                      <DiMongodb />
+                    </div>
+                  </IconContext.Provider>
                 </div>
               </div>
               <div className="my-4 lg:my-5 p-2 sm:p-4 lg:p-6">

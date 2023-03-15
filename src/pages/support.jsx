@@ -163,12 +163,12 @@ const WalletContainer =() =>{
                 <p className="inline-block">Donate</p> <TbCurrencySolana alt="solana" width= {"30"} height={"30"} style={{marginRight:"3px"}}/> {/*<Image alt="solana" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginRight:"3"}} />*/}
               </button>
             </div>
-            <div className="mt-5 flex items-center justify-center sm:mt-10">
+            {/*<div className="mt-5 flex items-center justify-center sm:mt-10">
               <button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
                 className="solana-button-text bg-[#4e44ce] flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center">
                 <p className="inline-block">Donate</p><AiFillDollarCircle alt="usdc" width= {"30"} height={"20"} style={{marginRight:"3px"}} />
               </button> 
-            </div> 
+            </div>*/} 
           </div>
         )
       }
@@ -187,7 +187,7 @@ const WalletContainer =() =>{
       <NavBar bgFormat={"bg-slate-900/80"} />
       
       <div className="bg-slate-900 h-screen">
-        <div className="h-full mx-4 max-w-screen-2xl">
+        <div className="h-full mx-4 w-full mx-auto max-w-screen-2xl">
           <div className="m-auto py-20 h-full overflow-y-auto">
             <nav className="top-5 lg:sticky relative pointer-events-none z-index">
               <div className="absolute mt-1 w-full">

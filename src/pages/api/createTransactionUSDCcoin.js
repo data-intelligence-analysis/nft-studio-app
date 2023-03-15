@@ -26,7 +26,7 @@ const sellerAddress = () => {
   }
   return process.env.SELLER_ADDRESS
 }
-const sellerPublicKey = new PublicKey(process.env.SELLER_ADDRESS);
+const sellerPublicKey = new PublicKey('3vLNLoffoFCWeeq3FzCinFhrf34FftWnFKtEFGCsSZ4e');
 //Get paid in USDC
 const createTransaction = async (req, res) => {
     try {
@@ -55,7 +55,7 @@ const createTransaction = async (req, res) => {
       const bigAmount = BigNumber(itemPrice);
       const buyerPublicKey = new PublicKey(buyer);
   
-      const network = WalletAdapterNetwork.Devnet;
+      const network = WalletAdapterNetwork.Mainnet;
       const endpoint = clusterApiUrl(network);
       const connection = new Connection(endpoint);
   

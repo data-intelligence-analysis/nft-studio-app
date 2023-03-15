@@ -106,7 +106,7 @@ const createTransaction = async (req, res) => {
   } catch (error) {
     console.error(error);
 
-    res.status(500).json({ error: "error creating tx" });
+    res.status(500).json({ error: "error creating transaction" });
     return;
   }
 }
