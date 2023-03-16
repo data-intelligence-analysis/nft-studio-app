@@ -270,8 +270,8 @@ const NavBar = ({bgFormat, display}) => {
           </button>
         </div> 
         {collapse &&
-          <div className="absolute inset-0 h-screen w-full bg-slate-900/95 z-50">
-            <div className="p-6 lg:p-8 mx-auto max-w-screen-xl">
+          <div className="absolute inset-0 h-screen w-full bg-slate-900/95 z-50 overflow-auto">
+            <div className="p-6 lg:p-8 mx-auto max-w-screen-xl mb-10">
               <div className="flex justify-between items-center">
                 <div className="items-center h-50 p-2">
                   <Link href='/' passHref legacyBehavior>

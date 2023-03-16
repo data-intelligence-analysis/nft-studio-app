@@ -11,7 +11,8 @@ import {
   TorusWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
-
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"
+import { PAYPAL_CLIENT_ID } from "../components/constants"
 require("@solana/wallet-adapter-react-ui/styles.css");
 
 function MyApp({ Component, pageProps }) {
@@ -20,6 +21,13 @@ function MyApp({ Component, pageProps }) {
 
   // You can also provide a custom RPC endpoint
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+
+  const initialOptions = {
+    "client-id": PAYPAL_CLIENT_ID.client_id,
+    components: "buttons",
+    currency: "USD"
+  }
+
   
   /*const wallet = useWallet();
   let walletAddress = '';
@@ -43,13 +51,20 @@ function MyApp({ Component, pageProps }) {
     [network]
   );
   return (
-    <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <Component {...pageProps} />
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
+    
+      <ConnectionProvider endpoint={endpoint}>
+        <WalletProvider wallets={wallets} autoConnect>
+          <WalletModalProvider>
+            <PayPalScriptProvider options={initialOptions}>
+              <Component {...pageProps} />
+            </PayPalScriptProvider>
+          </WalletModalProvider>
+        </WalletProvider>
+      </ConnectionProvider>
+    
+    
+    
+    
   )
 }
 

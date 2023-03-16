@@ -21,6 +21,7 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.13",
+    "@paypal/react-paypal-js": "4.1.0",
     "@project-serum/anchor": "^0.17.0",
     "@project-serum/serum": "0.13.65",
     "@react-icons/all-files": "^4.1.0",
