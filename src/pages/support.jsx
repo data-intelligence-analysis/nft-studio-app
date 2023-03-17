@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, {useMemo, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 //import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle";
 import {TbCurrencySolana} from "react-icons/tb";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -9,7 +9,6 @@ import {
     useWallet,
     //useConnection
 } from '@solana/wallet-adapter-react';
-import Image from "next/legacy/image";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -34,8 +33,7 @@ const WalletContainer =() =>{
   const [orderID, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState("");
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-  //const [currency, setCurrency] = useState(options.currency);
-
+  
 
   /*Paypal Functions*/
   const PayPalamt = "35"
@@ -46,13 +44,48 @@ const WalletContainer =() =>{
     label: "pay",
     tagline: false,
     layout: "vertical",
+    label: "donate"
   }
   //create paypal order
+
+  const createDonateOrder = (data, actions) => {
+    return actions.order
+        .create({
+            purchase_units: [
+                {
+                    amount: {
+                        value: PayPalamt,
+                        breakdown: {
+                            item_total: {
+                                currency_code: "USD",
+                                value: PayPalamt,
+                            },
+                        },
+                    },
+                    items: [
+                        {
+                            name: "donation-example",
+                            quantity: "1",
+                            unit_amount: {
+                                currency_code: "USD",
+                                value: PayPalamt,
+                            },
+                            category: "DONATION",
+                        },
+                    ],
+                },
+            ],
+        })
+        .then((orderId) => {
+            // Your code here after create the donation
+            return orderId;
+        });
+  }
   const createPayPalOrder = (data, actions) => {
     return actions.order
             .create(
               {
-                purcahse_units: [
+                purchase_units: [
                   {
                     amount: {
                       //price charged per order
@@ -79,6 +112,8 @@ const WalletContainer =() =>{
       setSucceeded(true);
     }).catch(err=> setPaypalErrorMessage("Something went wrong"))
   };
+
+  
   const toggleModal = () => {
     setModal(!modal);
   }
@@ -233,7 +268,7 @@ const WalletContainer =() =>{
               </button> 
             </div>*/} 
             <div className="my-5 flex items-center justify-center sm:mt-10">
-              {/*{isPending ? 
+              {isPending ? 
               (<Circles 
                   width='50' 
                   height='50' 
@@ -241,17 +276,17 @@ const WalletContainer =() =>{
                   ariaLabel = "circles-loading"
                   wrapperClass="items-center justify-center p-2"
                   wrapperStyle=""
-                  visible={true} />): (null)}
+              visible={true} />): (null)}
                 <div className="z-10">
                   <PayPalButtons
                       disabled={false}
-                      fundingSource={undefined}
-                      forceReRender={[PayPalamt, PayPalcurrency, PayPalstyle]}
+                      fundingSource="paypal"
+                      //forceReRender={[PayPalamt, PayPalcurrency, PayPalstyle]}
                       style={PayPalstyle}
-                      createOrder={createPayPalOrder}
-                      onApprove={onApprove}
+                      createOrder={createDonateOrder}
+                      //onApprove={onApprove}
                   />
-              </div>*/}
+                </div>
             
               {/*<button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
                 className="solana-button-text bg-[#4e44ce] flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center">

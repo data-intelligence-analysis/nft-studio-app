@@ -5,14 +5,14 @@ import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import {
   GlowWalletAdapter,
-  //PhantomWalletAdapter,
+  PhantomWalletAdapter,
   SlopeWalletAdapter,
   SolflareWalletAdapter,
   TorusWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
-import { PAYPAL_CLIENT_ID } from "../components/constants"
+import { PAYPAL_CLIENT_ID, DATA_CLIENT_TOKEN } from "../components/constants"
 require("@solana/wallet-adapter-react-ui/styles.css");
 
 function MyApp({ Component, pageProps }) {
@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }) {
     "client-id": PAYPAL_CLIENT_ID.client_id,
     components: "buttons",
     currency: "USD"
+    //"data-client-token": DATA_CLIENT_TOKEN.data_client_token
   }
 
   
@@ -42,7 +43,7 @@ function MyApp({ Component, pageProps }) {
   // of wallets that your users connect to will be loaded
   const wallets = useMemo(
     () => [
-      //new PhantomWalletAdapter(),
+      new PhantomWalletAdapter(),
       new GlowWalletAdapter(),
       new SlopeWalletAdapter(),
       new SolflareWalletAdapter({ network }),
