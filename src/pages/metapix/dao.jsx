@@ -328,7 +328,7 @@ export default function DAO ({data}) {
 								            </a>
                           </span>{" "} for seasonal rewards, which are granted to the top players. To learn more visit our <span className='inline-flex items-baseline'>
                             <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
-                                href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} 
+                                href={valURL(new URL("https://metated-labs.gitbook.io/metated-labs"))?'https://metated-labs.gitbook.io/metated-labs':''} 
                                 rel="noopener noreferrer" 
                                 target="_blank">
 									              <span className="font-sans font-bold text-base inline-flex items-baseline">Gitbook</span>
