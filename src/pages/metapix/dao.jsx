@@ -129,22 +129,17 @@ export default function DAO ({data}) {
   //States
   const [activeGameItems] = useState(activeGame)
   const [activeStats, setActiveStats] = useState(null);
+  const [activeState, setActiveState] = useState(false)
   const [activePeriod, setActivePeriod] = useState(null);
-  //const [showFirst, setShowFirst] = useState(false)
-
+  const [showFirst, setShowFirst] = useState(false)
   //Active LeaderBoard
 
   
   const activeLeaderBoard = (event, index) => {
     setActiveStats(index)
+    setActiveState(true);
   }
-  //useEffect
-  useEffect(() => {
-    window.onload = (event) => {
-      console.log('page is fully loaded')
-
-    } 
-  },[]);
+  
   
   //Security measure to validate external site urls
   function valURL(url) {
@@ -225,6 +220,7 @@ export default function DAO ({data}) {
   const RenderAWScontexts = ({...props}) => { 
     return (
       <div>
+        {/*<AWSTpls props={props}/>*/}
         {props.id === 1 &&
           <AWSTpls props={props}/>
         }
@@ -237,6 +233,15 @@ export default function DAO ({data}) {
       </div>
     )
   }
+
+  //useEffect
+  /*useEffect(() => /*{
+    window.onload = (event) => {
+      console.log('page is fully loaded')
+      setLoadGame(<AWSTpls props={props}/>)
+    }
+  }*//*showFirst,[]);*/
+
   //Sign In Modal
   const signIn = () => {
 
@@ -319,17 +324,24 @@ export default function DAO ({data}) {
                                 href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} 
                                 rel="noopener noreferrer" 
                                 target="_blank">
-									              <span className="font-sans font-bold text-base inline-flex items-baseline">game</span>
+									              <span className="font-sans font-bold text-base inline-flex items-baseline">Game</span>
 								            </a>
-                          </span>{" "} for seasonal rewards, which are granted to the top players. 
-                          The top 3 positions in our leaderboard for each season would be rewarded with either SOL, 
-                          or NFTs that provide exclsive access to features within our {""}
+                          </span>{" "} for seasonal rewards, which are granted to the top players. To learn more visit our <span className='inline-flex items-baseline'>
+                            <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
+                                href={valURL(new URL("https://metateds.com/gaming"))?'https://metateds.com/gaming':''} 
+                                rel="noopener noreferrer" 
+                                target="_blank">
+									              <span className="font-sans font-bold text-base inline-flex items-baseline">Gitbook</span>
+								            </a>
+                          </span>.{" "}
+                          The top positioned players for each season would be rewarded with either SOL, 
+                          or MetaTed NFTs that provide exclusive access to features within our {""}
                           <span className='inline-flex items-baseline'>
                             <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
                                 href={valURL(new URL("https://metateds.com/"))?'https://metateds.com/':''} 
                                 rel="noopener noreferrer" 
                                 target="_blank">
-									              <span className="font-sans font-bold text-base inline-flex items-baseline">platform</span>
+									              <span className="font-sans font-bold text-base inline-flex items-baseline">Platform</span>
 								            </a>
                           </span>. 
                 We combine both web2 and web3 frameworks  
@@ -340,7 +352,7 @@ export default function DAO ({data}) {
                   <h1 className="font-pixel">Season 1</h1>
                   <p className="mt-2">TBA</p>
                 </div>
-                <div className="text-center sm:px-4 py-4">
+                <div className="text-center sm:px-4 py-4 grid place-items-center">
                   <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
                     <div>
                       <BsCashCoin />
@@ -351,7 +363,7 @@ export default function DAO ({data}) {
                   <h1 className="font-pixel">Season 2</h1>
                   <p className="mt-2">TBA</p>
                 </div>
-                <div className="text-center sm:px-4 py-4">
+                <div className="text-center sm:px-4 py-4 grid place-items-center">
                   <IconContext.Provider value={{ size: "6em", className: "global-class-name" }} >
                     <div>
                       <MdToken />
@@ -397,10 +409,11 @@ export default function DAO ({data}) {
                           </div>
                         ))}
                       </div>
+                      <div id="click-to-expand" className={`grid place-items-center ${activeState ? 'hidden':'grid'}`}>
+                        <p className='font-sans font-bold'>Click button to expand</p>
+                      </div>
                     </div>
-                    
                   </div>
-                  
                 </div>
                 
                 <p className="text-left text-xs">
