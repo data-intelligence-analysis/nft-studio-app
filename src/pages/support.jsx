@@ -221,9 +221,9 @@ const WalletContainer =() =>{
       else{
         return (
           <div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center w-full">
               <button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
-                className="solana-button-text bg-[#4e44ce] flex items-center text-base gap-x-1 sm:text-lg font-bold px-2.5 py-1 text-center">
+                className="solana-button-text bg-[#4e44ce] flex items-center text-base gap-x-1 sm:text-lg font-bold px-14 rounded-full py-1 text-center">
                 <p className="inline-block">Donate</p> <TbCurrencySolana alt="solana" width= {"35"} height={"35"} style={{marginRight:"3px"}}/> {/*<Image alt="solana" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginRight:"3"}} />*/}
               </button>
             </div>
@@ -281,9 +281,9 @@ const WalletContainer =() =>{
                   (
                     <>
                       
-                      <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
+                      {/*<div className="w-screen max-w-screen-2xl flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
                         <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">Connect to wallet above </h1>
-                      </div>
+                      </div>*/}
                     </>
                     
                   ):(
@@ -293,28 +293,28 @@ const WalletContainer =() =>{
                 }
               </div>
             </nav>
-            <div className="mt-12 sm:mt-20 grid place-items-center sm:grid-cols-2 mx-auto items-center text-center">
-              <div className="mt-6 mx-5 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
+            <div className="mt-5 sm:mt-10 grid place-items-center sm:grid-cols-2 mx-auto items-center text-center">
+              <div className="mt-6 mx-5 flex bg-slate-900/50 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
                 <div className="text-center justify-center w-full p-5 font-['Inter'] h-full">
-                  <h1 className="text-slate-900 font-bold text-xl sm:text-3xl font-bold">Donation</h1>
+                  <h1 className="text-violet-700 font-bold text-xl sm:text-3xl font-bold">Donation</h1>
                   <div className="flex items-center justify-center m-4 sm:m-8 cursor-pointer">
                     <CheckWallet />
                   </div>
                 </div>
                 
               </div>
-              <div className="mt-6 mx-2 sm:mx-4 flex bg-slate-200 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
-                <div className="text-center justify-center font-['Inter'] w-full p-5">
-                  <h1 className="text-slate-900 font-bold text-xl sm:text-3xl font-bold">Help Center</h1>
-                  <div className="text-center m-5 sm:m-10 cursor-pointer">
+              <div className="mt-6 mx-2 sm:mx-4 flex bg-slate-900/50 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
+                <div className="text-center justify-center w-full p-5 font-['Inter'] h-full">
+                  <h1 className="text-violet-700 font-bold text-xl sm:text-3xl font-bold">Help Center</h1>
+                  <div className="flex items-center justify-center m-4 sm:m-8 cursor-pointer">
                     <a className="solana-pay" href="https://forms.gle/2p813UayRdro1wxf8" target="_blank" rel="noreferrer">
-                        <button className="solana-button-text inline-block font-bold px-2.5 py-1 text-base sm:text-lg bg-[#4e44ce]"> 
+                        <button className="solana-button-text inline-block font-bold px-4 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full"> 
                             Join Our Team <span className="join-team-icon-position"><GroupAddIcon /></span>
                         </button>
                     </a>
                   </div>
-                  <div className="text-center m-4 sm:m-8 cursor-pointer">
-                    <button className="solana-button-text inline-block font-bold px-2.5 py-1 text-base sm:text-lg bg-[#4e44ce]" onClick={toggleModal}> 
+                  <div className="text-center m-5 sm:m-10 cursor-pointer">
+                    <button className="solana-button-text inline-block font-bold px-14 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full" onClick={toggleModal}> 
                         <p className="inline-block items-center text-center">FAQ {" "} 📜</p>
                     </button>
                   </div>

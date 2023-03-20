@@ -3,7 +3,7 @@ import React, {useState, useEffect, useRouter} from 'react'
 const AWSMtb = ({props}) => {
   return (
     <>
-      <div className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
+      <div id="mtb" className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
         {props.period.map((elem, i) => (
           <div key={i}>
             <button
