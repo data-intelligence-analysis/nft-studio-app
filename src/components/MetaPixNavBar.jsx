@@ -1,4 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react'
+/* eslint-disable react/display-name */
+import React, {useState, useEffect, useRef, forwardRef} from 'react'
 import Image from 'next/image'
 import MetaTedLogo from '../assets/ted512.png'
 import Link from 'next/link'
@@ -10,8 +11,11 @@ import { SiLinktree } from 'react-icons/si';
 import {
     WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
+import { IconContext } from "react-icons";
+import { HomeIcon, UserIcon, MapIcon, CogIcon, InformationCircleIcon, 
+          BuildingLibraryIcon, CloudArrowDownIcon, WrenchIcon, PuzzlePieceIcon, GlobeAltIcon, RocketLaunchIcon } from '@heroicons/react/24/solid'
 
-const NavBarElements =[
+/*const NavBarElements =[
     {
       id: 0,
       name: <SiLinktree />,
@@ -42,18 +46,100 @@ const NavBarElements =[
       id: 4,
       name: 'Community',
       href: '/metapix/service',
-      /*target: '_blank',
+      //target: '_blank',
+      //rel: "noreferrer noopener"
+    }
+]*/
+
+
+const NavBarElements =[
+  {
+      id: 0,
+      name: 'Linktree',
+      icon: <IconContext.Provider value={{ color: "orange", size: "2em", className: "global-class-name" }} ><div><SiLinktree /></div></IconContext.Provider>,
+      href: 'https://linktr.ee/metateds',
+      target: '_blank',
       rel: "noreferrer noopener"
-      */
-    },
+  },
+  {
+      id: 1,
+      name: 'Home',
+      href: '/',
+      icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
+  {
+      id: 2,
+      name: 'Legion',
+      href: '/legion',
+      icon: <UserIcon className= "text-[#EAA640] h-6 w-6"/>
+      
+  },
+  {
+      id: 3,
+      name: 'Roadmap',
+      href: '/roadmap',
+      icon: < MapIcon className= "text-[#EAA640] h-6 w-6"/>,
+  },
+  {
+      id: 4,
+      name: 'Utility',
+      href: '/utility',
+      icon: <CogIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
+  {
+      id: 5,
+      name: 'Support',
+      href: '/support',
+      icon: <InformationCircleIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
+  {
+      id: 6,
+      name: 'Games',
+      icon: <PuzzlePieceIcon className= "text-[#EAA640] h-6 w-6"/>,
+      href: 'https://metateds.com/gaming',
+      target: '_blank',
+      rel: "noreferrer noopener",
+  },
+  {
+      id: 7,
+      name: 'Studio Mint',
+      icon: <RocketLaunchIcon className= "text-[#EAA640] h-6 w-6"/>,
+      href: 'https://metateds.com/studio',
+      target: '_blank',
+      rel: "noreferrer noopener",
+  },
+  {
+      id: 8,
+      name: 'MetaPix Studio',
+      href: '/metapix',
+      icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
+  {
+      id: 9,
+      name: 'Metapix DAO',
+      href: '/metapix/dao',
+      icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
+  {
+      id: 10,
+      name: 'Metapix Free Services',
+      href: '/metapix/service',
+      icon: <WrenchIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
+  {
+      id: 11,
+      name: 'Minting Services',
+      href: '/mint',
+      icon: <GlobeAltIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
 
 ]
-
 const MetaPixNavBar = ({bgFormat, opacity}) => {
   const [navBarElements] = useState(NavBarElements);
   //React Hooks
   const [collapse, setCollapse] = useState(false)
   const [isOpen, setIsOpen] = useState(false);
+  const [walletNavBtn, setWalletNavBtn] = useState(false)
   const [modalWalletNavBtn, setModalWalletNavBtn] = useState(false)
 
   const toggleDropdown = () => {
@@ -71,11 +157,11 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
     const parsed = url
     return ['https:', 'http:'].includes(parsed.protocol)
   }
-  {/*const Logo = forwardRef(({ href }, ref) => {
+  const Logo = forwardRef(({ href }, ref) => {
     return (
-      <a href={href} ref={ref} className='h-10 rounded-md flex items-center p-1'>
+      <a href={href} ref={ref} className='h-10 rounded-md flex items-center p-1 cursor-pointer'>
         <Image
-          height = 'auto'
+          height = {45}
           width = {50}
           alt = "MetaTeds Logo"
           src = {MetaTedLogo}
@@ -83,7 +169,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
         />
       </a>
     )
-  })*/}
+  })
   useEffect(() => {
     const HandleClickOutside = (e) => {
       // check if element that was clicked is inside of ref'd component
@@ -103,6 +189,17 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
     }
 
   },[]);
+  useEffect(() => setWalletNavBtn(
+    <WalletMultiButton 
+      className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
+      style={{background:"#4e44ce",
+              height: "1.9rem", 
+              fontSize:"0.875rem", 
+              lineHeight: "1.25rem"}}
+    />
+                ), 
+      [])
+
   useEffect(() => setModalWalletNavBtn(
     <WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
       style={{background:"#4e44ce", 
@@ -111,20 +208,14 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
               fontSize:"0.8rem", 
               lineHeight: "1.25rem"}}
     />
-  ),[])
+),[])
   return (
     <nav className={`fixed top-0 left-0 w-full z-30 ${bgFormat} ${opacity} meatapix-navbar-shadow`}>
-      <div className="max-w-screen-2xl w-full mx-auto px-2 py-2 flex items-center justify-between">
-        <div className = "hidden h-10 justify-center items-center p-2">
+      <div className="max-w-screen-2xl w-full mx-auto px-2 py-1 flex items-center justify-between">
+        {/*<div className = "hidden h-10 justify-center items-center p-2">
           <Link href='/' passHref legacyBehavior>
             <a className='h-10 rounded-md flex items-center p-1'>
-              <Image
-                height = 'auto'
-                width = {50}
-                alt = "MetaTeds Logo"
-                src = {MetaTedLogo}
-                style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
-              />
+              <Logo />
             </a>
           </Link>
         </div>
@@ -135,7 +226,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
               3D Experience
             </button>
           </div>
-        </a>
+        </a>*/}
         <div className="flex items-center gap-x-1 pl-2 font-sans" ref={ref}>
           <button className = "h-10 justify-center p-2 h-10 rounded text-indigo-50 font-bold hover:ring-4 bg-slate-900 flex items-center cursor-pointer" onClick={toggleDropdown}>
             <Image src={ogIcon} alt="ted-og" width="21" height="auto" style={{marginRight:'0.475rem'}}/> 
@@ -146,13 +237,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
               <li className="h-10 justify-center flex items-center p-2 cursor-pointer">
                 <Link href = '/' passHref legacyBehavior>
                   <a className='h-10 rounded-md flex items-center p-1'>
-                    <Image
-                      height = 'auto'
-                      width = {50}
-                      alt = "MetaTeds Logo"
-                      src = {MetaTedLogo}
-                      style = {{borderRadius: '12px', marginRight: '0.5rem', overflow: 'hidden'}}
-                    />
+                    <Logo />
                   </a>
                 </Link>
               </li>
@@ -174,12 +259,13 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
             </ul>
           }
         </div>
-        <ul className={`${collapse ? 'navBarMetaPix':''}`}></ul>
-        {/*<div className={`items-center gap-x-1 p-2 font-sans hidden`}>
-          <WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>
-        </div>*/}
+        {/*<ul className={`${collapse ? 'navBarMetaPix':''}`}></ul>*/}
+        <div className={`sm:flex items-center gap-x-1 p-2 font-sans hidden`}>
+          {walletNavBtn}
+          {/*<WalletMultiButton className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", height: "1.9rem", fontSize:"0.875rem", lineHeight: "1.25rem"}}/>*/}
+        </div>
         
-        <div className={`navBarMetaPix ${bgFormat} text-base sm:text-2xl uppercase`}>
+        {/*<div className={`navBarMetaPix ${bgFormat} text-base sm:text-2xl uppercase`}>
           {navBarElements.map((element, index) => (
             (<Link
                 href={element.href}
@@ -207,7 +293,54 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
                   }}
               />
             )}
-        </button>
+        </button>*/}
+        <div className="flex items-center gap-x-1 m-1 pl-4 font-sans">
+          <button className = "p-2 items-center" 
+              onClick={toggleNav} > 
+            <MenuIcon 
+                  sx={{
+                      width: 55,
+                      height: 40,
+                  }}
+              />
+          </button>
+        </div> 
+        {collapse &&
+          <div className={`absolute inset-0 h-screen w-full ${bgFormat} z-50 overflow-auto`}>
+            <div className="p-6 lg:p-8 mx-auto max-w-screen-xl mb-10">
+              <div className="flex justify-between items-center">
+                <div className="items-center h-50 p-2">
+                  <Link href='/' passHref legacyBehavior>
+                    <Logo />
+                  </Link>
+                </div>
+                <button className="font-semibold hover:outline hover:outline-2 hover:outline-offset-1 hover:outline-indigo-600 cursor-pointer p-2 rounded-md " onClick={toggleNav}>
+                  <CloseIcon sx={{
+                          width: 55,
+                          height: 40,
+                      }}
+                  />
+                </button>
+              </div>
+              <div className="mt-2 flex flex-col gap-y-px">
+                {navBarElements.map((element, index) => (
+                    (<Link 
+                      href={element.href}
+                      key={index}
+                      legacyBehavior>
+                      <a className="text-sm flex items-center px-3 py-2 border border-[#EAA640] hover:bg-zinc-800 rounded-md text-black bg-indigo-800 mt-4" onClick={closeNav} target={element.target} rel={element.rel}>
+                        {element.icon}
+                        <div className="flex flex-col px-3">
+                          <p className="font-bold font-display text-[#EAA640]">{element.name}</p>
+                        </div>
+                        <p></p>
+                      </a>
+                    </Link>)
+                ))}
+              </div>
+            </div>
+          </div>
+        }
       </div>
     </nav>
   )
