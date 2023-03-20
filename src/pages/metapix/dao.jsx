@@ -371,7 +371,7 @@ export default function DAO ({data}) {
                   </IconContext.Provider>
                 </div>
               </div>
-              <div className="my-4 lg:my-5 p-2 sm:p-4 lg:p-6">
+              <div id="leaderboard" className="my-4 lg:my-5 p-2 sm:p-4 lg:p-6">
                 <div className="pb-6 lg:pb-8 flex items-center justify-center gap-x-2">
                   <IconContext.Provider value={{ size: "3em", className: "global-class-name" }} >
                     <div>
@@ -422,14 +422,14 @@ export default function DAO ({data}) {
                 </p>
               </div>
               <div className="my-4 pt-4 lg:pt-6 lg:my-5 ">
-              <div className="mb-4 flex items-center justify-center gap-x-2 text-center">
-                  <IconContext.Provider value={{ size: "3em", className: "global-class-name" }} >
-                    <div>
-                      <FcComboChart />
-                    </div>
-                  </IconContext.Provider>
-                  
-                  <h1 className="font-pixel font-bold inline-block text-sm sm:text-lg text-center">Dashboard</h1>
+              <div id="dashboard" className="mb-4 flex items-center justify-center gap-x-2 text-center">
+                <IconContext.Provider value={{ size: "3em", className: "global-class-name" }} >
+                  <div>
+                    <FcComboChart />
+                  </div>
+                </IconContext.Provider>
+                
+                <h1 className="font-pixel font-bold inline-block text-sm sm:text-lg text-center">Dashboard</h1>
                 </div>
                 <p className="mt-6 text-center text-2xl font-bold font-sans">Coming Soon</p>
                 <iframe className="mt-2 w-full mx-auto" 
@@ -441,7 +441,6 @@ export default function DAO ({data}) {
                   refreshed daily - {""}
                   <span className="text-xs text-orange-500 font-bold font-sans">powered by metapix</span>
                 </p>
-                
               </div>
               <h1 className="text-center mt-3 font-pixel font-bold inline-block text-base lg:text-xl">Technology Stack</h1>
               <div className="p-2 sm:p-4 grid grid-cols-2 sm:grid-cols-4 place-items-center items-center">

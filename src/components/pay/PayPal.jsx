@@ -25,7 +25,6 @@ export default function PayPal() {
     label: "donate"
   }
   //create paypal order
-
   const createDonateOrder = (data, actions) => {
     return actions.order
         .create({
