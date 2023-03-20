@@ -9,6 +9,8 @@ export default function PayPal() {
   const [paypalErrorMessage, setPaypalErrorMessage] = useState("");
   const [orderID, setOrderID] = useState(false);
   const [billingDetails, setBillingDetails] = useState("");
+  // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
+    // This is the main reason to wrap the PayPalButtons in a new component
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
 
   /*Paypal Functions*/
@@ -52,9 +54,10 @@ export default function PayPal() {
                 },
             ],
         })
-        .then((orderId) => {
+        .then((orderID) => {
             // Your code here after create the donation
-            return orderId;
+            setOrderID(orderID);
+            return orderID;
         });
   }
   const createPayPalOrder = (data, actions) => {
