@@ -16,7 +16,7 @@ export default function ComingSoon () {
       <Head>
         <title>🧸 Coming Sooon | MetaTeds</title>
       </Head>
-      <div className="bg-[#343333] h-screen grid grid-cols-5 gap-10">
+      <div className="h-screen grid grid-cols-5 gap-10">
         <nav className="place-items-center col-start-1 col-span-1 top-0 pointer-event-none z-nav w-full">
           <div className="mt-4 w-full">
             <div className="flex fixed items-center cursor-pointer pointer-events-auto justify-between flex-row px-4">
