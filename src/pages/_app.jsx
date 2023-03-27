@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
@@ -11,6 +11,9 @@ import {
   TorusWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
+import CookieBanner from "../components/layouts/CookieBanner";
+import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
+
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import { PAYPAL_CLIENT_ID, DATA_CLIENT_TOKEN } from "../components/constants"
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -52,11 +55,13 @@ function MyApp({ Component, pageProps }) {
     [network]
   );
   return (
-    
+      
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
             <PayPalScriptProvider options={initialOptions}>
+              <DesktopWarnModal />
+              <CookieBanner />
               <Component {...pageProps} />
             </PayPalScriptProvider>
           </WalletModalProvider>

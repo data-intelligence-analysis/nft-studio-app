@@ -27,6 +27,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useConnection } from "@solana/wallet-adapter-react";
 import DesktopWarnModal from "../../components/layouts/DesktopWarnModal";
 import { SiBlueprint } from 'react-icons/si';
+import CookieBanner from "../../components/layouts/CookieBanner"
 
 //AWS context
 import AWSTpls from "../../components/aws/AWSTpls";
@@ -234,6 +235,9 @@ export default function DAO ({data}) {
     )
   }
 
+  
+
+  
   //useEffect
   /*useEffect(() => /*{
     window.onload = (event) => {
@@ -252,6 +256,7 @@ export default function DAO ({data}) {
         <title>🧸 DAO | MetaTeds</title>
       </Head>
       <DesktopWarnModal />
+      <CookieBanner />
       <div className="bg-slate-900 min-h-screen">
         <MetaPixNavBar bgFormat={"bg-[#320D12]"} opacity={"opacity-100"}/>
         <div className="min-h-full max-w-full overflow-x-hidden overflow-y-auto items-center py-2 lg:py-4 max-w-screen-2xl border-shadow mx-auto">

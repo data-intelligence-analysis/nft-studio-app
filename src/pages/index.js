@@ -3,8 +3,8 @@ import React, {useRef} from 'react'
 import FrontPage from '../components/FrontPage'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
-
-
+import CookieBanner from "../components/layouts/CookieBanner"
+import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
 export default function Home() {
   const ref = useRef()
   return (
@@ -15,8 +15,10 @@ export default function Home() {
         <meta name="description" content="MetaTeds Studio - Web3 Community Experience"/>
       </Head>
       <NavBar bgFormat={"bg-slate-900/80"}/>
+      
       <main className="h-screen m-auto items-center text-center w-full bg-slate-900" ref={ref}>
         {" "}
+        
         {/* Main Pages Rendered */}
         <FrontPage />
         
