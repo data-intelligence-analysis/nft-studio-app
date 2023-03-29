@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, {useState, useEffect} from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from 'next/link';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 
 export default function Cookies() {
   return (

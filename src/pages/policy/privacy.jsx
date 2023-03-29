@@ -1,7 +1,7 @@
 import Head from "next/head";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import { IconContext } from "react-icons";
 import { FcComboChart, FcDocument } from "react-icons/fc";
 import { GrDocument } from "react-icons/gr";

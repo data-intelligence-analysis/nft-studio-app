@@ -27,7 +27,7 @@ export default function Service () {
       <div className="bg-slate-900 min-h-screen">
         <MetaPixNavBar bgFormat={"bg-[#320D12]"} opacity={"opacity-100"}/>
         <div className="min-h-full w-screen overflow-y-auto items-center m-3 lg:m-4 max-w-screen-2xl border-shadow mx-auto">
-          <nav className="top-10 mt-10 lg:pt-3 left-0 w-full z-30">
+          <nav className="mt-20 lg:pt-3 left-0 w-full z-30">
             <div className="flex items-center justify-between px-2 py-2 sm:py-3 sm:px-6 pointer-events-auto w-full mx-auto">
               <div className="flex flex-row justify-between items-center font-sans h-[50px] rounded-full bg-indigo-700 w-[60%] cursor-pointer max-w-xl min-w-fit">
                 <p className="px-3 inline-block">📣</p>
