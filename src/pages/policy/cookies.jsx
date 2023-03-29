@@ -5,6 +5,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router'
 
 export default function Cookies() {
+  const router = useRouter();
+  const routeBack = (e) => {
+    e.preventDefault();
+    router.back();
+  };
   return (
     <>
       <Head>
