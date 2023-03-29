@@ -49,7 +49,6 @@ function MyApp({ Component, pageProps }) {
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
             <PayPalScriptProvider options={initialOptions}>
-              <DesktopWarnModal />
               <CookieBanner />
               <Component {...pageProps} />
             </PayPalScriptProvider>

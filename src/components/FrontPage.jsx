@@ -9,8 +9,6 @@ import left_nft from '../assets/merger/left-nft.png';
 import right_nft from '../assets/merger/right-nft.png';
 import elixir from '../assets/merger/elixir.png';
 import {server} from '../config'
-//import MetaheadLogo from '../assets/ted512.png';
-//import MetatedLogo from '../assets/tednorm.png';
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import Box from '@mui/material/Box';
@@ -20,11 +18,9 @@ import { CardMedia } from '@mui/material';
 import { Button, CardActions } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import {TwitterShareButton, TwitterIcon} from "react-share";
-//import {Linking} from 'react-native';
 
 
 const FrontPage = () => {
-	//explore page array
 	const modalNavBarElements =[
     {
 			id: 1,
@@ -99,28 +95,6 @@ const FrontPage = () => {
     const parsed = url
     return ['https:', 'http:'].includes(parsed.protocol)
   }
-
-	//url to tweet metateds and metahead gallery
-	{/*const tweetNow = (event, twitterShareUrl, tweetContent, twitterAccount) => {
-    console.log("tweetNow has been selected")
-    let twitterParam = []
-    twitterParam.push('url=' + encodeURI(twitterShareUrl))
-    twitterParam.push('text=' + encodeURI(tweetContent))
-    twitterParam.push('via=' + encodeURI(twitterAccount))
-    const url = 'https://twitter.com/intent/tweet?' + twitterParam.join('&');
-    Linking.openURL(url)
-      .then((data)=>{
-        console.log('Twitter has opened')
-      }).catch((error)=>{
-        console.log(error)
-      })
-  }*/}
-	//custom loader
-	/*const customLoader = ({src, width, quality}) => {
-		return process.env.NODE_ENV === "production" ?
-		`${process.env.BASE_URL}/${src}?${width}&q=${quality || 75}`:
-		`http://localhost:3000/${src}?${width}&q=${quality || 75}`;
-	}*/
 
 	const toggleModal = () => {
 		setModal(prev => !prev);

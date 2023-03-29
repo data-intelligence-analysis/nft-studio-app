@@ -1,17 +1,14 @@
 import Head from "next/head";
+import React, {useState, useEffect} from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Link from 'next/link';
 import {useRouter} from 'next/router'
-export default function NotFound404() {
-  const router = useRouter();
-  const routeBack = (e) => {
-    e.preventDefault();
-    router.back();
-  };
-  const METATEDS_HOME = '/'
+
+export default function Cookies() {
   return (
     <>
       <Head>
-        <title>😔 404 - Page Not Found | MetaTeds</title>
+        <title>Cookies | MetaTeds</title>
       </Head>
       <div className="bg-slate-900 h-screen grid grid-cols-5 gap-10">
         <nav className="place-items-center col-start-1 col-span-1 top-0 pointer-event-none z-nav w-full">
@@ -29,7 +26,7 @@ export default function NotFound404() {
           </div>
         </nav>
         <div className="place-items-center my-auto col-start-2 col-span-3 text-center">
-          <h1 className="text-lg sm:text-xl md:text-2xl">🚀 404 - Page Not Found </h1>
+          <h1 className="text-lg sm:text-xl md:text-2xl">🚀 Cookies Policy </h1>
         </div>
         
       </div>
