@@ -8,9 +8,6 @@ export default function NotFound404() {
     router.back();
   };
   const METATEDS_HOME = '/'
-  {/*<Link href="/" passHref legacyBehavior>
-    <ArrowBackIcon />
-  </Link>*/}
   return (
     <>
       <Head>

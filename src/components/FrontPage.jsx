@@ -139,7 +139,7 @@ const FrontPage = () => {
 					<div key={props.id} className="items-center w-full h-full">
 						<div className= "m-1 mb-8 sm:m-5 flex items-center">
 							<div className="w-3/12 min-w-fit mx-auto h-full justify-center flex items-center cursor-pointer py-1 px-1 max-w-xs rounded-lg border-2 border-slate-100" >
-								<Image src={ogIcon} alt="ted-og" width="25" height="auto" placeholder="shimmer" style={{marginRight:'0.75rem'}}/>
+								<Image src={ogIcon} alt="ted-og" height="25" width="25" placeholder="shimmer" style={{marginRight:'0.75rem', height:"auto", width: "auto"}}/>
 								<div className="block text-left mr-3 sm:mr-6">
 									<p className="text-xs uppercase font-normal">Powered by</p>
 									<p className="text-xs uppercase">MetaTed Labs - Metapix</p>
@@ -538,9 +538,12 @@ const FrontPage = () => {
 							<Image
 									src={metatedsHeader}
 									alt="MetaTeds Logo"
-									height='100%'
-									width='auto'
+									height="auto"
+									width="auto"
 									loading="lazy"
+									sizes="(max-width: 768px) 100vw,
+													(max-width: 1200px) 75vw,
+													50vw"
 									placeholder='blur'	
 							/>
 						</div>
