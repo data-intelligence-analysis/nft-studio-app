@@ -267,15 +267,19 @@
       width: 100%;
       bottom: 0;
   }
-
   .backdrop-blur{
     background-color: hsla(0,0%,100%,.05);
     --tw-backdrop-blur: blur(30px);
     -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
     backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
   }
-  
-
+  .s45ws6s6s{
+    min-width: 100%;
+    flex-shrink: 0;
+  }
+  .webkit-util-center {
+    -webkit-box-pack: center
+  }
   /*Responsive Screens*/
   @media (max-width:976px){
     .navBarElements{
