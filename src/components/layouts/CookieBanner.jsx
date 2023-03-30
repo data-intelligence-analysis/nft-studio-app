@@ -46,8 +46,8 @@ export default function CookieBanner() {
                 <a className="text-slate-200 underline underline-offset-2 visited:text-indigo-700 font-bold">
                   cookies policy
                 </a>
-              </Link> {' '} to learn more
-              To find out more, please visit our {' '}
+              </Link> {' '} to learn more.
+              To get more information, please visit our {' '}
               <Link href="/policy/privacy" passHref legacyBehavior>
                 <a className="text-slate-200 underline underline-offset-2 visited:text-indigo-700 font-bold">
                   privacy policy
