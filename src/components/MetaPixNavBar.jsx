@@ -123,7 +123,7 @@ const NavBarElements =[
   {
       id: 10,
       name: 'Metapix Free Services',
-      href: '/metapix/service',
+      href: '/metapix/community',
       icon: <WrenchIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
