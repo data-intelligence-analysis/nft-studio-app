@@ -55,7 +55,7 @@ export default function PriceTracker () {
         <section className="m-2 flex justify-center items-center text-sm font-sans">
           <div id="solana-price" className="p-2 px-4">
             {solanaPrice ? 
-            (<p>SOL: <span className="inline-flex items-baseline text-orange-500 font-semibold">${solanaPrice}</span></p>):
+            (<p>Solana: <span className="inline-flex items-baseline text-orange-500 font-semibold">${solanaPrice}</span></p>):
             (
               <Circles 
                 width='10' 
