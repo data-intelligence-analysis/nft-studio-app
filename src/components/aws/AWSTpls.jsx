@@ -1,9 +1,65 @@
 import React, {useState, useEffect, useRouter} from 'react'
+import rockset from '@rockset/client';
+import AWS from 'aws-sdk';
+
+
 
 const AWSTpls = ({props}) => {
+  const client = rockset(process.env.ROCKSET_APIKEY, process.env.ROCKSET_APISERVER);
+
+  const [scores, setScores] = useState([]);
+
+  useEffect(() => {
+    const dynamoDb = new AWS.DynamoDB.DocumentClient({ region: 'us-west-2' });
+    const query = `{SELECT player_id, score, RANK() OVER (ORDER BY score DESC) AS rank FROM leaderboard WHERE game_id = ${gameId} LIMIT 10;}`
+    client.queryLambdas.execute('leaderboard', query).then((result) => {
+      setScores(result.results);
+    });
+    const stream = dynamoDb.createReadStream({
+      TableName: 'leaderboard',
+      KeyConditions: {
+        game_id: {
+          ComparisonOperator: 'EQ',
+          AttributeValueList: [gameId],
+        },
+      },
+    });
+
+    stream.on('data', (record) => {
+      const newScore = record.NewImage;
+
+      client.queryLambdas.execute('leaderboard', query).then((result) => {
+        setScores(result.results);
+      });
+    });
+  }, [gameId]);
+  /*return (
+    <div>
+      <h2>Leaderboard for Game {gameId}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player ID</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {scores.map((score) => (
+            <tr key={score.player_id}>
+              <td>{score.rank}</td>
+              <td>{score.player_id}</td>
+              <td>{score.score}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );*/
   return(
     <>
-        <div id="tpls" className="flex mt-3 mb-2 w-full relative gap-x-6 webkitutil-center text-center items-start">
+      <div className="my-4">
+        <div id="tpls" className="mt-3 mb-2 w-full flex relative gap-x-6 webkitutil-center text-center items-start">
           {props.period.map((elem, i) => (
             <div key={i}>
               <button
@@ -18,7 +74,13 @@ const AWSTpls = ({props}) => {
               </button>
             </div>
           ))}
+          
         </div>
+        <div className="my-6 p-6">
+          Text
+        </div>
+      </div>
+      
     </>
     
   )

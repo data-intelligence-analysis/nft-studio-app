@@ -223,7 +223,7 @@ export default function DAO ({data}) {
     window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
   };
   //onclick contexts
-
+  //leaderboard
   const RenderAWScontexts = ({...props}) => { 
     return (
       <div>
@@ -240,7 +240,24 @@ export default function DAO ({data}) {
       </div>
     )
   }
+  //quicksight - render quicksight dashboard
+  const QuickSightChart = () => {
+    //replace dashboard-id in the url variable with the ID of the QuickSight dashboard that you want to embed. 
+    //The width, height, frameborder, and allow fullscreen attributes of the iframe can be customized to fit your needs.
 
+    //Note that to embed a QuickSight dashboard in an application, you need to first create an embeddable URL for the dashboard in the QuickSight console. 
+    //You also need to make sure that the user has the necessary permissions to view the dashboard.
+    const url = 'https://us-east-2.quicksight.aws.amazon.com/embed/dashboard/dashboard-id?isAuthEnabled=true&identityProvider=aws';
+    return (
+      <iframe
+        src={url}
+        width="100%"
+        height="500px"
+        frameborder="0"
+        allowfullscreen
+      />
+    );
+  }
   
 
   
@@ -318,11 +335,6 @@ export default function DAO ({data}) {
                 />
               </div>
             </section>
-            {/*<iframe className="p-2 w-full mx-auto px-6" 
-                width="420" 
-                height="400" 
-                src="">
-            </iframe>*/}
           </section>
           <section className="my-4 lg:my-8 px-2 sm:px-4 lg:px-6 items-center block mx-auto w-full">
             <div className="p-2 sm:p-4 text-center font-pixel font-bold">

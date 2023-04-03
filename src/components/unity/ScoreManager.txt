@@ -1,0 +1,8 @@
+1. Create a script in Unity that tracks the player's score during a session and updates the highest score if the current score surpasses it.
+2. In the `Start` method of the script, connect to MongoDB using the `MongoClient` and `IMongoDatabase` classes from the MongoDB C# driver.
+3. In the `Update` method of the script, update the player's current score based on the actual scoring logic of your game.
+4. Check if the current score surpasses the highest score. If it does, update the highest score and upload it to MongoDB using the `InsertOne` method of the `IMongoCollection<BsonDocument>` class.
+5. In the `BsonDocument1 object that you pass to the `InsertOne` method, include the player's name and the highest score.
+
+Note: make sure to replace the placeholders in the script with the actual values, such as the MongoDB connection string, database name, 
+collection name, and player name.
