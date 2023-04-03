@@ -1,20 +1,27 @@
 import Head from "next/head";
-import React, {useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {useRouter} from 'next/router'
 import MetaPixNavBar from "../../components/MetaPixNavBar";
 import {server} from '../../config'
 import { Circles } from "react-loader-spinner";
+import {FaUpload} from "react-icons/fa"
+//import Image from 'next/image'
+import { IconContext } from "react-icons";
 //import { MegaPhoneIcon } from "@heroicons/react/24/solid";
 import {TwitterShareButton, TwitterIcon} from "react-share";
 //import { CustomPlaceholder } from 'react-placeholder-image';
 //import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
 //import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 export default function Community () {
+  //states
+  const containerRef = useRef(null);
+  const canvasRef = useRef(null)
+  const [src, setSrc] = useState(null);
+  const [pixelSize, setPixelSize] = useState(0);
+  const [pixelState, setPixelState] = useState(null);
+  //const [loadImage, setLoadImage] = useState(null);
+
   const router = useRouter();
-  const routeBack = (e) => {
-    e.preventDefault();
-    router.back();
-  };
   /*const OldAnnouncements = () => {
     return (
       <div className="flex items-center justify-between px-2 py-2 sm:py-3 sm:px-6 pointer-events-auto w-full mx-auto">
@@ -27,187 +34,262 @@ export default function Community () {
       </div>
     )
   }*/
-  const handleImg = (e) => {
-    
-    //get file upload
-    const file = e.target.files[0]
-    console.log(file);
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0]
     const reader = new FileReader();
-    //this.setState({loading: true})
-    
+    reader.onload = (event) => {
+      //setSrc(event.target.result);
+      setSrc(event.target.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  /*const pixelateBtn = () => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      const width = containerRef.current.clientWidth;
+      const height = containerRef.current.clientHeight;
+      const ratio = Math.min(width / img.width, height / img.height);
+      canvasRef.current.width = img.width * ratio;
+      canvasRef.current.height = img.height * ratio;
       
-      reader.onload = (e) =>{
-        
-        //img tag
-        const pixelatedImg = document.getElementById("pixelatedImg");
-        //slider
-        const pixelationElement = document.getElementById("pixelationRange");
-        //const pixelationElement = document.querySelector(".pixel");
-        const originalImg = pixelatedImg.cloneNode(true);
-        //input tag
-        //const fileInput = document.querySelector("#upload");
-        //pixelatedImg.src = await fileToDataUri(file);
-        // storing the original image
-        //originalImg.src = await fileToDataUri(file);
-        
-        //return false;
-        pixelatedImg.onload = () => {
-          this.setState({loading: false})
-          const canvas = document.createElement('canvas')
-          var ctx = canvas.getContext("2d");
-          ctx.drawImage(pixelatedImg, 0, 0);
-          const MAX_WIDTH= 300;
-          const MAX_HEIGHT=300;
-          var width = pixelatedImg.width;
-          var height = pixelatedImg.height;
-          
-          if (width > height){
-            if (width > MAX_WIDTH){
-              height *= MAX_WIDTH /width
-              width = MAX_WIDTH;
-            }
+      const ctx = canvasRef.current.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height);
+      const imageData = ctx.getImageData(0, 0, canvasRef.current.width, canvasRef.current.height);
+      const pixels = imageData.data;
+
+      const pixelate = (pixels, width, pixelWidth) => {
+        const numPixels = pixelWidth * pixelWidth;
+        for (let i = 0; i < pixels.length; i += 4) {
+          const pixelStartIndex = i - ((i / 4) % width) * 4 - ((i / 4) / width) * width * 4;
+          let r = 0;
+          let g = 0;
+          let b = 0;
+          for (let j = 0; j < numPixels; j++) {
+            const pixelIndex = pixelStartIndex + ((j % pixelWidth) * 4) + (Math.floor(j / pixelWidth) * width * 4);
+            r += pixels[pixelIndex];
+            g += pixels[pixelIndex + 1];
+            b += pixels[pixelIndex + 2];
           }
-          else{
-            if (height > MAX_HEIGHT){
-              width *= MAX_HEIGHT / height
-              height = MAX_HEIGHT;
-            }
+          r /= numPixels;
+          g /= numPixels;
+          b /= numPixels;
+          for (let j = 0; j < numPixels; j++) {
+            const pixelIndex = pixelStartIndex + ((j % pixelWidth) * 4) + (Math.floor(j / pixelWidth) * width * 4);
+            pixels[pixelIndex] = r;
+            pixels[pixelIndex + 1] = g;
+            pixels[pixelIndex + 2] = b;
           }
-          canvas.width = width;
-          canvas.height = height;
-          ctx.drawImage(pixelatedImg, 0, 0, width, height);
-          const dataurl = canvas.toDataURL("image/png", "image/gif","image/jpg", "image/jpeg");
-          this.setState({previewSrc: dataurl})
-          
-      
-        }
-        console.log(pixelationElement)
-        /*fileInput.addEventListener("change", async (e) => {
-          pixelatedImg.src = e.target.result;
-          //storing the original image
-          originalImg.src = e.target.result;
-          pixelationElement.value = 0;
-          return false
-        })*/
-        pixelatedImg.src = e.target.result;
-        //storing the original image
-        originalImg.src = e.target.result;
-        pixelationElement.value = 0;
-        
-        pixelationElement.oninput = (e) => {
-          const measurePromise = (fn) => {
-            //let timeElapsed = true;
-            let start = performance.now();
-            let onPromiseDone = () => performance.now() - start;
-            return fn().then(onPromiseDone);
-          }
-          /*const measure = (fn) => {
-            let start = performance.now();
-            fn();
-            let end = performance.now()
-            let duration = end-start
-            if (end){
-              return fn, console.log(`${duration} ms`)
-            }else{
-              return this.setState({loading: true})
-            }
-            return performance.now() - start;
-          }*/
-          /*
-            measure (pixelating)
-          
-          const pixelating = () =>{
-            this.setState({loading:false})
-            pixelateImg(originalImg, parseInt(e.target.value))
-          }*/
-          
-          const initialPromise = () =>{
-            return new Promise((resolve) => {
-              resolve(
-                pixelateImg(originalImg, parseInt(e.target.value))
-              )
-              
-            })
-          }
-          measurePromise(initialPromise).then((duration)=>{
-            console.log(`function took ${duration} ms`);
-          }).catch(`Error`)
-          /*var promise = new Promise((resolve) =>{
-            let start = performance.now();
-            
-            resolve(
-              pixelateImg(originalImg, parseInt(e.target.value))
-            )
-            let onPromiseDone = () => performance.now() - start;
-            console.log(`${onPromiseDone} ms`)
-          })*/
-          
-          
-          /*try{
-            //let loadingState = this.setState({loading: true})
-            let start = performance.now()
-            pixelateImg(originalImg, parseInt(e.target.value))
-            let end = performance.now()
-            console.log(`Execution time: ${end - start} ms`);
-            //let pixelTimeout = setTimeout(pixelateImg, 2000, originalImg, parseInt(e.target.value))
-            //clearTimeout(pixelTimeout)
-          }catch(e){
-            console.log(e)
-          }*/
-          
-          
-          
-        }
-        
-        
-        const pixelateImg = (ogImg, pixelationFactor) => {
-          //let timeout = 1000;
-          //const baseThis = this;
-          
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext('2d');
-        var originalWidth = ogImg.width;
-        var originalHeight = ogImg.height;
-        const canvasWidth = originalWidth;
-        const canvasHeight = originalHeight;
-        canvas.width = canvasWidth;
-        canvas.height = canvasHeight;
-        
-        
-        context.drawImage(ogImg, 0, 0, originalWidth, originalHeight);
-        const originalImageData = context.getImageData(
-          0,
-          0,
-          originalWidth,
-          originalHeight
-        ).data;
-        if (pixelationFactor !== 0){
-          for (let y=0; y < originalHeight; y += pixelationFactor ){
-            for (let x=0; x < originalWidth; x += pixelationFactor){
-              // extracting the position of the sample pixel
-              const pixelIndexPosition = (x + y * originalWidth)*4;
-  
-              // drawing a square replacing the current pixels
-              context.fillStyle = `rgba(
-                ${originalImageData[pixelIndexPosition]},
-                ${originalImageData[pixelIndexPosition + 1]},
-                ${originalImageData[pixelIndexPosition + 2]},
-                ${originalImageData[pixelIndexPosition + 3]}
-              )`;
-              context.fillRect( x,y, pixelationFactor,pixelationFactor);
-  
-            }
-          }
-        }
-        pixelatedImg.src = canvas.toDataURL();
-          
         }
       }
-      reader.readAsDataURL(file)
-      return false
+
+      pixelate(pixels, canvasRef.current.width, pixelSize);
+      ctx.putImageData(imageData, 0, 0);
+    };
+  }*/
+
+  /*useEffect(()=>  {
+    if (src) {
+      const width = containerRef.current.clientWidth;
+      const height = containerRef.current.clientHeight;
+      const imageWidth = canvasRef.current.width;
+      const imageHeight = canvasRef.current.height;
+      const ratio = Math.min(width / imageWidth, height / imageHeight);
+
+
+      canvasRef.current.style.width = `${imageWidth * ratio}px`;
+      canvasRef.current.style.height = `${imageHeight * ratio}px`;
+      canvasRef.current.style.transform = `scale(${pixelSize / 20})`
+    }
+  }, [src, pixelSize]);*/
+  //img inline styling
+  /*const pixelatedStyle = {
+    imageRendering: 'pixelated',
+    width: '100%',
+    height: '100%',
+    imageRendering: '-moz-crisp-edges',
+    imageRendering: '-webkit-crisp-edges',
+    imageRendering: 'crisp-edges'
+  };*/
+  
+  /*function pixelate_new (pixels, canvas_width, pixelSize ) {
+    // Pixelate the image
+    const pixelWidth = Math.floor(pixelSize);
+    const numPixels = pixelWidth * pixelWidth;
+    for (let i = 0; i < pixels.length; i += 4) {
+      const pixelStartIndex = i - ((i / 4) % canvas_width) * 4 - ((i / 4) / canvas_width) * canvas_width * 4;
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      for (let j = 0; j < numPixels; j++) {
+        const pixelIndex = pixelStartIndex + ((j % pixelWidth) * 4) + (Math.floor(j / pixelWidth) * canvas_width * 4);
+        r += pixels[pixelIndex];
+        g += pixels[pixelIndex + 1];
+        b += pixels[pixelIndex + 2];
+      }
+      r /= numPixels;
+      g /= numPixels;
+      b /= numPixels;
+      for (let j = 0; j < numPixels; j++) {
+        const pixelIndex = pixelStartIndex + ((j % pixelWidth) * 4) + (Math.floor(j / pixelWidth) * canvas_width * 4);
+        pixels[pixelIndex] = r;
+        pixels[pixelIndex + 1] = g;
+        pixels[pixelIndex + 2] = b;
+      }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
     
-  };
-  //replacement for react lib
+  }*/
+  const pixelate = (pixels, ctx, canvas, width, height, pixelWidth, img) => {
+    if (pixelWidth != 0) {
+      for (let y=0;  y < height; y+=pixelWidth ) {
+        for ( let x=0; x < width; x+=pixelWidth) {
+          // extracting the position of the sample pixel
+          const pixelIndex = (x + y * width)*4;
+          // drawing a square replacing the current pixels
+          ctx.fillStyle = `rgba(
+            ${pixels[pixelIndex]},
+            ${pixels[pixelIndex + 1]},
+            ${pixels[pixelIndex + 3]}
+            ${pixels[pixelIndex + 2]},
+          )`;
+          ctx.fillRect( x,y, pixelWidth, pixelWidth);
+        }
+      }
+    }
+    img.src = canvas.toDataURL();
+  }
+  
+  const handlePixelSizeChange = (event) => {
+    setPixelSize(event.target.value)
+    var input = document.getElementById('pixelationRange')
+    if (parseInt(input.value) === parseInt(input.min)){
+      setPixelState(false)
+    } else {
+      setPixelState(true);
+    }
+    
+    if (src) {
+      //useRef - to get elements of the canvas
+      //const canvas = canvasRef.current;
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext('2d');
+      const pixelationElement = document.getElementById("pixelationRange");
+      //const img = new Image();
+      //const pixelatedImg = document.getElementById("pixelatedImg");
+      //const img = document.createElement('img');
+      //img.setAttribute("id", "pixelatedImg");
+      const pixelatedImage = document.getElementById("pixelatedImg")
+      const originalImg = pixelatedImage.cloneNode(true);
+      // showing the uploaded image
+      //pixelatedImg.src = src;
+      //storing the original image
+      
+      pixelatedImage.src = src;
+      originalImg.src = src;
+      //img.src = src;
+      //img.onload = () => {
+      //};
+      pixelatedImage.onload = () =>{
+        const width = containerRef.current.clientWidth;
+        const height = containerRef.current.clientHeight;
+        const ratio = Math.min(width / originalImg.width, height / originalImg.height);
+        canvas.width = originalImg.width * ratio;
+        canvas.height = originalImg.height * ratio;
+        ctx.drawImage(originalImg, 0, 0, canvas.width, canvas.height);
+
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageData.data;
+        const pixelWidth = Math.floor(pixelSize);
+        /*canvas.width = originalImg.width
+        canvas.height = originalImg.height
+        ctx.drawImage(originalImg, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageData.data
+        const pixelWidth = Math.floor(pixelSize);*/
+        
+        pixelate(pixels, ctx, canvas, canvas.width, canvas.height, pixelWidth, pixelatedImage);
+        //pixelate_new(pixels, canvas.width, pixelSize)
+      }
+      
+    }
+    
+
+  }
+  
+  
+  useEffect(() => {
+    if (src) {
+      var input = document.getElementById('pixelationRange')
+      if (parseInt(input.value) === parseInt(input.min)){
+        setPixelState(false)
+      } else {
+        setPixelState(true);
+      }
+      console.log(pixelSize);
+      //creating canvas
+      const canvas = document.createElement('canvas')
+      //construct new image class
+      //const img = new Image();
+      const img = document.getElementById("pixelatedImg")
+      //const img = document.createElement('img');
+      //img.setAttribute("id", "pixelatedImg");
+      //uploaded image by id
+      //const pixelatedImg = document.getElementById("pixel_canvas");
+      //const originalImg = pixelatedImg.cloneNode(true);
+      // showing the uploaded image
+      //pixelatedImg.src = src;
+      // storing the original image
+      //originalImg.src = src;
+      // updating the image src
+      img.src = src;
+      //const originalImg = pixelatedImg.cloneNode(true)
+      //pixelatedImg.src = src
+      img.onload = (event) => {
+        const width = containerRef.current.clientWidth;
+        const height = containerRef.current.clientHeight;
+        const ratio = Math.min(width / img.width, height / img.height);
+        canvas.width = img.width * ratio;
+        canvas.height = img.height * ratio;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        //canvasRef.current.width = img.width * ratio;
+        //canvasRef.current.height = img.height * ratio;
+        //const ctx = canvasRef.current.getContext('2d');
+        //ctx.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height);
+        /*const imageData = ctx.getImageData(0, 0, canvasRef.current.width, canvasRef.current.height);
+        const pixels = imageData.data;
+
+        const pixelate = (pixels, width, height, pixelWidth) => {
+          if (pixelWidth != 0) {
+            for (let y=0;  y < height; y+=pixelWidth ) {
+              for ( let x=0; x < width; x+=pixelWidth) {
+                // extracting the position of the sample pixel
+                const pixelIndex = (x + y * width)*4;
+                // drawing a square replacing the current pixels
+                ctx.fillStyle = `rgba(
+                  ${pixels[pixelIndex]},
+                  ${pixels[pixelIndex + 1]},
+                  ${pixels[pixelIndex + 3]}
+                  ${pixels[pixelIndex + 2]},
+                )`;
+                ctx.fillRect( x,y, pixelWidth, pixelWidth);
+              }
+            }
+          }
+          img.src = canvasRef.current.toDataURL();
+        }
+
+        pixelate(pixels, canvasRef.current.width, canvasRef.current.height, pixelSize);
+        //ctx.putImageData(imageData, 0, 0);*/
+      };
+      
+    }
+  }, [src, pixelSize])
+
+  
   const MegaPhoneIcon = () =>{
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -241,11 +323,6 @@ export default function Community () {
       </div>
     )
   }
-  const METATEDS_HOME = '/'
-  {/*<Link href="/" passHref legacyBehavior>
-    <ArrowBackIcon />
-  </Link>*/}
-  const myRef = useRef()
   return (
     <>
       <Head>
@@ -258,28 +335,78 @@ export default function Community () {
             <Announcements />
           </nav>
           <div className="grid place-items-center text-center mb-4 mt-8 w-full px-4 lg:px-8">
-            <div className="flex-col my-4 px-2 mx-auto text-center">
-              <div className="w-[300px] border h-[300px] my-2 w-full border-slate-100 rounded-md">
-
+            <div className="pointer-cursor-auto flex-col my-4 px-2 mx-auto text-center">
+              <div ref={containerRef} className="w-[300px] border h-[300px] flex items-center justify-center my-2 border-slate-100 rounded-md">
+                 
+                  <div className="flex justify-center items-center">
+                    
+                    {src ? (
+                      <div>
+                        {<img
+                          className="flex justify-center items-center" 
+                          id="pixelatedImg"
+                          //crossorigin="anonymous"
+                    />}
+                        {/*<canvas id="pixel_canvas" ref={canvasRef} />*/}
+                      </div>): 
+                      (
+                        <IconContext.Provider value={{ size: "3em", className: "global-class-name" }}>
+                          <div>
+                            <FaUpload />
+                          </div>
+                        </IconContext.Provider>
+                      )
+                    }
+                  </div>
+                
+                {/*src && 
+                <img 
+                  src={src} 
+                  ref={canvasRef}
+                  alt="uploaded"
+                  style={{ ...pixelatedStyle, position: 'absolute' }}
+                />*/}
               </div>
-              <span className="px-2 flex items-center justify-center">
-                <p className="inline-block font-pixel text-xs">Pixelation:</p>
-                <input
-                  onInput=""
-                  type="range"
-                  min="0"
-                  max="15"
-                  defaultValue="0"
-                  step="1"
-                  className="inline-block"
-                  id="pixelationRange"
-                  ref={myRef}
-                />
-              </span>
+              <div className="flex items-center justify-center">
+                {src && <span className="mt-3 mb-4 px-2 flex items-center justify-center text-xs font-pixel">
+                  <p className="inline-block font-pixel text-xs">Pixelation:</p>
+                  <input
+                    onChange={handlePixelSizeChange}
+                    type="range"
+                    min="0"
+                    max="20"
+                    value= {pixelSize}
+                    step="1"
+                    className="inline-block"
+                    id="pixelationRange"
+                  />
+                  <label htmlFor="pixel-range" className="ml-2 text-xs">{pixelSize}px</label>
+                </span> }
+              </div>
+              {src && <div className="font-sans flex justify-center items-center px-2 align-middle text-center">
+                <div className="p-2 lg:p-3">
+                  {/*<button type="button" disabled className={`p-1 px-2 sm:p-2 ${pixelSize === 0 ? 'text-slate-300 cursor-not-allowed bg-indigo-700/60':'bg-indigo-700 hover:bg-slate-900 hover:ring-indigo-700 hover:ring-4'} rounded-md`}>
+                      <p className="text-sm">Pixelate</p>
+              </button>*/}
+                  {pixelState ? (<button id="active" className="p-1 px-2 sm:p-2 bg-indigo-700 rounded-md hover:bg-slate-900 hover:ring-indigo-700 hover:ring-4">
+                    <p className="text-sm">Pixelate</p>
+                  </button>): 
+                  (<button type="button" id="disabled" disabled className="p-1 px-2 sm:p-2 text-slate-300 cursor-not-allowed bg-indigo-700/60 rounded-md">
+                    <p className="text-sm">Pixelate</p>
+              </button>)}
+                </div>
+                <div className="p-2 lg:p-3">
+                  <button className="p-1 px-2 sm:p-2 bg-indigo-700 rounded-md hover:bg-slate-900 hover:ring-indigo-700 hover:ring-4">
+                    <p className="text-sm">Remove</p>
+                  </button>
+                </div>
+              </div>}
+              
+              <div className="h-full w-full mt-4 px-1 lg:px-2 mb-3 py-1 lg:py-2 font-sans items-center">
+                <input className="hover:ring-indigo-600 hover:ring-2 ring-inset cursor-pointer text-center items-center" onChange={handleImageUpload} id="upload" type="file" accept="image/*" />
+              </div>
             </div>
-            <div className="mt-3 px-1 lg:px-2 mb-3 py-1 lg:py-2 font-sans items-center">
-              <input className="text-center" onChange="" ref={myRef} id="upload" type="file" accept="image/*" />
-            </div>
+            
             <div className="mt-3 p-2 lg:p-4 flex items-center text-center justify-center gap-x-4 w-full">
               <button onClick={() => alert('download feature coming soon')} className="px-2 lg:px-4 py-2 lg:py-3 bg-indigo-700 rounded-md hover:bg-slate-900 hover:ring-indigo-700 hover:ring-4">
                 <p className="sm:text-base text-xs font-pixel">Download</p>

@@ -280,6 +280,11 @@
   .webkit-util-center {
     -webkit-box-pack: center
   }
+
+  input[type=file] {
+    background: none;
+    cursor: pointer;
+  }
   /*Responsive Screens*/
   @media (max-width:976px){
     .navBarElements{
