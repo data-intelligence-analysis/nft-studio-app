@@ -16,7 +16,7 @@ export default function PriceTracker () {
     };
     fetchSolanaPrice();
     
-    const interval = setInterval(fetchSolanaPrice, 5000); // Update price every minute
+    const interval = setInterval(fetchSolanaPrice, 2000); // Update price every minute
 
     return () => clearInterval(interval);
   }, []);
@@ -30,20 +30,20 @@ export default function PriceTracker () {
     };
     fetchBitcoinPrice();
     
-    const interval = setInterval(fetchBitcoinPrice, 5000); // Update price every minute
+    const interval = setInterval(fetchBitcoinPrice, 2000); // Update price every minute
 
     return () => clearInterval(interval);
   }, []);
   useEffect(() => {
     const fetchPolygonPrice = async () => {
       const response = await axios.get(
-        "https://api.coindesk.com/v1/bpi/currentprice.json"
+        "https://api.coingecko.com/api/v3/coins/matic-network"
       );
-      setPolygonPrice(response.data.bpi.USD.rate);
+      setPolygonPrice(response.data.market_data.current_price.usd);
     };
     fetchPolygonPrice();
     
-    const interval = setInterval(fetchPolygonPrice, 5000); // Update price every minute
+    const interval = setInterval(fetchPolygonPrice, 2000); // Update price every minute
 
     return () => clearInterval(interval);
   }, []);
@@ -83,9 +83,9 @@ export default function PriceTracker () {
 
               }
           </div>
-          {/*<div id="polygon-price" className="p-2 px-4">
+          <div id="polygon-price" className="p-2 px-4">
             {polygonPrice ? 
-              (<p>Polygon: <span className="text-orange-500 font-semibold">{'$'}${polygonPrice}</span></p>):
+              (<p>Polygon: <span className="text-orange-500 font-semibold">${polygonPrice}</span></p>):
               (
                 <Circles 
                   width='10' 
@@ -97,7 +97,7 @@ export default function PriceTracker () {
               )
 
               }
-            </div>*/}
+            </div>
         </section>
       </div>
     </div>
