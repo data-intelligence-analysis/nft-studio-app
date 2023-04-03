@@ -216,6 +216,12 @@ export default function DAO ({data}) {
 
   const myRef = useRef()
 
+  //scroll behaviour
+
+  const handleScrollClick = () => {
+    const section = document.getElementById('metapix-plan');
+    window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+  };
   //onclick contexts
 
   const RenderAWScontexts = ({...props}) => { 
@@ -270,10 +276,10 @@ export default function DAO ({data}) {
             <div className="col-span-8 col-start-1 h-[350px] lg:col-start-2 lg:col-span-11 flex text-center items-center justify-center px-6 sm:px-4 z-20">
               <h1 className="text-base sm:text-2xl lg:text-3xl font-pixel uppercase">Empowering community focused & gaming experiences</h1>
             </div>
-            <div className="col-start-3 col-span-4 h-[80px] mx-auto lg:col-start-5 lg:col-span-5 font-sans text-center items-center mb-2 z-20">
-              <p>Click to view more</p>
+            <div className="font-pixel col-start-3 col-span-4 h-[80px] mx-auto lg:col-start-5 lg:col-span-5 font-sans text-center items-center mb-2 z-20">
+              <p className="text-xs font-pixel font-semibold">Click to view more</p>
               <div className="pt-4">
-                <button className="">
+                <button onClick={handleScrollClick} className="animate-beat hover:bg-rose-900/90 hover:rounded-md">
                   <ArrowCircleDownIcon />
                 </button>
               </div>
@@ -287,7 +293,7 @@ export default function DAO ({data}) {
               <p>Image</p>
             </div>*/}
           </div>
-          <section className="z-30 my-6 w-full mx-auto p-4 lg:p-8 items-center">
+          <section id="metapix-plan" className="z-30 my-6 w-full mx-auto p-4 lg:p-8 items-center">
             <h1 className="items-center text-center text-base lg:text-xl mx-auto mt-4 mb-8 font-pixel font-bold">
               MetaPix Blueprints
             </h1>
