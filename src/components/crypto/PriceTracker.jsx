@@ -50,7 +50,7 @@ export default function PriceTracker () {
   
 
   return (
-    <div className="bg-slate-900/70 h-full">
+    <div className="h-full">
       <div className="mmax-w-screen-2xl w-full">
         <section className="m-2 flex justify-center items-center text-sm font-sans">
           <div id="solana-price" className="p-2 px-4">
