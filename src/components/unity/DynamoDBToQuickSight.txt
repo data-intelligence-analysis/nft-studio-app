@@ -1,0 +1,50 @@
+To retrieve data from DynamoDB and create charts in QuickSight, you can follow these steps:
+
+Create an IAM role with permissions to access DynamoDB and QuickSight. This role will be used to authenticate with both services.
+
+Use the AWS Glue Data Catalog to create a schema for the DynamoDB table. This will enable QuickSight to discover the table and its fields.
+
+In QuickSight, create a new data source using the AWS Glue Data Catalog. Select the DynamoDB table and the IAM role you created in step 1.
+
+In the QuickSight data source, create a new dataset using the fields from the DynamoDB table. You can use the QuickSight data preparation tools to clean and transform the data as needed.
+
+Create a new analysis in QuickSight and add the dataset to it. You can use the QuickSight visualization tools to create charts and graphs based on the data.
+
+Publish the analysis to QuickSight and share it with your team or stakeholders.
+
+Here are more detailed steps for each of these:
+
+Create an IAM role with permissions to access DynamoDB and QuickSight:
+In the AWS Management Console, go to the IAM service and click "Roles" in the left navigation panel.
+Click the "Create role" button.
+Select "AWS service" as the trusted entity and choose "QuickSight" from the list of services.
+Click "Next: Permissions".
+Add the permissions you need for DynamoDB and QuickSight, such as "AmazonDynamoDBFullAccess" and "QuickSightFullAccess".
+Click "Next: Tags" and "Next: Review".
+Give the role a name and click "Create role".
+Use the AWS Glue Data Catalog to create a schema for the DynamoDB table:
+In the AWS Management Console, go to the Glue service and click "Crawlers" in the left navigation panel.
+Click the "Add crawler" button and give it a name.
+Choose the data store type as "Amazon DynamoDB" and select the table you want to use.
+Choose the IAM role you created in step 1 and click "Next".
+Add any additional data stores or classifiers as needed and click "Next".
+Review the crawler settings and click "Finish".
+Run the crawler to create the schema for the DynamoDB table.
+In QuickSight, create a new data source using the AWS Glue Data Catalog:
+In the QuickSight console, click "Manage data" and then "New data source".
+Select "AWS Glue Data Catalog" as the data source type.
+Choose the Glue database and table you created in step 2.
+Choose the IAM role you created in step 1 and click "Validate connection".
+If the validation succeeds, click "Create data source".
+In the QuickSight data source, create a new dataset using the fields from the DynamoDB table:
+In the QuickSight console, go to the data source you created in step 3.
+Click "New dataset".
+Choose "Import data" and select the fields you want to use.
+Use the data preparation tools to clean and transform the data as needed.
+Click "Create dataset".
+Create a new analysis in QuickSight and add the dataset to it:
+In the QuickSight console, click "New analysis".
+Choose the dataset you created in step 4.
+Use the visualization tools to create charts and graphs based on the data.
+Publish the analysis to QuickSight and share it with your team or stakeholders:
+In the QuickSight console, click "Publish" to publish the

@@ -68,7 +68,7 @@ export default function PriceTracker () {
 
             }
           </div>
-          <div id="bitcoin-price" lassName="p-2 px-4">
+          <div id="bitcoin-price" className="p-2 px-4">
             {bitcoinPrice ? 
               (<p>Bitcoin: <span className="inline-flex items-baseline text-orange-500 font-semibold">${bitcoinPrice}</span></p>):
               (
