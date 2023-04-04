@@ -5,13 +5,14 @@ import MetaPixNavBar from "../../components/MetaPixNavBar";
 import {server} from '../../config'
 import { Circles } from "react-loader-spinner";
 import {FaUpload} from "react-icons/fa"
-//import Image from 'next/image'
 import { IconContext } from "react-icons";
-//import { MegaPhoneIcon } from "@heroicons/react/24/solid";
-import {TwitterShareButton, TwitterIcon} from "react-share";
+import {TwitterShareButton} from "react-share";
+//import Image from 'next/image'
 //import { CustomPlaceholder } from 'react-placeholder-image';
 //import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
 //import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+//import { MegaPhoneIcon } from "@heroicons/react/24/solid";
+
 export default function Community () {
   //states
   const containerRef = useRef(null);
@@ -22,7 +23,6 @@ export default function Community () {
   const [imgFile, setImgFile] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [fileName, setFileName] = useState("No image selected");
-  //const [loadImage, setLoadImage] = useState(null);
 
   const router = useRouter();
   /*const OldAnnouncements = () => {
@@ -49,9 +49,10 @@ export default function Community () {
     reader.onload = (event) => {
       //setSrc(event.target.result);
       setSrc(event.target.result);
+      
     };
     reader.readAsDataURL(file);
-    return false
+    
   };
 
     const handleButtonClick = () => {
@@ -103,31 +104,6 @@ export default function Community () {
       ctx.putImageData(imageData, 0, 0);
     };
   }*/
-
-  /*useEffect(()=>  {
-    if (src) {
-      const width = containerRef.current.clientWidth;
-      const height = containerRef.current.clientHeight;
-      const imageWidth = canvasRef.current.width;
-      const imageHeight = canvasRef.current.height;
-      const ratio = Math.min(width / imageWidth, height / imageHeight);
-
-
-      canvasRef.current.style.width = `${imageWidth * ratio}px`;
-      canvasRef.current.style.height = `${imageHeight * ratio}px`;
-      canvasRef.current.style.transform = `scale(${pixelSize / 20})`
-    }
-  }, [src, pixelSize]);*/
-  //img inline styling
-  /*const pixelatedStyle = {
-    imageRendering: 'pixelated',
-    width: '100%',
-    height: '100%',
-    imageRendering: '-moz-crisp-edges',
-    imageRendering: '-webkit-crisp-edges',
-    imageRendering: 'crisp-edges'
-  };*/
-  
   /*function pixelate_new (pixels, canvas_width, pixelSize ) {
     // Pixelate the image
     const pixelWidth = Math.floor(pixelSize);
@@ -157,17 +133,25 @@ export default function Community () {
     ctx.putImageData(imageData, 0, 0);
     
   }*/
+  
+  
   const pixelate = (originalImg, img) => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext('2d');
+    //const img = document.getElementById("pixelatedImg")
+    //const originalImg = img.cloneNode(true);
+    const pixelatedCanvas = document.createElement("canvas");
+    const ctx = pixelatedCanvas.getContext('2d');
+    originalImg.src = src;
+    ctx.drawImage(originalImg, 0, 0)
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
     const ratio = Math.min(width / originalImg.width, height / originalImg.height);
-    canvas.width = originalImg.width * ratio;
-    canvas.height = originalImg.height * ratio;
-    ctx.drawImage(originalImg, 0, 0, canvas.width, canvas.height);
-    const pixelWidth = Math.floor(pixelSize);
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    pixelatedCanvas.width = originalImg.width * ratio;
+    pixelatedCanvas.height = originalImg.height * ratio;
+    ctx.imageSmoothEnabled = false;
+    ctx.drawImage(originalImg, 0, 0, pixelatedCanvas.width, pixelatedCanvas.height);
+    const pixelWidth = pixelSize;
+    //ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, pixelWidth, pixelWidth);
+    const imageData = ctx.getImageData(0, 0, pixelatedCanvas.width, pixelatedCanvas.height);
     const pixels = imageData.data;
     /*const numPixels = pixelWidth * pixelWidth;
     for (let i = 0; i < pixels.length; i += 4) {
@@ -191,13 +175,12 @@ export default function Community () {
         pixels[pixelIndex + 2] = b;
       }
     }
-
     ctx.putImageData(imageData, 0, 0);*/
     if (pixelWidth != 0) {
-      for (let y=0;  y < canvas.height; y+=pixelWidth ) {
-        for ( let x=0; x < canvas.width; x+=pixelWidth) {
+      for (let y=0;  y < pixelatedCanvas.height; y+=pixelWidth ) {
+        for ( let x=0; x < pixelatedCanvas.width; x+=pixelWidth) {
           // extracting the position of the sample pixel
-          const pixelIndex = (x + y * canvas.width)*4;
+          const pixelIndex = (x + y * pixelatedCanvas.width)*4;
           // drawing a square replacing the current pixels
           ctx.fillStyle = `rgba(
             ${pixels[pixelIndex]},
@@ -210,7 +193,8 @@ export default function Community () {
       }
     }
     //ctx.putImageData(imageData, 0, 0)
-    img.src = canvas.toDataURL();
+    img.src = pixelatedCanvas.toDataURL();
+    //return canvas.toDataURL();
   }
   
   const handlePixelSizeChange = (event) => {
@@ -286,13 +270,12 @@ export default function Community () {
   }
   useEffect(() => {
     if (src && imgFile) {
-      var input = document.getElementById('pixelationRange')
-      if (parseInt(input.value) === parseInt(input.min)){
+      const pixelationElement = document.getElementById('pixelationRange')
+      if (parseInt(pixelationElement.value) === parseInt(pixelationElement.min)){
         setPixelState(false);
       } else {
         setPixelState(true);
       }
-      
       //creating canvas
       //construct new image class
       //const img = new Image();
@@ -319,13 +302,13 @@ export default function Community () {
         const ratio = Math.min(width / img.width, height / img.height);
         canvas.width = img.width * ratio;
         canvas.height = img.height * ratio;
-        
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        pixelate(originalImg, img)
+        
+        //img.src = '';
         //const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         //const pixels = imageData.data;
         
+        pixelate(originalImg, img)
         //canvasRef.current.width = img.width * ratio;
         //canvasRef.current.height = img.height * ratio;
         //const ctx = canvasRef.current.getContext('2d');
@@ -356,6 +339,7 @@ export default function Community () {
         pixelate(pixels, canvasRef.current.width, canvasRef.current.height, pixelSize);
         //ctx.putImageData(imageData, 0, 0);*/
       };
+      
       //pixelate(pixels, ctx, canvas, canvas.width, canvas.height, pixelWidth, img);
       if (imgFile){
         //console.log("Successfully uploaded picture!")
@@ -363,6 +347,8 @@ export default function Community () {
       }
       
     }
+    
+    
   }, [imgFile, src, pixelSize])
 
   
@@ -412,7 +398,7 @@ export default function Community () {
           </nav>
           <div className="w-full grid place-items-center text-center mb-4 mt-8 w-full px-4 lg:px-8">
             <div className="pointer-cursor-auto flex-col my-4 px-2 mx-auto text-center">
-              <div ref={containerRef} className="w-[300px] border h-[300px] flex items-center justify-center mx-auto my-2 border-slate-100 rounded-md">
+              <div ref={containerRef} className={`w-[500px] border h-[450px] flex items-center justify-center mx-auto my-2 ${imgFile ? ('border-none'):('border-slate-100')} rounded-md`}>
                  
                   <div className="grid place-items-center">
                     {src ? (
