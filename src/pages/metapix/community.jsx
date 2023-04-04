@@ -398,7 +398,7 @@ export default function Community () {
           </nav>
           <div className="w-full grid place-items-center text-center mb-4 mt-8 w-full px-4 lg:px-8">
             <div className="pointer-cursor-auto flex-col my-4 px-2 mx-auto text-center">
-              <div ref={containerRef} className={`w-[500px] border h-[450px] flex items-center justify-center mx-auto my-2 ${imgFile ? ('border-none'):('border-slate-100')} rounded-md`}>
+              <div ref={containerRef} className={`w-[300px] h-[300px] sm:w-[500px] border sm:h-[450px] flex items-center justify-center mx-auto my-2 ${imgFile ? ('border-none'):('border-slate-100')} rounded-md`}>
                  
                   <div className="grid place-items-center">
                     {src ? (
