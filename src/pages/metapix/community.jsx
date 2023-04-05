@@ -466,18 +466,21 @@ export default function Community () {
               <div className="font-pixel text-center items-center my-4">
                 <p className="text-xs">{fileName}</p>
               </div>
-              <div className="flex justify-center font-sans items-center cursor-pointer text-center bg-indigo-700 hover:border-indigo-300 hover:border-4 h-full w-full mt-4 px-1 lg:px-2 mb-3 py-1 lg:py-2">
+              <div className="flex justify-center items-center cursor-pointer font-sans mx-auto max-w-xs sm:max-w-sm min-w-full bg-indigo-700 hover:border-indigo-300 hover:border-4 h-full mt-4 px-1 lg:px-2 mb-3 py-1 lg:py-2">
                 {/*<label htmlFor="fileInput">{inputValue}</label>*/}
                 {/*<button className="" onClick={handleButtonClick}>{inputValue}</button>*/}
                
-                <input className="" id="upload" type="file" onChange={handleImageUpload} value={inputValue} accept="image/*"/>
+                <input className="w-full" id="upload" type="file" onChange={handleImageUpload} value={inputValue} accept="image/*"/>
               </div>
             </div>
             
             <div className="mt-3 p-2 lg:p-4 flex items-center text-center justify-center gap-x-4 w-full">
-              <button onClick={handleDownload} className="px-2 lg:px-4 py-2 lg:py-3 bg-indigo-700 rounded-md hover:bg-slate-900 hover:ring-indigo-700 hover:ring-4">
+              {imgFile ? (<button onClick={handleDownload} className="px-2 lg:px-4 py-2 lg:py-3 bg-indigo-700 rounded-md hover:bg-slate-900 hover:ring-indigo-700 hover:ring-4">
                 <p className="sm:text-base text-xs font-pixel">Download</p>
-              </button>
+              </button>) : (<button onClick={handleDownload} disabled className="px-2 lg:px-4 py-2 lg:py-3 text-slate-300 bg-indigo-700/60 cursor-not-allowed rounded-md">
+                <p className="sm:text-base text-xs font-pixel">Download</p>
+              </button>)
+              }
               <TwitterShareButton
                 url={`${server}/metapix/community`}
                 title={"Pixelate your digital image assets with MetaTeds free tool"}
