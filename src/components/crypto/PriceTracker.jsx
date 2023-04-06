@@ -52,10 +52,10 @@ export default function PriceTracker () {
   return (
     <div className="h-full">
       <div className="mmax-w-screen-2xl w-full">
-        <section className="m-2 flex justify-center items-center text-sm font-sans">
-          <div id="solana-price" className="p-2 px-4">
+        <section className="m-1 flex justify-center items-center text-sm font-sans">
+          <div id="solana-price" className="p-1 px-3 text-xs sm:text-sm">
             {solanaPrice ? 
-            (<p>Solana: <span className="inline-flex items-baseline text-orange-500 font-semibold">${solanaPrice}</span></p>):
+            (<p>Solana: <span className="inline-flex items-baseline text-orange-400 font-semibold">${solanaPrice}</span></p>):
             (
               <Circles 
                 width='10' 
@@ -68,9 +68,9 @@ export default function PriceTracker () {
 
             }
           </div>
-          <div id="bitcoin-price" className="p-2 px-4">
+          <div id="bitcoin-price" className="p-1 px-3 text-xs sm:text-sm">
             {bitcoinPrice ? 
-              (<p>Bitcoin: <span className="inline-flex items-baseline text-orange-500 font-semibold">${bitcoinPrice}</span></p>):
+              (<p>Bitcoin: <span className="inline-flex items-baseline text-orange-400 font-semibold">${bitcoinPrice}</span></p>):
               (
                 <Circles 
                   width='10' 
@@ -83,9 +83,9 @@ export default function PriceTracker () {
 
               }
           </div>
-          <div id="polygon-price" className="p-2 px-4">
+          <div id="polygon-price" className="p-1 px-3 text-xs sm:text-sm">
             {polygonPrice ? 
-              (<p>Polygon: <span className="text-orange-500 font-semibold">${polygonPrice}</span></p>):
+              (<p>Polygon: <span className="inline-flex items-baseline text-orange-400 font-semibold">${polygonPrice}</span></p>):
               (
                 <Circles 
                   width='10' 
