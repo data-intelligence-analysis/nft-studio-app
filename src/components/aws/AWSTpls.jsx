@@ -5,11 +5,11 @@ import AWS from 'aws-sdk';
 
 
 const AWSTpls = ({props}) => {
-  const client = rockset(process.env.ROCKSET_APIKEY, process.env.ROCKSET_APISERVER);
+  //const client = rockset(process.env.ROCKSET_APIKEY, process.env.ROCKSET_APISERVER);
 
-  const [scores, setScores] = useState([]);
+  //const [scores, setScores] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const dynamoDb = new AWS.DynamoDB.DocumentClient({ region: 'us-west-2' });
     const query = `{SELECT player_id, score, RANK() OVER (ORDER BY score DESC) AS rank FROM leaderboard WHERE game_id = ${gameId} LIMIT 10;}`
     client.queryLambdas.execute('leaderboard', query).then((result) => {
@@ -32,7 +32,7 @@ const AWSTpls = ({props}) => {
         setScores(result.results);
       });
     });
-  }, [gameId]);
+  }, [gameId]);*/
   /*return (
     <div>
       <h2>Leaderboard for Game {gameId}</h2>
