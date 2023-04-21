@@ -32,8 +32,8 @@ const NavBarElements =[
     },
     {
         id: 2,
-        name: 'Legion',
-        href: '/legion',
+        name: 'Team',
+        href: '/team',
         icon: <UserIcon className= "text-[#EAA640] h-6 w-6"/>
         
     },

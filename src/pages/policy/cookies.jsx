@@ -15,6 +15,8 @@ export default function Cookies() {
     <>
       <Head>
         <title>Cookies | MetaTeds</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Cookies policy for MetaTed studio application"/>
       </Head>
       <div className="bg-slate-900 h-screen">
         <div className="mx-auto min-h-full overflow-y-auto p-4 px-8 items-center lg:max-w-screen-xl">
