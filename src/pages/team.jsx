@@ -89,6 +89,8 @@ export default function Team() {
                             priority="true"
                             height="auto"
                             style={{borderRadius: "6px"}}
+                            loading='lazy'
+                            placeholder='blur'
                           />}
                         </div>
                         <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block mt-2">Dennis Osafo</p>
@@ -120,6 +122,8 @@ export default function Team() {
                             priority="true"
                             height="auto"
                             style={{borderRadius: "6px"}}
+                            loading='lazy'
+                            placeholder='blur'
                         />}
                         </div>
                         <p className="uppercase text-xs sm:text-base lg:text-xl font-bold block mt-2">Nicholas Stranquist</p>
