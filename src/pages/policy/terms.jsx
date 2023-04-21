@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React, {useRef} from 'react'
-import NavBar from '../components/NavBar'
+import NavBar from '../../components/NavBar'
 export default function Terms (){
 
   
