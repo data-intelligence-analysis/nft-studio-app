@@ -459,15 +459,27 @@ const FrontPage = () => {
 								</div>
 								<div className="items-center sm:grid sm:col-start-3 sm:col-span-6 md:col-start-5 md:col-span-9">
 									{landing ? (
-										<div className="items-center mx-auto relative sm:flex">
-											<Image
-												src={require('../assets/landingIMG.png')}
-												alt="space-ted"
-												placeholder='shimmer'
-												width='500'
-												height='auto'
-											/>
+										<div>
+											<div className="hidden sm:block items-center mx-auto relative flex">
+												<Image
+													src={require('../assets/landingIMG.png')}
+													alt="space-ted"
+													placeholder='shimmer'
+													width='450'
+													height='auto'
+												/>
+											</div>
+											<div className="sm:hidden block items-center mx-auto relative flex">
+												<Image
+													src={require('../assets/landingIMGTopBar.png')}
+													alt="space-ted"
+													placeholder='shimmer'
+													width='500'
+													height='auto'
+												/>
+											</div>
 										</div>
+										
 									):(modalNavbar.map((elem, index) =>(
 											<div key={index}>
 												{activeSidebar===index &&
