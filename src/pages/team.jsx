@@ -86,7 +86,6 @@ export default function Team() {
                           {<Image 
                             src={Den}
                             alt="mr-d"
-                            priority="true"
                             height="auto"
                             style={{borderRadius: "6px"}}
                             loading='lazy'
@@ -119,7 +118,6 @@ export default function Team() {
                           {<Image 
                             src={Nico}
                             alt="nico"
-                            priority="true"
                             height="auto"
                             style={{borderRadius: "6px"}}
                             loading='lazy'

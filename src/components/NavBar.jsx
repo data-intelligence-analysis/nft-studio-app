@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import React, {useState, useEffect, useRef, forwardRef} from 'react'
-import PriceTracker from "./crypto/PriceTracker.jsx"
+import PriceTracker from "./Crypto/PriceTracker.jsx"
 import Image from 'next/image'
 import {server} from '../config'
 import MetaTedLogo from '../assets/ted512.png'

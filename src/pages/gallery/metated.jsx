@@ -1,33 +1,54 @@
 import Head from "next/head";
+import Image from "next/image";
+import React, {useState, useEffect} from 'react';
+import { useRouter } from 'next/router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useWallet } from "@solana/wallet-adapter-react";
 import Link from 'next/link';
+import NavBar from '../../components/NavBar';
+import PageLayout from "../../components/Layouts/PageLayout";
+import Collection from "../../components/NFT/Collection";
+
+import classNames from "classnames";
 
 export default function Metated() {
+  
+  const router = useRouter();
+  const { pathname } = useRouter();
+  const routeBack = (e) => {
+    e.preventDefault();
+    router.back();
+  };
+  
+  
+  
   return (
     <>
       <Head>
         <title>🎨 Gallery | MetaTed</title>
       </Head>
-      <div className="h-screen grid grid-cols-5 gap-10">
-        <nav className="place-items-center col-start-1 col-span-1 top-0 pointer-event-none z-nav w-full">
-          <div className="mt-4 w-full">
-            <div className="flex fixed items-center cursor-pointer pointer-events-auto justify-between flex-row px-4">
-              <div className="hover:bg-indigo-700">
-                <Link href="/" passHref legacyBehavior>
+      <div className="h-screen overflow-auto">
+        <NavBar bgFormat={"bg-slate-900"} />
+        <div className="max-w-screen-2xl grid w-screen mx-auto items-center w-full p-3 lg:p-6">
+          <nav className="mt-20 pt-5 top-0 pointer-event-auto z-nav w-full overflow-hidden">
+            <div className="flex items-center cursor-pointer pointer-events-auto justify-between flex-row gap-4">
+              <div className="flex inline-flex p-2">
+                <a href="#" onClick={routeBack} className="hover:bg-indigo-700 rounded-md px-2">
                   <ArrowBackIcon />
-                </Link>
-              </div>
-              
-              <div className="pl-4">
-                <p>Home</p>
+                </a>
+                <div className="pl-2 ">
+                  <p>Back</p>
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
-        <div className="place-items-center my-auto col-start-2 col-span-3 text-center">
-          <h1 className="text-lg sm:text-xl md:text-2xl">🚀 MetaTeds Gallery coming soon...</h1>
+          </nav>
+          <PageLayout 
+            collection="Metated"
+            pathname={pathname}
+          >
+            <Collection />
+          </PageLayout>
         </div>
-        
       </div>
       
     </>

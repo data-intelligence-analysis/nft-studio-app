@@ -1,5 +1,6 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
 import React, { useMemo} from "react";
+import dynamic from "next/dynamic";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
@@ -21,7 +22,7 @@ require("@solana/wallet-adapter-react-ui/styles.css");
 function MyApp({ Component, pageProps }) {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
   const network = WalletAdapterNetwork.Mainnet;
-
+  const getLayout = Component.getLayout || ((page) => page);
   // You can also provide a custom RPC endpoint
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 

@@ -25,6 +25,9 @@ const nextConfig = {
       'cdn.discordapp.com',
       'res.cloudinary.com',
       'arweave.net',
+      'www.arweave.net',
+      'amazonaws.com',
+      'googleapis.com" '
     ]
   },
   eslint: {
