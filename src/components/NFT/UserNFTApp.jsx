@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo} from 'react';
 import Image from "next/image";
 import axios from "axios";
 import Bottleneck from "bottleneck";
 import { Circles } from "react-loader-spinner";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import { Connection, PublicKey, Keypair, clusterApiUrl} from '@solana/web3.js';
-import { Metaplex, METADATA_PROGRAM_ID, keypairIdentity, bundlrStorage } from '@metaplex-foundation/js';
+import { Connection, PublicKey} from '@solana/web3.js';
+import { Metaplex, METADATA_PROGRAM_ID, keypairIdentity } from '@metaplex-foundation/js';
 import Slider from "react-slick";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Snackbar } from "@material-ui/core";
@@ -243,7 +243,7 @@ export default function UserNFTApp ({collection}){
           }));
           return nfts.filter((nft) => nft !== null)
         } catch (error){
-
+            console.error(error);
         }
         
       }
