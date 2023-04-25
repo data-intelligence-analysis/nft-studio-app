@@ -36,10 +36,10 @@ export default function UserNFTApp ({collection}){
   
   //solana network connections
   //const connectionCluster = new Connection(clusterApiUrl('mainnet-beta'));
-  const connectionRPC = useMemo (() => new Connection(process.env.NEXT_PUBLIC_SOLANA_RPC_HOST),[])
-  const conn = useMemo (() => new Connection(process.env.NEXT_PUBLIC_SOLANA_RPC_HOST, 'confirmed'), [])
+  const connectionRPC = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST),[])
+  const conn = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST, 'confirmed'), [])
   const metaplex =  useMemo(() => new Metaplex(conn),[conn])
-  const tokenProgram = new PublicKey(process.env.NEXT_PUBLIC_TOKEN_PROGRAM)
+  const tokenProgram = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_TOKEN_PROGRAM)
   const numImages = 2;
   //
   /*const metaplex = useMemo(
