@@ -5,7 +5,7 @@ import Bottleneck from "bottleneck";
 import { Circles } from "react-loader-spinner";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import { Connection, PublicKey, Keypair, clusterApiUrl} from '@solana/web3.js';
-import { Metadata, Metaplex, METADATA_PROGRAM_ID, keypairIdentity, bundlrStorage } from '@metaplex-foundation/js';
+import { Metaplex, METADATA_PROGRAM_ID, keypairIdentity, bundlrStorage } from '@metaplex-foundation/js';
 import Slider from "react-slick";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Snackbar } from "@material-ui/core";
@@ -162,7 +162,7 @@ export default function UserNFTApp ({collection}){
       const imageURL = nft.json.image
       return imageURL
     }*/
-    const getNFTImages = async (walletAddress) => {
+    /*const getNFTImages = async (walletAddress) => {
       const tokenAccounts = await connectionRPC.getProgramAccounts(
         new PublicKey(process.env.NEXT_PUBLIC_TOKEN_PROGRAM),
         {
@@ -210,7 +210,7 @@ export default function UserNFTApp ({collection}){
         //return metadata.data.uri;
       });
       return nftImage;
-    };
+    };*/
     const getAllNFTsWallet = async (publicKey, random) => {
       /*const tokenAccounts = await connectionRPC.getParsedTokenAccountsByOwner(publicKey, { mint: mintPublicKey });
       const tokenAccount = tokenAccounts.value[0].account;
