@@ -296,7 +296,7 @@ export default function DAO ({data}) {
             <div className="font-pixel col-start-3 col-span-4 h-[80px] mx-auto lg:col-start-5 lg:col-span-5 font-sans text-center items-center mb-2 z-20">
               <p className="text-xs font-pixel font-semibold">Click to view more</p>
               <div className="pt-4">
-                <button onClick={handleScrollClick} className="animate-beat hover:bg-rose-900/90 hover:rounded-md">
+                <button onClick={handleScrollClick} className="animate-beat animate-down hover:bg-rose-900/90 hover:rounded-md">
                   <ArrowCircleDownIcon />
                 </button>
               </div>

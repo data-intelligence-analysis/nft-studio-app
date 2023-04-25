@@ -14,7 +14,7 @@ import {
 } from '@solana/wallet-adapter-react-ui';
 import { IconContext } from "react-icons";
 import { HomeIcon, UserIcon, MapIcon, CogIcon, InformationCircleIcon, 
-          BuildingLibraryIcon, CloudArrowDownIcon, WrenchIcon, PuzzlePieceIcon, GlobeAltIcon, RocketLaunchIcon } from '@heroicons/react/24/solid'
+          BuildingLibraryIcon, CloudArrowDownIcon, WrenchIcon, PhotoIcon, PuzzlePieceIcon, GlobeAltIcon, RocketLaunchIcon } from '@heroicons/react/24/solid'
 const NavBarElements =[
     {
         id: 0,
@@ -45,10 +45,18 @@ const NavBarElements =[
     },
     {
         id: 4,
+        name: 'Learn More',
+        href: 'https://metated-labs.gitbook.io/metated-labs/',
+        target: '_blank',
+        rel: "noreferrer noopener",
+        icon: <CogIcon className= "text-[#EAA640] h-6 w-6"/>
+    },
+    /*{
+        id: 4,
         name: 'Utility',
         href: '/utility',
         icon: <CogIcon className= "text-[#EAA640] h-6 w-6"/>
-    },
+    },*/
     {
         id: 5,
         name: 'Support',
@@ -65,6 +73,12 @@ const NavBarElements =[
     },
     {
         id: 7,
+        name: 'Gallery',
+        icon: <PhotoIcon className= "text-[#EAA640] h-6 w-6"/>,
+        href: '/gallery/metated',
+    },
+    {
+        id: 8,
         name: 'Studio Mint',
         icon: <RocketLaunchIcon className= "text-[#EAA640] h-6 w-6"/>,
         href: 'https://metateds.com/studio',
@@ -72,18 +86,18 @@ const NavBarElements =[
         rel: "noreferrer noopener",
     },
     {
-        id: 8,
+        id: 9,
         name: 'MetaPix Studio',
         href: '/metapix',
         icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
     },
     {
-        id: 9,
+        id: 10,
         name: 'Metapix DAO',
         href: '/metapix/dao',
         icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
     },
-    {
+    /*{
         id: 10,
         name: 'Metapix Free Services',
         href: '/metapix/community',
@@ -94,7 +108,7 @@ const NavBarElements =[
         name: 'Minting Services',
         href: '/mint',
         icon: <GlobeAltIcon className= "text-[#EAA640] h-6 w-6"/>
-    },
+    },*/
 
 ]
 

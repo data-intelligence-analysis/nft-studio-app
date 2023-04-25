@@ -14,6 +14,10 @@ module.exports = {
         "0%": { transform: "translateY(0rem)" },
         "100%": { transform: "translateY(-.1rem)" },
       },
+      down: {
+        "0%": { transform: "translateY(0rem)" },
+        "100%": { transform: "translateY(.2rem)" },
+      },
       studio: {
         "0%": { transform: "translateX(0rem)" },
         "100%": { transform: "translateX(20rem)" },
@@ -39,6 +43,7 @@ module.exports = {
     },
     animation: {
       up: "up .1s ease-in-out",
+      down: "down .3s ease-in-out",
       studio: 'studio 50s linear infinite reverse running',
       wiggle: 'wiggle 1s ease-in-out infinite',
       beat: 'beat 1s ease-in-out infinite',
