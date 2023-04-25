@@ -4,7 +4,7 @@ import axios from "axios";
 import Bottleneck from "bottleneck";
 import { Circles } from "react-loader-spinner";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import { Connection, PublicKey} from '@solana/web3.js';
+import { Connection, PublicKey } from '@solana/web3.js';
 import { Metaplex, METADATA_PROGRAM_ID, keypairIdentity } from '@metaplex-foundation/js';
 import Slider from "react-slick";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
@@ -36,9 +36,22 @@ export default function UserNFTApp ({collection}){
   
   //solana network connections
   //const connectionCluster = new Connection(clusterApiUrl('mainnet-beta'));
-  const connectionRPC = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST),[])
-  const conn = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST, 'confirmed'), [])
-  const metaplex =  useMemo(() => new Metaplex(conn),[conn])
+  const connectionRPC = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST, 'confirmed'), [])
+  /*async function ConnectionRPC (){
+    try {
+      const rpc = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST, 'confirmed'),[])
+      return rpc
+    }catch (error) {
+      setRPCerror({
+        open: true,
+        message: error,
+        severity: "error",
+        hideDuration: 6000
+      })
+    }
+  }*/
+  
+  const metaplex =  useMemo(() => new Metaplex(connectionRPC),[connectionRPC])
   const tokenProgram = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_TOKEN_PROGRAM)
   const numImages = 2;
   //
@@ -48,20 +61,24 @@ export default function UserNFTApp ({collection}){
   );*/
 
   //Get mint and collection address based on collection
-  //const mintPublicKey = new PublicKey(process.env.NEXT_PUBLIC_METAHEAD_MINT_PUBLIC_KEY);
   let mintPublicKey = ''
   let collectionMintAddress = ''
   if (collection === "Metahead"){
-    mintPublicKey = new PublicKey(process.env.NEXT_PUBLIC_METAHEAD_MINT_PUBLIC_KEY);
-    collectionMintAddress = new PublicKey(process.env.NEXT_PUBLIC_METAHEAD_COLLECTION_KEY);
+    mintPublicKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_MINT_PUBLIC_KEY);
+    collectionMintAddress = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_COLLECTION_KEY);
   }else if (collection === "Metated") {
-    mintPublicKey = new PublicKey(process.env.NEXT_PUBLIC_METAHEAD_MINT_PUBLIC_KEY);
-    collectionMintAddress = new PublicKey(process.env.NEXT_PUBLIC_METAHEAD_COLLECTION_KEY);  
+    mintPublicKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_MINT_PUBLIC_KEY);
+    collectionMintAddress = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_COLLECTION_KEY);  
   }
   else {
     mintPublicKey = undefined
     collectionMintAddress = undefined
-    throw new Error("Mint Address Not Defined");
+    setRPCerror({
+      open: true,
+      message: 'token and collection mint address not available',
+      severity: "error",
+      hideDuration: 6000
+    })
   }
   const limiter = new Bottleneck({
     maxConcurrent: 1,
@@ -231,21 +248,16 @@ export default function UserNFTApp ({collection}){
         const imageURLs = imageArr.push(imageURL);
         return imageURLs;
       }else if (random === "false"){
-        try {
-          const nfts = await Promise.all(myNFTs.map(async (nft) => {
-            const metadata = await metaplex.nfts().load({ metadata: nft });
-            if (!metadata) { 
-              setMetadataNFT(false)
-              return;
-            }
-            const imageURL = metadata?.json?.image
-            return imageURL;
-          }));
-          return nfts.filter((nft) => nft !== null)
-        } catch (error){
-            console.error(error);
-        }
-        
+        const nfts = await Promise.all(myNFTs.map(async (nft) => {
+          const metadata = await metaplex.nfts().load({ metadata: nft });
+          if (!metadata) { 
+            setMetadataNFT(false)
+            return;
+          }
+          const imageURL = metadata?.json?.image
+          return imageURL;
+        }));
+        return nfts.filter((nft) => nft !== null)
       }
       
     }
@@ -282,14 +294,19 @@ export default function UserNFTApp ({collection}){
           .then(setLoading(false))*/
           //execute();
         }
-      } catch (e) {
-          console.error(e);
+      } catch (error) {
+          setRPCerror({
+            open: true,
+            message: error,
+            severity: "error",
+            hideDuration: 8000
+          })
         }
     };
     
     fetchNFTImage();
     
-  }, [publicKey, connectionRPC, metaplex, collectionMintAddress, mintPublicKey]);
+  }, [publicKey, metaplex, collectionMintAddress, mintPublicKey]);
 
   const settings = {
     arrow: true,
@@ -311,6 +328,23 @@ export default function UserNFTApp ({collection}){
     setStartIndex(Math.min(startIndex + numImages, nftImages.length - numImages));
   };
   return (
+    <>
+      <div className="fixed z-20 m-2 mb-3 text-center item-center text-sm sm:text-base left-0 bottom-0 ">
+        <Snackbar
+          oopen={rpcError.open}
+          autoHideDuration ={
+            rpcError.hideDuration === undefined ? 6000: rpcError.hideDuration
+          }
+          onClose ={() => setRPCerror({...rpcError, open: false})}
+        >
+          <Alert
+            onClose = {() => setRPCerror({...rpcError, open: false})}
+            severity = {rpcError.severity}
+          >
+            {rpcError.message}
+          </Alert>
+        </Snackbar>
+      </div>
       <section id="userNFT" className="mt-4 flex items-center justify-center w-full mx-auto">
         {wallet.publicKey && wallet.connected ? (
           <div className="flex flex-row items-center justify-center text-base font-sans font-semibold w-full h-[200px] overflow-auto mx-4">
@@ -392,5 +426,6 @@ export default function UserNFTApp ({collection}){
           )
         }
       </section>
+    </>
   )
 }
