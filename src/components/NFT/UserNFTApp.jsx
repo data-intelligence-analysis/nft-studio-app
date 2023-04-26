@@ -87,6 +87,8 @@ export default function UserNFTApp ({collection}){
     const parsed = url
     return ['https:', 'http:'].includes(parsed.protocol)
   }
+  const abortController = new AbortController();
+  setTimeout(() => abortController.abort(), 800);
   useEffect(() => {
     /*const getNFTImage = async (walletAddress, walletPublicKey) => {
       //using rate limits
@@ -215,8 +217,8 @@ export default function UserNFTApp ({collection}){
       console.log(tokenAccount);*/
 
       // Create an AbortController that aborts in 100ms.
-      const abortController = new AbortController();
-      setTimeout(() => abortController.abort(), 800);
+      //const abortController =  await new AbortController();
+      //setTimeout(() => abortController.abort(), 800);
 
       const myNFTs = await metaplex.nfts().findAllByOwner({
         owner: walletAddress
@@ -265,7 +267,7 @@ export default function UserNFTApp ({collection}){
                   .use(walletAddress)
                   .use(bundlrStorage())
 
-        const creatorKey = new PublicKey(process.env.NEXT_PUBLIC_SELLER_ADDRESS)
+        const creatorKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS)
         const nft = await mx.nfts().findAllByCreator({creator: creatorKey});
         if (!nft){
           setStatusNFT(false)

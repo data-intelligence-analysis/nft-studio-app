@@ -19,7 +19,7 @@ const sellerAddress = () => {
     console.log
     alert("Recipient address to receive funds has not been declared")
   }
-  return process.env.NEXT_PUBLIC_SELLER_ADDRESS
+  return process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS
 }
 const sellerPublicKey = new PublicKey('3vLNLoffoFCWeeq3FzCinFhrf34FftWnFKtEFGCsSZ4e');
 
