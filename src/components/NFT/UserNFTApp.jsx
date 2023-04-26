@@ -4,7 +4,7 @@ import axios from "axios";
 import Bottleneck from "bottleneck";
 import { Circles } from "react-loader-spinner";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import { Metaplex, METADATA_PROGRAM_ID, keypairIdentity } from '@metaplex-foundation/js';
 import Slider from "react-slick";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
@@ -35,21 +35,10 @@ export default function UserNFTApp ({collection}){
   const perPage = 1;
   
   //solana network connections
-  //const connectionCluster = new Connection(clusterApiUrl('mainnet-beta'));
+  //const connection = new Connection(clusterApiUrl('mainnet-beta'));
+  //const mx = Metaplex.make(connection);
   const connectionRPC = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST, 'confirmed'), [])
-  /*async function ConnectionRPC (){
-    try {
-      const rpc = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST, 'confirmed'),[])
-      return rpc
-    }catch (error) {
-      setRPCerror({
-        open: true,
-        message: error,
-        severity: "error",
-        hideDuration: 6000
-      })
-    }
-  }*/
+  
   
   const metaplex =  useMemo(() => new Metaplex(connectionRPC),[connectionRPC])
   const tokenProgram = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_TOKEN_PROGRAM)
@@ -152,8 +141,9 @@ export default function UserNFTApp ({collection}){
       //const nftAccount = tokenAccounts.find(
         //(account) => account.account.data.parsed.info.tokenAmount.uiAmount > 0
       //);
+
+      //get token accounts
       const tokenAccounts = await connectionRPC.getParsedTokenAccountsByOwner(walletAddress, { mint: mintPublicKey });
-      
       //const tokenAccounts_programID = await connectionRPC.getParsedTokenAccountsByOwner(walletAddress, { programId: tokenProgram });
       //const tokenAccount = tokenAccounts.value[0].account;
       //const tokenID = tokenAccount.data.parsed.info.tokenAmount.uiAmount;
@@ -164,18 +154,12 @@ export default function UserNFTApp ({collection}){
         //throw new Error("NFT not found in wallet");
       }
       const nft = await metaplex.nfts().findByMint({ mintAddress: mintPublicKey });
+      setNftData (nft)
       if(!nft){
         setMetadataNFT(false)
         //throw new Error("NFT metadata account not found");
       }
-      //console.log(myNfts)
       //metadata
-      //console.log(nft.json.image);
-      //console.log(metadata.uri);
-      //console.log(metadata.name); // logs the name of the token
-      //console.log(metadata.symbol); // logs the symbol of the token
-      //console.log(metadata.data.description); // logs the description of the token
-      //console.log(metadata.data.image); // logs the URL of the image associated with the token
       const imageURL = nft.json.image
       return imageURL
     }*/
@@ -254,8 +238,7 @@ export default function UserNFTApp ({collection}){
             setMetadataNFT(false)
             return;
           }
-          const imageURL = metadata?.json?.image
-          return imageURL;
+          return metadata;
         }));
         return nfts.filter((nft) => nft !== null)
       }
@@ -329,7 +312,7 @@ export default function UserNFTApp ({collection}){
   };
   return (
     <>
-      <div className="fixed z-20 m-2 mb-3 text-center item-center text-sm sm:text-base left-0 bottom-0 ">
+      <div className="absolute z-20 m-2 mb-3 text-center item-center text-sm sm:text-base left-0 bottom-0 ">
         <Snackbar
           oopen={rpcError.open}
           autoHideDuration ={
@@ -371,14 +354,15 @@ export default function UserNFTApp ({collection}){
                                 {nftImages.slice(startIndex, startIndex + numImages).map((img, index) => (
                                   <div key={index} className={`slide`}>
                                     {/*use <img> class to prevent the neeed to define domain*/}
-                                    <div className="flex flex-col items-center justify-center"> 
+                                    <div className="flex flex-col relative items-center justify-center gap-2"> 
                                       <img 
-                                        src={img || `${collection==="Metateds" ? '/tednorm.png': '/ted192.png'}`} 
+                                        src={img?.json?.image || `${collection==="Metateds" ? '/tednorm.png': '/ted192.png'}`} 
                                         alt={`${collection}`} 
                                         className="rounded-md object h-full w-full object-cover"
                                         height="150"
                                         width="150"
                                       />
+                                      <span>{img?.name}</span>
                                     </div> 
                                   </div>
                                 ))}
