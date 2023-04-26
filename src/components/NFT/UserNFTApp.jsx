@@ -4,8 +4,8 @@ import axios from "axios";
 import Bottleneck from "bottleneck";
 import { Circles } from "react-loader-spinner";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
-import { Metaplex, METADATA_PROGRAM_ID, keypairIdentity } from '@metaplex-foundation/js';
+import { Connection, PublicKey, clusterApiUrl, Keypair } from '@solana/web3.js';
+import { Metaplex, METADATA_PROGRAM_ID, keypairIdentity, bundlrStorage } from '@metaplex-foundation/js';
 import Slider from "react-slick";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Snackbar } from "@material-ui/core";
@@ -38,10 +38,8 @@ export default function UserNFTApp ({collection}){
   //const connection = new Connection(clusterApiUrl('mainnet-beta'));
   //const mx = Metaplex.make(connection);
   const connectionRPC = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST, 'confirmed'), [])
-  
-  
   const metaplex =  useMemo(() => new Metaplex(connectionRPC),[connectionRPC])
-  const tokenProgram = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_TOKEN_PROGRAM)
+  const tokenProgram = useMemo(() => new PublicKey(process.env.NEXT_PUBLIC_VERCEL_TOKEN_PROGRAM), [])
   const numImages = 2;
   //
   /*const metaplex = useMemo(
@@ -144,7 +142,6 @@ export default function UserNFTApp ({collection}){
 
       //get token accounts
       const tokenAccounts = await connectionRPC.getParsedTokenAccountsByOwner(walletAddress, { mint: mintPublicKey });
-      //const tokenAccounts_programID = await connectionRPC.getParsedTokenAccountsByOwner(walletAddress, { programId: tokenProgram });
       //const tokenAccount = tokenAccounts.value[0].account;
       //const tokenID = tokenAccount.data.parsed.info.tokenAmount.uiAmount;
       const nftAccount = tokenAccounts.value.find((account) => account.account.data.parsed.info.tokenAmount.uiAmount > 0);
@@ -154,7 +151,6 @@ export default function UserNFTApp ({collection}){
         //throw new Error("NFT not found in wallet");
       }
       const nft = await metaplex.nfts().findByMint({ mintAddress: mintPublicKey });
-      setNftData (nft)
       if(!nft){
         setMetadataNFT(false)
         //throw new Error("NFT metadata account not found");
@@ -212,27 +208,72 @@ export default function UserNFTApp ({collection}){
       });
       return nftImage;
     };*/
-    const getAllNFTsWallet = async (publicKey, random) => {
+    const getAllNFTsWallet = async (walletAddress, setting) => {
       /*const tokenAccounts = await connectionRPC.getParsedTokenAccountsByOwner(publicKey, { mint: mintPublicKey });
       const tokenAccount = tokenAccounts.value[0].account;
       const tokenID = tokenAccount.data.parsed.info.tokenAmount.uiAmount;
       console.log(tokenAccount);*/
+
+      // Create an AbortController that aborts in 100ms.
+      const abortController = new AbortController();
+      setTimeout(() => abortController.abort(), 800);
+
       const myNFTs = await metaplex.nfts().findAllByOwner({
-        owner: publicKey
-      })
+        owner: walletAddress
+      }, {signal: abortController.signal})
+      
+
       if (!myNFTs.length) {
         setStatusNFT(false)
         return;
       }
-      if (random === "true") {
+      if (setting === "random") {
         const randIdx = Math.floor(Math.random() * myNFTs.length);
-        const nft = await metaplex.nfts().load({ metadata: myNFTs[randIdx] });
-        const imageURL = nft?.json?.image
-        const imageArr = [];
-        const imageURLs = imageArr.push(imageURL);
-        return imageURLs;
-      }else if (random === "false"){
+        const metadata = await metaplex.nfts().load({ metadata: myNFTs[randIdx] }, {signal: abortController.signal});
+        if (!metadata){
+          setMetadataNFT(false)
+          return;
+        }
+        return metadata;
+      }else if (setting === "loadAll"){
         const nfts = await Promise.all(myNFTs.map(async (nft) => {
+          const metadata = await metaplex.nfts().load({ metadata: nft }, {signal: abortController.signal});
+          if (!metadata) { 
+            setMetadataNFT(false)
+            return;
+          }
+          return metadata;
+        }));
+        return nfts.filter((nft) => nft !== null)
+      } else if (setting === "program"){
+        //get token accounts from spl token program id
+        const tokenAccounts = await connectionRPC.getParsedTokenAccountsByOwner(walletAddress, { programId: tokenProgram });
+        const nftAccount = tokenAccounts.value.find((account) => account.account.data.parsed.info.tokenAmount.uiAmount > 0);
+        if(!nftAccount){
+          setStatusNFT(false)
+          //throw new Error("NFT not found in wallet");
+        }
+        const nft = await metaplex.nfts().findByMint({ mintAddress: mintPublicKey });
+        if(!nft){
+          setMetadataNFT(false)
+          //throw new Error("NFT metadata account not found");
+        }
+      }else if (setting === "creator") {
+        //const nft = await metaplex.nfts().findByMints({ mints: [mintPublicKey, collectionMintAddress] }, {signal: abortController.signal});
+        //const wallet = Keypair.generate();
+        const mx = Metaplex.make(connectionRPC)
+                  .use(walletAddress)
+                  .use(bundlrStorage())
+
+        const creatorKey = new PublicKey(process.env.NEXT_PUBLIC_SELLER_ADDRESS)
+        const nft = await mx.nfts().findAllByCreator({creator: creatorKey});
+        if (!nft){
+          setStatusNFT(false)
+          return;
+        }
+        console.log(nft)
+        //return nfts
+        const nfts = await Promise.all(nft.map(async (nft) => {
           const metadata = await metaplex.nfts().load({ metadata: nft });
           if (!metadata) { 
             setMetadataNFT(false)
@@ -264,7 +305,7 @@ export default function UserNFTApp ({collection}){
           })
           .then(setLoading(false))*/
           //setCurrentView(null)
-          getAllNFTsWallet(walletAddress, "false")
+          getAllNFTsWallet(walletAddress, "loadAll")
           .then((imageURL) => {
             setNFTImages(imageURL);
           })
@@ -289,7 +330,7 @@ export default function UserNFTApp ({collection}){
     
     fetchNFTImage();
     
-  }, [publicKey, metaplex, collectionMintAddress, mintPublicKey]);
+  }, [publicKey, metaplex, connectionRPC, tokenProgram, collectionMintAddress, mintPublicKey]);
 
   const settings = {
     arrow: true,
@@ -328,15 +369,15 @@ export default function UserNFTApp ({collection}){
           </Alert>
         </Snackbar>
       </div>
-      <section id="userNFT" className="mt-4 flex items-center justify-center w-full mx-auto">
+      <section id="userNFT" className="mt-4 flex items-center justify-center w-full h-full mx-auto">
         {wallet.publicKey && wallet.connected ? (
-          <div className="flex flex-row items-center justify-center text-base font-sans font-semibold w-full h-[200px] overflow-auto mx-4">
+          <div className="flex items-center justify-center font-sans font-semibold mx-4">
             {statusNFT ? 
               (
-                <div>
+                <div className="relative">
                   {metadataNFT ? 
                     (
-                      <div>
+                      <div className="relative">
                         {loading &&
                             <Circles 
                             width='20' 
@@ -350,31 +391,42 @@ export default function UserNFTApp ({collection}){
                         {!loading && 
                           (
                             <div className='flex-row gap-3 flex items-center justify-center overflow-hidden'>
-                              {nftImages.length > numImages ? (<button className="animate-beat"onClick={previousSlide}><ArrowLeftCircleIcon className='h-5 w-5' /></button>): (null) }
-                                {nftImages.slice(startIndex, startIndex + numImages).map((img, index) => (
-                                  <div key={index} className={`slide`}>
-                                    {/*use <img> class to prevent the neeed to define domain*/}
-                                    <div className="flex flex-col relative items-center justify-center gap-2"> 
-                                      <img 
-                                        src={img?.json?.image || `${collection==="Metateds" ? '/tednorm.png': '/ted192.png'}`} 
-                                        alt={`${collection}`} 
-                                        className="rounded-md object h-full w-full object-cover"
-                                        height="150"
-                                        width="150"
-                                      />
-                                      <span>{img?.name}</span>
-                                    </div> 
+                              {nftImages.length ? 
+                                (
+                                  <div className="flex-row gap-3 flex items-center">
+                                    {nftImages.length > numImages ? (<button className="animate-beat"onClick={previousSlide}><ArrowLeftCircleIcon className='h-5 w-5' /></button>): (null) }
+                                      {nftImages.slice(startIndex, startIndex + numImages).map((img, index) => (
+                                        <div key={index} className={`flex flex-col items-center justify-center h-full`}>
+                                          {/*use <img> class to prevent the neeed to define domain*/}
+                                            <div className="slide ">
+                                              <img 
+                                                src={img?.json?.image || `${collection==="Metateds" ? '/tednorm.png': '/ted192.png'}`} 
+                                                alt={img.name} 
+                                                className="rounded-md h-full w-full object-cover"
+                                                height="150"
+                                                width="150"
+                                              />
+                                            </div>
+                                            <p className="text-slate-05 block">{img.name}</p>
+                                        </div>
+                                        
+                                      ))}
+                                    {nftImages.length > numImages ? (<button className="animate-beat" onClick={nextSlide}><ArrowRightCircleIcon className='h-5 w-5' /></button>): (null) }
                                   </div>
-                                ))}
-                              {nftImages.length > numImages ? (<button className="animate-beat" onClick={nextSlide}><ArrowRightCircleIcon className='h-5 w-5' /></button>): (null) }
-                              {/*<Image 
-                                src={nftImage} 
-                                alt={`${collection}`} 
-                                className="rounded-md h-[200px] w-[200px]"
-                                height="200"
-                                width="200"
-                                onLoadingComplete={handleLoad}
-                              />*/}
+                                )
+                                :
+                                (
+                                  <div>
+                                    <img
+                                      src={nftImages?.json?.image} 
+                                      alt={nftImages.name} 
+                                      className="rounded-md h-[200px] w-[200px]"
+                                      height="150"
+                                      width="150"
+                                    />
+                                  </div>
+                                )
+                              }
                             </div>
                           )
                         }

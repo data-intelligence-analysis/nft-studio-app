@@ -10,7 +10,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import ogIcon from '../assets/og_icon.png';
 import { SiLinktree } from 'react-icons/si';
 import {
-    WalletMultiButton
+    WalletMultiButton, 
+    WalletDisconnectButton,
 } from '@solana/wallet-adapter-react-ui';
 import { IconContext } from "react-icons";
 import { HomeIcon, UserIcon, MapIcon, CogIcon, InformationCircleIcon, 
