@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import SubscriberForm from '../Mailing/SubscriberForm'
-export const PolicyFooter = () => {
+
+const PolicyFooter = () => {
   return (
     <div>
       <footer>
@@ -9,3 +10,5 @@ export const PolicyFooter = () => {
     </div>
   )
 }
+
+export default PolicyFooter
