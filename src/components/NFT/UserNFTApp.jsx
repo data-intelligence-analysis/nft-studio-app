@@ -90,11 +90,9 @@ export default function UserNFTApp ({collection}){
         owner: walletAddress
       }, {signal: abortController.signal} )
       
-      //setCurrentPage(1);
-      //const startIndex = (currentPage - 1) * numImages;
-      //const endIndex = currentPage * numImages;
-      const start = (startIndex-1) * numImages;
-      const end = (startIndex) * numImages;
+      
+      const start = (currentPage - 1) * numImages;
+      const end = currentPage * numImages;
       if (!myNFTs.length) {
         setStatusNFT(false)
         return;
@@ -120,7 +118,7 @@ export default function UserNFTApp ({collection}){
       } 
       else if (setting === "pagination"){
         const nftsToLoad = myNFTs.filter((_, index) => (index >= start && index < end))
-        const promises = nftsToLoad.map((metadata))
+        const promises = nftsToLoad.map((metadata) => metaplex.nfts().load({ metadata }));
         return Promise.all(promises);
       }
       else if (setting === "program"){
@@ -131,7 +129,7 @@ export default function UserNFTApp ({collection}){
           setStatusNFT(false)
           //throw new Error("NFT not found in wallet");
         }
-        const nft = await metaplex.nfts().findByMint({ mintAddress: mintPublicKey });
+        const nft = await metaplex.nfts().findByMint({ mintAddress: mintPublicKey }, {signal: abortController.signal});
         if(!nft){
           setMetadataNFT(false)
           //throw new Error("NFT metadata account not found");
@@ -174,6 +172,7 @@ export default function UserNFTApp ({collection}){
           //})
           //.then(setLoading(false))
           //setCurrentView(null)
+          
           getAllNFTsWallet(walletAddress, "loadAll")
           .then((imageURL) => {
             setNFTImages(imageURL);
@@ -198,16 +197,17 @@ export default function UserNFTApp ({collection}){
     
     fetchNFTImage();
     
-  }, [publicKey, metaplex, startIndex, connectionRPC, tokenProgram, collectionMintAddress, mintPublicKey]);
+  }, [publicKey, metaplex, startIndex, currentPage, connectionRPC, tokenProgram, collectionMintAddress, mintPublicKey]);
 
   const currentSlide = (operation) => {
     setLoading(true);
+    setCurrentPage(1);
     if (operation==='prev'){
-      //setCurrentPage((prevValue) => prevValue + 1);
+      setCurrentPage((prevValue) => (prevValue > 1 ? prevValue - 1 : 1));
       setStartIndex(Math.max(startIndex - numImages, 0));
     }
     else if (operation==='next'){
-      //setCurrentPage((prevValue) => (prevValue > 1 ? prevValue - 1 : 1));
+      setCurrentPage((prevValue) => prevValue + 1);
       setStartIndex(Math.min(startIndex + numImages, nftImages.length - numImages));
     }
   };
@@ -254,10 +254,12 @@ export default function UserNFTApp ({collection}){
                             <div className='flex-row gap-3 flex items-center justify-center overflow-hidden'>
                               {nftImages.length ? 
                                 (
+                                  
                                   <div className="flex-row gap-3 flex items-center">
-                                    {nftImages.length > numImages ? (<button disabled={startIndex === 0} 
-                                                                      className={`animate-beat ${startIndex===0 ? 'text-slate-600': 'text-slate-50'}`}
-                                                                      onClick={() => currentSlide('prev')}><ArrowLeftCircleIcon className='h-5 w-5' /></button>): (null) }
+
+                                    {nftImages.length && (<button disabled={currentPage===1} 
+                                                                      className={`${currentPage===1 ? 'text-slate-600 cursor-not-allowed': 'text-slate-50 animate-beat'}`}
+                                                                      onClick={() => currentSlide('prev')}><ArrowLeftCircleIcon className='h-5 w-5' /></button>) }
                                     {nftImages.slice(startIndex, startIndex + numImages).map((img, index) => (
                                       <div key={index} className={`flex flex-col items-center justify-center h-full`}>
                                           <div className="slide">
@@ -273,9 +275,9 @@ export default function UserNFTApp ({collection}){
                                       </div>
                                       
                                     ))}
-                                    {nftImages.length > numImages ? (<button disabled={(startIndex + numImages) === nftImages.length} 
-                                                                            className={`animate-beat ${(startIndex + numImages) === nftImages.length ? 'text-slate-600': 'text-slate-50'}`}
-                                                                            onClick={()=> currentSlide('next')}><ArrowRightCircleIcon className='h-5 w-5' /></button>): (null) }
+                                    {nftImages.length && (<button disabled={(nftImages.length / numImages) === currentPage} 
+                                                                            className={`${nftImages.length / numImages === currentPage ? 'text-slate-600 cursor-not-allowed': 'text-slate-50 animate-beat'}`}
+                                                                            onClick={()=> currentSlide('next')}><ArrowRightCircleIcon className='h-5 w-5' /></button>)}
                                   </div>
                                 )
                                 :
