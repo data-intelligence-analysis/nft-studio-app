@@ -4,9 +4,7 @@ import SubscriberForm from '../Mailing/SubscriberForm'
 const PolicyFooter = () => {
   return (
     <div>
-      <footer>
-        <SubscriberForm />
-      </footer>
+      <SubscriberForm />
     </div>
   )
 }
