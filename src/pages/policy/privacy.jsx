@@ -2,7 +2,8 @@ import Head from "next/head";
 import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/router';
 import { IconContext } from "react-icons";
-import PrivacyPolicy from "../../components/layouts/PrivacyPolicy"
+import PrivacyPolicy from "../../components/Layouts/PrivacyPolicy";
+import NavBar from '../../components/NavBar'
 //import { FcComboChart, FcDocument } from "react-icons/fc";
 //import { GrDocumentVerified, GrDocumentConfig, GrDocumentText } from "react-icons/gr";
 import { HiClipboardDocumentList, HiDocumentCheck, HiDocument, HiDocumentText} from "react-icons/hi";
@@ -20,7 +21,8 @@ export default function Privacy() {
       </Head>
       <div className="bg-slate-900 h-screen">
         <div className="mx-auto min-h-full overflow-y-auto p-4 px-8 items-center lg:max-w-screen-xl">
-          <nav className="flex items-center justify-between top-0 pointer-event-auto z-nav w-full">
+          <NavBar bgFormat={"bg-slate-900/80"}/>
+          <nav className="mt-20 flex items-center justify-between top-0 pointer-event-auto z-nav w-full">
             <div className="mt-4 w-full">
               <div className="flex items-center cursor-pointer pointer-events-auto inline-flex flex-row px-4">
                 <div className="p-2 hover:bg-indigo-700 rounded-lg cursor-pointer">
