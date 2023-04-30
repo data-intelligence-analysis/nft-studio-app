@@ -47,12 +47,13 @@ export default function UserNFTApp ({collection}){
   //Get mint and collection address based on collection
   let mintPublicKey = ''
   let collectionMintAddress = ''
+  let creator = process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS
   if (collection === "Metahead"){
     mintPublicKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_MINT_PUBLIC_KEY);
-    collectionMintAddress = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_COLLECTION_KEY);
+    collectionMintAddress = process.env.NEXT_PUBLIC_VERCEL_METAHEAD_COLLECTION_KEY;
   }else if (collection === "Metated") {
     mintPublicKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_MINT_PUBLIC_KEY);
-    collectionMintAddress = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_COLLECTION_KEY);  
+    collectionMintAddress = process.env.NEXT_PUBLIC_VERCEL_METAHEAD_COLLECTION_KEY;  
   }
   else {
     mintPublicKey = undefined
@@ -112,9 +113,13 @@ export default function UserNFTApp ({collection}){
             setMetadataNFT(false)
             return;
           }
-          return metadata;
+          if (metadata?.collection?.address.toString() === collectionMintAddress){
+            return metadata
+          }
+          return null;
+          
         }));
-        return nfts.filter((nft) => nft!==null )
+        return nfts.filter((nft) => (nft!==null))
       } 
       else if (setting === "pagination"){
         const nftsToLoad = myNFTs.filter((_, index) => (index >= start && index < end))
@@ -137,12 +142,12 @@ export default function UserNFTApp ({collection}){
       }else if (setting === "creator") {
         //const nft = await metaplex.nfts().findByMints({ mints: [mintPublicKey, collectionMintAddress] }, {signal: abortController.signal});
         //const wallet = Keypair.generate();
-        const mx = Metaplex.make(connectionRPC)
+        /*const mx = Metaplex.make(connectionRPC)
                   .use(walletAddress)
-                  .use(bundlrStorage())
-  
+                  .use(bundlrStorage())*/
+        //const mx = Metaplex.make(connectionRPC)
         const creatorKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS)
-        const nft = await mx.nfts().findAllByCreator({creator: creatorKey});
+        const nft = await metaplex.nfts().findAllByCreator({creator: creatorKey});
         if (!nft){
           setStatusNFT(false)
           return;
@@ -157,7 +162,7 @@ export default function UserNFTApp ({collection}){
           }
           return metadata;
         }));
-        return nfts.filter((nft) => nft !== null)
+        
       }
       
     }
@@ -238,7 +243,7 @@ export default function UserNFTApp ({collection}){
                 <div className="relative">
                   {metadataNFT ? 
                     (
-                      <div className="relative">
+                      <div className="">
                         {loading &&
                             <Circles 
                             width='20' 
@@ -251,45 +256,83 @@ export default function UserNFTApp ({collection}){
                         
                         {!loading && 
                           (
-                            <div className='flex-row gap-3 flex items-center justify-center overflow-hidden'>
+                            <div className='flex h-full w-full items-center justify-center overflow-hidden'>
+                              
                               {nftImages.length ? 
                                 (
-                                  
-                                  <div className="flex-row gap-3 flex items-center">
+                                  <div className='flex flex-col gap-2 items-center justify-center'>
+                                    <div className='mb-2 w-full mx-auto'>
+                                      {collection === 'Metated' &&
+                                        <p className='font-sans'>
+                                          Metated NFTs provides lifetime subscription to the platform, <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
+                                            href={valURL(new URL("https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/paid-packages-supernova/nft-collections/home"))?'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/paid-packages-supernova/nft-collections/home':''} 
+                                            rel="noopener noreferrer" 
+                                            target="_blank">
+                                            <span className="font-sans font-bold text-sm inline-flex items-baseline">learn more</span>
+                                        </a>
+                                      </p> 
+                                      }
+                                      {collection === 'Metahead' &&
+                                        <p className="font-sans" >
+                                          Metahead NFT provides free services to the platform, <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
+                                              href={valURL(new URL("https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/free-packages-good/nft-collection/2-metahead"))?'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/free-packages-good/nft-collection/2-metahead':''} 
+                                              rel="noopener noreferrer" 
+                                              target="_blank">
+                                              <span className="font-bold text-sm inline-flex items-baseline">learn more</span>
+                                          </a>
+                                        </p>
+                                      }
+                                    </div>
+                                    <div className="flex-row gap-3 flex items-center">
 
-                                    {nftImages.length && (<button disabled={currentPage===1} 
-                                                                      className={`${currentPage===1 ? 'text-slate-600 cursor-not-allowed': 'text-slate-50 animate-beat'}`}
-                                                                      onClick={() => currentSlide('prev')}><ArrowLeftCircleIcon className='h-5 w-5' /></button>) }
-                                    {nftImages.slice(startIndex, startIndex + numImages).map((img, index) => (
-                                      <div key={index} className={`flex flex-col items-center justify-center h-full`}>
-                                          <div className="slide">
-                                            <img 
-                                              src={img?.json?.image || `${collection==="Metateds" ? '/tednorm.png': '/ted192.png'}`} 
-                                              alt={img.name} 
-                                              className="rounded-md h-full w-full object-cover"
-                                              height="150"
-                                              width="150"
-                                            />
-                                          </div>
-                                          <p className="text-slate-05 block">{img.name}</p>
-                                      </div>
+                                      {nftImages.length>numImages && (<button disabled={currentPage===1} 
+                                                                        className={`${currentPage===1 ? 'text-slate-600 cursor-not-allowed': 'text-slate-50 animate-beat'}`}
+                                                                        onClick={() => currentSlide('prev')}><ArrowLeftCircleIcon className='h-5 w-5' /></button>) }
                                       
-                                    ))}
-                                    {nftImages.length && (<button disabled={(nftImages.length / numImages) === currentPage} 
-                                                                            className={`${nftImages.length / numImages === currentPage ? 'text-slate-600 cursor-not-allowed': 'text-slate-50 animate-beat'}`}
-                                                                            onClick={()=> currentSlide('next')}><ArrowRightCircleIcon className='h-5 w-5' /></button>)}
+                                              {nftImages.slice(startIndex, startIndex + numImages).map((img, index) => (
+                                                  <div key={index} className={`flex items-center justify-center mx-auto`}>
+                                                    <div className="flex flex-col items-center justify-center w-full">
+                                                      <div className="slide">
+                                                        <img 
+                                                          src={img?.collection?.address.toString() === collectionMintAddress ? (img?.json?.image || `${collection==="Metateds" ? '/tednorm.png': '/ted192.png'}`):(null)} 
+                                                          alt={img?.name} 
+                                                          className="rounded-md h-full w-full object-cover"
+                                                          height="150"
+                                                          width="150"
+                                                        />
+                                                      </div>
+                                                      <p className="text-slate-05 block">{img?.name}</p> 
+                                                    </div>
+                                                  </div>
+                                              
+                                    
+                                          
+                                      ))}
+                                      {nftImages.length>numImages && (<button disabled={(nftImages.length / numImages) === currentPage} 
+                                                                                  className={`${nftImages.length / numImages === currentPage ? 'text-slate-600 cursor-not-allowed': 'text-slate-50 animate-beat'}`}
+                                                                                  onClick={()=> currentSlide('next')}><ArrowRightCircleIcon className='h-5 w-5' /></button>)}
+                                        
+                                      
+                                    </div>
                                   </div>
                                 )
                                 :
                                 (
-                                  <div>
-                                    <img
-                                      src={nftImages?.json?.image} 
-                                      alt={nftImages.name} 
-                                      className="rounded-md h-[200px] w-[200px]"
-                                      height="150"
-                                      width="150"
-                                    />
+                                  <div className='p-3'>
+                                    {collection === "Metahead" &&
+                                      (
+                                        <a href={valURL(new URL("https://metateds.com/beta"))? 'https://metateds.com/beta' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
+                                          <span className="text-sm sm:text-base lg:text-xl">Register For NFT</span>
+                                        </a>
+                                      )
+                                    }
+                                    {collection === "Metated" &&
+                                      (
+                                        <a href={valURL(new URL("https://metateds.com/studio"))? 'https://metateds.com/studio' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
+                                          <span className="text-sm sm:text-base lg:text-xl">Buy NFT</span>
+                                        </a>
+                                      )
+                                    }
                                   </div>
                                 )
                               }
@@ -298,7 +341,7 @@ export default function UserNFTApp ({collection}){
                         }
                       </div>
                     ):(
-                      <span className="font-sans text-base rounded-xl border-2 border-indigo-600 p-2 px-3">NFT Metadata Not Available</span>
+                      <span className="font-sans text-sm sm:text-base lg:text-xl text-base rounded-xl border-2 border-indigo-600 p-2 px-3">NFT Metadata Not Available</span>
                     )
                   }
                 </div>
@@ -307,14 +350,14 @@ export default function UserNFTApp ({collection}){
                   {collection === "Metahead" &&
                     (
                       <a href={valURL(new URL("https://metateds.com/beta"))? 'https://metateds.com/beta' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
-                        <span className="text-sm sm:text-base lg:text-lg">Register For NFT</span>
+                        <span className="text-sm sm:text-base lg:text-xl">Register For NFT</span>
                       </a>
                     )
                   }
                   {collection === "Metated" &&
                     (
                       <a href={valURL(new URL("https://metateds.com/studio"))? 'https://metateds.com/studio' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
-                        <span className="text-sm sm:text-base lg:text-lg">Buy NFT</span>
+                        <span className="text-sm sm:text-base lg:text-xl">Buy NFT</span>
                       </a>
                     )
                   }
@@ -322,7 +365,7 @@ export default function UserNFTApp ({collection}){
               )
             }
           </div>): (
-          <div className="font-sans text-xl rounded-xl border-2 border-indigo-600 p-2 px-3">
+          <div className="font-sans text-sm sm:text-base lg:text-xl rounded-xl border-2 border-indigo-600 p-2 px-3">
             Select Wallet To View NFTs
           </div>
           )
