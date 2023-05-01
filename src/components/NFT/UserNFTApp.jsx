@@ -268,7 +268,7 @@ export default function UserNFTApp ({collection}){
                                             href={valURL(new URL("https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/paid-packages-supernova/nft-collections/home"))?'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/paid-packages-supernova/nft-collections/home':''} 
                                             rel="noopener noreferrer" 
                                             target="_blank">
-                                            <span className="font-sans font-bold inline-flex items-baseline">learn more</span>
+                                            <span className="font-bold">learn more</span>
                                           </a>
                                         </p> 
                                       }
