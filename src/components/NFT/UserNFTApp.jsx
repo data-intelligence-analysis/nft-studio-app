@@ -261,24 +261,24 @@ export default function UserNFTApp ({collection}){
                               {nftImages.length ? 
                                 (
                                   <div className='flex flex-col gap-2 items-center justify-center'>
-                                    <div className='mb-2 w-full mx-auto'>
+                                    <div className='mb-2 w-full mx-auto text-center'>
                                       {collection === 'Metated' &&
-                                        <p className='font-sans'>
+                                        <p className='font-sans text-xs sm:text-sm'>
                                           Metated NFTs provides lifetime subscription to the platform, <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
                                             href={valURL(new URL("https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/paid-packages-supernova/nft-collections/home"))?'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/paid-packages-supernova/nft-collections/home':''} 
                                             rel="noopener noreferrer" 
                                             target="_blank">
-                                            <span className="font-sans font-bold text-sm inline-flex items-baseline">learn more</span>
-                                        </a>
-                                      </p> 
+                                            <span className="font-sans font-bold inline-flex items-baseline">learn more</span>
+                                          </a>
+                                        </p> 
                                       }
                                       {collection === 'Metahead' &&
-                                        <p className="font-sans" >
+                                        <p className="font-sans font-sans text-xs sm:text-sm" >
                                           Metahead NFT provides free services to the platform, <a className="text-indigo-400 underline underline-offset-2 visited:text-indigo-600" 
                                               href={valURL(new URL("https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/free-packages-good/nft-collection/2-metahead"))?'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/free-packages-good/nft-collection/2-metahead':''} 
                                               rel="noopener noreferrer" 
                                               target="_blank">
-                                              <span className="font-bold text-sm inline-flex items-baseline">learn more</span>
+                                              <span className="font-bold">learn more</span>
                                           </a>
                                         </p>
                                       }
