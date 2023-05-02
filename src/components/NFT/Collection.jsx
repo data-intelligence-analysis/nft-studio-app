@@ -163,7 +163,7 @@ export default function Collection ({collection}) {
           </Alert>
         </Snackbar>
       </div>
-      <div id="nftLayout" className="p-2 lg:p-3 sm:col-span-5 sm:col-start-4 lg:col-span-8 lg:col-start-5 place-items-center">
+      <div id="nftLayout" className="p-2 lg:p-3 sm:col-span-5 lg:col-span-10 place-items-center">
         <div id="nfts" className="mt-2 flex items-center justify-center mb-4 w-full drop-shadow-lg">
           {wallet.publicKey ? (
             <div>
