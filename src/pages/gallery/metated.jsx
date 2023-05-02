@@ -46,7 +46,7 @@ export default function Metated() {
             collection="Metated"
             pathname={pathname}
           >
-            <Collection />
+            <Collection collection="Metated" />
           </PageLayout>
         </div>
       </div>

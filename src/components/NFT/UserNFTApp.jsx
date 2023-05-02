@@ -92,12 +92,18 @@ export default function UserNFTApp ({collection}){
       }, {signal: abortController.signal} )
       
       
-      const start = (currentPage - 1) * numImages;
-      const end = currentPage * numImages;
+      
       if (!myNFTs.length) {
         setStatusNFT(false)
+        setRPCerror({
+          open: true,
+          message: 'NFT not available',
+          severity: "error",
+          hideDuration: 6000
+        })
         return;
       }
+
       if (setting === "random") {
         const randIdx = Math.floor(Math.random() * myNFTs.length);
         const metadata = await metaplex.nfts().load({ metadata: myNFTs[randIdx] });
@@ -122,6 +128,8 @@ export default function UserNFTApp ({collection}){
         return nfts.filter((nft) => (nft!==null))
       } 
       else if (setting === "pagination"){
+        const start = (currentPage - 1) * numImages;
+        const end = currentPage * numImages;
         const nftsToLoad = myNFTs.filter((_, index) => (index >= start && index < end))
         const promises = nftsToLoad.map((metadata) => metaplex.nfts().load({ metadata }));
         return Promise.all(promises);
@@ -164,7 +172,6 @@ export default function UserNFTApp ({collection}){
         }));
         
       }
-      
     }
     const fetchNFTImage = async () => {
       try {
@@ -191,6 +198,7 @@ export default function UserNFTApp ({collection}){
           //.then(setLoading(false))
         }
       } catch (error) {
+          console.log(error)
           setRPCerror({
             open: true,
             message: error,
@@ -219,7 +227,7 @@ export default function UserNFTApp ({collection}){
 
   return (
     <>
-      <div className="absolute z-20 m-2 mb-3 text-center item-center text-sm sm:text-base left-0 bottom-0 ">
+      <div className="absolute z-30 m-2 mb-3 text-center item-center text-sm sm:text-base left-0 bottom-0 ">
         <Snackbar
           oopen={rpcError.open}
           autoHideDuration ={

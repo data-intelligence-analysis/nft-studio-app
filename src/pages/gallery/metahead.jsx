@@ -39,7 +39,7 @@ export default function Metahead() {
             collection="Metahead"
             pathname={pathname}
           >
-            <Collection />
+            <Collection collection="Metahead" />
           </PageLayout>
         </div>
       </div>
