@@ -162,8 +162,8 @@ const Footer = ({bgFormat, display}) => {
                     </button>
                 </div>
                 {modal && <TermsAndConditions /> }
-                <div className= 'flex items-center gap-x-4 text-sm sm:text-base'>
-                    <p>Copyright © 2022</p>
+                <div className= 'flex font-sans font-semibold items-center gap-x-4 text-sm sm:text-base'>
+                    <p>Copyright © 2023 MetaTed Labs LLC</p>
                 </div>
             </div>
             
