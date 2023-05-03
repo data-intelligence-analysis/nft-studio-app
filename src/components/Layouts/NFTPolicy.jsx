@@ -9,7 +9,7 @@ export default function NFTPolicy () {
         <div className="mt-10 text-left font-sans leading-loose">
           <h1 className="italic mt-6 mb-5 font-bold uppercase text-lg lg:text-xl xl:text-2xl">Background</h1>
           <p className="mb-4 text-lg font-sans">
-            MetaTed is a NFT (Non-Fungible Token) or digital artwork collection fascilitated by the Solana Network 
+            MetaTed is a NFT (Non-Fungible Token) or digital artwork collection managed on the Solana network 
             to provide users with authentication and authorization features for applications built by MetaTed Labs LLC. 
             This website serves as an application allowing participants to utlize, view, and mint digital collectibles.
             Users are entirely responsible for the safety and management of their own private Solana wallets and validating all
@@ -28,7 +28,7 @@ export default function NFTPolicy () {
             A. Ownership of the MetaTed digital assets is provided to users who can cryptographically verify ownership or proof of authenticity of the MetaTed NFT, 
             which is fascilitated by a smart contract on the Solana network. In simple terms, you own the NFT if it is in your crypto wallet and can be
             authenticated and authorized by it! Moreover, ownership of the NFT is mediated entirely by the Smart Contract and the Solana network. At no point would we
-            or can we modify the ownership of any MetaTed
+            or can we modify the ownership of any MetaTed.
           </p>
           <p className="mb-1 text-lg font-sans">
             B. Personal use of digital assets is subject to your continued compliance with these Terms, which are as follows: 
@@ -44,7 +44,7 @@ export default function NFTPolicy () {
             <li className="font-sans list-item">
               In a marketplace that permits the purchase and sale of MetaTed NFT collections, or any third-party application, verified or validated by MetaTed Labs LLC 
               that handles transactions regarding NFTs provided that those applications cryptographically verifies each MetaTed owner&apos;s rights to 
-              display the art for their Metated to ensure that only the actual owner can display the Art;
+              display the art for their Metated to ensure that only the actual owner can display the Art.
             </li> 
           </ul>
           <p className="mb-1 text-lg font-sans">
@@ -61,7 +61,7 @@ export default function NFTPolicy () {
               <ul className="flex flex-col pl-8 mt-4 mb-6 list-disc leading-relaxed">
                 <li className="font-sans list-item">
                   Owning or operating a marketplace cryptographically verifies each MetaTed owner&apos;s rights
-                  to display the art for their MetaTed to ensure that only the actual owner can display the art
+                  to display the art for their MetaTed to ensure that only the actual owner can display the art.
                 </li>
                 <li className="font-sans list-item">
                   Owning or operating a third party website or application that permits the inclusion, involvement, 
