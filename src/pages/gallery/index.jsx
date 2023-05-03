@@ -10,8 +10,7 @@ export default function Home() {
       <Head>
         NFTs Gallery | MetaTeds
       </Head>
-      <div>
-        <ComingSoon />
+      <div className="h-screen min-h-full bg-gradient-to-b from-indigo-500 to-purple-500">
       </div>
     </>
   )
