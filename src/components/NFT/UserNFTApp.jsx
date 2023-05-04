@@ -18,6 +18,7 @@ export default function UserNFTApp ({collection}){
   const { publicKey } = useWallet();
   const { connection } = useConnection();
   const [statusNFT, setStatusNFT] = useState(true);
+  const [mintStatus, setMintStatus] = useState(false);
   const [metadataNFT, setMetadataNFT] = useState(true);
   const [nftImage, setNFTImage] = useState('');
   const [nftImages, setNFTImages] = useState([]);
@@ -53,7 +54,7 @@ export default function UserNFTApp ({collection}){
     collectionMintAddress = process.env.NEXT_PUBLIC_VERCEL_METAHEAD_COLLECTION_KEY;
   }else if (collection === "Metated") {
     mintPublicKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_METAHEAD_MINT_PUBLIC_KEY);
-    collectionMintAddress = process.env.NEXT_PUBLIC_VERCEL_METAHEAD_COLLECTION_KEY;  
+    collectionMintAddress = null;  
   }
   else {
     mintPublicKey = undefined
@@ -113,19 +114,24 @@ export default function UserNFTApp ({collection}){
         }
         return metadata;
       }else if (setting === "loadAll"){
-        const nfts = await Promise.all(myNFTs.map(async (nft) => {
-          const metadata = await metaplex.nfts().load({ metadata: nft});
-          if (!metadata) { 
-            setMetadataNFT(false)
-            return;
-          }
-          if (metadata?.collection?.address.toString() === collectionMintAddress){
-            return metadata
-          }
-          return null;
-          
-        }));
-        return nfts.filter((nft) => (nft!==null))
+        if (collectionMintAddress !== null) {
+          const nfts = await Promise.all(myNFTs.map(async (nft) => {
+            const metadata = await metaplex.nfts().load({ metadata: nft});
+            if (!metadata) { 
+              setMetadataNFT(false)
+              return;
+            }
+            if (metadata?.collection?.address.toString() === collectionMintAddress){
+              return metadata
+            }
+            return null;
+            
+          }));
+          return nfts.filter((nft) => (nft!==null))
+        } else {
+            setStatusNFT(false)
+        }
+        
       } 
       else if (setting === "pagination"){
         const start = (currentPage - 1) * numImages;
@@ -365,7 +371,7 @@ export default function UserNFTApp ({collection}){
                   {collection === "Metated" &&
                     (
                       <a href={valURL(new URL("https://metateds.com/studio"))? 'https://metateds.com/studio' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
-                        <span className="text-sm sm:text-base lg:text-xl">Buy NFT</span>
+                        <button disabled className="text-sm sm:text-base lg:text-xl cursor-not-allowed">Mint coming soon!</button>
                       </a>
                     )
                   }
