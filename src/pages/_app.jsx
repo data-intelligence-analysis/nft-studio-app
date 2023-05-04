@@ -3,18 +3,21 @@ import React, { useMemo} from "react";
 import dynamic from "next/dynamic";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { 
-  WalletModalProvider } 
+  WalletModalProvider,
+  WalletDisconnectButton,
+  WalletMultiButton } 
 from "@solana/wallet-adapter-react-ui";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
-import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets';
-/*import {
+import {
   GlowWalletAdapter,
   SlopeWalletAdapter,
   SolflareWalletAdapter,
   TorusWalletAdapter,
-} from "@solana/wallet-adapter-wallets";*/
+  UnsafeBurnerWalletAdapter,
+} from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 import CookieBanner from "../components/layouts/CookieBanner";
+import { SolanaMobileWalletAdapter } from "@solana-mobile/wallet-adapter-mobile"
 import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
 
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
@@ -60,6 +63,22 @@ function MyApp({ Component, pageProps }) {
          * instantiate its legacy wallet adapter here. Common legacy adapters can be found
          * in the npm package `@solana/wallet-adapter-wallets`.
          */
+        new SolanaMobileWalletAdapter({
+          /*addressSelector: createDefaultAddressSelector(),*/
+          appIdentity: {
+              name: 'MetaTed Studio App',
+              uri: 'https://metatedstudio.com',
+              icon: '/ted192.png',
+          },
+          /*authorizationResultCache: createDefaultAuthorizationResultCache(),*/
+          cluster: WalletAdapterNetwork.Mainnet,
+          /*onWalletNotFound: createDefaultWalletNotFoundHandler(),*/
+        }),
+        new SolflareWalletAdapter({ network }),
+        new GlowWalletAdapter(),
+        new SlopeWalletAdapter(),
+        new TorusWalletAdapter(),
+
         //new UnsafeBurnerWalletAdapter(),
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps
