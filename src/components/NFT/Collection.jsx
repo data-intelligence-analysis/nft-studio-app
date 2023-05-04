@@ -77,7 +77,6 @@ export default function Collection ({collection}) {
   };
 
   const onLoadedMetadata = () =>{
-    console.log(audioPlayer.current.duration)
     const seconds = Math.floor(audioPlayer.current.duration); //audioPlayer.current.duration
     setDuration(seconds)
     progressBar.current.max = seconds; //progressBar.current.max = seconds
