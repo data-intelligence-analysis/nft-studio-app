@@ -63,17 +63,17 @@ function MyApp({ Component, pageProps }) {
          * instantiate its legacy wallet adapter here. Common legacy adapters can be found
          * in the npm package `@solana/wallet-adapter-wallets`.
          */
-        new SolanaMobileWalletAdapter({
-          /*addressSelector: createDefaultAddressSelector(),*/
+        /*new SolanaMobileWalletAdapter({
+          //addressSelector: createDefaultAddressSelector(),
           appIdentity: {
               name: 'MetaTed Studio App',
               uri: 'https://metatedstudio.com',
               icon: '/ted192.png',
           },
-          /*authorizationResultCache: createDefaultAuthorizationResultCache(),*/
+          //authorizationResultCache: createDefaultAuthorizationResultCache(),
           cluster: WalletAdapterNetwork.Mainnet,
-          /*onWalletNotFound: createDefaultWalletNotFoundHandler(),*/
-        }),
+          //onWalletNotFound: createDefaultWalletNotFoundHandler(),
+        }),*/
         new SolflareWalletAdapter({ network }),
         new GlowWalletAdapter(),
         new SlopeWalletAdapter(),
