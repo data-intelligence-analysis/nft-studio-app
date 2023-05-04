@@ -166,7 +166,6 @@ export default function UserNFTApp ({collection}){
           setStatusNFT(false)
           return;
         }
-        console.log(nft)
         //return nfts
         const nfts = await Promise.all(nft.map(async (nft) => {
           const metadata = await metaplex.nfts().load({ metadata: nft });
