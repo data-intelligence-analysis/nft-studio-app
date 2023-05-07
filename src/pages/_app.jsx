@@ -78,7 +78,6 @@ function MyApp({ Component, pageProps }) {
         new GlowWalletAdapter(),
         new SlopeWalletAdapter(),
         new TorusWalletAdapter(),
-
         //new UnsafeBurnerWalletAdapter(),
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps

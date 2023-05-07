@@ -282,7 +282,7 @@ export default function Collection ({collection}) {
             <div className="mt-2 flex flex-col gap-3 items-center">
               <div className="relative rounded-xl border ring-8 ring-violet-400/50 border-violet-600" style={{ boxShadow: '0px 0px 20px rgba(55, 48, 163, 0.5)' }}>
                 <div className='relative'>
-                  <Image width="380" height="550" style= {{borderRadius:'12px'}} src={nftPhoto} alt="Ted Final Form" />
+                  <Image width="380" height="550" loading='lazy' style= {{borderRadius:'12px'}} src={nftPhoto} alt="Ted Final Form" />
                   {/*<audio src={"audio.mp3"} controls style={{ position: 'absolute', top: 0, left: 0 }} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} />*/}
                   <audio ref={audioPlayer} src="/audio.mp3" preload="metadata" onLoadedMetadata={onLoadedMetadata}/>
                 </div>
