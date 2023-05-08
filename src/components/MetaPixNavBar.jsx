@@ -63,37 +63,50 @@ const NavBarElements =[
   },
   {
       id: 1,
-      name: 'Home',
-      href: '/',
-      icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
+      name: 'Learn More',
+      href: 'https://metated-labs.gitbook.io/metated-labs/',
+      target: '_blank',
+      rel: "noreferrer noopener",
+      icon: <CogIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
       id: 2,
-      name: 'Team',
-      href: '/team',
-      icon: <UserIcon className= "text-[#EAA640] h-6 w-6"/>
-      
+      name: 'Home',
+      href: '/metapix/dao',
+      icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
       id: 3,
+      name: 'NFT Studio',
+      href: '/',
+      icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
+  {
+      id: 4,
+      name: 'Team',
+      href: '/team',
+      icon: <UserIcon className= "text-[#EAA640] h-6 w-6"/>  
+  },
+  {
+      id: 5,
       name: 'Roadmap',
       href: '/roadmap',
       icon: < MapIcon className= "text-[#EAA640] h-6 w-6"/>,
   },
   {
-      id: 4,
+      id: 6,
       name: 'Utility',
       href: '/utility',
       icon: <CogIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
-      id: 5,
+      id: 7,
       name: 'Support',
       href: '/support',
       icon: <InformationCircleIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
-      id: 6,
+      id: 8,
       name: 'Games',
       icon: <PuzzlePieceIcon className= "text-[#EAA640] h-6 w-6"/>,
       href: 'https://metateds.com/gaming',
@@ -101,7 +114,7 @@ const NavBarElements =[
       rel: "noreferrer noopener",
   },
   {
-      id: 7,
+      id: 9,
       name: 'Studio Mint',
       icon: <RocketLaunchIcon className= "text-[#EAA640] h-6 w-6"/>,
       href: 'https://metateds.com/studio',
@@ -109,18 +122,13 @@ const NavBarElements =[
       rel: "noreferrer noopener",
   },
   {
-      id: 8,
+      id: 10,
       name: 'MetaPix Studio',
       href: '/metapix',
       icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
   },
-  {
-      id: 9,
-      name: 'Metapix DAO',
-      href: '/metapix/dao',
-      icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
-  },
-  {
+  
+  /*{
       id: 10,
       name: 'Metapix Free Services',
       href: '/metapix/community',
@@ -131,7 +139,7 @@ const NavBarElements =[
       name: 'Minting Services',
       href: '/mint',
       icon: <GlobeAltIcon className= "text-[#EAA640] h-6 w-6"/>
-  },
+  },*/
 
 ]
 const MetaPixNavBar = ({bgFormat, opacity}) => {

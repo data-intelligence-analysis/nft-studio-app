@@ -27,31 +27,32 @@ const NavBarElements =[
     },
     {
         id: 1,
-        name: 'Home',
-        href: '/',
-        icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
-    },
-    {
-        id: 2,
-        name: 'Team',
-        href: '/team',
-        icon: <UserIcon className= "text-[#EAA640] h-6 w-6"/>
-        
-    },
-    {
-        id: 3,
-        name: 'Roadmap',
-        href: '/roadmap',
-        icon: < MapIcon className= "text-[#EAA640] h-6 w-6"/>,
-    },
-    {
-        id: 4,
         name: 'Learn More',
         href: 'https://metated-labs.gitbook.io/metated-labs/',
         target: '_blank',
         rel: "noreferrer noopener",
         icon: <CogIcon className= "text-[#EAA640] h-6 w-6"/>
     },
+    {
+        id: 2,
+        name: 'Home',
+        href: '/',
+        icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
+    },
+    {
+        id: 3,
+        name: 'Team',
+        href: '/team',
+        icon: <UserIcon className= "text-[#EAA640] h-6 w-6"/>
+        
+    },
+    {
+        id: 4,
+        name: 'Roadmap',
+        href: '/roadmap',
+        icon: < MapIcon className= "text-[#EAA640] h-6 w-6"/>,
+    },
+    
     /*{
         id: 4,
         name: 'Utility',
@@ -66,6 +67,12 @@ const NavBarElements =[
     },
     {
         id: 6,
+        name: 'Metapix DAO',
+        href: '/metapix/dao',
+        icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
+    },
+    {
+        id: 7,
         name: 'Games',
         icon: <PuzzlePieceIcon className= "text-[#EAA640] h-6 w-6"/>,
         href: 'https://metateds.com/gaming',
@@ -73,13 +80,13 @@ const NavBarElements =[
         rel: "noreferrer noopener",
     },
     {
-        id: 7,
+        id: 8,
         name: 'Gallery',
         icon: <PhotoIcon className= "text-[#EAA640] h-6 w-6"/>,
         href: '/gallery/metated',
     },
     {
-        id: 8,
+        id: 9,
         name: 'Studio Mint',
         icon: <RocketLaunchIcon className= "text-[#EAA640] h-6 w-6"/>,
         href: 'https://metateds.com/studio',
@@ -87,25 +94,20 @@ const NavBarElements =[
         rel: "noreferrer noopener",
     },
     {
-        id: 9,
+        id: 10,
         name: 'MetaPix Studio',
         href: '/metapix',
         icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
     },
-    {
-        id: 10,
-        name: 'Metapix DAO',
-        href: '/metapix/dao',
-        icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
-    },
+    
     /*{
-        id: 10,
+        id: 11,
         name: 'Metapix Free Services',
         href: '/metapix/community',
         icon: <WrenchIcon className= "text-[#EAA640] h-6 w-6"/>
     },
     {
-        id: 11,
+        id: 12,
         name: 'Minting Services',
         href: '/mint',
         icon: <GlobeAltIcon className= "text-[#EAA640] h-6 w-6"/>
