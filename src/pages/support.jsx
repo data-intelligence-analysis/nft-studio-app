@@ -16,6 +16,8 @@ import { Circles } from "react-loader-spinner";
 import Link from 'next/link';
 import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
 import PayPal from "../components/pay/PayPal";
+import { Snackbar } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 
 //import {server} from '../config'
 
@@ -26,7 +28,11 @@ const WalletContainer =() =>{
   const {publicKey} = useWallet();
   const [priceSOL, setPrice] = useState([]);
   const [modal, setModal] = useState(false);
-
+  const [error, setError] = useState({
+    open: false,
+    message: "",
+    severity: undefined,
+  })
   //paypal states
   //const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
   
@@ -179,13 +185,27 @@ const WalletContainer =() =>{
   useEffect(()=>{
     setLoading(true)
     if (publicKey){
-      fetch(`/api/fetchPrice`)
+        fetch(`/api/fetchPrice`,{
+            headers: {
+              'Accept': 'application/json'
+            }
+          }
+        )
         .then(response => response.json())
         .then( data => {
           setPrice(data);
           console.log("SOL Payment Price Info", data)
         })
         .then(setLoading(false))
+        .catch(err => (
+            setError({
+              open: true,
+              message: err,
+              severity: 'error',
+              hideDuration: 7000
+            })
+          )
+        )
     }
   }, [publicKey])
 
@@ -272,59 +292,81 @@ const WalletContainer =() =>{
       
       <NavBar bgFormat={"bg-slate-900/80"} />
       <DesktopWarnModal/>
-      <div className="bg-slate-900 h-screen">
-        <div className="h-full mx-4 w-full mx-auto max-w-screen-2xl">
-          <div className="m-auto py-20 h-full overflow-y-auto">
-            <nav className="top-5 lg:sticky relative pointer-events-none z-index">
-              <div className="absolute mt-1 w-full">
-                {!wallet.connected && !wallet.publicKey ?
-                  (
-                    <>
+        <div className="bg-slate-900 h-screen">
+          <div className="h-full mx-4 w-full mx-auto max-w-screen-2xl">
+            <div className="m-auto py-20 h-full overflow-y-auto">
+              <nav className="top-5 lg:sticky relative pointer-events-none z-index">
+                <div className="absolute mt-2 sm:mt-3 w-full">
+                  {!wallet.connected && !wallet.publicKey ?
+                    (
+                      <>
+                        
+                        {/*<div className="w-screen max-w-screen-2xl flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
+                          <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">Connect to wallet above </h1>
+                        </div>*/}
+                      </>
                       
-                      {/*<div className="w-screen max-w-screen-2xl flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
-                        <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">Connect to wallet above </h1>
-                      </div>*/}
-                    </>
-                    
-                  ):(
-                    <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
-                      <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">🎉 {""} Connected</h1>
-                    </div>)
-                }
-              </div>
-            </nav>
-            <div className="mt-5 sm:mt-10 grid place-items-center sm:grid-cols-2 mx-auto items-center text-center">
-              <div className="mt-6 mx-5 flex bg-slate-900/50 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
-                <div className="text-center justify-center w-full p-5 font-['Inter'] h-full">
-                  <h1 className="text-violet-700 font-bold text-xl sm:text-3xl font-bold">Donation</h1>
-                  <div className="flex items-center justify-center m-4 sm:m-8 cursor-pointer">
-                    <CheckWallet />
-                  </div>
+                    ):(
+                      <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
+                        <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">🎉 {""} Connected</h1>
+                      </div>)
+                  }
                 </div>
-                
-              </div>
-              <div className="mt-6 mx-2 sm:mx-4 flex bg-slate-900/50 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
-                <div className="text-center justify-center w-full p-5 font-['Inter'] h-full">
-                  <h1 className="text-violet-700 font-bold text-xl sm:text-3xl font-bold">Help Center</h1>
-                  <div className="flex items-center justify-center m-4 sm:m-8 cursor-pointer">
-                    <a className="solana-pay" href="https://forms.gle/2p813UayRdro1wxf8" target="_blank" rel="noreferrer">
-                        <button className="solana-button-text inline-block font-bold px-4 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full"> 
-                            Join Our Team <span className="join-team-icon-position"><GroupAddIcon /></span>
-                        </button>
-                    </a>
+              </nav>
+              <div className="mt-5 sm:mt-10 grid place-items-center sm:grid-cols-2 mx-auto items-center text-center">
+                <div className="mt-6 mx-5 flex bg-slate-900/50 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
+                  <div className="text-center justify-center w-full p-5 font-['Inter'] h-full">
+                    <h1 className="text-violet-700 font-bold text-xl sm:text-3xl font-bold">Donation</h1>
+                    <div className="flex items-center justify-center m-4 sm:m-8 cursor-pointer">
+                      <CheckWallet />
+                    </div>
                   </div>
-                  <div className="text-center m-5 sm:m-10 cursor-pointer">
-                    <button className="solana-button-text inline-block font-bold px-14 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full" onClick={toggleModal}> 
-                        <p className="inline-block items-center text-center">FAQ {" "} 📜</p>
-                    </button>
+                  
+                </div>
+                <div className="mt-6 mx-2 sm:mx-4 flex bg-slate-900/50 support-box-shadow cursor-pointer rounded-3xl h-[280px] sm:h-[450px] border-2 border-indigo-500/100 w-[88%] sm:w-[90%] lg:max-w-md">
+                  <div className="text-center justify-center w-full p-5 font-['Inter'] h-full">
+                    <h1 className="text-violet-700 font-bold text-xl sm:text-3xl font-bold">Help Center</h1>
+                    <div className="flex items-center justify-center m-4 sm:m-8 cursor-pointer">
+                      <a className="solana-pay" href="https://forms.gle/2p813UayRdro1wxf8" target="_blank" rel="noreferrer">
+                          <button className="solana-button-text inline-block font-bold px-4 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full"> 
+                              Join Our Team <span className="join-team-icon-position"><GroupAddIcon /></span>
+                          </button>
+                      </a>
+                    </div>
+                    <div className="text-center m-5 sm:m-10 cursor-pointer">
+                      <button className="solana-button-text inline-block font-bold px-14 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full" onClick={toggleModal}> 
+                          <p className="inline-block items-center text-center">FAQ {" "} 📜</p>
+                      </button>
+                    </div>
+                    {modal && <Faq />}
                   </div>
-                  {modal && <Faq />}
                 </div>
               </div>
             </div>
+            <div className="absolute bottom-10 left-0 z-30 mb-4 items-center">
+              <Snackbar
+                open={error.open}
+                autoHideDuration={
+                  error.hideDuration === undefined ? 6000 : error.hideDuration
+                }
+                onClose={() => setError({ ...error, open: false })}
+              >
+                <div className="p-2 my-3 w-full">
+                  <Alert
+                    onClose={() => setError({ ...error, open: false })}
+                    severity={error.severity}
+                  >
+                    {error.message}
+                  </Alert>
+                </div>
+              </Snackbar>
+            </div>
           </div>
+          
         </div>
-      </div>
+        
+        
+      
       <Footer bgFormat={"bg-slate-900"}/>
     </>
   )

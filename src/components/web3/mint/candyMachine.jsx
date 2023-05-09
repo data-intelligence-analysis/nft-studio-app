@@ -204,7 +204,7 @@ const CandyMachine = (walletAddress) => {
   };
 
   const getProvider = () =>{
-    //const rpcHost = process.env.REACT_APP_SOLANA_RPC_HOST
+    //const rpcHost = process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST
     //const connection = new Connection(rpcHost);
     //Create a new Solana provider object with
     const provider = new Provider(
@@ -239,7 +239,7 @@ const CandyMachine = (walletAddress) => {
     
     //fetch the metadata from your candy machine program
     //const candyMachine = await program.account.candyMachine.fetch(
-        //candyMachineId//process.env.REACT_APP_CANDY_MACHINE_ID //Candy Machine ID
+        //candyMachineId//process.env.NEXT_PUBLIC_VERCEL_CANDY_MACHINE_ID //Candy Machine ID
     //)
 
     const getProgramState = async () => {
@@ -284,7 +284,7 @@ const CandyMachine = (walletAddress) => {
 
     // Add this data to your state to render
     setCandyMachine({
-      id: candyMachineId, //process.env.REACT_APP_CANDY_MACHINE_ID,
+      id: candyMachineId, //process.env.NEXT_PUBLIC_VERCEL_CANDY_MACHINE_ID,
       program,
       state: {
         authority: candyMachine.authority,
