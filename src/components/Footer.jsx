@@ -145,7 +145,7 @@ const Footer = ({bgFormat, display}) => {
       }
     return (
         <footer className={`fixed flex pt-1 pb-1 z-20 left-0 items-center w-screen bottom-0 ${bgFormat} overflow-x-auto`}>
-            <div className="max-w-screen-xl mx-auto flex items-center justify-between gap-x-4 py-1 w-full px-4">
+            <div className="max-w-screen-2xl mx-auto flex items-center justify-between gap-x-4 py-1 w-full px-4">
                 <div className='flex items-center gap-x-2'>
                     {socialImg.map((social, index) => (
                         <a className = 'sm:py-[10px] sm:px-[10px] py-[8px] px-[4px]' key={index} 
@@ -162,7 +162,7 @@ const Footer = ({bgFormat, display}) => {
                     </button>
                 </div>
                 {modal && <TermsAndConditions /> }
-                <div className= 'flex font-sans font-semibold items-center gap-x-4 text-sm sm:text-base'>
+                <div className= 'flex font-sans font-semibold items-center gap-x-4 text-xs sm:text-sm'>
                     <p>Copyright © 2023 MetaTed Labs LLC</p>
                 </div>
             </div>

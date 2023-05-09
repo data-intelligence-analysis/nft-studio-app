@@ -24,7 +24,7 @@ const sellerAddress = () => {
     console.log
     return (alert("Recipient address to receive funds has not been declared"))
   }
-  return process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS
+  return new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS)
 }
 const sellerPublicKey = new PublicKey('3vLNLoffoFCWeeq3FzCinFhrf34FftWnFKtEFGCsSZ4e');
 //Get paid in USDC

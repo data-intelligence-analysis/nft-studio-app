@@ -177,8 +177,9 @@ const WalletContainer =() =>{
   }, [PayPalcurrency]);*/}
 
   useEffect(()=>{
-    setLoading(true)
+    
     if (publicKey){
+      setLoading(true)
       fetch(`/api/fetchPrice`)
         .then(response => response.json())
         .then( data => {
@@ -192,7 +193,7 @@ const WalletContainer =() =>{
 
   const CheckWallet = () => {
     try{
-      if (wallet.connected && wallet.publicKey && loading) {
+      if (loading) {
         
         return (
           <Circles 

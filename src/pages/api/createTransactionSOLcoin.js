@@ -15,13 +15,13 @@ import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } 
 // Make sure you replace this with your wallet address!
 //process.env.SELLER_ADDRESS = <WALLET_ADDRESS>
 const sellerAddress = () => {
-  if (process.env.NEXT_PUBLIC_SELLER_ADDRESS === undefined){
+  if (process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS === undefined){
     console.log
     alert("Recipient address to receive funds has not been declared")
   }
-  return process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS
+  return new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS)
 }
-const sellerPublicKey = new PublicKey('3vLNLoffoFCWeeq3FzCinFhrf34FftWnFKtEFGCsSZ4e');
+const sellerPublicKey = sellerAddress() //new PublicKey('3vLNLoffoFCWeeq3FzCinFhrf34FftWnFKtEFGCsSZ4e');
 
 
 //Get paid in SOL tokens

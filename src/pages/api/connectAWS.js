@@ -5,8 +5,8 @@ import fileDownload from 'js-file-download';
 //const fs = require("fs")
 const s3 = new S3({
   region: "us-east-2", //Ohio
-  accessKeyId: process.env.NEXT_PUBLIC_ACCESS_KEY,
-  secretAccessKey: process.env.NEXT_PUBLIC_SECRET_KEY,
+  accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY,
+  secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_KEY,
   signatureVersion: 'v4'
 })
 const expireTime = 60
@@ -14,7 +14,7 @@ export default async function aws(){
   const file = 'pixelart-generator.zip'
   //const params
   const constantParams = {
-    Bucket: process.env.NEXT_PUBLIC_BUCKET_NAME,
+    Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
   }
   const handleErrors = (e) => {
     throw new Error (e)
@@ -56,7 +56,7 @@ export default async function aws(){
       console.log(files)
       const fileOutput = fs.createWriteStream(join(__dirname, 'pixelart-generator.zip'))
       s3Zip
-        .archive({ region: 'us-east-2', bucket: process.env.NEXT_PUBLIC_BUCKET_NAME, preserveFolderStructure: true }, folder, files)
+        .archive({ region: 'us-east-2', bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME, preserveFolderStructure: true }, folder, files)
         .pipe(fileOutput)
     }*/
     const fileParams = {
