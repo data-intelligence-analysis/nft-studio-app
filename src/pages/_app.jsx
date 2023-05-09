@@ -1,36 +1,47 @@
 import '../styles/globals.css';
-import React, { useMemo} from "react";
-import dynamic from "next/dynamic";
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+require("@solana/wallet-adapter-react-ui/styles.css");
+import React, { useMemo, useCallback} from "react";
 import { 
   WalletModalProvider,
-  WalletDisconnectButton,
-  WalletMultiButton } 
+} 
 from "@solana/wallet-adapter-react-ui";
+import { WalletAdapterNetwork, WalletError } from '@solana/wallet-adapter-base';
+
+import { SnackbarProvider, useSnackbar } from 'notistack';
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import {
   GlowWalletAdapter,
   SlopeWalletAdapter,
   SolflareWalletAdapter,
   TorusWalletAdapter,
-  UnsafeBurnerWalletAdapter,
+  SolletExtensionWalletAdapter,
+  SolletWalletAdapter,
+  UnsafeBurnerWalletAdapter
 } from "@solana/wallet-adapter-wallets";
-import { clusterApiUrl } from "@solana/web3.js";
+import { clusterApiUrl, ConnectionConfig } from "@solana/web3.js";
 import CookieBanner from "../components/layouts/CookieBanner";
-import { SolanaMobileWalletAdapter } from "@solana-mobile/wallet-adapter-mobile"
 import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
 
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import { PAYPAL_CLIENT_ID } from "../components/constants"
-require("@solana/wallet-adapter-react-ui/styles.css");
+//import { ThemeProvider } from '@emotion/react';
 
+const CONNECTION_CONFIG = { commitment: 'processed' };
+//const theme = /*#__PURE__*/ createTheme();
+//const endpoint = /*#__PURE__*/ clusterApiUrl(network );
 function MyApp({ Component, pageProps }) {
+  
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
-  const network = WalletAdapterNetwork.Mainnet;
-  const getLayout = Component.getLayout || ((page) => page);
+  const network = WalletAdapterNetwork.Mainnet; 
   // You can also provide a custom RPC endpoint
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
+  const { enqueueSnackbar } = useSnackbar();
+    const handleWalletError = useCallback(
+        (e) => {
+            enqueueSnackbar(`${e.name}: ${e.message}`, { variant: 'error' });
+        },
+        [enqueueSnackbar],
+    );
   const initialOptions = {
     "client-id": PAYPAL_CLIENT_ID.client_id,
     components: "buttons",
@@ -50,42 +61,47 @@ function MyApp({ Component, pageProps }) {
     [network]
   );*/
   const wallets = useMemo(
-    () => [
-        /**
-         * Wallets that implement either of these standards will be available automatically.
-         *
-         *   - Solana Mobile Stack Mobile Wallet Adapter Protocol
-         *     (https://github.com/solana-mobile/mobile-wallet-adapter)
-         *   - Solana Wallet Standard
-         *     (https://github.com/solana-labs/wallet-standard)
-         *
-         * If you wish to support a wallet that supports neither of those standards,
-         * instantiate its legacy wallet adapter here. Common legacy adapters can be found
-         * in the npm package `@solana/wallet-adapter-wallets`.
-         */
-        /*new SolanaMobileWalletAdapter({
-          //addressSelector: createDefaultAddressSelector(),
-          appIdentity: {
-              name: 'MetaTed Studio App',
-              uri: 'https://metatedstudio.com',
-              icon: '/ted192.png',
-          },
-          //authorizationResultCache: createDefaultAuthorizationResultCache(),
-          cluster: WalletAdapterNetwork.Mainnet,
-          //onWalletNotFound: createDefaultWalletNotFoundHandler(),
-        }),*/
-        new SolflareWalletAdapter({ network }),
-        new GlowWalletAdapter(),
-        new SlopeWalletAdapter(),
-        new TorusWalletAdapter(),
-        //new UnsafeBurnerWalletAdapter(),
-    ],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [network]
-);
+      () => typeof window === 'undefined'
+      ? [] // No wallet adapters when server-side rendering.
+      :[
+          /**
+           * Wallets that implement either of these standards will be available automatically.
+           *
+           *   - Solana Mobile Stack Mobile Wallet Adapter Protocol
+           *     (https://github.com/solana-mobile/mobile-wallet-adapter)
+           *   - Solana Wallet Standard
+           *     (https://github.com/solana-labs/wallet-standard)
+           *
+           * If you wish to support a wallet that supports neither of those standards,
+           * instantiate its legacy wallet adapter here. Common legacy adapters can be found
+           * in the npm package `@solana/wallet-adapter-wallets`.
+           */
+          /*new SolanaMobileWalletAdapter({
+            //addressSelector: createDefaultAddressSelector(),
+            appIdentity: {
+                name: 'MetaTed Studio App',
+                uri: 'https://metatedstudio.com',
+                icon: '/ted192.png',
+            },
+            //authorizationResultCache: createDefaultAuthorizationResultCache(),
+            cluster: WalletAdapterNetwork.Mainnet,
+            //onWalletNotFound: createDefaultWalletNotFoundHandler(),
+          }),*/
+          new UnsafeBurnerWalletAdapter(),
+          new SolflareWalletAdapter({ network }),
+          new GlowWalletAdapter(),
+          new SlopeWalletAdapter(),
+          new TorusWalletAdapter(),
+          new SolletWalletAdapter({ network }),
+          new SolletExtensionWalletAdapter({ network }),
+      ],
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [network]
+  );
   return (
-      <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect>
+    <SnackbarProvider autoHideDuration={10000}>
+      <ConnectionProvider config={CONNECTION_CONFIG} endpoint={endpoint}>
+        <WalletProvider wallets={wallets} autoConnect onError={handleWalletError}>
           <WalletModalProvider>
             <PayPalScriptProvider options={initialOptions}>
               <CookieBanner />
@@ -94,6 +110,7 @@ function MyApp({ Component, pageProps }) {
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
+    </SnackbarProvider>
   )
 }
 
