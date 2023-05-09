@@ -19,14 +19,14 @@ import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } 
 //usdc token address in mainnnet
 const usdcAddress = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 
-const sellerAddress = () => {
+/*const sellerAddress = () => {
   if (process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS === undefined){
     console.log
     return (alert("Recipient address to receive funds has not been declared"))
   }
   return new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS)
-}
-const sellerPublicKey = new PublicKey('3vLNLoffoFCWeeq3FzCinFhrf34FftWnFKtEFGCsSZ4e');
+}*/
+const sellerPublicKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS);
 //Get paid in USDC
 const createTransaction = async (req, res) => {
     try {

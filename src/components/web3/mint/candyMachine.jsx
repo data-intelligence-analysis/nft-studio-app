@@ -55,10 +55,10 @@ const CandyMachine = (walletAddress) => {
 
   //Error handling for env variables
   let error = undefined;
-    if (process.env.REACT_APP_SOLANA_NETWORK === undefined) {
+    if (process.env.NEXT_PUBLIC_VERCEL_SOLANA_NETWORK === undefined) {
       error =
         "Your REACT_APP_SOLANA_NETWORK value in the .env file doesn't look right! The options are devnet and mainnet-beta!";
-    } else if (process.env.REACT_APP_SOLANA_RPC_HOST === undefined) {
+    } else if (process.env.NEXT_PUBLIC_VERCEL_SOLANA_NETWORK === undefined) {
       error =
         "Your REACT_APP_SOLANA_RPC_HOST value in the .env file doesn't look right! Make sure you enter it in as a plain-text url (i.e., https://metaplex.devnet.rpcpool.com/)";
     }
@@ -75,8 +75,8 @@ const CandyMachine = (walletAddress) => {
   
   //env helpers
   const candyMachineId = getCandyMachineId()
-  const network = (process.env.REACT_APP_SOLANA_NETWORK ?? "devnet");
-  const rpcHost = (process.env.REACT_APP_SOLANA_RPC_HOST ?? web3.clusterApiUrl("devnet"));
+  const network = (process.env.NEXT_PUBLIC_VERCEL_SOLANA_NETWORK ?? "devnet");
+  const rpcHost = (process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST ?? web3.clusterApiUrl("devnet"));
   const cluster = network
   const rpcUrl = rpcHost
   const connection = new web3.Connection(rpcHost); //Connection(rpcHost)
