@@ -57,16 +57,16 @@ const CandyMachine = (walletAddress) => {
   let error = undefined;
     if (process.env.NEXT_PUBLIC_VERCEL_SOLANA_NETWORK === undefined) {
       error =
-        "Your REACT_APP_SOLANA_NETWORK value in the .env file doesn't look right! The options are devnet and mainnet-beta!";
-    } else if (process.env.NEXT_PUBLIC_VERCEL_SOLANA_NETWORK === undefined) {
+        "Your NEXT_PUBLIC_VERCEL_SOLANA_NETWORK value in the .env file doesn't look right! The options are devnet and mainnet-beta!";
+    } else if (process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST === undefined) {
       error =
-        "Your REACT_APP_SOLANA_RPC_HOST value in the .env file doesn't look right! Make sure you enter it in as a plain-text url (i.e., https://metaplex.devnet.rpcpool.com/)";
+        "Your NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST value in the .env file doesn't look right! Make sure you enter it in as a plain-text url (i.e., https://metaplex.devnet.rpcpool.com/)";
     }
   //get candyMachineId
   
   const getCandyMachineId = () =>{
     try {
-      return new web3.PublicKey(process.env.REACT_APP_CANDY_MACHINE_ID);
+      return new web3.PublicKey(process.env.NEXT_PUBLIC_VERCEL_CANDY_MACHINE_ID);
     } catch (e) {
       console.log("Failed to construct CandyMachineId", e);
       return undefined;

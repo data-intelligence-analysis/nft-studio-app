@@ -21,7 +21,8 @@ import { createTransferCheckedInstruction, getAssociatedTokenAddress, getMint } 
   }
   return new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS)
 }*/
-const sellerPublicKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS);
+//const sellerPublicKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS);
+const sellerPublicKey = new PublicKey('3vLNLoffoFCWeeq3FzCinFhrf34FftWnFKtEFGCsSZ4e');
 
 
 //Get paid in SOL tokens
