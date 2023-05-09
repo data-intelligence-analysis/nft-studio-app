@@ -193,7 +193,7 @@ const WalletContainer =() =>{
 
   const CheckWallet = () => {
     try{
-      if (loading) {
+      if (wallet.connected && wallet.publicKey && loading) {
         
         return (
           <Circles 
