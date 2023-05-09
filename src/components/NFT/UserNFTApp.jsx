@@ -259,8 +259,8 @@ export default function UserNFTApp ({collection}){
                       <div className="">
                         {loading &&
                             <Circles 
-                            width='20' 
-                            height='20' 
+                            width='30' 
+                            height='30' 
                             color="white"
                             ariaLabel = "circles-loading"
                             wrapperClass="items-center justify-center"
@@ -325,27 +325,19 @@ export default function UserNFTApp ({collection}){
                                                                                   className={`${nftImages.length / numImages === currentPage ? 'text-slate-600 cursor-not-allowed': 'text-slate-50 animate-beat'}`}
                                                                                   onClick={()=> currentSlide('next')}><ArrowRightCircleIcon className='h-5 w-5' /></button>)}
                                         
-                                      
                                     </div>
                                   </div>
                                 )
                                 :
                                 (
-                                  <div className='p-3'>
-                                    {collection === "Metahead" &&
-                                      (
-                                        <a href={valURL(new URL("https://metateds.com/beta"))? 'https://metateds.com/beta' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
-                                          <span className="text-sm sm:text-base lg:text-xl">Register For NFT</span>
-                                        </a>
-                                      )
-                                    }
-                                    {collection === "Metated" &&
-                                      (
-                                        <a href={valURL(new URL("https://metateds.com/studio"))? 'https://metateds.com/studio' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
-                                          <span className="text-sm sm:text-base lg:text-xl">Buy NFT</span>
-                                        </a>
-                                      )
-                                    }
+                                  <div className='flex items-center justify-center'>
+                                    <Circles 
+                                      width='30' 
+                                      height='30' 
+                                      color="white"
+                                      ariaLabel = "circles-loading"
+                                      wrapperClass="items-center justify-center"
+                                      visible={true} />
                                   </div>
                                 )
                               }
@@ -388,7 +380,22 @@ export default function UserNFTApp ({collection}){
   )
 }
 
-
+{/*<div className='p-3'>
+    {collection === "Metahead" &&
+      (
+        <a href={valURL(new URL("https://metateds.com/beta"))? 'https://metateds.com/beta' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
+          <span className="text-sm sm:text-base lg:text-xl">Register For NFT</span>
+        </a>
+      )
+    }
+    {collection === "Metated" &&
+      (
+        <a href={valURL(new URL("https://metateds.com/studio"))? 'https://metateds.com/studio' : ''} target="_blank" rel="noreferrer" className='font-sans text-base rounded-xl border-2 hover:bg-slate-700 border-indigo-600 p-2 px-3'>
+          <span className="text-sm sm:text-base lg:text-xl">Buy NFT</span>
+        </a>
+      )
+    }
+  </div>*/}
 /*hasError && <span className="font-sans text-base rounded-xl border-2 border-indigo-600 p-2 px-3">Error Loading NFT</span>*/
 /*const prevSlide = () => {
     setStartIndex(Math.max(startIndex - numImages, 0));
