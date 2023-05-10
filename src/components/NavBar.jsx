@@ -81,12 +81,18 @@ const NavBarElements =[
     },
     {
         id: 8,
-        name: 'Gallery',
+        name: 'MetaHead Gallery',
+        icon: <PhotoIcon className= "text-[#EAA640] h-6 w-6"/>,
+        href: '/gallery/metahead',
+    },
+    {
+        id: 9,
+        name: 'MetaTed Gallery',
         icon: <PhotoIcon className= "text-[#EAA640] h-6 w-6"/>,
         href: '/gallery/metated',
     },
     {
-        id: 9,
+        id: 10,
         name: 'Studio Mint',
         icon: <RocketLaunchIcon className= "text-[#EAA640] h-6 w-6"/>,
         href: 'https://metateds.com/studio',
@@ -94,7 +100,7 @@ const NavBarElements =[
         rel: "noreferrer noopener",
     },
     {
-        id: 10,
+        id: 11,
         name: 'MetaPix Studio',
         href: '/metapix',
         icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
