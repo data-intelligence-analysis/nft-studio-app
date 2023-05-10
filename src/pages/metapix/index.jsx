@@ -62,6 +62,7 @@ export default function Home () {
   //const [image, setImage] = useState()
   const [file, setFile] =useState();
   const [loading, setLoading] = useState(false)
+  const [mounted, setMounted] = useState(false);
 
   const {pathname} = useRouter();
   const downloadFile = async() => {
@@ -118,7 +119,7 @@ export default function Home () {
     */}
   const FileDownload = () =>{
     return (
-      <>
+      <div ref={ref}>
         {loading ? <Circles 
               width='30' 
               height='30' 
@@ -129,7 +130,7 @@ export default function Home () {
         <button className="flex text-base sm:text-lgpt-4 bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg" onClick={downloadFile}> {/*()=>alert('Python script - pixelate avatars, nfts and much more (Coming Soon...)')*/}
             <FileDownloadIcon/>{" "}<p className="inline-block pl-1 font-sans">Download [Mac]</p>
         </button>}
-      </>
+      </div>
       
     )
   }
@@ -149,6 +150,9 @@ export default function Home () {
       document.body.removeEventListener("click", HandleClicks)
     }
   },[]);
+
+  useEffect(()=> setMounted(true), [])
+  if(!mounted) return null
 
   /*Testing image loading*/
   /*useEffect(()=>{
@@ -252,24 +256,21 @@ export default function Home () {
                             </a>
                           </Link>)}
                       </div>
-                      <div className="mt-4 cursor-pointer flex items-center justify-center" ref={ref}>
-                        <FileDownload />
-                        {/*<div className="none">
-                          <iframe src={this.props.iframeSrc} />
-                          </div>*/}
-                      </div>
+                      {/*<div className="mt-4 cursor-pointer flex items-center justify-center">
+                          <FileDownload />
+                        
+                        </div>*/}
                     </div>
                   </div>
                 </div>
               </div>
-              <div ref={ref}>
+              <div>
                 <Snackbar
                   open={message.open}
                   autoHideDuration={
                     message.hideDuration === undefined ? 6000 : message.hideDuration
                   }
                   onClose={() => setMessage({ ...message, open: false })}
-                  ref={ref}
                 >
                   <Alert
                     onClose={() => setMessage({ ...message, open: false })}

@@ -1,6 +1,6 @@
 import { S3 } from "@aws-sdk/client-s3";
 
-const Bucket = process.env.BUCKET_NAME;
+const Bucket = process.env.NEXT_PUBLIC_AWS_BUCKET_NAME;
 console.log('✅ ~ Bucket Name', Bucket);
 
 // S3 listObjectsV2 method requires a callback function therefore in the above I've called a separate function called getAll
@@ -44,8 +44,8 @@ const getImage = async (Key) => {
 };
 
 export const image = async (event) => {
-  console.log(event.headers['X-API-KEY'], process.env.API_KEY);
-  if (event.headers['X-API-KEY'] !== process.env.API_KEY) {
+  console.log(event.headers['X-API-KEY'], process.env.NEXT_PUBLIC_AWS_IMG_API_KEY);
+  if (event.headers['X-API-KEY'] !== process.env.NEXT_PUBLIC_AWS_IMG_API_KEY) {
     return {
       statusCode: 403
     };
@@ -67,8 +67,8 @@ export const image = async (event) => {
 };
 
 export const images = async (event) => {
-  console.log(event.headers['X-API-KEY'], process.env.API_KEY);
-  if (event.headers['X-API-KEY'] !== process.env.API_KEY) {
+  console.log(event.headers['X-API-KEY'], process.env.NEXT_PUBLIC_AWS_IMG_API_KEY);
+  if (event.headers['X-API-KEY'] !== process.env.NEXT_PUBLIC_AWS_IMG_API_KEY) {
     return {
       statusCode: 403
     };
@@ -81,7 +81,7 @@ export const images = async (event) => {
   };
 };
 export const signedUrl = async (event) => {
-  if (event.headers['X-API-KEY'] !== process.env.API_KEY) {
+  if (event.headers['X-API-KEY'] !== process.env.NEXT_PUBLIC_AWS_IMG_API_KEY) {
     return {
       statusCode: 403
     };

@@ -1,8 +1,5 @@
 import React, {useState, useEffect, useRouter} from 'react'
 import rockset from '@rockset/client';
-import AWS from 'aws-sdk';
-
-
 
 const AWSTpls = ({props}) => {
   //const client = rockset(process.env.ROCKSET_APIKEY, process.env.ROCKSET_APISERVER);

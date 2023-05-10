@@ -295,7 +295,7 @@ const WalletContainer =() =>{
         <div className="bg-slate-900 h-screen">
           <div className="h-full mx-4 w-full mx-auto max-w-screen-2xl">
             <div className="m-auto py-20 h-full overflow-y-auto">
-              <nav className="top-5 lg:sticky relative pointer-events-none z-index">
+              <nav className="top-10 mb-4 lg:sticky relative pointer-events-none z-index">
                 <div className="absolute mt-2 sm:mt-3 w-full">
                   {!wallet.connected && !wallet.publicKey ?
                     (

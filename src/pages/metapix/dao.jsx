@@ -317,7 +317,7 @@ export default function DAO ({data}) {
             <section className="mb-4 font-sans text-lg flex flex-col text-center justify-center mx-auto items-center">
               <p className="mt-4">
                 We present to you our {""}
-                <span class="inline-flex items-baseline">
+                <span className="inline-flex items-baseline">
                   <SiBlueprint />
                   <span className="font-bold">Builders Guild</span>
                 </span>

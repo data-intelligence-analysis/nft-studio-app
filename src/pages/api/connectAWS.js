@@ -1,13 +1,22 @@
-import S3 from "aws-sdk/clients/s3";
+//import S3 from "aws-sdk/clients/s3";
+import { S3Client, AbortMultipartUploadCommand, GetObjectCommand } from "@aws-sdk/client-s3"
 import axios from 'axios';
 import fileDownload from 'js-file-download';
 //const path = require("path")
 //const fs = require("fs")
-const s3 = new S3({
+//aws-sdk v2
+/*const s3 = new S3({
   region: "us-east-2", //Ohio
   accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY,
   secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_KEY,
   signatureVersion: 'v4'
+})*/
+const s3 = new S3Client({
+  region: "us-east-2", //Ohio
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY,
+    secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_KEY,
+  }
 })
 const expireTime = 60
 export default async function aws(){
@@ -62,10 +71,12 @@ export default async function aws(){
     const fileParams = {
       ...constantParams,
       Key: `pixelate/compressed/${file}`,
-      Expires: expireTime
+      //Expires: expireTime - aws-sdk-v2
     }
-    const objectUrl = await s3.getSignedUrlPromise('getObject', fileParams)
-    
+    //const objectUrl = await s3.getSignedUrlPromise('getObject', fileParams)
+    const getObjectCommand = new GetObjectCommand({
+     ...fileParams
+    });
     const downloadHandler = async(Key) => {
       try {
         // Defining filename n path
@@ -119,6 +130,7 @@ export default async function aws(){
       //let encodedKey = encodeURI(key)
       //axios.get(`${customLoader}/api/item/?KEY=${encodedKey}`)
       return s3.getSignedUrlPromise('getObject', fileParams)
+      
           /*.then(res => {
               if (res.status === 202) {
                   let respond = {
