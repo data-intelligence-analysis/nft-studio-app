@@ -71,42 +71,48 @@ const NavBarElements =[
   },
   {
       id: 2,
-      name: 'Home',
-      href: '/metapix/dao',
-      icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
+      name: 'MetaPix Studio',
+      href: '/metapix',
+      icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
       id: 3,
-      name: 'NFT Studio',
-      href: '/',
-      icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
+      name: 'MetaPix DAO',
+      href: '/metapix/dao',
+      icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
       id: 4,
+      name: 'NFT Studio',
+      href: '/',
+      icon: <HomeIcon className= "text-[#EAA640] h-6 w-6"/>
+  },
+  {
+      id: 5,
       name: 'Team',
       href: '/team',
       icon: <UserIcon className= "text-[#EAA640] h-6 w-6"/>  
   },
   {
-      id: 5,
+      id: 6,
       name: 'Roadmap',
       href: '/roadmap',
       icon: < MapIcon className= "text-[#EAA640] h-6 w-6"/>,
   },
   {
-      id: 6,
+      id: 7,
       name: 'Utility',
       href: '/utility',
       icon: <CogIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
-      id: 7,
+      id: 8,
       name: 'Support',
       href: '/support',
       icon: <InformationCircleIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   {
-      id: 8,
+      id: 9,
       name: 'Games',
       icon: <PuzzlePieceIcon className= "text-[#EAA640] h-6 w-6"/>,
       href: 'https://metateds.com/gaming',
@@ -114,18 +120,12 @@ const NavBarElements =[
       rel: "noreferrer noopener",
   },
   {
-      id: 9,
+      id: 10,
       name: 'Studio Mint',
       icon: <RocketLaunchIcon className= "text-[#EAA640] h-6 w-6"/>,
       href: 'https://metateds.com/studio',
       target: '_blank',
       rel: "noreferrer noopener",
-  },
-  {
-      id: 10,
-      name: 'MetaPix Studio',
-      href: '/metapix',
-      icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
   },
   
   /*{
