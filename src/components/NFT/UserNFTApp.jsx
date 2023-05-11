@@ -305,7 +305,7 @@ export default function UserNFTApp ({collection}){
                                                                         className={`${currentPage===1 ? 'text-slate-600 cursor-not-allowed': 'text-slate-50 animate-beat'}`}
                                                                         onClick={() => currentSlide('prev')}><ArrowLeftCircleIcon className='h-5 w-5' /></button>) }
                                               <div className='flex flex-col gap-1 items-center'>
-                                                <span className='ranchers text-base sm:text-lg'>Click Me, Learn More!</span>
+                                                <span className='ranchers text-base sm:text-lg tracking-wide'>Click Me, Learn More!</span>
                                                 <a href={collection === 'MetaTed'? 
                                                     'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/paid-packages-supernova/nft-collections/home'
                                                     :'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/free-packages-good/nft-collection/2-metahead'}
