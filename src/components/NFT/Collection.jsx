@@ -304,7 +304,7 @@ export default function Collection ({collection}) {
                   </div>
                 </div>
               </div>
-              <span className='text-base sm:text-lg'>Select Wallet</span>
+              {/*<span className='text-base sm:text-lg'>Select Wallet</span>*/}
             </div>
 
             

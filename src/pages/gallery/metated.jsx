@@ -21,7 +21,6 @@ export default function Metated() {
   };
   
   
-  
   return (
     <>
       <Head>
