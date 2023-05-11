@@ -77,7 +77,7 @@ const NavBarElements =[
   },
   {
       id: 3,
-      name: 'MetaPix DAO',
+      name: 'MetaPix App',
       href: '/metapix/dao',
       icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
   },

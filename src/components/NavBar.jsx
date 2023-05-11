@@ -67,7 +67,7 @@ const NavBarElements =[
     },
     {
         id: 6,
-        name: 'Metapix DAO',
+        name: 'Metapix App',
         href: '/metapix/dao',
         icon: <CloudArrowDownIcon className= "text-[#EAA640] h-6 w-6"/>
     },
