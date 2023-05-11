@@ -339,7 +339,7 @@ export default function UserNFTApp ({collection}){
                                 :
                                 (
                                   <div className='flex items-center justify-center'>
-                                    {<Circles 
+                                    {loading && <Circles 
                                       width='30' 
                                       height='30' 
                                       color="white"
