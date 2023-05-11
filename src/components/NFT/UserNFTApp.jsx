@@ -308,7 +308,9 @@ export default function UserNFTApp ({collection}){
                                                 <span className='ranchers text-base sm:text-lg'>Click Me, Learn More!</span>
                                                 <a href={collection === 'MetaTed'? 
                                                     'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/paid-packages-supernova/nft-collections/home'
-                                                    :'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/free-packages-good/nft-collection/2-metahead'}>                                            
+                                                    :'https://metated-labs.gitbook.io/metated-labs/subscription-sign-up/free-packages-good/nft-collection/2-metahead'}
+                                                    rel="noopener noreferrer" 
+                                                    target="_blank">                                            
                                                   {nftImages.slice(startIndex, startIndex + numImages).map((img, index) => (
                                                       <div key={index} className={`flex items-center justify-center mx-auto`}>
                                                         <div className="flex flex-col items-center justify-center w-full">
