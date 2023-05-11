@@ -241,7 +241,7 @@ export default function Home () {
                           <Link href='/metapix/dao' legacyBehavior>
                             <a className="cursor-pointer">
                               <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
-                                  DAO
+                                  App
                               </button>
                             </a>
                           </Link>)}
@@ -251,7 +251,7 @@ export default function Home () {
                           <Link href='/metapix/community' legacyBehavior>
                             <a className="cursor-pointer">
                               <button type="button" className="flex text-xs font-pixel tracking-tighter sm:text-sm bg-indigo-700 hover:bg-violet-600 hover:ring-indigo-700 hover:ring-2 w-full px-2 py-2 rounded-lg">
-                                  Community
+                                  Pixelate
                               </button>
                             </a>
                           </Link>)}
