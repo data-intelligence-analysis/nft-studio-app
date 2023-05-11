@@ -86,7 +86,7 @@ export default function UserNFTApp ({collection}){
       //console.log(tokenAccount);
       // Create an AbortController that aborts in 100ms.
       const abortController =  new AbortController();
-      setTimeout(() => abortController.abort(), 1000);
+      setTimeout(() => abortController.abort(), 900);
 
       const myNFTs = await metaplex.nfts().findAllByOwner({
         owner: walletAddress

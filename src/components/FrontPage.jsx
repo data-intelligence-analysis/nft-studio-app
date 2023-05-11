@@ -552,14 +552,15 @@ const FrontPage = () => {
 								</button>
 							</div>
 							{isOpen &&
-							
 								<ul className="top-[100%] left-[-50%] right-[-50%] mx-auto border-shadow absolute z-99 grid-rows-1 gap-y-2 w-48 rounded-lg p-3 grid items-center my-3 mx-2 cursor-pointer opacity-100 bg-slate-800" aria-label="dropdown-list" role="menu" tabIndex="0" id="ExploreMintDropdown">
 									<div className="flex flex-col items-center my-3">
 										<li className="w-full mb-4 items-center">
-											<Link href ="/mint" legacyBehavior>
-												<MintButton>
-														Mint Teds
-												</MintButton>
+											<Link href="https://metateds-candymachine-mint.vercel.app/" passHref legacyBehavior>
+												<a href={valURL(new URL("https://metateds-candymachine-mint.vercel.app/"))? "https://metateds-candymachine-mint.vercel.app/" : ''} target="_blank" rel="noopener noreferrer">
+													<MintButton>
+															Mint Teds
+													</MintButton>
+												</a>
 											</Link>	
 										</li>
 										<li className="w-full items-center">
@@ -569,7 +570,6 @@ const FrontPage = () => {
 										</li>
 									</div>
 								</ul>
-							
 							}
           
 							{/*<Link href ="/mint" legacyBehavior>

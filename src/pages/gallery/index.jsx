@@ -15,18 +15,30 @@ export default function Home() {
         <NavBar bgFormat='bg-transparent'/>
         <div className="max-w-screen-2xl w-screen mx-auto flex w-full p-8 my-10">
           <div className="min-h-full py-10 mb-10 flex items-center mx-auto">
-            <div className="mt-10 w-full h-full p-4">
-              <h1 className="mt-5 text-3xl text-center sm:text-4xl lg:text-5xl h-full font-bold text-transparent bg-gradient-to-r bg-clip-text from-indigo-500 from-40% via-purple-500 via-20% to-pink-500 to-30%">
-                Gallery Playground: An Exploration of Art In The Digital Realm
+            <div className="mt-8 w-full p-4">
+              <h1 className="p-2 my-5 tracking-normal font-inter text-3xl text-center sm:text-4xl lg:text-5xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-indigo-500 from-40% via-purple-500 via-20% to-pink-500 to-30%">
+                Meta Playground: An Exploration of Art In The Digital Realm
               </h1>
-              <div id="apps-intro" className="mt-10 flex  flex-col items-center justify-center mx-auto w-full">
-                <div className="">
-                  <p>
-                    <span></span>
-                  </p>
+              <div id="apps" className="mt-10 flex flex-col items-center justify-center mx-auto w-full">
+                <div className="grid text-slate-300 place-items-center sm:flex sm:flex-row gap-6 font-inter font-bold text-sm lg:text-base mb-4">
+                  <div className="mx-3 drop-shadow-lg">
+                    dashboard
+                  </div>
+                  <div className="ml-8 flex items-center sm:text-right">
+                    <p className="text-center text-sm sm:text-base block">
+                      Discover our stunning, and innovative ways in which we use
+                      artwork to explore the intersections of technology, 
+                      culture, and creativity. 
+                      <span></span>
+                    </p>
+                  </div>
+                  
+                  
                 </div>
-                <div className='flex flex-col items-center gap-4 justify-center mx-auto'>
-                  <div></div>
+                <div id="cards" className='flex flex-row justify-center items-center mb-4 w-full gap-4 mx-auto'>
+                  <div className="flex flex-col items-center">
+
+                  </div>
                 </div>
               </div>
             </div>

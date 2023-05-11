@@ -137,7 +137,7 @@ export default function Collection ({collection}) {
       setTimeout(() => abortController.abort(), 800);
       if (setting==="creator"){
         const creatorKey = new PublicKey(process.env.NEXT_PUBLIC_VERCEL_SELLER_ADDRESS)
-        console.log(creatorKey)
+        //console.log(creatorKey)
         const nft = await metaplex.nfts().findAllByCreator({creator: creatorKey});
         if (!nft){
           setStatusNFT(false)
@@ -149,7 +149,7 @@ export default function Collection ({collection}) {
           })
           return;
         }
-        console.log(nft);
+        //console.log(nft);
         //return nfts
         const nfts = await Promise.all(nft.map(async (nft) => {
           const metadata = await metaplex.nfts().load({ metadata: nft });

@@ -7,7 +7,9 @@ module.exports = {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
-      mono: ['SFMono-Regular', 'monospace']
+      mono: ['SFMono-Regular', 'monospace'],
+      arial : ['Arial', 'sans-serif'],
+      inter: ['Inter', 'sans-serif']
     },
     keyframes: {
       up: {
