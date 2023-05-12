@@ -1,5 +1,5 @@
-import '../styles/globals.css';
 require("@solana/wallet-adapter-react-ui/styles.css");
+import '../styles/globals.css';
 import React, { useMemo, useCallback} from "react";
 import { 
   WalletModalProvider,
@@ -16,7 +16,6 @@ import {
   TorusWalletAdapter,
   SolletExtensionWalletAdapter,
   SolletWalletAdapter,
-  UnsafeBurnerWalletAdapter
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl, ConnectionConfig } from "@solana/web3.js";
 import CookieBanner from "../components/layouts/CookieBanner";
@@ -87,7 +86,6 @@ function MyApp({ Component, pageProps }) {
             cluster: WalletAdapterNetwork.Mainnet,
             //onWalletNotFound: createDefaultWalletNotFoundHandler(),
           }),*/
-          new UnsafeBurnerWalletAdapter(),
           new SolflareWalletAdapter({ network }),
           new GlowWalletAdapter(),
           new SlopeWalletAdapter(),
