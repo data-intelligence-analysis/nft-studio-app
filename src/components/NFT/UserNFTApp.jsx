@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
+import { ArrowPathIcon } from '@heroicons/react/24/solid';
 
 export default function UserNFTApp ({collection}){
 
@@ -232,6 +233,10 @@ export default function UserNFTApp ({collection}){
     }
   };
 
+  const RefreshBtn = () => {
+    window.location.reload(false)
+  }
+
   return (
     <>
       <div className="absolute z-30 m-2 mb-3 text-center item-center text-sm sm:text-base left-0 bottom-10 ">
@@ -334,7 +339,7 @@ export default function UserNFTApp ({collection}){
                             )
                             :
                             (
-                              <div className='flex items-center justify-center'>
+                              <div className='flex items-center justify-center flex-col gap-3'>
                                 {<Circles 
                                   width='30' 
                                   height='30' 
@@ -342,6 +347,10 @@ export default function UserNFTApp ({collection}){
                                   ariaLabel = "circles-loading"
                                   wrapperClass="items-center justify-center"
                                   visible={true} /> }
+                                  <div className="font-heebo flex flex-col items-center">
+                                    <button id="refresh" onClick={RefreshBtn} type="button" className="mb-2"><ArrowPathIcon className="h-3 w-3" /></button>
+                                    <p className="text-sm">refresh if delay</p>
+                                  </div>
                               </div>
                             )
                           }

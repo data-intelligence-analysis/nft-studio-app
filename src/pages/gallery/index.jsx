@@ -38,8 +38,6 @@ export default function Home() {
                       <span></span>
                     </p>
                   </div>
-                  
-                  
                 </div>
                 <div id="cards" className='flex flex-row justify-center items-center mb-4 w-full gap-4 mx-auto'>
                   <div className="flex flex-col items-center">
