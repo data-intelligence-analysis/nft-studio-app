@@ -9,7 +9,8 @@ module.exports = {
       serif: ['Merriweather', 'serif'],
       mono: ['SFMono-Regular', 'monospace'],
       arial : ['Arial', 'sans-serif'],
-      inter: ['Inter', 'sans-serif']
+      inter: ['Inter', 'sans-serif'],
+      heebo: ['var(--global-gallery-text-font-family)', 'sans-serif']
     },
     keyframes: {
       up: {

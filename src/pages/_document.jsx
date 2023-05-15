@@ -25,6 +25,7 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet"  />
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet" />
         
         <link
           rel="stylesheet"

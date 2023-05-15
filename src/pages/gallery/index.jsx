@@ -5,6 +5,8 @@ import Image from 'next/image';
 import {buildUrl} from 'cloudinary-build-url';
 import ComingSoon from '../../components/ComingSoon'
 import NavBar from '../../components/NavBar'
+import { MdOutlineDashboard } from "react-icons/md";
+import { IconContext } from "react-icons";
 export default function Home() {
   return (
     <>
@@ -21,11 +23,15 @@ export default function Home() {
               </h1>
               <div id="apps" className="mt-10 flex flex-col items-center justify-center mx-auto w-full">
                 <div className="grid text-slate-300 place-items-center sm:flex sm:flex-row gap-6 font-inter font-bold text-sm lg:text-base mb-4">
-                  <div className="mx-3 drop-shadow-lg">
-                    dashboard
+                  <div className="mx-8 drop-shadow-lg">
+                    <IconContext.Provider value={{ color: "white", size: "20em", className: "global-class-name" }} >
+                      <div>
+                        <MdOutlineDashboard />
+                      </div>
+                    </IconContext.Provider>
                   </div>
-                  <div className="ml-8 flex items-center sm:text-right">
-                    <p className="text-center text-sm sm:text-base block">
+                  <div className="ml-10 flex items-center sm:text-right">
+                    <p className="text-left text-sm sm:text-base block font-heebo">
                       Discover our stunning, and innovative ways in which we use
                       artwork to explore the intersections of technology, 
                       culture, and creativity. 
