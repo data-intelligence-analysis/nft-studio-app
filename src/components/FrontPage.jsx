@@ -46,7 +46,7 @@ const FrontPage = () => {
 			content: "View our generative art and join the communities it represents.",
 			title: "Collections & Communities",
     },
-		{
+		/*{
 			id: 4,
 			name: "Ecosystem",
 			href: "ecosystem",
@@ -55,7 +55,7 @@ const FrontPage = () => {
 			img: '',
 			img2: '',
 			img3:''
-		},
+		}*/,
   
   ]
 	//react hooks
@@ -356,7 +356,7 @@ const FrontPage = () => {
 									</Box>
 								</Card>
 							</div>
-							<div className="flex justify-center items-center text-center px-2 py-4 sm:px-4 lg:px-6 lg:py-6">
+							{/*<div className="flex justify-center items-center text-center px-2 py-4 sm:px-4 lg:px-6 lg:py-6">
 								<Card sx={{ 
 									bgcolor: 'rgba(30,41,59,1)',
 									justifyContent: 'center',
@@ -385,12 +385,6 @@ const FrontPage = () => {
                       </Typography>
 										</CardContent>
 										<CardActions>
-											{/*<Button size="small" color="primary" onClick= {(event) => tweetNow(event,
-												`${server}/gallery/weapons`,
-												'Check out the Metated gallery and join the community - https://metateds.com/communities/metateds', 
-												'MetaTeds')}>
-												Tweet
-											</Button>*/}
 											<TwitterShareButton
 												url={`${server}/gallery/weapons`}
 												title={"Check out the Metated gallery and join the community: "}
@@ -408,7 +402,7 @@ const FrontPage = () => {
 										</CardActions>
 									</Box>
 								</Card>
-							</div>
+							</div>*/}
 						</div>
 					</div>
 				}

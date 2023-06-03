@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 //import {AiFillDollarCircle} from "@react-icons/all-files/ai/AiFillDollarCircle";
 import {TbCurrencySolana} from "react-icons/tb";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -9,7 +9,6 @@ import {
     useWallet,
     //useConnection
 } from '@solana/wallet-adapter-react';
-//import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { Circles } from "react-loader-spinner";
@@ -18,10 +17,24 @@ import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
 import PayPal from "../components/pay/PayPal";
 import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
+import { IconContext } from "react-icons";
+import { buildUrl } from 'cloudinary-build-url';
+import {
+  CubeIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 //import {server} from '../config'
 
 const WalletContainer =() =>{
+  //Build Url
+  const url = buildUrl('metapix_media/workstation_ifhbpq', {
+    cloud:{
+      cloudName: 'dg7z2hep5',
+      resourceType: 'image',
+      storageType:'upload'
+    },
+  })
   //react states
   const [loading, setLoading] =useState(false)
   const wallet = useWallet();
@@ -33,61 +46,78 @@ const WalletContainer =() =>{
     message: "",
     severity: undefined,
   })
-  //paypal states
-  //const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-  
+  const [appsModal, setAppsModal] = useState(false)
 
-  /*Paypal Functions*/
-  /*const PayPalamt = "35"
-  const PayPalcurrency = "USD"
-  const PayPalstyle = {
-    color: "blue",
-    shape: "pill",
-    label: "pay",
-    tagline: false,
-    layout: "vertical",
-    label: "donate"
+  //useRef
+  const myRef = useRef()
+  const toggleAppModal = () => {
+    setAppsModal(prev => !prev)
   }
-  //create paypal order
-
-  const createDonateOrder = (data, actions) => {
-    return actions.order
-        .create({
-            purchase_units: [
-                {
-                    amount: {
-                        value: PayPalamt,
-                        breakdown: {
-                            item_total: {
-                                currency_code: "USD",
-                                value: PayPalamt,
-                            },
-                        },
-                    },
-                    items: [
-                        {
-                            name: "donation-example",
-                            quantity: "1",
-                            unit_amount: {
-                                currency_code: "USD",
-                                value: PayPalamt,
-                            },
-                            category: "DONATION",
-                        },
-                    ],
-                },
-            ],
-        })
-        .then((orderId) => {
-            // Your code here after create the donation
-            return orderId;
-        });
-  }*/
-  
-
-  
   const toggleModal = () => {
     setModal(!modal);
+  }
+  const AppsModal = () => {
+    return(
+      <div className="relative z-[999]" aria-modal="true" id="modal">
+        
+        <div className="fixed inset-0 bg-opacity-[0.45] cursor-pointer dark:bg-slate-900/20 bg-[#f8f7ff] backdrop-blur-lg opacity-100 w-full">
+          
+        </div>
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
+            <div id="modal-block" data-headlessui-state="open"  className="opacity-100 scale-100">
+              <div className="flex flex-col items-center justify-center w-full rounded-3xl mx-auto overflow-hidden 
+              max-w-[320px] sm:max-w-[598px] md:max-w-[965px] md:flex-row-reverse shadow-xl relative dark:bg-slate-900/80 bg-white">
+                <div className="h-[196px] md:h-[640px]">
+                  <img 
+                    src={url}
+                    alt="Interior Metapixhome"
+                    className="w-full h-[196px] w-[430px] md:w-full md:h-[640px] overflow-hidden object-cover"
+                  />
+                </div>
+                <div className="font-sans w-full flex flex-col items-center justify-center px-[30px] py-[35px] sm:px-[66px] md:items-start md:justify-start dark:text-slate-50 text-slate-900">
+                  <nav className="mt-5 fixed top-0 left-0 p-2 w-full">
+                    <div className="flex items-center justify-between text-center">
+                      <div className="flex pl-4 flex items-start h-full">
+                        <button onClick={toggleAppModal} className="rounded-full hover:outline hover:outline-2 hover:outline-offset-2 dark:hover:outline-white hover:outline-black">
+                          <XMarkIcon className="dark:text-white text-black h-6 w-6 items-flex"/>
+                        </button>
+                      </div>
+                    </div>
+                  </nav>
+                  <h1 className="font-bold text-2xl mb-10">
+                    Support
+                  </h1>
+                  <div className="w-full text-slate-50">
+                    {/*<a className="solana-pay" href="https://forms.gle/2p813UayRdro1wxf8" target="_blank" rel="noreferrer">
+                            <button className="solana-button-text inline-block font-bold px-4 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full"> 
+                              <span className="join-team-icon-position"><GroupAddIcon /></span> Join Our Team 
+                            </button>
+                        </a>*/}
+                    <a href={valURL(new URL("https://forms.gle/2p813UayRdro1wxf8"))? 'https://forms.gle/2p813UayRdro1wxf8' : ''}  
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center justify-center rounded-[15px] min-h-[46px] px-5 sm:min-h-[65px] sm:px-6 font-semibold solana-button-text bg-[#4e44ce] w-full mb-4">
+                      Join Our Team
+                    </a>
+                    <a href={valURL(new URL("https://discord.gg/QveexJXGQ2"))? 'https://discord.gg/QveexJXGQ2' : ''}  
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center justify-center rounded-[15px] min-h-[46px] px-5 sm:min-h-[65px] sm:px-6 font-semibold solana-button-text bg-[#4e44ce] w-full mb-4">
+                      Discord Support
+                    </a>
+                    <button onClick={() => alert('AI Chatbot coming soon')} 
+                        className="flex items-center justify-center rounded-[15px] min-h-[46px] px-5 sm:min-h-[65px] sm:px-6 font-semibold solana-button-text bg-[#4e44ce] w-full mb-4">
+                      Chatroom
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
   function valURL(url) {
     const parsed = url
@@ -172,16 +202,6 @@ const WalletContainer =() =>{
     )
   }
 
-  {/*useEffect(() => {
-    dispatch({
-        type: "resetOptions",
-        value: {
-            ...options,
-            currency: PayPalcurrency,
-        },
-    });
-  }, [PayPalcurrency]);*/}
-
   useEffect(()=>{
     setLoading(true)
     if (publicKey){
@@ -208,6 +228,22 @@ const WalletContainer =() =>{
         )
     }
   }, [publicKey])
+
+  useEffect(() => {
+    const HandleClicks = (e) => {
+      if (myRef.current && !myRef.current.contains(e.target)){
+        // user clicked outside of modal container, close the modal
+        return;
+      }
+      setAppsModal(false)
+    }
+    window.addEventListener("click", HandleClicks)
+    // CLEANUP
+    // remove event listener
+    return () => {
+      window.removeEventListener("click", HandleClicks)
+    }
+  },[])
 
 
   const CheckWallet = () => {
@@ -241,13 +277,14 @@ const WalletContainer =() =>{
       else{
         return (
           <div>
-            <div className="flex items-center justify-center w-full">
+            {<div className="flex items-center justify-center w-full">
               <button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
                 className="solana-button-text bg-[#4e44ce] flex items-center text-base gap-x-1 sm:text-lg font-bold px-14 rounded-full py-1 text-center">
-                <p className="inline-block">Donate</p> <TbCurrencySolana alt="solana" width= {"35"} height={"35"} style={{marginRight:"3px"}}/> {/*<Image alt="solana" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginRight:"3"}} />*/}
+                <p className="inline-block">Donate</p> <TbCurrencySolana alt="solana" width= {"35"} height={"35"} style={{marginRight:"3px"}}/> 
               </button>
-            </div>
+            </div>}
             {<PayPal />}
+            {/*<Image alt="solana" width= {"40"} height={"18"} src={solanaPayImg} priority="true" style={{marginRight:"3"}} />*/}
             {/*<div className="mt-5 flex items-center justify-center sm:mt-10">
               <button type="submit" onClick = {() => alert("Connect your solana wallet, to make payment!")}
                 className="solana-button-text bg-[#4e44ce] flex items-center gap-x-1 text-base sm:text-lg font-bold px-2.5 py-1 text-center">
@@ -293,6 +330,7 @@ const WalletContainer =() =>{
       <NavBar bgFormat={"bg-slate-900/80"} />
       <DesktopWarnModal/>
         <div className="bg-slate-900 h-screen">
+          {appsModal && <div ref={myRef}><AppsModal/></div>}
           <div className="h-full mx-4 w-full mx-auto max-w-screen-2xl">
             <div className="m-auto py-20 h-full overflow-y-auto">
               <nav className="top-10 mb-4 lg:sticky relative pointer-events-none z-index">
@@ -300,12 +338,10 @@ const WalletContainer =() =>{
                   {!wallet.connected && !wallet.publicKey ?
                     (
                       <>
-                        
                         {/*<div className="w-screen max-w-screen-2xl flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
                           <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">Connect to wallet above </h1>
                         </div>*/}
                       </>
-                      
                     ):(
                       <div className="flex flex-row gap-4 rounded-full justify-between px-3 float-left align-middle pointer-events-auto text-center items-center cursor-pointer">
                         <h1 className="inline-block text-base sm:text-xl lg:text-3xl text-indigo-500">🎉 {""} Connected</h1>
@@ -327,11 +363,12 @@ const WalletContainer =() =>{
                   <div className="text-center justify-center w-full p-5 font-['Inter'] h-full">
                     <h1 className="text-violet-700 font-bold text-xl sm:text-3xl font-bold">Help Center</h1>
                     <div className="flex items-center justify-center m-4 sm:m-8 cursor-pointer">
-                      <a className="solana-pay" href="https://forms.gle/2p813UayRdro1wxf8" target="_blank" rel="noreferrer">
-                          <button className="solana-button-text inline-block font-bold px-4 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full"> 
-                              Join Our Team <span className="join-team-icon-position"><GroupAddIcon /></span>
-                          </button>
-                      </a>
+                      
+                        <button onClick={toggleAppModal} className="solana-button-text inline-block font-bold px-4 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full"> 
+                          <span className="join-team-icon-position"><GroupAddIcon /></span> Contact Us 
+                        </button>
+                      
+                        
                     </div>
                     <div className="text-center m-5 sm:m-10 cursor-pointer">
                       <button className="solana-button-text inline-block font-bold px-14 py-1 text-base sm:text-lg bg-[#4e44ce] rounded-full" onClick={toggleModal}> 

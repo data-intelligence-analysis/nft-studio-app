@@ -77,7 +77,9 @@ export default function UserNFTApp ({collection}){
     return ['https:', 'http:'].includes(parsed.protocol)
   }
   
-  
+  const RefreshBtn = () => {
+    window.location.reload(false)
+  }
 
   useEffect(() => {
     const getAllNFTsWallet = async (walletAddress, setting) => {
@@ -233,10 +235,6 @@ export default function UserNFTApp ({collection}){
     }
   };
 
-  const RefreshBtn = () => {
-    window.location.reload(false)
-  }
-
   return (
     <>
       <div className="absolute z-30 m-2 mb-3 text-center item-center text-sm sm:text-base left-0 bottom-10 ">
@@ -348,7 +346,7 @@ export default function UserNFTApp ({collection}){
                                   wrapperClass="items-center justify-center"
                                   visible={true} /> }
                                   <div className="font-heebo flex flex-col items-center">
-                                    <button id="refresh" onClick={RefreshBtn} type="button" className="mb-2"><ArrowPathIcon className="h-3 w-3" /></button>
+                                    <button id="refresh" onClick={RefreshBtn} type="button" className="mb-2"><ArrowPathIcon className="h-5 w-5" /></button>
                                     <p className="text-sm">refresh if delay</p>
                                   </div>
                               </div>
@@ -381,8 +379,10 @@ export default function UserNFTApp ({collection}){
               )
             }
           </div>): (
-          <div className="font-sans text-sm sm:text-base lg:text-xl rounded-xl border-2 border-indigo-600 p-2 px-3">
-            Select Wallet To View NFTs
+          <div className="flex flex-col gap-1">
+            <div className="font-sans text-sm sm:text-base lg:text-xl rounded-xl border-2 border-indigo-600 p-2 px-3">
+              Select Wallet To View NFTs
+            </div>
           </div>
           )
         }

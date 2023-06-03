@@ -10,6 +10,8 @@ import { Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import nftPhoto from "../../assets/nftApp.gif";
 import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid'
+import { IconContext } from "react-icons";
+import {BsToggleOn, BsToggleOff, BsToggle2Off, BsToggle2On} from "react-icons/bs";
 //import audio from "./audio.mp3"
 
 export default function Collection ({collection}) {
@@ -32,7 +34,8 @@ export default function Collection ({collection}) {
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0)
+  const [currentTime, setCurrentTime] = useState(0);
+  const [clicked, setClicked] = useState(false);
   //refs
   const audioPlayer = useRef(); //reference for audio component
   const progressBar = useRef(); // reference for progress bar component
@@ -43,6 +46,9 @@ export default function Collection ({collection}) {
   const connectionRPC = useMemo (() => new Connection(process.env.NEXT_PUBLIC_VERCEL_SOLANA_RPC_HOST, 'confirmed'), [])
   const metaplex =  useMemo(() => new Metaplex(connectionRPC),[connectionRPC]);
 
+  const handleClick = () => {
+    setClicked(prev => !prev)
+  }
   //Get mint and collection address based on collection
   let collectionMintAddress = ''
   if (collection === "Metahead"){
@@ -130,7 +136,7 @@ export default function Collection ({collection}) {
   
 
   
-  useEffect(() => {
+  {/*useEffect(() => {
     const fetchNftAccounts = async (setting) => {
       // Create an AbortController that aborts in 100ms.
       const abortController =  new AbortController();
@@ -190,7 +196,7 @@ export default function Collection ({collection}) {
       } 
     };
     fetchNFTImage();
-  }, [publicKey, metaplex, collectionMintAddress])
+  }, [publicKey, metaplex, collectionMintAddress])*/}
   
   /*useEffect(() => {
     let interval;
@@ -247,34 +253,104 @@ export default function Collection ({collection}) {
           </Alert>
         </Snackbar>
       </div>
-      <div id="nftLayout" className="p-2 lg:p-3 sm:col-span-5 lg:col-span-10 place-items-center">
+      <div id="nftLayout" className="p-2 lg:p-3 sm:col-span-6 lg:col-span-10 place-items-center">
         {wallet.publicKey ? 
           (
             <>
-              <div id="nfts" className="mt-2 flex items-center justify-center mb-4 w-full drop-shadow-lg">
-                  {loading &&
-                      <Circles 
-                      width='30' 
-                      height='30' 
-                      color="white"
-                      ariaLabel = "circles-loading"
-                      wrapperClass="items-center justify-center"
-                      visible={true} />
-                  }
-                  {!loading && (
-                      <div className="grid place-items-center items-center">
-                        <span className="my-8">Coming Soon</span>
-                        {nftAccounts.slice(0, displayedNftCount).map((account, index) => (
-                          <NFTCard key={index} account={account} />
-                        ))}
-                      </div>
-                    )
-                  }
+              <div id="nfts" className="mt-2 flex flex-col items-center justify-center mb-4 w-full">
+                <div className="w-full meatapix-navbar-shadow border-b-indigo-700">
+                  <div className="flex justify-between items-center flex-nowrap">
+                    <div className="ml-auto flex items-center flex-row flex-nowrap gap-2 p-2 sm:p-4">
+                      <p className="text-[9px] font-inter inline-flex">3D</p>
+                      <button id="toggleApp" type="button" onClick={handleClick} className='mx-1 font-inter'>
+                        {!clicked ? (
+                          <IconContext.Provider value={{ color: "white", size:"2.75em", width:"2em", className: "global-className-name" }}>
+                            <BsToggleOff/>
+                          </IconContext.Provider>)
+                          :
+                          (
+                            <div className="sliderToggleEffect">
+                              <IconContext.Provider value={{ color: "green", size:"2.75em", width:"2em", className: "global-className-name" }}>
+                                <BsToggleOn/>
+                              </IconContext.Provider>
+                            </div>
+                          )}
+                        
+                      </button>
+                      <p className="text-[9px] font-inter inline-flex">On-chain</p>
+                    </div>
+                   
+                  </div>
                 </div>
-              <div className="mt-5 flex items-center justify-center mx-auto w-full pointer-events-auto sm:text-base lg:text-lg text-sm font-sans font-bold">
-                {/*<button onClick={() => setDisplayedNftCount(displayedNftCount + initialNftCount)}>View More</button>*/}
-                <button disabled id="call-more-nfts" type="button" className="cursor-not-allowed rounded-xl p-2 px-4 border-2 border-indigo-700 hover:bg-slate-800">Load More</button>
+                {/*loading &&
+                    <Circles 
+                    width='30' 
+                    height='30' 
+                    color="white"
+                    ariaLabel = "circles-loading"
+                    wrapperClass="items-center justify-center"
+                    visible={true} />
+                      */}
+                {!clicked &&(
+                    <div className="mt-4 lg:mt-8 flex-col justify-center items-center w-full">
+                      {/*<span className="my-8 font-inter">3D renderer coming soon</span>*/}
+                      {<div className="shadow rounded-md p-4 min-w-sm sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl w-full mx-auto">
+                      <div className="animate-pulse flex space-x-4 lg:space-x-8">
+                        {/*<div className="rounded-full bg-slate-700 h-10 w-10 lg:h-20 lg:w-20"></div>*/}
+                        <div className="flex-1 space-y-6  lg:space-y-8 py-1">
+                          <div className="h-2 lg:h-4 bg-slate-700 rounded"></div>
+                          <div className="space-y-3 lg:space-y-4">
+                            <div className="grid grid-cols-3 gap-4">
+                              <div className="h-2 lg:h-4 bg-slate-700 rounded col-span-2"></div>
+                              <div className="lg:h-4 bg-slate-700 rounded col-span-1"></div>
+                            </div>
+                            <div className="h-2 lg:h-4 bg-slate-700 rounded"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>}
+                      <div className="mt-5 flex items-center justify-center mx-auto w-full pointer-events-auto sm:text-base lg:text-lg text-sm font-sans font-bold">
+                        {/*<button onClick={() => setDisplayedNftCount(displayedNftCount + initialNftCount)}>View More</button>*/}
+                        <button disabled={true} id="call-more-nfts" type="button" className={`cursor-not-allowed rounded-xl p-2 px-4 border-2 border-indigo-700 hover:bg-slate-800`}>Generate 3D</button>
+                      </div>
+                    </div>
+                  )
+                }
+                {clicked && (
+                  <div className="mt-4 lg:mt-8 flex-col justify-center items-center w-full">
+                    {/*nftAccounts.slice(0, displayedNftCount).map((account, index) => (
+                      <NFTCard key={index} account={account} />
+                    ))*/}
+                    {/*<div id="galleryCard" className='h-full w-[280px] sm:w-[360px] lg:w-[500px] items-center mx-auto shadow rounded-md border border-slate-500 bg-slate-900/50'>
+                        <div className="p-3 sm:p-5">
+                        <span className="my-6 font-inter">On chain gallery coming soon</span>
+                        </div>
+                      </div>*/
+                    }
+                    {<div className="shadow rounded-md p-4 min-w-sm sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl w-full mx-auto">
+                      <div className="animate-pulse flex space-x-4 lg:space-x-8">
+                        {/*<div className="rounded-full bg-slate-700 h-10 w-10 lg:h-20 lg:w-20"></div>*/}
+                        <div className="flex-1 space-y-6  lg:space-y-8 py-1">
+                          <div className="h-2 lg:h-4 bg-slate-700 rounded"></div>
+                          <div className="space-y-3 lg:space-y-4">
+                            <div className="grid grid-cols-3 gap-4">
+                              <div className="h-2 lg:h-4 bg-slate-700 rounded col-span-2"></div>
+                              <div className="lg:h-4 bg-slate-700 rounded col-span-1"></div>
+                            </div>
+                            <div className="h-2 lg:h-4 bg-slate-700 rounded"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>}
+                    <div className="mt-6 flex items-center justify-center mx-auto w-full pointer-events-auto sm:text-base lg:text-lg text-sm font-sans font-bold">
+                      {/*<button onClick={() => setDisplayedNftCount(displayedNftCount + initialNftCount)}>View More</button>*/}
+                      <button disabled={true} id="call-more-nfts" type="button" className="cursor-not-allowed rounded-xl p-2 px-4 border-2 border-indigo-700 hover:bg-slate-800">Load More</button>
+                    </div>
+                  </div>)
+                }
+                
               </div>
+              
             </>
           )
         :

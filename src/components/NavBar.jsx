@@ -13,6 +13,7 @@ import {
     WalletMultiButton, 
     WalletDisconnectButton,
 } from '@solana/wallet-adapter-react-ui';
+import { setVisible } from "@solana/wallet-adapter-react-ui"
 import { IconContext } from "react-icons";
 import { HomeIcon, UserIcon, MapIcon, CogIcon, InformationCircleIcon, 
           BuildingLibraryIcon, CloudArrowDownIcon, WrenchIcon, PhotoIcon, PuzzlePieceIcon, GlobeAltIcon, RocketLaunchIcon } from '@heroicons/react/24/solid'
@@ -81,18 +82,12 @@ const NavBarElements =[
     },
     {
         id: 8,
-        name: 'MetaHead Gallery',
+        name: 'Gallery',
         icon: <PhotoIcon className= "text-[#EAA640] h-6 w-6"/>,
-        href: '/gallery/metahead',
+        href: '/gallery',
     },
     {
         id: 9,
-        name: 'MetaTed Gallery',
-        icon: <PhotoIcon className= "text-[#EAA640] h-6 w-6"/>,
-        href: '/gallery/metated',
-    },
-    {
-        id: 10,
         name: 'Studio Mint',
         icon: <RocketLaunchIcon className= "text-[#EAA640] h-6 w-6"/>,
         href: 'https://metateds.com/studio',
@@ -100,7 +95,7 @@ const NavBarElements =[
         rel: "noreferrer noopener",
     },
     {
-        id: 11,
+        id: 10,
         name: 'MetaPix Studio',
         href: '/metapix',
         icon: <BuildingLibraryIcon className= "text-[#EAA640] h-6 w-6"/>
@@ -128,7 +123,7 @@ const NavBar = ({bgFormat, display}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [walletNavBtn, setWalletNavBtn] = useState(false)
   const [modalWalletNavBtn, setModalWalletNavBtn] = useState(false)
-
+  const [mounted, setMounted] = useState(false)
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
   }
@@ -157,7 +152,9 @@ const NavBar = ({bgFormat, display}) => {
       </a>
     )
   })
-  
+  /*const connect = () => {
+    setVisible(true)
+  }*/
   useEffect(() => {
     const HandleClickOutside = (e) => {
       // check if element that was clicked is inside of ref'd component
@@ -180,7 +177,7 @@ const NavBar = ({bgFormat, display}) => {
   
   useEffect(() => setWalletNavBtn(
       <WalletMultiButton 
-        className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
+        className="px-2 h-auto font-display py-2 transition-all duration-150 font-bold hover:ring-4 cursor-pointer hover:ring-purple-500" 
         style={{background:"#4e44ce",
                 height: "1.9rem", 
                 fontSize:"0.875rem", 
@@ -189,14 +186,19 @@ const NavBar = ({bgFormat, display}) => {
                   ), 
         [])
   useEffect(() => setModalWalletNavBtn(
-        <WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
-          style={{background:"#4e44ce", 
+        <WalletMultiButton className="font-display transition-all duration-150 font-bold hover:ring-4 cursor-pointer hover:ring-purple-500" 
+          style={{ 
+                  background:"#4e44ce",
                   width:'100%', 
                   height: "2.5rem", 
                   fontSize:"0.8rem", 
                   lineHeight: "1.25rem"}}
         />
   ),[])
+
+  useEffect (() => (setMounted(true)), [])
+  
+  if (!mounted) return null;
   return(
     <>
       
@@ -244,6 +246,8 @@ const NavBar = ({bgFormat, display}) => {
                   </li>
                 </a>
                 <li className="h-full justify-center flex items-center p-2 cursor-pointer font-sans">
+                  {/*custom button*/}
+                  {/*<button onClick={connect}>Connect wallet</button>*/}
                   {modalWalletNavBtn}
                   {/*<WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" style={{background:"#4e44ce", width:'100%', height: "2.5rem", fontSize:"0.8rem", lineHeight: "1.25rem"}}/>*/}
                 </li>

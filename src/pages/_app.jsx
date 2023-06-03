@@ -1,26 +1,29 @@
 require("@solana/wallet-adapter-react-ui/styles.css");
 import '../styles/globals.css';
-import React, { useMemo, useCallback} from "react";
+import React, { useMemo, useCallback, useState, useEffect } from "react";
 import { 
   WalletModalProvider,
 } 
 from "@solana/wallet-adapter-react-ui";
 import { WalletAdapterNetwork, WalletError } from '@solana/wallet-adapter-base';
-
+import { Connection, Wallet } from '@solana/web3.js';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import {
-  GlowWalletAdapter,
   SlopeWalletAdapter,
+  GlowWalletAdapter,
+  LedgerWalletAdapter,
   SolflareWalletAdapter,
   TorusWalletAdapter,
-  SolletExtensionWalletAdapter,
-  SolletWalletAdapter,
+  PhantomWalletAdapter,
+  CoinbaseWalletAdapter
 } from "@solana/wallet-adapter-wallets";
+//import { CoinbaseWalletAdapter } from "@solana/wallet-adapter-coinbase";
+//import { GlowWalletAdapter } from "@solana/wallet-adapter-glow";
+//import { SolanaMobileWalletAdapter } from "@solana-mobile/wallet-adapter-mobile"
 import { clusterApiUrl, ConnectionConfig } from "@solana/web3.js";
 import CookieBanner from "../components/layouts/CookieBanner";
 import DesktopWarnModal from "../components/layouts/DesktopWarnModal";
-
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import { PAYPAL_CLIENT_ID } from "../components/constants"
 //import { ThemeProvider } from '@emotion/react';
@@ -28,12 +31,56 @@ import { PAYPAL_CLIENT_ID } from "../components/constants"
 const CONNECTION_CONFIG = { commitment: 'processed' };
 //const theme = /*#__PURE__*/ createTheme();
 //const endpoint = /*#__PURE__*/ clusterApiUrl(network );
+/*const SolanaMobileWalletAdapter = () => {
+  const [wallet, setWallet] = useState(null);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    // Regular expression to check if the userAgent indicates a mobile device
+    const mobileDeviceRegex = /android|iphone|ipod|ipad|iemobile|opera mini/i;
+    const isMobile = mobileDeviceRegex.test(userAgent);
+    if (isMobile) {
+      connectSolanaWallet();
+    }
+  }, []);
+
+  const connectSolanaWallet = async () => {
+    try {
+      // Create a connection to the Solana network
+      const connection = new Connection('https://api.mainnet-beta.solana.com');
+
+      // Connect to the Solana wallet using Wallet Connect
+      const wallet = await Wallet.connect({
+        connection,
+        provider: 'https://www.sollet.io',
+        network: 'mainnet-beta',
+      });
+
+      setWallet(wallet);
+    } catch (error) {
+      console.error('Error connecting to Solana wallet:', error);
+    }
+  };
+
+  return (
+    <div>
+      {wallet ? (
+        // Render the Solana mobile wallet adapter
+        <div>Render the Solana mobile wallet adapter here</div>
+      ) : (
+        <div>Mobile wallet adapter is only available on mobile devices.</div>
+      )}
+    </div>
+  );
+};*/
 function MyApp({ Component, pageProps }) {
-  
+  //states
+  const [isMobile, setIsMobile] = useState(false);
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
   const network = WalletAdapterNetwork.Mainnet; 
   // You can also provide a custom RPC endpoint
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  
   const { enqueueSnackbar } = useSnackbar();
     const handleWalletError = useCallback(
         (e) => {
@@ -47,6 +94,14 @@ function MyApp({ Component, pageProps }) {
     currency: "USD"
     //"data-client-token": DATA_CLIENT_TOKEN.data_client_token
   }
+  /*useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Regular expression to check if the userAgent indicates a mobile device
+    const mobileDeviceRegex = /android|iphone|ipod|ipad|iemobile|opera mini/i;
+
+    setIsMobile(mobileDeviceRegex.test(userAgent));
+  }, []);*/
   // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
   // Only the wallets you configure here will be compiled into your application, and only the dependencies
   // of wallets that your users connect to will be loaded
@@ -59,6 +114,7 @@ function MyApp({ Component, pageProps }) {
     ],
     [network]
   );*/
+  /**/
   const wallets = useMemo(
       () => typeof window === 'undefined'
       ? [] // No wallet adapters when server-side rendering.
@@ -78,28 +134,32 @@ function MyApp({ Component, pageProps }) {
           /*new SolanaMobileWalletAdapter({
             //addressSelector: createDefaultAddressSelector(),
             appIdentity: {
-                name: 'MetaTed Studio App',
+                name: 'MetaTeds Studio App',
                 uri: 'https://metatedstudio.com',
                 icon: '/ted192.png',
             },
             //authorizationResultCache: createDefaultAuthorizationResultCache(),
-            cluster: WalletAdapterNetwork.Mainnet,
+            //cluster: WalletAdapterNetwork.Mainnet,
             //onWalletNotFound: createDefaultWalletNotFoundHandler(),
           }),*/
-          new SolflareWalletAdapter({ network }),
-          new GlowWalletAdapter(),
-          new SlopeWalletAdapter(),
+          new CoinbaseWalletAdapter(),
+          new LedgerWalletAdapter(),
+          //new SlopeWalletAdapter(),
+          //new GlowWalletAdapter(),
+          new SolflareWalletAdapter(),
+          //new SolletWalletAdapter(),
+          //new SolletExtensionWalletAdapter({ network }),
           new TorusWalletAdapter(),
-          new SolletWalletAdapter({ network }),
-          new SolletExtensionWalletAdapter({ network }),
+          new PhantomWalletAdapter({network}),
       ],
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [network]
   );
+  
   return (
     <SnackbarProvider autoHideDuration={10000}>
       <ConnectionProvider config={CONNECTION_CONFIG} endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect onError={handleWalletError}>
+        <WalletProvider wallets={wallets} autoConnect={true} onError={handleWalletError}>
           <WalletModalProvider>
             <PayPalScriptProvider options={initialOptions}>
               <CookieBanner />

@@ -14,12 +14,23 @@ module.exports = {
     },
     keyframes: {
       up: {
-        "0%": { transform: "translateY(0rem)" },
-        "100%": { transform: "translateY(-.1rem)" },
+        "0%": { transform: "translateY(0)" },
+        "100%": { transform: "translateY(-.5rem)" },
       },
       down: {
         "0%": { transform: "translateY(0rem)" },
-        "100%": { transform: "translateY(.2rem)" },
+        "100%": { transform: "translateY(1.8rem)" },
+      },
+      diagonalLeft:{
+        '0%': { transform: 'translateY(0rem)' },
+        '10%': { transform: 'translateY(.1rem)' },
+        '20%': { transform: 'translateY(.2rem)' },
+        '40%': { transform: 'translateX(.1rem)' },
+        '50%': { transform: 'translateX(.2rem)' },
+        '60%': { transform: 'translateX(.2rem)' },
+        '80%': { transform: 'translateX(.2rem)' },
+        '90%': { transform: 'translateX(.2rem)' },
+        '100%': { transform: 'translateX(.2rem)' },
       },
       studio: {
         "0%": { transform: "translateX(0rem)" },
@@ -28,6 +39,10 @@ module.exports = {
       wiggle: {
         '0%, 100%': { transform: 'rotate(-3deg)' },
         '50%': { transform: 'rotate(3deg)' },
+      },
+      nw_diagonal:{
+        '0%': { transform: 'translateX(0) translateY(0)' },
+        '100%': { transform: 'translateX(-2rem) translateY(-2rem)' },
       },
       beat: {
         '0% 100%': { transform: 'scale(1)' },
@@ -41,17 +56,24 @@ module.exports = {
         '100%': { transform: 'scale(1.4,1)' }
       },
       ping: {
-        '75% 100%': { transform: 'scale(2)', opacity: '0' }
+        '75%, 100%': { transform: 'scale(1.5)' }
+      },
+      pulse: {
+        '0%, 100%': { opacity: '1'},
+        '50%': {opacity: '.5'},
       }
+      
     },
     animation: {
-      up: "up .1s ease-in-out",
-      down: "down .3s ease-in-out",
+      up: "up 1s ease-in-out infinite",
+      down: "down 1s ease-in-out infinite",
+      nw_diagonal: "nw_diagonal 2s ease-in-out infinite",
       studio: 'studio 50s linear infinite reverse running',
       wiggle: 'wiggle 1s ease-in-out infinite',
       beat: 'beat 1s ease-in-out infinite',
       zoomin: 'zoomin 15s ease-in-out infinite forwards',
       ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
+      pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
     },
     extend: {
       gridTemplateColumns: {
@@ -64,4 +86,5 @@ module.exports = {
   plugins: [
     
   ],
+  
 }

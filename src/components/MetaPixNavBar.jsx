@@ -161,7 +161,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [walletNavBtn, setWalletNavBtn] = useState(false)
   const [modalWalletNavBtn, setModalWalletNavBtn] = useState(false)
-
+  const [mounted, setMounted] = useState(false)
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
   }
@@ -211,7 +211,7 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
   },[]);
   useEffect(() => setWalletNavBtn(
     <WalletMultiButton 
-      className="px-2 h-auto font-bold font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
+      className="px-2 h-auto font-display py-2 transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
       style={{background:"#4e44ce",
               height: "1.9rem", 
               fontSize:"0.875rem", 
@@ -221,14 +221,17 @@ const MetaPixNavBar = ({bgFormat, opacity}) => {
       [])
 
   useEffect(() => setModalWalletNavBtn(
-    <WalletMultiButton className="font-bold font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
+    <WalletMultiButton className="font-display transition-all duration-150 font-bold hover:ring-4 bg-indigo-700 cursor-pointer hover:bg-indigo-600 hover:ring-indigo-500" 
       style={{background:"#4e44ce", 
               width:'100%', 
               height: "2.5rem", 
               fontSize:"0.8rem", 
               lineHeight: "1.25rem"}}
     />
-),[])
+  ),[])
+  useEffect (() => (setMounted(true)), [])
+  
+  if (!mounted) return null;
   return (
     <nav className={`fixed top-0 left-0 w-full z-30 ${bgFormat} ${opacity} meatapix-navbar-shadow`}>
       <div className="max-w-screen-2xl w-full mx-auto px-2 py-1 flex items-center justify-between">

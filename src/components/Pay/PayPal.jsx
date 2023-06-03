@@ -2,6 +2,7 @@ import React, {useMemo, useEffect, useState} from 'react'
 import {FaPaypal} from "react-icons/fa";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { Circles } from "react-loader-spinner";
+//import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 export default function PayPal() {
 
   //paypal states
@@ -124,3 +125,62 @@ export default function PayPal() {
     </div>
   )
 }
+//paypal states
+  //const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+
+  /*Paypal Functions*/
+  /*const PayPalamt = "35"
+  const PayPalcurrency = "USD"
+  const PayPalstyle = {
+    color: "blue",
+    shape: "pill",
+    label: "pay",
+    tagline: false,
+    layout: "vertical",
+    label: "donate"
+  }
+  //create paypal order
+
+  const createDonateOrder = (data, actions) => {
+    return actions.order
+        .create({
+            purchase_units: [
+                {
+                    amount: {
+                        value: PayPalamt,
+                        breakdown: {
+                            item_total: {
+                                currency_code: "USD",
+                                value: PayPalamt,
+                            },
+                        },
+                    },
+                    items: [
+                        {
+                            name: "donation-example",
+                            quantity: "1",
+                            unit_amount: {
+                                currency_code: "USD",
+                                value: PayPalamt,
+                            },
+                            category: "DONATION",
+                        },
+                    ],
+                },
+            ],
+        })
+        .then((orderId) => {
+            // Your code here after create the donation
+            return orderId;
+        });
+  }
+*/
+{/*useEffect(() => {
+    dispatch({
+        type: "resetOptions",
+        value: {
+            ...options,
+            currency: PayPalcurrency,
+        },
+    });
+  }, [PayPalcurrency]);*/}
