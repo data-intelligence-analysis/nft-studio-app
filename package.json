@@ -11,7 +11,7 @@
     "clean": "shx rm -rf .next"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.329.0",
+    "@aws-sdk/client-s3": "^3.529.0",
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",
     "@emotion/react": "^11.11.0",
