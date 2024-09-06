@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk-js-codemod": "^0.12.0",
+    "aws-sdk-js-codemod": "^2.0.0",
     "serverless-add-api-key": "^4.2.1",
-    "serverless-bundle": "^6.0.0"
+    "serverless-bundle": "^6.3.0"
   },
   "devDependencies": {
     "serverless-dotenv-plugin": "^4.0.2"
